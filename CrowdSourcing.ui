@@ -100,6 +100,65 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLineEdit" name="usernameInput">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>490</y>
+      <width>301</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: \*url();</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>Username</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="passwordInput">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>560</y>
+      <width>301</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: \*url();</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>Password</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -110,7 +169,7 @@
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
+   <widget class="QMenu" name="loginInterface">
     <property name="title">
      <string>首页</string>
     </property>
@@ -122,7 +181,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QMenu" name="menu_2">
+   <widget class="QMenu" name="privateInterface">
     <property name="title">
      <string>个人中心</string>
     </property>
@@ -131,7 +190,7 @@
       <normaloff>:/CrowdSourcing/Resources/pictures/个人中心_我的信息.png</normaloff>:/CrowdSourcing/Resources/pictures/个人中心_我的信息.png</iconset>
     </property>
    </widget>
-   <widget class="QMenu" name="menu_3">
+   <widget class="QMenu" name="taskInterface">
     <property name="title">
      <string>查看任务</string>
     </property>
@@ -140,9 +199,9 @@
       <normaloff>:/CrowdSourcing/Resources/pictures/任务.png</normaloff>:/CrowdSourcing/Resources/pictures/任务.png</iconset>
     </property>
    </widget>
-   <addaction name="menu"/>
-   <addaction name="menu_2"/>
-   <addaction name="menu_3"/>
+   <addaction name="loginInterface"/>
+   <addaction name="privateInterface"/>
+   <addaction name="taskInterface"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="toolButtonStyle">
