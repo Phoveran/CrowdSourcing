@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1920</width>
-    <height>1120</height>
+    <height>1106</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -113,6 +113,7 @@
      <font>
       <family>Century Gothic</family>
       <pointsize>24</pointsize>
+      <italic>true</italic>
      </font>
     </property>
     <property name="styleSheet">
@@ -141,6 +142,7 @@
      <font>
       <family>Century Gothic</family>
       <pointsize>24</pointsize>
+      <italic>true</italic>
      </font>
     </property>
     <property name="autoFillBackground">
@@ -151,6 +153,9 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
      <string>Password</string>
@@ -203,21 +208,30 @@
    <addaction name="privateInterface"/>
    <addaction name="taskInterface"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <property name="toolButtonStyle">
-    <enum>Qt::ToolButtonTextBesideIcon</enum>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="CrowdSourcing.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>loginButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CrowdSourcingClass</receiver>
+   <slot>loginButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>170</x>
+     <y>658</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>459</x>
+     <y>778</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>loginButtonClick()</slot>
+ </slots>
 </ui>

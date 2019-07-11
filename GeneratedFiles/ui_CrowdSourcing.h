@@ -18,7 +18,6 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -35,13 +34,12 @@ public:
     QMenu *loginInterface;
     QMenu *privateInterface;
     QMenu *taskInterface;
-    QToolBar *mainToolBar;
 
     void setupUi(QMainWindow *CrowdSourcingClass)
     {
         if (CrowdSourcingClass->objectName().isEmpty())
             CrowdSourcingClass->setObjectName(QString::fromUtf8("CrowdSourcingClass"));
-        CrowdSourcingClass->resize(1920, 1120);
+        CrowdSourcingClass->resize(1920, 1106);
         CrowdSourcingClass->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         CrowdSourcingClass->setAnimated(true);
         centralWidget = new QWidget(CrowdSourcingClass);
@@ -75,6 +73,7 @@ public:
         QFont font1;
         font1.setFamily(QString::fromUtf8("Century Gothic"));
         font1.setPointSize(24);
+        font1.setItalic(true);
         usernameInput->setFont(font1);
         usernameInput->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         usernameInput->setClearButtonEnabled(true);
@@ -84,6 +83,7 @@ public:
         passwordInput->setFont(font1);
         passwordInput->setAutoFillBackground(false);
         passwordInput->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        passwordInput->setEchoMode(QLineEdit::Password);
         passwordInput->setClearButtonEnabled(true);
         CrowdSourcingClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CrowdSourcingClass);
@@ -106,16 +106,13 @@ public:
         icon2.addFile(QString::fromUtf8(":/CrowdSourcing/Resources/pictures/\344\273\273\345\212\241.png"), QSize(), QIcon::Normal, QIcon::Off);
         taskInterface->setIcon(icon2);
         CrowdSourcingClass->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(CrowdSourcingClass);
-        mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
-        mainToolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-        CrowdSourcingClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
 
         menuBar->addAction(loginInterface->menuAction());
         menuBar->addAction(privateInterface->menuAction());
         menuBar->addAction(taskInterface->menuAction());
 
         retranslateUi(CrowdSourcingClass);
+        QObject::connect(loginButton, SIGNAL(clicked()), CrowdSourcingClass, SLOT(loginButtonClick()));
 
         loginButton->setDefault(false);
 

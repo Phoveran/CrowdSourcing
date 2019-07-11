@@ -116,6 +116,7 @@
     <ClCompile Include="CrowdSourcing.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operation.cpp" />
+    <ClCompile Include="Personal.cpp" />
     <ClCompile Include="task.cpp" />
     <ClCompile Include="user.cpp" />
   </ItemGroup>
@@ -124,11 +125,18 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="CrowdSourcing.ui" />
+    <QtUic Include="Personal.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CrowdSourcing.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_CrowdSourcing.h" />
+    <ClInclude Include="GeneratedFiles\ui_Personal.h" />
+    <QtMoc Include="Personal.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="task.h" />
     <ClInclude Include="user.h" />

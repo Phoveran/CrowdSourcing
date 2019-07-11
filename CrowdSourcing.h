@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_CrowdSourcing.h"
+#include "Personal.h"
 
 class CrowdSourcing : public QMainWindow
 {
@@ -9,6 +10,9 @@ class CrowdSourcing : public QMainWindow
 
 public:
 	CrowdSourcing(QWidget *parent = Q_NULLPTR);
+
+public slots:
+	void loginButtonClick();
 
 private:
 	Ui::CrowdSourcingClass ui;
