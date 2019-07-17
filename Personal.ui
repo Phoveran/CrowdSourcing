@@ -7,21 +7,27 @@
     <x>0</x>
     <y>0</y>
     <width>1920</width>
-    <height>1106</height>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>CrowdSourcing</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda2.jpg);</string>
+   </property>
+   <widget class="QFrame" name="verticalFrame">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>50</y>
-      <width>228</width>
+      <width>251</width>
       <height>451</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: \*url();</string>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
@@ -35,8 +41,11 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
        <property name="text">
-        <string>Username:</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Username:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -51,8 +60,11 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
        <property name="text">
-        <string>Member type:</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Member type:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -67,8 +79,11 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
        <property name="text">
-        <string>Credits:</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Credits:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -83,8 +98,11 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
        <property name="text">
-        <string>Balance:</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Balance:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -99,21 +117,27 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
        <property name="text">
-        <string>Certification:</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Certification:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_2">
+   <widget class="QFrame" name="verticalFrame_2">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>350</x>
       <y>50</y>
       <width>411</width>
       <height>451</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: \*url();</string>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <property name="spacing">
@@ -126,6 +150,9 @@
          <family>Courier New</family>
          <pointsize>20</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
        </property>
        <property name="text">
         <string/>
@@ -143,6 +170,9 @@
          <pointsize>20</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -155,6 +185,9 @@
          <family>Courier New</family>
          <pointsize>20</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
        </property>
        <property name="inputMask">
         <string/>
@@ -172,6 +205,9 @@
          <pointsize>20</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -185,6 +221,9 @@
          <pointsize>20</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -192,97 +231,210 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QFrame" name="verticalFrame">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>530</y>
-      <width>281</width>
-      <height>41</height>
+      <x>1490</x>
+      <y>70</y>
+      <width>291</width>
+      <height>391</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Century Gothic</family>
-      <pointsize>14</pointsize>
-      <weight>75</weight>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Update my information</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>530</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Century Gothic</family>
-      <pointsize>14</pointsize>
-      <weight>75</weight>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Top up</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1920</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menu">
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">border-image: \*url();</string>
     </property>
-    <property name="title">
-     <string>首页</string>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
+color: rgb(170, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Waiting tasks</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
+color: rgb(170, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Doing tasks</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
+color: rgb(170, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Finished tasks</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="horizontalFrame">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>520</y>
+      <width>649</width>
+      <height>80</height>
+     </rect>
     </property>
-    <property name="icon">
-     <iconset resource="CrowdSourcing.qrc">
-      <normaloff>:/CrowdSourcing/Resources/pictures/首页.png</normaloff>:/CrowdSourcing/Resources/pictures/首页.png</iconset>
+    <property name="styleSheet">
+     <string notr="true">border-image: \*url();</string>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>100</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::ActionsContextMenu</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
+color: rgb(170, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Update information</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
+color: rgb(170, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Top up</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>1530</x>
+      <y>750</y>
+      <width>207</width>
+      <height>47</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: \*url();
+color: rgb(170, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Log out</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>个人信息</string>
-    </property>
-    <property name="icon">
-     <iconset resource="CrowdSourcing.qrc">
-      <normaloff>:/CrowdSourcing/Resources/pictures/个人中心_我的信息.png</normaloff>:/CrowdSourcing/Resources/pictures/个人中心_我的信息.png</iconset>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menu_3">
-    <property name="title">
-     <string>任务</string>
-    </property>
-    <property name="icon">
-     <iconset resource="CrowdSourcing.qrc">
-      <normaloff>:/CrowdSourcing/Resources/pictures/任务.png</normaloff>:/CrowdSourcing/Resources/pictures/任务.png</iconset>
-    </property>
-   </widget>
-   <addaction name="menu"/>
-   <addaction name="menu_2"/>
-   <addaction name="menu_3"/>
   </widget>
  </widget>
  <resources>
   <include location="CrowdSourcing.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>logOutButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1618</x>
+     <y>777</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1385</x>
+     <y>770</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>logOutButtonClick()</slot>
+ </slots>
 </ui>

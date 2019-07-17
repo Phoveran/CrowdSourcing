@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1920</width>
-    <height>1106</height>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -164,49 +164,6 @@
      <bool>true</bool>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1920</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="loginInterface">
-    <property name="title">
-     <string>首页</string>
-    </property>
-    <property name="icon">
-     <iconset resource="CrowdSourcing.qrc">
-      <normaloff>:/CrowdSourcing/Resources/pictures/首页.png</normaloff>:/CrowdSourcing/Resources/pictures/首页.png</iconset>
-    </property>
-    <property name="toolTipsVisible">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QMenu" name="privateInterface">
-    <property name="title">
-     <string>个人中心</string>
-    </property>
-    <property name="icon">
-     <iconset resource="CrowdSourcing.qrc">
-      <normaloff>:/CrowdSourcing/Resources/pictures/个人中心_我的信息.png</normaloff>:/CrowdSourcing/Resources/pictures/个人中心_我的信息.png</iconset>
-    </property>
-   </widget>
-   <widget class="QMenu" name="taskInterface">
-    <property name="title">
-     <string>查看任务</string>
-    </property>
-    <property name="icon">
-     <iconset resource="CrowdSourcing.qrc">
-      <normaloff>:/CrowdSourcing/Resources/pictures/任务.png</normaloff>:/CrowdSourcing/Resources/pictures/任务.png</iconset>
-    </property>
-   </widget>
-   <addaction name="loginInterface"/>
-   <addaction name="privateInterface"/>
-   <addaction name="taskInterface"/>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

@@ -10,13 +10,9 @@
 #define UI_CROWDSOURCING_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QIcon>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -30,16 +26,12 @@ public:
     QPushButton *registerButton;
     QLineEdit *usernameInput;
     QLineEdit *passwordInput;
-    QMenuBar *menuBar;
-    QMenu *loginInterface;
-    QMenu *privateInterface;
-    QMenu *taskInterface;
 
     void setupUi(QMainWindow *CrowdSourcingClass)
     {
         if (CrowdSourcingClass->objectName().isEmpty())
             CrowdSourcingClass->setObjectName(QString::fromUtf8("CrowdSourcingClass"));
-        CrowdSourcingClass->resize(1920, 1106);
+        CrowdSourcingClass->resize(1920, 1080);
         CrowdSourcingClass->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         CrowdSourcingClass->setAnimated(true);
         centralWidget = new QWidget(CrowdSourcingClass);
@@ -86,30 +78,6 @@ public:
         passwordInput->setEchoMode(QLineEdit::Password);
         passwordInput->setClearButtonEnabled(true);
         CrowdSourcingClass->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(CrowdSourcingClass);
-        menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1920, 26));
-        loginInterface = new QMenu(menuBar);
-        loginInterface->setObjectName(QString::fromUtf8("loginInterface"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/CrowdSourcing/Resources/pictures/\351\246\226\351\241\265.png"), QSize(), QIcon::Normal, QIcon::Off);
-        loginInterface->setIcon(icon);
-        loginInterface->setToolTipsVisible(false);
-        privateInterface = new QMenu(menuBar);
-        privateInterface->setObjectName(QString::fromUtf8("privateInterface"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/CrowdSourcing/Resources/pictures/\344\270\252\344\272\272\344\270\255\345\277\203_\346\210\221\347\232\204\344\277\241\346\201\257.png"), QSize(), QIcon::Normal, QIcon::Off);
-        privateInterface->setIcon(icon1);
-        taskInterface = new QMenu(menuBar);
-        taskInterface->setObjectName(QString::fromUtf8("taskInterface"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/CrowdSourcing/Resources/pictures/\344\273\273\345\212\241.png"), QSize(), QIcon::Normal, QIcon::Off);
-        taskInterface->setIcon(icon2);
-        CrowdSourcingClass->setMenuBar(menuBar);
-
-        menuBar->addAction(loginInterface->menuAction());
-        menuBar->addAction(privateInterface->menuAction());
-        menuBar->addAction(taskInterface->menuAction());
 
         retranslateUi(CrowdSourcingClass);
         QObject::connect(loginButton, SIGNAL(clicked()), CrowdSourcingClass, SLOT(loginButtonClick()));
@@ -129,9 +97,6 @@ public:
         usernameInput->setPlaceholderText(QCoreApplication::translate("CrowdSourcingClass", "Username", nullptr));
         passwordInput->setText(QString());
         passwordInput->setPlaceholderText(QCoreApplication::translate("CrowdSourcingClass", "Password", nullptr));
-        loginInterface->setTitle(QCoreApplication::translate("CrowdSourcingClass", "\351\246\226\351\241\265", nullptr));
-        privateInterface->setTitle(QCoreApplication::translate("CrowdSourcingClass", "\344\270\252\344\272\272\344\270\255\345\277\203", nullptr));
-        taskInterface->setTitle(QCoreApplication::translate("CrowdSourcingClass", "\346\237\245\347\234\213\344\273\273\345\212\241", nullptr));
     } // retranslateUi
 
 };

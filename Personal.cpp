@@ -5,3 +5,8 @@ Personal::Personal(QWidget* parent)
 {
 	ui.setupUi(this);
 }
+
+void Personal::logOutButtonClick()
+{
+	this->close();
+}
