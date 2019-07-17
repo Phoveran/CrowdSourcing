@@ -1,4 +1,5 @@
 #include "CrowdSourcing.h"
+#include "Personal.h"
 
 CrowdSourcing::CrowdSourcing(QWidget *parent)
 	: QMainWindow(parent)

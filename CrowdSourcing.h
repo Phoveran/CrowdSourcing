@@ -2,7 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_CrowdSourcing.h"
-#include "Personal.h"
+
 
 class CrowdSourcing : public QMainWindow
 {

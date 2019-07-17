@@ -1,5 +1,5 @@
 #include "Personal.h"
-
+#include "ChangePassword.h"
 Personal::Personal(QWidget* parent)
 	: QMainWindow(parent)
 {
@@ -9,4 +9,10 @@ Personal::Personal(QWidget* parent)
 void Personal::logOutButtonClick()
 {
 	this->close();
+}
+
+void Personal::changePasswordButtonClick()
+{
+	ChangePassword* c = new ChangePassword;
+	c->show();
 }

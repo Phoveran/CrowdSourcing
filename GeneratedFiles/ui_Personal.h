@@ -49,6 +49,9 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QFrame *verticalFrame_3;
+    QVBoxLayout *verticalLayout_4;
+    QPushButton *pushButton_8;
     QPushButton *pushButton_6;
 
     void setupUi(QMainWindow *MainWindow)
@@ -221,17 +224,35 @@ public:
 
         horizontalLayout->addWidget(pushButton_2);
 
-        pushButton_6 = new QPushButton(centralwidget);
+        verticalFrame_3 = new QFrame(centralwidget);
+        verticalFrame_3->setObjectName(QString::fromUtf8("verticalFrame_3"));
+        verticalFrame_3->setGeometry(QRect(1450, 630, 371, 191));
+        verticalFrame_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        verticalLayout_4 = new QVBoxLayout(verticalFrame_3);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        pushButton_8 = new QPushButton(verticalFrame_3);
+        pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
+        pushButton_8->setFont(font);
+        pushButton_8->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+"color: rgb(170, 0, 0);"));
+        pushButton_8->setFlat(true);
+
+        verticalLayout_4->addWidget(pushButton_8);
+
+        pushButton_6 = new QPushButton(verticalFrame_3);
         pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
-        pushButton_6->setGeometry(QRect(1530, 750, 207, 47));
         pushButton_6->setFont(font2);
         pushButton_6->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 0, 0);"));
         pushButton_6->setFlat(true);
+
+        verticalLayout_4->addWidget(pushButton_6);
+
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
         QObject::connect(pushButton_6, SIGNAL(clicked()), MainWindow, SLOT(logOutButtonClick()));
+        QObject::connect(pushButton_8, SIGNAL(clicked()), MainWindow, SLOT(changePasswordButtonClick()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -251,6 +272,7 @@ public:
         pushButton_4->setText(QCoreApplication::translate("MainWindow", "Finished tasks", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Update information", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Top up", nullptr));
+        pushButton_8->setText(QCoreApplication::translate("MainWindow", "Change password", nullptr));
         pushButton_6->setText(QCoreApplication::translate("MainWindow", "Log out", nullptr));
     } // retranslateUi
 

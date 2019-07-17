@@ -382,34 +382,66 @@ color: rgb(170, 0, 0);</string>
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QFrame" name="verticalFrame_3">
     <property name="geometry">
      <rect>
-      <x>1530</x>
-      <y>750</y>
-      <width>207</width>
-      <height>47</height>
+      <x>1450</x>
+      <y>630</y>
+      <width>371</width>
+      <height>191</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Century Gothic</family>
-      <pointsize>18</pointsize>
-      <weight>75</weight>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
     <property name="styleSheet">
-     <string notr="true">border-image: \*url();
+     <string notr="true">border-image: \*url();</string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QPushButton" name="pushButton_8">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
 color: rgb(170, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string>Log out</string>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
+       </property>
+       <property name="text">
+        <string>Change password</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
+color: rgb(170, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Log out</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
@@ -433,8 +465,25 @@ color: rgb(170, 0, 0);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>changePasswordButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1542</x>
+     <y>697</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1257</x>
+     <y>678</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>logOutButtonClick()</slot>
+  <slot>changePasswordButtonClick()</slot>
  </slots>
 </ui>

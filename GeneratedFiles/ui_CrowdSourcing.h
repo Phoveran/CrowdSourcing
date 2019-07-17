@@ -11,9 +11,11 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -22,8 +24,12 @@ class Ui_CrowdSourcingClass
 {
 public:
     QWidget *centralWidget;
+    QFrame *verticalFrame;
+    QVBoxLayout *verticalLayout;
     QPushButton *loginButton;
     QPushButton *registerButton;
+    QFrame *verticalFrame_2;
+    QVBoxLayout *verticalLayout_2;
     QLineEdit *usernameInput;
     QLineEdit *passwordInput;
 
@@ -37,31 +43,52 @@ public:
         centralWidget = new QWidget(CrowdSourcingClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         centralWidget->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda1.jpg);"));
-        loginButton = new QPushButton(centralWidget);
+        verticalFrame = new QFrame(centralWidget);
+        verticalFrame->setObjectName(QString::fromUtf8("verticalFrame"));
+        verticalFrame->setGeometry(QRect(170, 540, 221, 131));
+        verticalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        verticalLayout = new QVBoxLayout(verticalFrame);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        loginButton = new QPushButton(verticalFrame);
         loginButton->setObjectName(QString::fromUtf8("loginButton"));
-        loginButton->setGeometry(QRect(120, 620, 111, 51));
         QFont font;
-        font.setFamily(QString::fromUtf8("Gabriola"));
-        font.setPointSize(24);
+        font.setFamily(QString::fromUtf8("Century Gothic"));
+        font.setPointSize(20);
         font.setBold(true);
-        font.setItalic(false);
+        font.setItalic(true);
         font.setWeight(75);
         loginButton->setFont(font);
-        loginButton->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        loginButton->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+"color: rgb(85, 0, 0);"));
         loginButton->setIconSize(QSize(20, 20));
         loginButton->setAutoDefault(false);
         loginButton->setFlat(true);
-        registerButton = new QPushButton(centralWidget);
+
+        verticalLayout->addWidget(loginButton);
+
+        registerButton = new QPushButton(verticalFrame);
         registerButton->setObjectName(QString::fromUtf8("registerButton"));
-        registerButton->setGeometry(QRect(300, 620, 120, 51));
         registerButton->setFont(font);
-        registerButton->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        registerButton->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+"color: rgb(85, 0, 0);"));
         registerButton->setIconSize(QSize(20, 20));
         registerButton->setAutoDefault(false);
         registerButton->setFlat(true);
-        usernameInput = new QLineEdit(centralWidget);
+
+        verticalLayout->addWidget(registerButton);
+
+        verticalFrame_2 = new QFrame(centralWidget);
+        verticalFrame_2->setObjectName(QString::fromUtf8("verticalFrame_2"));
+        verticalFrame_2->setGeometry(QRect(100, 370, 371, 151));
+        verticalFrame_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        verticalLayout_2 = new QVBoxLayout(verticalFrame_2);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        usernameInput = new QLineEdit(verticalFrame_2);
         usernameInput->setObjectName(QString::fromUtf8("usernameInput"));
-        usernameInput->setGeometry(QRect(120, 490, 301, 51));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Century Gothic"));
         font1.setPointSize(24);
@@ -69,14 +96,19 @@ public:
         usernameInput->setFont(font1);
         usernameInput->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         usernameInput->setClearButtonEnabled(true);
-        passwordInput = new QLineEdit(centralWidget);
+
+        verticalLayout_2->addWidget(usernameInput);
+
+        passwordInput = new QLineEdit(verticalFrame_2);
         passwordInput->setObjectName(QString::fromUtf8("passwordInput"));
-        passwordInput->setGeometry(QRect(120, 560, 301, 51));
         passwordInput->setFont(font1);
         passwordInput->setAutoFillBackground(false);
         passwordInput->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         passwordInput->setEchoMode(QLineEdit::Password);
         passwordInput->setClearButtonEnabled(true);
+
+        verticalLayout_2->addWidget(passwordInput);
+
         CrowdSourcingClass->setCentralWidget(centralWidget);
 
         retranslateUi(CrowdSourcingClass);

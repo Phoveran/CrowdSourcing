@@ -12,6 +12,7 @@ public:
 
 public slots:
 	void logOutButtonClick();
+	void changePasswordButtonClick();
 
 private:
 	Ui::MainWindow ui;
