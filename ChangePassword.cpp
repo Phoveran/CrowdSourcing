@@ -5,6 +5,7 @@ ChangePassword::ChangePassword(QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+//	this->setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 void ChangePassword::OkClick()

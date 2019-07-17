@@ -46,6 +46,11 @@ public:
         verticalFrame = new QFrame(centralWidget);
         verticalFrame->setObjectName(QString::fromUtf8("verticalFrame"));
         verticalFrame->setGeometry(QRect(170, 540, 221, 131));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(verticalFrame->sizePolicy().hasHeightForWidth());
+        verticalFrame->setSizePolicy(sizePolicy);
         verticalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         verticalLayout = new QVBoxLayout(verticalFrame);
         verticalLayout->setSpacing(6);
@@ -53,6 +58,8 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         loginButton = new QPushButton(verticalFrame);
         loginButton->setObjectName(QString::fromUtf8("loginButton"));
+        sizePolicy.setHeightForWidth(loginButton->sizePolicy().hasHeightForWidth());
+        loginButton->setSizePolicy(sizePolicy);
         QFont font;
         font.setFamily(QString::fromUtf8("Century Gothic"));
         font.setPointSize(20);
@@ -70,6 +77,8 @@ public:
 
         registerButton = new QPushButton(verticalFrame);
         registerButton->setObjectName(QString::fromUtf8("registerButton"));
+        sizePolicy.setHeightForWidth(registerButton->sizePolicy().hasHeightForWidth());
+        registerButton->setSizePolicy(sizePolicy);
         registerButton->setFont(font);
         registerButton->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(85, 0, 0);"));
@@ -82,6 +91,8 @@ public:
         verticalFrame_2 = new QFrame(centralWidget);
         verticalFrame_2->setObjectName(QString::fromUtf8("verticalFrame_2"));
         verticalFrame_2->setGeometry(QRect(100, 370, 371, 151));
+        sizePolicy.setHeightForWidth(verticalFrame_2->sizePolicy().hasHeightForWidth());
+        verticalFrame_2->setSizePolicy(sizePolicy);
         verticalFrame_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         verticalLayout_2 = new QVBoxLayout(verticalFrame_2);
         verticalLayout_2->setSpacing(6);
@@ -89,6 +100,8 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         usernameInput = new QLineEdit(verticalFrame_2);
         usernameInput->setObjectName(QString::fromUtf8("usernameInput"));
+        sizePolicy.setHeightForWidth(usernameInput->sizePolicy().hasHeightForWidth());
+        usernameInput->setSizePolicy(sizePolicy);
         QFont font1;
         font1.setFamily(QString::fromUtf8("Century Gothic"));
         font1.setPointSize(24);
@@ -101,6 +114,8 @@ public:
 
         passwordInput = new QLineEdit(verticalFrame_2);
         passwordInput->setObjectName(QString::fromUtf8("passwordInput"));
+        sizePolicy.setHeightForWidth(passwordInput->sizePolicy().hasHeightForWidth());
+        passwordInput->setSizePolicy(sizePolicy);
         passwordInput->setFont(font1);
         passwordInput->setAutoFillBackground(false);
         passwordInput->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));

@@ -15,4 +15,5 @@ void Personal::changePasswordButtonClick()
 {
 	ChangePassword* c = new ChangePassword;
 	c->show();
+	c->setAttribute(Qt::WA_DeleteOnClose, true);
 }
