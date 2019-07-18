@@ -1,8 +1,11 @@
 <RCC>
-    <qresource prefix="/CrowdSourcing">
-        <file>Resources/pictures/zelda1.jpg</file>
-        <file>Resources/pictures/zelda2.jpg</file>
-        <file>Resources/pictures/zelda3.jpg</file>
-        <file>Resources/pictures/zelda4.jpg</file>
-    </qresource>
+  <qresource prefix="/CrowdSourcing">
+    <file>Resources/pictures/wechat.png</file>
+    <file>Resources/pictures/zelda5.jpg</file>
+    <file>Resources/pictures/zelda6.jpg</file>
+    <file>Resources/pictures/zelda1.jpg</file>
+    <file>Resources/pictures/zelda2.jpg</file>
+    <file>Resources/pictures/zelda3.jpg</file>
+    <file>Resources/pictures/zelda4.jpg</file>
+  </qresource>
 </RCC>

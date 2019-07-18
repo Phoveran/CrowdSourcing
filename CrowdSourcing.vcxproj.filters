@@ -54,6 +54,9 @@
     <ClCompile Include="Register.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TopUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CrowdSourcing.h">
@@ -68,6 +71,9 @@
     <QtMoc Include="Register.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="TopUp.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="CrowdSourcing.ui">
@@ -80,6 +86,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Register.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="TopUp.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -108,6 +117,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_Register.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_TopUp.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

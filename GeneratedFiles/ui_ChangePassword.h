@@ -156,7 +156,7 @@ public:
 };
 
 namespace Ui {
-    class Dialog : public Ui_DialogChangePassword {};
+    class DialogChangePassword : public Ui_DialogChangePassword {};
 } // namespace Ui
 
 QT_END_NAMESPACE

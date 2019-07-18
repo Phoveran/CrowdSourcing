@@ -16,5 +16,5 @@ public slots:
 	void CancelClick();
 
 private:
-	Ui::Dialog ui;
+	Ui::DialogChangePassword ui;
 };

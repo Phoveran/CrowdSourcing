@@ -13,6 +13,7 @@ public:
 public slots:
 	void logOutButtonClick();
 	void changePasswordButtonClick();
+	void topUpButtonClick();
 
 private:
 	Ui::MainWindow ui;

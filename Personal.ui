@@ -31,7 +31,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="waitingTaskButton">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -42,8 +42,40 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: \*url();
-color: rgb(255, 85, 0);</string>
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
        </property>
        <property name="text">
         <string>Waiting tasks</string>
@@ -54,7 +86,7 @@ color: rgb(255, 85, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="doingTaskButton">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -65,8 +97,40 @@ color: rgb(255, 85, 0);</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: \*url();
-color: rgb(255, 85, 0);</string>
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
        </property>
        <property name="text">
         <string>Doing tasks</string>
@@ -77,7 +141,7 @@ color: rgb(255, 85, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="finishedTaskButton">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -88,8 +152,40 @@ color: rgb(255, 85, 0);</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: \*url();
-color: rgb(255, 85, 0);</string>
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
        </property>
        <property name="text">
         <string>Finished tasks</string>
@@ -106,7 +202,7 @@ color: rgb(255, 85, 0);</string>
      <rect>
       <x>150</x>
       <y>560</y>
-      <width>391</width>
+      <width>341</width>
       <height>391</height>
      </rect>
     </property>
@@ -115,7 +211,7 @@ color: rgb(255, 85, 0);</string>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="updateInformationButton">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -129,8 +225,40 @@ color: rgb(255, 85, 0);</string>
         <enum>Qt::ActionsContextMenu</enum>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: \*url();
-color: rgb(255, 85, 0);</string>
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
        </property>
        <property name="text">
         <string>Update information</string>
@@ -141,7 +269,7 @@ color: rgb(255, 85, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="topUpButoon">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -152,8 +280,40 @@ color: rgb(255, 85, 0);</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: \*url();
-color: rgb(255, 85, 0);</string>
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
        </property>
        <property name="text">
         <string>Top up</string>
@@ -164,7 +324,7 @@ color: rgb(255, 85, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_11">
+      <widget class="QPushButton" name="changePasswordButton">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -175,8 +335,40 @@ color: rgb(255, 85, 0);</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: \*url();
-color: rgb(255, 85, 0);</string>
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
        </property>
        <property name="text">
         <string>Change password</string>
@@ -187,7 +379,7 @@ color: rgb(255, 85, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_12">
+      <widget class="QPushButton" name="logOutButton">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -198,8 +390,40 @@ color: rgb(255, 85, 0);</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: \*url();
-color: rgb(255, 85, 0);</string>
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
        </property>
        <property name="text">
         <string>Log out</string>
@@ -440,7 +664,7 @@ color: rgb(170, 85, 255);</string>
  </resources>
  <connections>
   <connection>
-   <sender>pushButton_11</sender>
+   <sender>changePasswordButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>changePasswordButtonClick()</slot>
@@ -456,7 +680,7 @@ color: rgb(170, 85, 255);</string>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_12</sender>
+   <sender>logOutButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>logOutButtonClick()</slot>
@@ -471,9 +695,26 @@ color: rgb(170, 85, 255);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>topUpButoon</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>topUpButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>344</x>
+     <y>706</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>546</x>
+     <y>713</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>logOutButtonClick()</slot>
   <slot>changePasswordButtonClick()</slot>
+  <slot>topUpButtonClick()</slot>
  </slots>
 </ui>
