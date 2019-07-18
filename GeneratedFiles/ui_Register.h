@@ -22,7 +22,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_DialogRegister
+class Ui_Dialog
 {
 public:
     QFrame *formFrame;
@@ -183,7 +183,7 @@ public:
 };
 
 namespace Ui {
-    class Dialog: public Ui_DialogRegister {};
+    class Dialog: public Ui_Dialog {};
 } // namespace Ui
 
 QT_END_NAMESPACE

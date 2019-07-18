@@ -14,7 +14,6 @@
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
@@ -44,11 +43,11 @@ public:
     QLabel *label_2;
     QLabel *label_4;
     QLabel *label_5;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_5;
-    QLineEdit *lineEdit_3;
-    QLineEdit *lineEdit_4;
-    QLineEdit *lineEdit_2;
+    QLabel *label_6;
+    QLabel *label_7;
+    QLabel *label_8;
+    QLabel *label_9;
+    QLabel *label_10;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -148,7 +147,7 @@ public:
 
         formFrame = new QFrame(centralwidget);
         formFrame->setObjectName(QString::fromUtf8("formFrame"));
-        formFrame->setGeometry(QRect(150, 90, 601, 411));
+        formFrame->setGeometry(QRect(150, 90, 791, 411));
         formFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         formLayout = new QFormLayout(formFrame);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
@@ -158,7 +157,7 @@ public:
         label->setObjectName(QString::fromUtf8("label"));
         label->setFont(font);
         label->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 0, 0);"));
+"color: rgb(170, 85, 255);"));
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label);
 
@@ -166,7 +165,7 @@ public:
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setFont(font);
         label_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 0, 0);"));
+"color: rgb(170, 85, 255);"));
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_3);
 
@@ -174,7 +173,7 @@ public:
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setFont(font);
         label_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 0, 0);"));
+"color: rgb(170, 85, 255);"));
 
         formLayout->setWidget(2, QFormLayout::LabelRole, label_2);
 
@@ -182,7 +181,7 @@ public:
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setFont(font);
         label_4->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 0, 0);"));
+"color: rgb(170, 85, 255);"));
 
         formLayout->setWidget(3, QFormLayout::LabelRole, label_4);
 
@@ -190,52 +189,46 @@ public:
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setFont(font);
         label_5->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 0, 0);"));
+"color: rgb(170, 85, 255);"));
 
         formLayout->setWidget(4, QFormLayout::LabelRole, label_5);
 
-        lineEdit = new QLineEdit(formFrame);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Courier New"));
-        font2.setPointSize(20);
-        lineEdit->setFont(font2);
-        lineEdit->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        lineEdit->setReadOnly(true);
+        label_6 = new QLabel(formFrame);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setFont(font);
+        label_6->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
+        label_6->setFrameShape(QFrame::NoFrame);
+        label_6->setFrameShadow(QFrame::Plain);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit);
+        formLayout->setWidget(0, QFormLayout::FieldRole, label_6);
 
-        lineEdit_5 = new QLineEdit(formFrame);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        lineEdit_5->setFont(font2);
-        lineEdit_5->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        lineEdit_5->setReadOnly(true);
+        label_7 = new QLabel(formFrame);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_7->setFont(font);
+        label_7->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, lineEdit_5);
+        formLayout->setWidget(1, QFormLayout::FieldRole, label_7);
 
-        lineEdit_3 = new QLineEdit(formFrame);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setFont(font2);
-        lineEdit_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        lineEdit_3->setReadOnly(true);
+        label_8 = new QLabel(formFrame);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        label_8->setFont(font);
+        label_8->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, lineEdit_3);
+        formLayout->setWidget(2, QFormLayout::FieldRole, label_8);
 
-        lineEdit_4 = new QLineEdit(formFrame);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        lineEdit_4->setFont(font2);
-        lineEdit_4->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        lineEdit_4->setReadOnly(true);
+        label_9 = new QLabel(formFrame);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+        label_9->setFont(font);
+        label_9->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, lineEdit_4);
+        formLayout->setWidget(3, QFormLayout::FieldRole, label_9);
 
-        lineEdit_2 = new QLineEdit(formFrame);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setFont(font2);
-        lineEdit_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        lineEdit_2->setReadOnly(true);
+        label_10 = new QLabel(formFrame);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+        label_10->setFont(font);
+        label_10->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_2);
+        formLayout->setWidget(4, QFormLayout::FieldRole, label_10);
 
         MainWindow->setCentralWidget(centralwidget);
 
@@ -256,13 +249,16 @@ public:
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Top up", nullptr));
         pushButton_11->setText(QCoreApplication::translate("MainWindow", "Change password", nullptr));
         pushButton_12->setText(QCoreApplication::translate("MainWindow", "Log out", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa007f;\">Username:</span></p></body></html>", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa007f;\">Credits:</span></p></body></html>", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa007f;\">Member type:</span></p></body></html>", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa007f;\">Balance:</span></p></body></html>", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa007f;\">Certification:</span></p></body></html>", nullptr));
-        lineEdit->setText(QString());
-        lineEdit_5->setInputMask(QString());
+        label->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Username:</span></p></body></html>", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Credits:</span></p></body></html>", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Member type:</span></p></body></html>", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Balance:</span></p></body></html>", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Certification:</span></p></body></html>", nullptr));
+        label_6->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_7->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_8->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_9->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_10->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };
