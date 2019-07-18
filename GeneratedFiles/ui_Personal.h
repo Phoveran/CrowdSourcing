@@ -60,7 +60,7 @@ public:
         centralwidget->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda2.jpg);"));
         verticalFrame = new QFrame(centralwidget);
         verticalFrame->setObjectName(QString::fromUtf8("verticalFrame"));
-        verticalFrame->setGeometry(QRect(520, 570, 291, 391));
+        verticalFrame->setGeometry(QRect(600, 560, 291, 391));
         verticalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         verticalLayout_3 = new QVBoxLayout(verticalFrame);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -99,7 +99,7 @@ public:
 
         verticalFrame_3 = new QFrame(centralwidget);
         verticalFrame_3->setObjectName(QString::fromUtf8("verticalFrame_3"));
-        verticalFrame_3->setGeometry(QRect(90, 570, 291, 391));
+        verticalFrame_3->setGeometry(QRect(150, 560, 391, 391));
         verticalFrame_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         verticalLayout_4 = new QVBoxLayout(verticalFrame_3);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));

@@ -196,41 +196,113 @@ color: rgb(170, 0, 127);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QFrame" name="horizontalFrame">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>450</y>
-     <width>158</width>
-     <height>61</height>
+     <x>90</x>
+     <y>410</y>
+     <width>441</width>
+     <height>80</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>22</pointsize>
-     <weight>75</weight>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="styleSheet">
-    <string notr="true">border-image: \*url();
+    <string notr="true">border-image: \*url();</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="font">
+       <font>
+        <family>Century Gothic</family>
+        <pointsize>22</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: \*url();
 color: rgb(255, 85, 0);</string>
-   </property>
-   <property name="text">
-    <string>Register</string>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
+      </property>
+      <property name="text">
+       <string>Register</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="font">
+       <font>
+        <family>Century Gothic</family>
+        <pointsize>22</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: \*url();
+color: rgb(85, 85, 127);</string>
+      </property>
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources>
   <include location="CrowdSourcing.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>RegisterClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>437</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>198</x>
+     <y>563</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>CancelClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>416</x>
+     <y>444</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>568</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>RegisterClick()</slot>
+  <slot>CancelClick()</slot>
+ </slots>
 </ui>

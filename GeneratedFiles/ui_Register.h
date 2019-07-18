@@ -15,6 +15,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -27,12 +28,15 @@ public:
     QFrame *formFrame;
     QFormLayout *formLayout;
     QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
     QLineEdit *lineEdit;
+    QLabel *label_2;
     QLineEdit *lineEdit_2;
+    QLabel *label_3;
     QComboBox *comboBox;
+    QFrame *horizontalFrame;
+    QHBoxLayout *horizontalLayout;
     QPushButton *pushButton;
+    QPushButton *pushButton_2;
 
     void setupUi(QDialog *Dialog)
     {
@@ -61,20 +65,6 @@ public:
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label);
 
-        label_2 = new QLabel(formFrame);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setFont(font);
-        label_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
-
-        label_3 = new QLabel(formFrame);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setFont(font);
-        label_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
-
         lineEdit = new QLineEdit(formFrame);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         QFont font1;
@@ -89,6 +79,13 @@ public:
 
         formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit);
 
+        label_2 = new QLabel(formFrame);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setFont(font);
+        label_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
+
         lineEdit_2 = new QLineEdit(formFrame);
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
         lineEdit_2->setFont(font1);
@@ -97,6 +94,13 @@ public:
         lineEdit_2->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_2);
+
+        label_3 = new QLabel(formFrame);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setFont(font);
+        label_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
 
         comboBox = new QComboBox(formFrame);
         comboBox->addItem(QString());
@@ -114,9 +118,14 @@ public:
 
         formLayout->setWidget(2, QFormLayout::FieldRole, comboBox);
 
-        pushButton = new QPushButton(Dialog);
+        horizontalFrame = new QFrame(Dialog);
+        horizontalFrame->setObjectName(QString::fromUtf8("horizontalFrame"));
+        horizontalFrame->setGeometry(QRect(90, 410, 441, 80));
+        horizontalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        horizontalLayout = new QHBoxLayout(horizontalFrame);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        pushButton = new QPushButton(horizontalFrame);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(290, 450, 158, 61));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Century Gothic"));
         font2.setPointSize(22);
@@ -129,7 +138,22 @@ public:
         pushButton->setAutoDefault(false);
         pushButton->setFlat(true);
 
+        horizontalLayout->addWidget(pushButton);
+
+        pushButton_2 = new QPushButton(horizontalFrame);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setFont(font2);
+        pushButton_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+"color: rgb(85, 85, 127);"));
+        pushButton_2->setAutoDefault(false);
+        pushButton_2->setFlat(true);
+
+        horizontalLayout->addWidget(pushButton_2);
+
+
         retranslateUi(Dialog);
+        QObject::connect(pushButton, SIGNAL(clicked()), Dialog, SLOT(RegisterClick()));
+        QObject::connect(pushButton_2, SIGNAL(clicked()), Dialog, SLOT(CancelClick()));
 
         QMetaObject::connectSlotsByName(Dialog);
     } // setupUi
@@ -138,10 +162,10 @@ public:
     {
         Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "Register", nullptr));
         label->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#55007f;\">Password:</span></p></body></html>", nullptr));
-        label_2->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#55007f;\">Password again:</span></p></body></html>", nullptr));
-        label_3->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#55007f;\">Certification:</span></p></body></html>", nullptr));
         lineEdit->setText(QString());
+        label_2->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#55007f;\">Password again:</span></p></body></html>", nullptr));
         lineEdit_2->setText(QString());
+        label_3->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#55007f;\">Certification:</span></p></body></html>", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("Dialog", "CET4", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("Dialog", "CET6", nullptr));
         comboBox->setItemText(2, QCoreApplication::translate("Dialog", "TEM4", nullptr));
@@ -153,6 +177,7 @@ public:
         comboBox->setItemText(8, QCoreApplication::translate("Dialog", "TOFEL110", nullptr));
 
         pushButton->setText(QCoreApplication::translate("Dialog", "Register", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("Dialog", "Cancel", nullptr));
     } // retranslateUi
 
 };
