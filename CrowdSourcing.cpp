@@ -5,7 +5,6 @@ CrowdSourcing::CrowdSourcing(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
-//	this->setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 void CrowdSourcing::loginButtonClick()
@@ -14,4 +13,11 @@ void CrowdSourcing::loginButtonClick()
 	p->show();
 	p->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->close();
+}
+
+void CrowdSourcing::registerButtonClick()
+{
+	r = new Register;
+	r->show();
+	r->setAttribute(Qt::WA_DeleteOnClose, true);
 }

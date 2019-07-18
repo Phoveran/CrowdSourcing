@@ -21,7 +21,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Dialog
+class Ui_DialogChangePassword
 {
 public:
     QFrame *formFrame;
@@ -156,7 +156,7 @@ public:
 };
 
 namespace Ui {
-    class Dialog: public Ui_Dialog {};
+    class Dialog : public Ui_DialogChangePassword {};
 } // namespace Ui
 
 QT_END_NAMESPACE

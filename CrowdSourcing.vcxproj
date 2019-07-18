@@ -118,6 +118,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operation.cpp" />
     <ClCompile Include="Personal.cpp" />
+    <ClCompile Include="Register.cpp" />
     <ClCompile Include="task.cpp" />
     <ClCompile Include="user.cpp" />
   </ItemGroup>
@@ -128,6 +129,7 @@
     <QtUic Include="ChangePassword.ui" />
     <QtUic Include="CrowdSourcing.ui" />
     <QtUic Include="Personal.ui" />
+    <QtUic Include="Register.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CrowdSourcing.qrc" />
@@ -144,6 +146,11 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
     <ClInclude Include="GeneratedFiles\ui_Personal.h" />
+    <ClInclude Include="GeneratedFiles\ui_Register.h" />
+    <QtMoc Include="Register.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="task.h" />
     <ClInclude Include="user.h" />
