@@ -113,6 +113,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChangePassword.cpp" />
     <ClCompile Include="CrowdSourcing.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operation.cpp" />
@@ -124,6 +125,7 @@
     <QtMoc Include="CrowdSourcing.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="ChangePassword.ui" />
     <QtUic Include="CrowdSourcing.ui" />
     <QtUic Include="Personal.ui" />
   </ItemGroup>
@@ -131,6 +133,11 @@
     <QtRcc Include="CrowdSourcing.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="ChangePassword.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
+    <ClInclude Include="GeneratedFiles\ui_ChangePassword.h" />
     <ClInclude Include="GeneratedFiles\ui_CrowdSourcing.h" />
     <QtMoc Include="Personal.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>

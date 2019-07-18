@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1920</width>
-    <height>1106</height>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,190 +23,191 @@
    <property name="styleSheet">
     <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda1.jpg);</string>
    </property>
-   <widget class="QPushButton" name="loginButton">
+   <widget class="QFrame" name="verticalFrame">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>620</y>
-      <width>111</width>
-      <height>51</height>
+      <x>170</x>
+      <y>540</y>
+      <width>221</width>
+      <height>131</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Gabriola</family>
-      <pointsize>24</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="styleSheet">
      <string notr="true">border-image: \*url();</string>
     </property>
-    <property name="text">
-     <string>Log  in</string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>20</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="default">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="loginButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
+color: rgb(85, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Log  in</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="registerButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
+color: rgb(85, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Register</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QPushButton" name="registerButton">
+   <widget class="QFrame" name="verticalFrame_2">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>620</y>
-      <width>120</width>
-      <height>51</height>
+      <x>100</x>
+      <y>370</y>
+      <width>371</width>
+      <height>151</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Gabriola</family>
-      <pointsize>24</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="styleSheet">
      <string notr="true">border-image: \*url();</string>
     </property>
-    <property name="text">
-     <string>Register</string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>20</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLineEdit" name="usernameInput">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>24</pointsize>
+         <italic>true</italic>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="placeholderText">
+        <string>Username</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="passwordInput">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>24</pointsize>
+         <italic>true</italic>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+       <property name="placeholderText">
+        <string>Password</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLineEdit" name="usernameInput">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>490</y>
-      <width>301</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Century Gothic</family>
-      <pointsize>24</pointsize>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image: \*url();</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>Username</string>
-    </property>
-    <property name="clearButtonEnabled">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="passwordInput">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>560</y>
-      <width>301</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Century Gothic</family>
-      <pointsize>24</pointsize>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image: \*url();</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="echoMode">
-     <enum>QLineEdit::Password</enum>
-    </property>
-    <property name="placeholderText">
-     <string>Password</string>
-    </property>
-    <property name="clearButtonEnabled">
-     <bool>true</bool>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1920</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="loginInterface">
-    <property name="title">
-     <string>首页</string>
-    </property>
-    <property name="icon">
-     <iconset resource="CrowdSourcing.qrc">
-      <normaloff>:/CrowdSourcing/Resources/pictures/首页.png</normaloff>:/CrowdSourcing/Resources/pictures/首页.png</iconset>
-    </property>
-    <property name="toolTipsVisible">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QMenu" name="privateInterface">
-    <property name="title">
-     <string>个人中心</string>
-    </property>
-    <property name="icon">
-     <iconset resource="CrowdSourcing.qrc">
-      <normaloff>:/CrowdSourcing/Resources/pictures/个人中心_我的信息.png</normaloff>:/CrowdSourcing/Resources/pictures/个人中心_我的信息.png</iconset>
-    </property>
-   </widget>
-   <widget class="QMenu" name="taskInterface">
-    <property name="title">
-     <string>查看任务</string>
-    </property>
-    <property name="icon">
-     <iconset resource="CrowdSourcing.qrc">
-      <normaloff>:/CrowdSourcing/Resources/pictures/任务.png</normaloff>:/CrowdSourcing/Resources/pictures/任务.png</iconset>
-    </property>
-   </widget>
-   <addaction name="loginInterface"/>
-   <addaction name="privateInterface"/>
-   <addaction name="taskInterface"/>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -221,12 +222,12 @@
    <slot>loginButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>170</x>
-     <y>658</y>
+     <x>302</x>
+     <y>571</y>
     </hint>
     <hint type="destinationlabel">
-     <x>459</x>
-     <y>778</y>
+     <x>642</x>
+     <y>573</y>
     </hint>
    </hints>
   </connection>

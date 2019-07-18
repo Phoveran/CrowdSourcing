@@ -10,6 +10,10 @@ class Personal : public QMainWindow
 public:
 	Personal(QWidget* parent = Q_NULLPTR);
 
+public slots:
+	void logOutButtonClick();
+	void changePasswordButtonClick();
+
 private:
 	Ui::MainWindow ui;
 };
