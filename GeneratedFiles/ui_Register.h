@@ -52,7 +52,9 @@ public:
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
         font.setFamily(QString::fromUtf8("Century Gothic"));
+        font.setPointSize(16);
         font.setBold(true);
+        font.setItalic(false);
         font.setWeight(75);
         label->setFont(font);
         label->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
@@ -75,7 +77,12 @@ public:
 
         lineEdit = new QLineEdit(formFrame);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Century Gothic"));
+        font1.setPointSize(14);
+        font1.setBold(true);
+        font1.setWeight(75);
+        lineEdit->setFont(font1);
         lineEdit->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 0, 127);"));
         lineEdit->setEchoMode(QLineEdit::PasswordEchoOnEdit);
@@ -84,7 +91,7 @@ public:
 
         lineEdit_2 = new QLineEdit(formFrame);
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setFont(font);
+        lineEdit_2->setFont(font1);
         lineEdit_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 0, 127);"));
         lineEdit_2->setEchoMode(QLineEdit::PasswordEchoOnEdit);
@@ -102,20 +109,21 @@ public:
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setFont(font);
+        comboBox->setFont(font1);
         comboBox->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
         formLayout->setWidget(2, QFormLayout::FieldRole, comboBox);
 
         pushButton = new QPushButton(Dialog);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(300, 480, 158, 51));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Century Gothic"));
-        font1.setBold(true);
-        font1.setItalic(true);
-        font1.setWeight(75);
-        pushButton->setFont(font1);
+        pushButton->setGeometry(QRect(290, 450, 158, 61));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Century Gothic"));
+        font2.setPointSize(22);
+        font2.setBold(true);
+        font2.setItalic(true);
+        font2.setWeight(75);
+        pushButton->setFont(font2);
         pushButton->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(255, 85, 0);"));
         pushButton->setAutoDefault(false);
