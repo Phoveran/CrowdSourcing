@@ -575,7 +575,7 @@ color: rgb(170, 85, 255);</string>
         <enum>QFrame::Plain</enum>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -594,7 +594,7 @@ color: rgb(170, 85, 255);</string>
         <string notr="true">color: rgb(170, 0, 127);</string>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -613,7 +613,7 @@ color: rgb(170, 85, 255);</string>
         <string notr="true">color: rgb(170, 0, 127);</string>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -632,7 +632,7 @@ color: rgb(170, 85, 255);</string>
         <string notr="true">color: rgb(170, 0, 127);</string>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -651,7 +651,7 @@ color: rgb(170, 85, 255);</string>
         <string notr="true">color: rgb(170, 0, 127);</string>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>

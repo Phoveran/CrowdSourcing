@@ -8,7 +8,7 @@ TopUp::TopUp(QWidget* parent)
 
 void TopUp::topUpClick()
 {
-	ui.noticeLabel->setText("Top up done!");
+	ui.noticeLabel->setText(ui.lineEdit->text() + "CNY top up done!");
 }
 
 void TopUp::closeClick()
