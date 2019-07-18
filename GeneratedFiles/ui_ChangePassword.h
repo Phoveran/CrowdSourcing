@@ -21,7 +21,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Dialog
+class Ui_DialogChangePassword
 {
 public:
     QFrame *formFrame;
@@ -144,7 +144,7 @@ public:
 
     void retranslateUi(QDialog *Dialog)
     {
-        Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "Dialog", nullptr));
+        Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "ChangePassword", nullptr));
         label->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#00557f;\">Old password</span></p></body></html>", nullptr));
         label_2->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#00557f;\">New password</span></p></body></html>", nullptr));
         label_3->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#00557f;\">New password again</span></p></body></html>", nullptr));
@@ -156,7 +156,7 @@ public:
 };
 
 namespace Ui {
-    class Dialog: public Ui_Dialog {};
+    class Dialog : public Ui_DialogChangePassword {};
 } // namespace Ui
 
 QT_END_NAMESPACE

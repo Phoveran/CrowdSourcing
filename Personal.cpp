@@ -11,6 +11,7 @@ void Personal::logOutButtonClick()
 	this->close();
 }
 
+
 void Personal::changePasswordButtonClick()
 {
 	ChangePassword* c = new ChangePassword;

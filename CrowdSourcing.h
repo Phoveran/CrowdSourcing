@@ -2,7 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_CrowdSourcing.h"
-
+#include "Register.h"
 
 class CrowdSourcing : public QMainWindow
 {
@@ -13,7 +13,9 @@ public:
 
 public slots:
 	void loginButtonClick();
+	void registerButtonClick();
 
 private:
 	Ui::CrowdSourcingClass ui;
+	Register *r;
 };

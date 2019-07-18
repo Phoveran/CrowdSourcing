@@ -128,6 +128,7 @@ public:
 
         retranslateUi(CrowdSourcingClass);
         QObject::connect(loginButton, SIGNAL(clicked()), CrowdSourcingClass, SLOT(loginButtonClick()));
+        QObject::connect(registerButton, SIGNAL(clicked()), CrowdSourcingClass, SLOT(registerButtonClick()));
 
         loginButton->setDefault(false);
 
