@@ -11,7 +11,6 @@ class UpdateInfo : public QDialog
 
 public:
 	UpdateInfo(QWidget* parent = Q_NULLPTR);
-
 public slots:
 	void okClick();
 	void cancelClick();

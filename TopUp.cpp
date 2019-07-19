@@ -5,6 +5,7 @@ TopUp::TopUp(QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 void TopUp::topUpClick()

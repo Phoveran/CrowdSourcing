@@ -6,6 +6,7 @@ UpdateInfo::UpdateInfo(QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 void UpdateInfo::okClick()

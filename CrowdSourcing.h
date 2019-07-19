@@ -3,6 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_CrowdSourcing.h"
 #include "Register.h"
+#include "Personal.h"
 
 class CrowdSourcing : public QMainWindow
 {
@@ -17,5 +18,6 @@ public slots:
 
 private:
 	Ui::CrowdSourcingClass ui;
-	Register *r;
+	Register* r;
+	Personal* p;
 };

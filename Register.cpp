@@ -6,6 +6,7 @@ Register::Register(QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 void Register::RegisterClick()

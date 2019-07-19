@@ -11,7 +11,6 @@ class TopUp : public QDialog
 
 public:
 	TopUp(QWidget* parent = Q_NULLPTR);
-
 public slots:
 	void topUpClick();
 	void closeClick();

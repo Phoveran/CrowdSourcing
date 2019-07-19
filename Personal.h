@@ -2,6 +2,9 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_Personal.h"
+#include "ChangePassword.h"
+#include "TopUp.h"
+#include "UpdateInfo.h"
 
 class Personal : public QMainWindow
 {
@@ -9,6 +12,7 @@ class Personal : public QMainWindow
 
 public:
 	Personal(QWidget* parent = Q_NULLPTR);
+
 
 public slots:
 	void logOutButtonClick();
@@ -19,4 +23,7 @@ public slots:
 
 private:
 	Ui::MainWindowPersonal ui;
+	ChangePassword* c;
+	TopUp* t;	
+	UpdateInfo* u;
 };

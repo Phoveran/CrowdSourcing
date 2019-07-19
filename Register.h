@@ -10,7 +10,6 @@ class Register : public QDialog
 
 public:
 	Register(QWidget* parent = Q_NULLPTR);
-
 public slots:
 	void RegisterClick();
 	void CancelClick();
