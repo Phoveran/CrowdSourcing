@@ -21,3 +21,9 @@ void CrowdSourcing::registerButtonClick()
 	r = new Register;
 	r->show();
 }
+
+void CrowdSourcing::closeEvent(QCloseEvent* event)
+{
+	if (r)
+		r->close();
+}

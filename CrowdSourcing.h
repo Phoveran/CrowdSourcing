@@ -4,6 +4,7 @@
 #include "ui_CrowdSourcing.h"
 #include "Register.h"
 #include "Personal.h"
+#include <QCloseEvent>
 
 class CrowdSourcing : public QMainWindow
 {
@@ -15,6 +16,7 @@ public:
 public slots:
 	void loginButtonClick();
 	void registerButtonClick();
+	void closeEvent(QCloseEvent* event);
 
 private:
 	Ui::CrowdSourcingClass ui;

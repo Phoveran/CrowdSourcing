@@ -312,5 +312,6 @@ border-radius:15px;padding:2px 4px;
  <slots>
   <slot>loginButtonClick()</slot>
   <slot>registerButtonClick()</slot>
+  <slot>closeChlid()</slot>
  </slots>
 </ui>

@@ -13,6 +13,12 @@ Personal::Personal(QWidget* parent)
 void Personal::logOutButtonClick()
 {
 	this->close();
+	if (c)
+		c->close();
+	if (u)
+		u->close();
+	if (t)
+		t->close();
 }
 
 void Personal::changePasswordButtonClick()
@@ -35,4 +41,14 @@ void Personal::updateInfoButtonClick()
 
 void Personal::taskButtonClick()
 {
+}
+
+void Personal::closeEvent(QCloseEvent* event)
+{
+	if (c)
+		c->close();
+	if (u)
+		u->close();
+	if (t)
+		t->close();
 }
