@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>DialogRegister</class>
+ <widget class="QDialog" name="DialogRegister">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -338,7 +338,7 @@ border-radius:15px;padding:2px 4px;
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>DialogRegister</receiver>
    <slot>RegisterClick()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -354,7 +354,7 @@ border-radius:15px;padding:2px 4px;
   <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>DialogRegister</receiver>
    <slot>CancelClick()</slot>
    <hints>
     <hint type="sourcelabel">

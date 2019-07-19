@@ -91,6 +91,9 @@
     <QtUic Include="TopUp.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="UpdateInfo.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CrowdSourcing.qrc">
@@ -120,6 +123,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_TopUp.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_UpdateInfo.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
