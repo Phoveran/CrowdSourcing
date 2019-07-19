@@ -21,113 +21,13 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda1.jpg);</string>
+    <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda5.jpg);</string>
    </property>
-   <widget class="QFrame" name="verticalFrame">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>540</y>
-      <width>221</width>
-      <height>131</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image: \*url();</string>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="loginButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Century Gothic</family>
-         <pointsize>20</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: \*url();
-color: rgb(85, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>Log  in</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="registerButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Century Gothic</family>
-         <pointsize>20</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: \*url();
-color: rgb(85, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>Register</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QFrame" name="verticalFrame_2">
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>370</y>
+      <y>360</y>
       <width>371</width>
       <height>151</height>
      </rect>
@@ -208,6 +108,167 @@ color: rgb(85, 0, 0);</string>
      </item>
     </layout>
    </widget>
+   <widget class="QFrame" name="horizontalFrame">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>530</y>
+      <width>311</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: \*url();</string>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>20</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="loginButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
+       </property>
+       <property name="text">
+        <string>Log in</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="registerButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
+       </property>
+       <property name="text">
+        <string>Register</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -222,12 +283,12 @@ color: rgb(85, 0, 0);</string>
    <slot>loginButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>302</x>
-     <y>571</y>
+     <x>195</x>
+     <y>560</y>
     </hint>
     <hint type="destinationlabel">
-     <x>642</x>
-     <y>573</y>
+     <x>184</x>
+     <y>697</y>
     </hint>
    </hints>
   </connection>
@@ -238,12 +299,12 @@ color: rgb(85, 0, 0);</string>
    <slot>registerButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>259</x>
-     <y>630</y>
+     <x>341</x>
+     <y>574</y>
     </hint>
     <hint type="destinationlabel">
-     <x>508</x>
-     <y>636</y>
+     <x>331</x>
+     <y>664</y>
     </hint>
    </hints>
   </connection>

@@ -74,7 +74,7 @@ public:
         font1.setWeight(75);
         lineEdit->setFont(font1);
         lineEdit->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(170, 0, 127);"));
+"color: rgb(0, 0, 0);"));
         lineEdit->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit);
@@ -90,7 +90,7 @@ public:
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
         lineEdit_2->setFont(font1);
         lineEdit_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(170, 0, 127);"));
+"color: rgb(0, 0, 0);"));
         lineEdit_2->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_2);
@@ -120,9 +120,10 @@ public:
 
         horizontalFrame = new QFrame(Dialog);
         horizontalFrame->setObjectName(QString::fromUtf8("horizontalFrame"));
-        horizontalFrame->setGeometry(QRect(90, 410, 441, 80));
+        horizontalFrame->setGeometry(QRect(130, 390, 411, 80));
         horizontalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         horizontalLayout = new QHBoxLayout(horizontalFrame);
+        horizontalLayout->setSpacing(30);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         pushButton = new QPushButton(horizontalFrame);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
@@ -133,8 +134,41 @@ public:
         font2.setItalic(true);
         font2.setWeight(75);
         pushButton->setFont(font2);
-        pushButton->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 85, 0);"));
+        pushButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
+"color:rgb(85, 85, 0);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;\n"
+"}  \n"
+"QPushButton:hover{\n"
+"color:rgb(255, 255, 255);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   \n"
+"							stop: 0.3 rgb(37,189,252),  \n"
+"							  stop: 1 rgb(32,170,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"}  \n"
+"QPushButton:pressed{ \n"
+"color:rgb(233, 236, 243);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226"
+                        ",236,241),   \n"
+"							stop: 0.3 rgb(38,190,255),  \n"
+"							  stop: 1 rgb(33,184,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"};"));
         pushButton->setAutoDefault(false);
         pushButton->setFlat(true);
 
@@ -143,8 +177,41 @@ public:
         pushButton_2 = new QPushButton(horizontalFrame);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setFont(font2);
-        pushButton_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(85, 85, 127);"));
+        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
+"color:rgb(85, 85, 0);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;\n"
+"}  \n"
+"QPushButton:hover{\n"
+"color:rgb(255, 255, 255);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   \n"
+"							stop: 0.3 rgb(37,189,252),  \n"
+"							  stop: 1 rgb(32,170,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"}  \n"
+"QPushButton:pressed{ \n"
+"color:rgb(233, 236, 243);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226"
+                        ",236,241),   \n"
+"							stop: 0.3 rgb(38,190,255),  \n"
+"							  stop: 1 rgb(33,184,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"};"));
         pushButton_2->setAutoDefault(false);
         pushButton_2->setFlat(true);
 

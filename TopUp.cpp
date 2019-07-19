@@ -8,7 +8,7 @@ TopUp::TopUp(QWidget* parent)
 
 void TopUp::topUpClick()
 {
-	ui.noticeLabel->setText(ui.lineEdit->text() + "CNY top up done!");
+	ui.noticeLabel->setText(ui.lineEdit->text() + " Ruby topped up!");
 }
 
 void TopUp::closeClick()
