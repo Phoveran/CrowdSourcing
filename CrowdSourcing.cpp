@@ -12,7 +12,6 @@ void CrowdSourcing::loginButtonClick()
 {
 	p = new Personal;
 	p->show();
-	p->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->close();
 }
 
@@ -26,4 +25,5 @@ void CrowdSourcing::closeEvent(QCloseEvent* event)
 {
 	if (r)
 		r->close();
+	delete this;
 }

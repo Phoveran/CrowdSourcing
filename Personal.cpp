@@ -45,6 +45,7 @@ void Personal::taskButtonClick()
 
 void Personal::closeEvent(QCloseEvent* event)
 {
+	delete this;
 	if (c)
 		c->close();
 	if (u)
