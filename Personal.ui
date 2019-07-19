@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>MainWindowPersonal</class>
+ <widget class="QMainWindow" name="MainWindowPersonal">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,7 +17,7 @@
    <property name="styleSheet">
     <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda2.jpg);</string>
    </property>
-   <widget class="QFrame" name="verticalFrame_3">
+   <widget class="QFrame" name="buttonFram">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -310,7 +310,7 @@ border-radius:15px;padding:2px 4px;
      </item>
     </layout>
    </widget>
-   <widget class="QFrame" name="formFrame">
+   <widget class="QFrame" name="infoFram">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -327,10 +327,10 @@ border-radius:15px;padding:2px 4px;
       <number>10</number>
      </property>
      <property name="verticalSpacing">
-      <number>50</number>
+      <number>30</number>
      </property>
      <item row="0" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="usernameLabel">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -350,7 +350,7 @@ color: rgb(170, 85, 255);</string>
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="creditsLabel">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -370,7 +370,7 @@ color: rgb(170, 85, 255);</string>
       </widget>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="memberTypeLabel">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -390,7 +390,7 @@ color: rgb(170, 85, 255);</string>
       </widget>
      </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="balanceLabel">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -410,7 +410,7 @@ color: rgb(170, 85, 255);</string>
       </widget>
      </item>
      <item row="4" column="0">
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="certificateLabel">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -425,12 +425,12 @@ color: rgb(170, 85, 255);</string>
 color: rgb(170, 85, 255);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#aa00ff;&quot;&gt;Certification:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#aa00ff;&quot;&gt;Certificate:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="usernameDisplay">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -455,7 +455,7 @@ color: rgb(170, 85, 255);</string>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="creditsDisplay">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -474,7 +474,7 @@ color: rgb(170, 85, 255);</string>
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLabel" name="label_8">
+      <widget class="QLabel" name="memberTypeDisplay">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -493,7 +493,7 @@ color: rgb(170, 85, 255);</string>
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLabel" name="label_9">
+      <widget class="QLabel" name="balanceDisplay">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -512,7 +512,46 @@ color: rgb(170, 85, 255);</string>
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="QLabel" name="label_10">
+      <widget class="QLabel" name="certificateDisplay">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(170, 0, 127);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="telephoneLabel">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: \*url();
+color: rgb(170, 85, 255);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#aa00ff;&quot;&gt;Telephone:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="telephoneDisplay">
        <property name="font">
         <font>
          <family>Century Gothic</family>
@@ -541,7 +580,7 @@ color: rgb(170, 85, 255);</string>
   <connection>
    <sender>changePasswordButton</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>MainWindowPersonal</receiver>
    <slot>changePasswordButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -557,7 +596,7 @@ color: rgb(170, 85, 255);</string>
   <connection>
    <sender>logOutButton</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>MainWindowPersonal</receiver>
    <slot>logOutButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -573,7 +612,7 @@ color: rgb(170, 85, 255);</string>
   <connection>
    <sender>topUpButoon</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>MainWindowPersonal</receiver>
    <slot>topUpButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -586,10 +625,27 @@ color: rgb(170, 85, 255);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>updateInformationButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowPersonal</receiver>
+   <slot>updateInfoButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>352</x>
+     <y>743</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>639</x>
+     <y>748</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>logOutButtonClick()</slot>
   <slot>changePasswordButtonClick()</slot>
   <slot>topUpButtonClick()</slot>
+  <slot>updateInfoButtonClick()</slot>
  </slots>
 </ui>

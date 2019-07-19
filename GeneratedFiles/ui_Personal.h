@@ -21,45 +21,47 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_MainWindow
+class Ui_MainWindowPersonal
 {
 public:
     QWidget *centralwidget;
-    QFrame *verticalFrame_3;
+    QFrame *buttonFram;
     QVBoxLayout *verticalLayout_4;
     QPushButton *topUpButoon;
     QPushButton *taskButton;
     QPushButton *updateInformationButton;
     QPushButton *changePasswordButton;
     QPushButton *logOutButton;
-    QFrame *formFrame;
+    QFrame *infoFram;
     QFormLayout *formLayout;
-    QLabel *label;
-    QLabel *label_3;
-    QLabel *label_2;
-    QLabel *label_4;
-    QLabel *label_5;
-    QLabel *label_6;
-    QLabel *label_7;
-    QLabel *label_8;
-    QLabel *label_9;
-    QLabel *label_10;
+    QLabel *usernameLabel;
+    QLabel *creditsLabel;
+    QLabel *memberTypeLabel;
+    QLabel *balanceLabel;
+    QLabel *certificateLabel;
+    QLabel *usernameDisplay;
+    QLabel *creditsDisplay;
+    QLabel *memberTypeDisplay;
+    QLabel *balanceDisplay;
+    QLabel *certificateDisplay;
+    QLabel *telephoneLabel;
+    QLabel *telephoneDisplay;
 
-    void setupUi(QMainWindow *MainWindow)
+    void setupUi(QMainWindow *MainWindowPersonal)
     {
-        if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1920, 1080);
-        centralwidget = new QWidget(MainWindow);
+        if (MainWindowPersonal->objectName().isEmpty())
+            MainWindowPersonal->setObjectName(QString::fromUtf8("MainWindowPersonal"));
+        MainWindowPersonal->resize(1920, 1080);
+        centralwidget = new QWidget(MainWindowPersonal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda2.jpg);"));
-        verticalFrame_3 = new QFrame(centralwidget);
-        verticalFrame_3->setObjectName(QString::fromUtf8("verticalFrame_3"));
-        verticalFrame_3->setGeometry(QRect(150, 530, 341, 431));
-        verticalFrame_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        verticalLayout_4 = new QVBoxLayout(verticalFrame_3);
+        buttonFram = new QFrame(centralwidget);
+        buttonFram->setObjectName(QString::fromUtf8("buttonFram"));
+        buttonFram->setGeometry(QRect(150, 530, 341, 431));
+        buttonFram->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        verticalLayout_4 = new QVBoxLayout(buttonFram);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        topUpButoon = new QPushButton(verticalFrame_3);
+        topUpButoon = new QPushButton(buttonFram);
         topUpButoon->setObjectName(QString::fromUtf8("topUpButoon"));
         QFont font;
         font.setFamily(QString::fromUtf8("Century Gothic"));
@@ -107,7 +109,7 @@ public:
 
         verticalLayout_4->addWidget(topUpButoon);
 
-        taskButton = new QPushButton(verticalFrame_3);
+        taskButton = new QPushButton(buttonFram);
         taskButton->setObjectName(QString::fromUtf8("taskButton"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Century Gothic"));
@@ -155,7 +157,7 @@ public:
 
         verticalLayout_4->addWidget(taskButton);
 
-        updateInformationButton = new QPushButton(verticalFrame_3);
+        updateInformationButton = new QPushButton(buttonFram);
         updateInformationButton->setObjectName(QString::fromUtf8("updateInformationButton"));
         updateInformationButton->setFont(font);
         updateInformationButton->setContextMenuPolicy(Qt::ActionsContextMenu);
@@ -198,7 +200,7 @@ public:
 
         verticalLayout_4->addWidget(updateInformationButton);
 
-        changePasswordButton = new QPushButton(verticalFrame_3);
+        changePasswordButton = new QPushButton(buttonFram);
         changePasswordButton->setObjectName(QString::fromUtf8("changePasswordButton"));
         changePasswordButton->setFont(font1);
         changePasswordButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
@@ -240,7 +242,7 @@ public:
 
         verticalLayout_4->addWidget(changePasswordButton);
 
-        logOutButton = new QPushButton(verticalFrame_3);
+        logOutButton = new QPushButton(buttonFram);
         logOutButton->setObjectName(QString::fromUtf8("logOutButton"));
         logOutButton->setFont(font);
         logOutButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
@@ -282,125 +284,143 @@ public:
 
         verticalLayout_4->addWidget(logOutButton);
 
-        formFrame = new QFrame(centralwidget);
-        formFrame->setObjectName(QString::fromUtf8("formFrame"));
-        formFrame->setGeometry(QRect(150, 90, 791, 411));
-        formFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        formLayout = new QFormLayout(formFrame);
+        infoFram = new QFrame(centralwidget);
+        infoFram->setObjectName(QString::fromUtf8("infoFram"));
+        infoFram->setGeometry(QRect(150, 90, 791, 411));
+        infoFram->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        formLayout = new QFormLayout(infoFram);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setHorizontalSpacing(10);
-        formLayout->setVerticalSpacing(50);
-        label = new QLabel(formFrame);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setFont(font1);
-        label->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+        formLayout->setVerticalSpacing(30);
+        usernameLabel = new QLabel(infoFram);
+        usernameLabel->setObjectName(QString::fromUtf8("usernameLabel"));
+        usernameLabel->setFont(font1);
+        usernameLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label);
+        formLayout->setWidget(0, QFormLayout::LabelRole, usernameLabel);
 
-        label_3 = new QLabel(formFrame);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setFont(font1);
-        label_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+        creditsLabel = new QLabel(infoFram);
+        creditsLabel->setObjectName(QString::fromUtf8("creditsLabel"));
+        creditsLabel->setFont(font1);
+        creditsLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_3);
+        formLayout->setWidget(1, QFormLayout::LabelRole, creditsLabel);
 
-        label_2 = new QLabel(formFrame);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setFont(font1);
-        label_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+        memberTypeLabel = new QLabel(infoFram);
+        memberTypeLabel->setObjectName(QString::fromUtf8("memberTypeLabel"));
+        memberTypeLabel->setFont(font1);
+        memberTypeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_2);
+        formLayout->setWidget(2, QFormLayout::LabelRole, memberTypeLabel);
 
-        label_4 = new QLabel(formFrame);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setFont(font1);
-        label_4->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+        balanceLabel = new QLabel(infoFram);
+        balanceLabel->setObjectName(QString::fromUtf8("balanceLabel"));
+        balanceLabel->setFont(font1);
+        balanceLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, label_4);
+        formLayout->setWidget(3, QFormLayout::LabelRole, balanceLabel);
 
-        label_5 = new QLabel(formFrame);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setFont(font1);
-        label_5->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+        certificateLabel = new QLabel(infoFram);
+        certificateLabel->setObjectName(QString::fromUtf8("certificateLabel"));
+        certificateLabel->setFont(font1);
+        certificateLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
-        formLayout->setWidget(4, QFormLayout::LabelRole, label_5);
+        formLayout->setWidget(4, QFormLayout::LabelRole, certificateLabel);
 
-        label_6 = new QLabel(formFrame);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setFont(font1);
-        label_6->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
-        label_6->setFrameShape(QFrame::NoFrame);
-        label_6->setFrameShadow(QFrame::Plain);
+        usernameDisplay = new QLabel(infoFram);
+        usernameDisplay->setObjectName(QString::fromUtf8("usernameDisplay"));
+        usernameDisplay->setFont(font1);
+        usernameDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
+        usernameDisplay->setFrameShape(QFrame::NoFrame);
+        usernameDisplay->setFrameShadow(QFrame::Plain);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, label_6);
+        formLayout->setWidget(0, QFormLayout::FieldRole, usernameDisplay);
 
-        label_7 = new QLabel(formFrame);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setFont(font1);
-        label_7->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
+        creditsDisplay = new QLabel(infoFram);
+        creditsDisplay->setObjectName(QString::fromUtf8("creditsDisplay"));
+        creditsDisplay->setFont(font1);
+        creditsDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, label_7);
+        formLayout->setWidget(1, QFormLayout::FieldRole, creditsDisplay);
 
-        label_8 = new QLabel(formFrame);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setFont(font1);
-        label_8->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
+        memberTypeDisplay = new QLabel(infoFram);
+        memberTypeDisplay->setObjectName(QString::fromUtf8("memberTypeDisplay"));
+        memberTypeDisplay->setFont(font1);
+        memberTypeDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, label_8);
+        formLayout->setWidget(2, QFormLayout::FieldRole, memberTypeDisplay);
 
-        label_9 = new QLabel(formFrame);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-        label_9->setFont(font1);
-        label_9->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
+        balanceDisplay = new QLabel(infoFram);
+        balanceDisplay->setObjectName(QString::fromUtf8("balanceDisplay"));
+        balanceDisplay->setFont(font1);
+        balanceDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, label_9);
+        formLayout->setWidget(3, QFormLayout::FieldRole, balanceDisplay);
 
-        label_10 = new QLabel(formFrame);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
-        label_10->setFont(font1);
-        label_10->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
+        certificateDisplay = new QLabel(infoFram);
+        certificateDisplay->setObjectName(QString::fromUtf8("certificateDisplay"));
+        certificateDisplay->setFont(font1);
+        certificateDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, label_10);
+        formLayout->setWidget(4, QFormLayout::FieldRole, certificateDisplay);
 
-        MainWindow->setCentralWidget(centralwidget);
+        telephoneLabel = new QLabel(infoFram);
+        telephoneLabel->setObjectName(QString::fromUtf8("telephoneLabel"));
+        telephoneLabel->setFont(font1);
+        telephoneLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+"color: rgb(170, 85, 255);"));
 
-        retranslateUi(MainWindow);
-        QObject::connect(changePasswordButton, SIGNAL(clicked()), MainWindow, SLOT(changePasswordButtonClick()));
-        QObject::connect(logOutButton, SIGNAL(clicked()), MainWindow, SLOT(logOutButtonClick()));
-        QObject::connect(topUpButoon, SIGNAL(clicked()), MainWindow, SLOT(topUpButtonClick()));
+        formLayout->setWidget(5, QFormLayout::LabelRole, telephoneLabel);
 
-        QMetaObject::connectSlotsByName(MainWindow);
+        telephoneDisplay = new QLabel(infoFram);
+        telephoneDisplay->setObjectName(QString::fromUtf8("telephoneDisplay"));
+        telephoneDisplay->setFont(font1);
+        telephoneDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
+
+        formLayout->setWidget(5, QFormLayout::FieldRole, telephoneDisplay);
+
+        MainWindowPersonal->setCentralWidget(centralwidget);
+
+        retranslateUi(MainWindowPersonal);
+        QObject::connect(changePasswordButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(changePasswordButtonClick()));
+        QObject::connect(logOutButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(logOutButtonClick()));
+        QObject::connect(topUpButoon, SIGNAL(clicked()), MainWindowPersonal, SLOT(topUpButtonClick()));
+        QObject::connect(updateInformationButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(updateInfoButtonClick()));
+
+        QMetaObject::connectSlotsByName(MainWindowPersonal);
     } // setupUi
 
-    void retranslateUi(QMainWindow *MainWindow)
+    void retranslateUi(QMainWindow *MainWindowPersonal)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "CrowdSourcing", nullptr));
-        topUpButoon->setText(QCoreApplication::translate("MainWindow", "Top up", nullptr));
-        taskButton->setText(QCoreApplication::translate("MainWindow", "Tasks", nullptr));
-        updateInformationButton->setText(QCoreApplication::translate("MainWindow", "Update info", nullptr));
-        changePasswordButton->setText(QCoreApplication::translate("MainWindow", "Change password", nullptr));
-        logOutButton->setText(QCoreApplication::translate("MainWindow", "Log out", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Username:</span></p></body></html>", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Credits:</span></p></body></html>", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Member type:</span></p></body></html>", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Balance:</span></p></body></html>", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#aa00ff;\">Certification:</span></p></body></html>", nullptr));
-        label_6->setText(QString());
-        label_7->setText(QString());
-        label_8->setText(QString());
-        label_9->setText(QString());
-        label_10->setText(QString());
+        MainWindowPersonal->setWindowTitle(QCoreApplication::translate("MainWindowPersonal", "CrowdSourcing", nullptr));
+        topUpButoon->setText(QCoreApplication::translate("MainWindowPersonal", "Top up", nullptr));
+        taskButton->setText(QCoreApplication::translate("MainWindowPersonal", "Tasks", nullptr));
+        updateInformationButton->setText(QCoreApplication::translate("MainWindowPersonal", "Update info", nullptr));
+        changePasswordButton->setText(QCoreApplication::translate("MainWindowPersonal", "Change password", nullptr));
+        logOutButton->setText(QCoreApplication::translate("MainWindowPersonal", "Log out", nullptr));
+        usernameLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Username:</span></p></body></html>", nullptr));
+        creditsLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Credits:</span></p></body></html>", nullptr));
+        memberTypeLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Member type:</span></p></body></html>", nullptr));
+        balanceLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Balance:</span></p></body></html>", nullptr));
+        certificateLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Certificate:</span></p></body></html>", nullptr));
+        usernameDisplay->setText(QString());
+        creditsDisplay->setText(QString());
+        memberTypeDisplay->setText(QString());
+        balanceDisplay->setText(QString());
+        certificateDisplay->setText(QString());
+        telephoneLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Telephone:</span></p></body></html>", nullptr));
+        telephoneDisplay->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class MainWindow: public Ui_MainWindow {};
+    class MainWindowPersonal: public Ui_MainWindowPersonal {};
 } // namespace Ui
 
 QT_END_NAMESPACE

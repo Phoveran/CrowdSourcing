@@ -57,6 +57,9 @@
     <ClCompile Include="TopUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UpdateInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CrowdSourcing.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="TopUp.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="UpdateInfo.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -14,10 +14,10 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
@@ -29,22 +29,23 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_2;
-    QLineEdit *lineEdit_3;
-    QFrame *verticalFrame;
-    QVBoxLayout *verticalLayout;
-    QPushButton *okButton_2;
-    QPushButton *okButton_3;
+    QLineEdit *oldPwLineEdit;
+    QLineEdit *newPwLineEdit;
+    QLineEdit *newPwAgainLineEdit;
+    QFrame *horizontalFrame;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *okButton;
+    QPushButton *cancelButton;
+    QLabel *noticeLabel;
 
-    void setupUi(QDialog *Dialog)
+    void setupUi(QDialog *DialogChangePassword)
     {
-        if (Dialog->objectName().isEmpty())
-            Dialog->setObjectName(QString::fromUtf8("Dialog"));
-        Dialog->resize(800, 600);
-        Dialog->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda3.jpg);\n"
+        if (DialogChangePassword->objectName().isEmpty())
+            DialogChangePassword->setObjectName(QString::fromUtf8("DialogChangePassword"));
+        DialogChangePassword->resize(800, 600);
+        DialogChangePassword->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda3.jpg);\n"
 ""));
-        formFrame = new QFrame(Dialog);
+        formFrame = new QFrame(DialogChangePassword);
         formFrame->setObjectName(QString::fromUtf8("formFrame"));
         formFrame->setGeometry(QRect(20, 90, 551, 231));
         formFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
@@ -78,85 +79,164 @@ public:
 
         formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
 
-        lineEdit = new QLineEdit(formFrame);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        oldPwLineEdit = new QLineEdit(formFrame);
+        oldPwLineEdit->setObjectName(QString::fromUtf8("oldPwLineEdit"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Century Gothic"));
         font1.setPointSize(18);
         font1.setBold(false);
         font1.setWeight(50);
-        lineEdit->setFont(font1);
-        lineEdit->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+        oldPwLineEdit->setFont(font1);
+        oldPwLineEdit->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit);
+        formLayout->setWidget(0, QFormLayout::FieldRole, oldPwLineEdit);
 
-        lineEdit_2 = new QLineEdit(formFrame);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setFont(font1);
-        lineEdit_2->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+        newPwLineEdit = new QLineEdit(formFrame);
+        newPwLineEdit->setObjectName(QString::fromUtf8("newPwLineEdit"));
+        newPwLineEdit->setFont(font1);
+        newPwLineEdit->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_2);
+        formLayout->setWidget(1, QFormLayout::FieldRole, newPwLineEdit);
 
-        lineEdit_3 = new QLineEdit(formFrame);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setFont(font1);
-        lineEdit_3->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+        newPwAgainLineEdit = new QLineEdit(formFrame);
+        newPwAgainLineEdit->setObjectName(QString::fromUtf8("newPwAgainLineEdit"));
+        newPwAgainLineEdit->setFont(font1);
+        newPwAgainLineEdit->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, lineEdit_3);
+        formLayout->setWidget(2, QFormLayout::FieldRole, newPwAgainLineEdit);
 
-        verticalFrame = new QFrame(Dialog);
-        verticalFrame->setObjectName(QString::fromUtf8("verticalFrame"));
-        verticalFrame->setGeometry(QRect(180, 360, 251, 131));
-        verticalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        verticalLayout = new QVBoxLayout(verticalFrame);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        okButton_2 = new QPushButton(verticalFrame);
-        okButton_2->setObjectName(QString::fromUtf8("okButton_2"));
+        horizontalFrame = new QFrame(DialogChangePassword);
+        horizontalFrame->setObjectName(QString::fromUtf8("horizontalFrame"));
+        horizontalFrame->setGeometry(QRect(70, 370, 371, 80));
+        horizontalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        horizontalLayout = new QHBoxLayout(horizontalFrame);
+        horizontalLayout->setSpacing(80);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        okButton = new QPushButton(horizontalFrame);
+        okButton->setObjectName(QString::fromUtf8("okButton"));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Century Gothic"));
         font2.setPointSize(20);
         font2.setBold(true);
         font2.setItalic(true);
         font2.setWeight(75);
-        okButton_2->setFont(font2);
-        okButton_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 85, 0);"));
-        okButton_2->setFlat(true);
+        okButton->setFont(font2);
+        okButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
+"color: rgb(85, 85, 0);\n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;\n"
+"}  \n"
+"QPushButton:hover{\n"
+"color: rgb(255, 250, 247);\n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   \n"
+"							stop: 0.3 rgb(37,189,252),  \n"
+"							  stop: 1 rgb(32,170,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"}  \n"
+"QPushButton:pressed{ \n"
+"color: rgb(255, 251, 229);\n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,23"
+                        "6,241),   \n"
+"							stop: 0.3 rgb(38,190,255),  \n"
+"							  stop: 1 rgb(33,184,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"};"));
+        okButton->setFlat(true);
 
-        verticalLayout->addWidget(okButton_2);
+        horizontalLayout->addWidget(okButton);
 
-        okButton_3 = new QPushButton(verticalFrame);
-        okButton_3->setObjectName(QString::fromUtf8("okButton_3"));
-        okButton_3->setFont(font2);
-        okButton_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(85, 85, 127);"));
-        okButton_3->setFlat(true);
+        cancelButton = new QPushButton(horizontalFrame);
+        cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
+        cancelButton->setFont(font2);
+        cancelButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
+"color: rgb(85, 85, 0);\n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;\n"
+"}  \n"
+"QPushButton:hover{\n"
+"color: rgb(255, 250, 247);\n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   \n"
+"							stop: 0.3 rgb(37,189,252),  \n"
+"							  stop: 1 rgb(32,170,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"}  \n"
+"QPushButton:pressed{ \n"
+"color: rgb(255, 251, 229);\n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,23"
+                        "6,241),   \n"
+"							stop: 0.3 rgb(38,190,255),  \n"
+"							  stop: 1 rgb(33,184,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"};"));
+        cancelButton->setFlat(true);
 
-        verticalLayout->addWidget(okButton_3);
+        horizontalLayout->addWidget(cancelButton);
 
+        noticeLabel = new QLabel(DialogChangePassword);
+        noticeLabel->setObjectName(QString::fromUtf8("noticeLabel"));
+        noticeLabel->setGeometry(QRect(50, 470, 441, 51));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Century Gothic"));
+        font3.setPointSize(16);
+        font3.setBold(true);
+        font3.setWeight(75);
+        noticeLabel->setFont(font3);
+        noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+"color: rgb(255, 0, 0);"));
 
-        retranslateUi(Dialog);
-        QObject::connect(okButton_2, SIGNAL(clicked()), Dialog, SLOT(OkClick()));
-        QObject::connect(okButton_3, SIGNAL(clicked()), Dialog, SLOT(CancelClick()));
+        retranslateUi(DialogChangePassword);
+        QObject::connect(okButton, SIGNAL(clicked()), DialogChangePassword, SLOT(OkClick()));
+        QObject::connect(cancelButton, SIGNAL(clicked()), DialogChangePassword, SLOT(CancelClick()));
 
-        QMetaObject::connectSlotsByName(Dialog);
+        QMetaObject::connectSlotsByName(DialogChangePassword);
     } // setupUi
 
-    void retranslateUi(QDialog *Dialog)
+    void retranslateUi(QDialog *DialogChangePassword)
     {
-        Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "ChangePassword", nullptr));
-        label->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#00557f;\">Old password</span></p></body></html>", nullptr));
-        label_2->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#00557f;\">New password</span></p></body></html>", nullptr));
-        label_3->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#00557f;\">New password again</span></p></body></html>", nullptr));
-        lineEdit->setText(QString());
-        okButton_2->setText(QCoreApplication::translate("Dialog", "OK", nullptr));
-        okButton_3->setText(QCoreApplication::translate("Dialog", "Cancel", nullptr));
+        DialogChangePassword->setWindowTitle(QCoreApplication::translate("DialogChangePassword", "ChangePassword", nullptr));
+        label->setText(QCoreApplication::translate("DialogChangePassword", "<html><head/><body><p><span style=\" color:#00557f;\">Old password</span></p></body></html>", nullptr));
+        label_2->setText(QCoreApplication::translate("DialogChangePassword", "<html><head/><body><p><span style=\" color:#00557f;\">New password</span></p></body></html>", nullptr));
+        label_3->setText(QCoreApplication::translate("DialogChangePassword", "<html><head/><body><p><span style=\" color:#00557f;\">New password again</span></p></body></html>", nullptr));
+        oldPwLineEdit->setText(QString());
+        okButton->setText(QCoreApplication::translate("DialogChangePassword", "OK", nullptr));
+        cancelButton->setText(QCoreApplication::translate("DialogChangePassword", "Cancel", nullptr));
+        noticeLabel->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class DialogChangePassword : public Ui_DialogChangePassword {};
+    class DialogChangePassword: public Ui_DialogChangePassword {};
 } // namespace Ui
 
 QT_END_NAMESPACE

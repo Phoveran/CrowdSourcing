@@ -38,14 +38,14 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
 
-    void setupUi(QDialog *Dialog)
+    void setupUi(QDialog *DialogRegister)
     {
-        if (Dialog->objectName().isEmpty())
-            Dialog->setObjectName(QString::fromUtf8("Dialog"));
-        Dialog->resize(800, 600);
-        Dialog->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda4.jpg);\n"
+        if (DialogRegister->objectName().isEmpty())
+            DialogRegister->setObjectName(QString::fromUtf8("DialogRegister"));
+        DialogRegister->resize(800, 600);
+        DialogRegister->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda4.jpg);\n"
 ""));
-        formFrame = new QFrame(Dialog);
+        formFrame = new QFrame(DialogRegister);
         formFrame->setObjectName(QString::fromUtf8("formFrame"));
         formFrame->setGeometry(QRect(60, 130, 511, 221));
         formFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
@@ -118,7 +118,7 @@ public:
 
         formLayout->setWidget(2, QFormLayout::FieldRole, comboBox);
 
-        horizontalFrame = new QFrame(Dialog);
+        horizontalFrame = new QFrame(DialogRegister);
         horizontalFrame->setObjectName(QString::fromUtf8("horizontalFrame"));
         horizontalFrame->setGeometry(QRect(130, 390, 411, 80));
         horizontalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
@@ -218,39 +218,39 @@ public:
         horizontalLayout->addWidget(pushButton_2);
 
 
-        retranslateUi(Dialog);
-        QObject::connect(pushButton, SIGNAL(clicked()), Dialog, SLOT(RegisterClick()));
-        QObject::connect(pushButton_2, SIGNAL(clicked()), Dialog, SLOT(CancelClick()));
+        retranslateUi(DialogRegister);
+        QObject::connect(pushButton, SIGNAL(clicked()), DialogRegister, SLOT(RegisterClick()));
+        QObject::connect(pushButton_2, SIGNAL(clicked()), DialogRegister, SLOT(CancelClick()));
 
-        QMetaObject::connectSlotsByName(Dialog);
+        QMetaObject::connectSlotsByName(DialogRegister);
     } // setupUi
 
-    void retranslateUi(QDialog *Dialog)
+    void retranslateUi(QDialog *DialogRegister)
     {
-        Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "Register", nullptr));
-        label->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#55007f;\">Password:</span></p></body></html>", nullptr));
+        DialogRegister->setWindowTitle(QCoreApplication::translate("DialogRegister", "Register", nullptr));
+        label->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Password:</span></p></body></html>", nullptr));
         lineEdit->setText(QString());
-        label_2->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#55007f;\">Password again:</span></p></body></html>", nullptr));
+        label_2->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Password again:</span></p></body></html>", nullptr));
         lineEdit_2->setText(QString());
-        label_3->setText(QCoreApplication::translate("Dialog", "<html><head/><body><p><span style=\" color:#55007f;\">Certification:</span></p></body></html>", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("Dialog", "CET4", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("Dialog", "CET6", nullptr));
-        comboBox->setItemText(2, QCoreApplication::translate("Dialog", "TEM4", nullptr));
-        comboBox->setItemText(3, QCoreApplication::translate("Dialog", "TEM8", nullptr));
-        comboBox->setItemText(4, QCoreApplication::translate("Dialog", "IELTS6", nullptr));
-        comboBox->setItemText(5, QCoreApplication::translate("Dialog", "IELTS7", nullptr));
-        comboBox->setItemText(6, QCoreApplication::translate("Dialog", "TOFEL95", nullptr));
-        comboBox->setItemText(7, QCoreApplication::translate("Dialog", "TOFEL105", nullptr));
-        comboBox->setItemText(8, QCoreApplication::translate("Dialog", "TOFEL110", nullptr));
+        label_3->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Certificate:</span></p></body></html>", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("DialogRegister", "CET4", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("DialogRegister", "CET6", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("DialogRegister", "TEM4", nullptr));
+        comboBox->setItemText(3, QCoreApplication::translate("DialogRegister", "TEM8", nullptr));
+        comboBox->setItemText(4, QCoreApplication::translate("DialogRegister", "IELTS6", nullptr));
+        comboBox->setItemText(5, QCoreApplication::translate("DialogRegister", "IELTS7", nullptr));
+        comboBox->setItemText(6, QCoreApplication::translate("DialogRegister", "TOFEL95", nullptr));
+        comboBox->setItemText(7, QCoreApplication::translate("DialogRegister", "TOFEL105", nullptr));
+        comboBox->setItemText(8, QCoreApplication::translate("DialogRegister", "TOFEL110", nullptr));
 
-        pushButton->setText(QCoreApplication::translate("Dialog", "Register", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Dialog", "Cancel", nullptr));
+        pushButton->setText(QCoreApplication::translate("DialogRegister", "Register", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("DialogRegister", "Cancel", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class DialogRegister : public Ui_DialogRegister {};
+    class DialogRegister: public Ui_DialogRegister {};
 } // namespace Ui
 
 QT_END_NAMESPACE

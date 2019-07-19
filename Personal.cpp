@@ -1,6 +1,8 @@
 #include "Personal.h"
 #include "ChangePassword.h"
 #include "TopUp.h"
+#include "UpdateInfo.h"
+
 Personal::Personal(QWidget* parent)
 	: QMainWindow(parent)
 {
@@ -25,4 +27,11 @@ void Personal::topUpButtonClick()
 	TopUp *t = new TopUp;
 	t->show();
 	t->setAttribute(Qt::WA_DeleteOnClose, true);
+}
+
+void Personal::updateInfoButtonClick()
+{
+	UpdateInfo* u = new UpdateInfo;
+	u->show();
+	u->setAttribute(Qt::WA_DeleteOnClose, true);
 }

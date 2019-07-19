@@ -111,14 +111,14 @@ color: rgb(85, 0, 0);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border-image: \*url();
-color: rgb(255, 0, 0)</string>
+</string>
    </property>
    <property name="text">
     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;
-&lt;p align=&quot;center&quot; dir='rtl' style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#00b400;&quot;&gt;Please use Wechat Pay&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; dir='rtl' style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;Please use Wechat Pay&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QFrame" name="verticalFrame">
@@ -153,8 +153,8 @@ p, li { white-space: pre-wrap; }
     border-top-left-radius:2px;  
     border-top-right-radius:2px;  
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-                                stop: 0.3 rgb(33,184,150),  
-                                  stop: 1 rgb(29,170,140));  
+                                stop: 0.3 rgb(85, 220, 0),  
+                                  stop: 1 rgb(85, 170, 0));  
     border:1px;  
     border-radius:5px;padding:2px 4px;
     }  

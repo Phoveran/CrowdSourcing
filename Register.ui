@@ -17,13 +17,13 @@
    <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda4.jpg);
 </string>
   </property>
-  <widget class="QFrame" name="formFrame">
+  <widget class="QFrame" name="inputFrame">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>130</y>
+     <y>80</y>
      <width>511</width>
-     <height>221</height>
+     <height>241</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -31,7 +31,7 @@
    </property>
    <layout class="QFormLayout" name="formLayout">
     <property name="verticalSpacing">
-     <number>50</number>
+     <number>30</number>
     </property>
     <item row="0" column="0">
      <widget class="QLabel" name="label">
@@ -53,7 +53,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="pwLineEdit">
       <property name="font">
        <font>
         <family>Century Gothic</family>
@@ -94,7 +94,7 @@ color: rgb(0, 0, 0);</string>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="pwAgainLineEdit">
       <property name="font">
        <font>
         <family>Century Gothic</family>
@@ -130,12 +130,12 @@ color: rgb(0, 0, 0);</string>
        <string notr="true">border-image: \*url();</string>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#55007f;&quot;&gt;Certification:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#55007f;&quot;&gt;Certificate:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="certificateBox">
       <property name="font">
        <font>
         <family>Century Gothic</family>
@@ -194,13 +194,54 @@ color: rgb(0, 0, 0);</string>
       </item>
      </widget>
     </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <family>Century Gothic</family>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: \*url();</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#55007f;&quot;&gt;Telephone:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="teleLineEdit">
+      <property name="font">
+       <font>
+        <family>Century Gothic</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: \*url();
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::PasswordEchoOnEdit</enum>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
-  <widget class="QFrame" name="horizontalFrame">
+  <widget class="QFrame" name="buttonFrame">
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>390</y>
+     <y>340</y>
      <width>411</width>
      <height>80</height>
     </rect>
@@ -213,7 +254,7 @@ color: rgb(0, 0, 0);</string>
      <number>30</number>
     </property>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="registerButton">
       <property name="font">
        <font>
         <family>Century Gothic</family>
@@ -271,7 +312,7 @@ border-radius:15px;padding:2px 4px;
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="cancelButton">
       <property name="font">
        <font>
         <family>Century Gothic</family>
@@ -330,13 +371,39 @@ border-radius:15px;padding:2px 4px;
     </item>
    </layout>
   </widget>
+  <widget class="QLabel" name="noticeLabel">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>460</y>
+     <width>461</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Century Gothic</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: \*url();
+color: rgb(255, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources>
   <include location="CrowdSourcing.qrc"/>
  </resources>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>registerButton</sender>
    <signal>clicked()</signal>
    <receiver>DialogRegister</receiver>
    <slot>RegisterClick()</slot>
@@ -352,7 +419,7 @@ border-radius:15px;padding:2px 4px;
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>cancelButton</sender>
    <signal>clicked()</signal>
    <receiver>DialogRegister</receiver>
    <slot>CancelClick()</slot>
