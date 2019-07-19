@@ -20,8 +20,8 @@
    <widget class="QFrame" name="buttonFram">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>530</y>
+      <x>280</x>
+      <y>520</y>
       <width>341</width>
       <height>431</height>
      </rect>
@@ -616,8 +616,8 @@ color: rgb(170, 85, 255);</string>
    <slot>topUpButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
-     <y>609</y>
+     <x>496</x>
+     <y>599</y>
     </hint>
     <hint type="destinationlabel">
      <x>546</x>
@@ -641,11 +641,28 @@ color: rgb(170, 85, 255);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>taskButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowPersonal</receiver>
+   <slot>taskButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>569</x>
+     <y>651</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>699</x>
+     <y>644</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>logOutButtonClick()</slot>
   <slot>changePasswordButtonClick()</slot>
   <slot>topUpButtonClick()</slot>
   <slot>updateInfoButtonClick()</slot>
+  <slot>taskButtonClick()</slot>
  </slots>
 </ui>

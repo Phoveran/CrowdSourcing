@@ -57,7 +57,7 @@ public:
         centralwidget->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda2.jpg);"));
         buttonFram = new QFrame(centralwidget);
         buttonFram->setObjectName(QString::fromUtf8("buttonFram"));
-        buttonFram->setGeometry(QRect(150, 530, 341, 431));
+        buttonFram->setGeometry(QRect(280, 520, 341, 431));
         buttonFram->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         verticalLayout_4 = new QVBoxLayout(buttonFram);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -391,6 +391,7 @@ public:
         QObject::connect(logOutButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(logOutButtonClick()));
         QObject::connect(topUpButoon, SIGNAL(clicked()), MainWindowPersonal, SLOT(topUpButtonClick()));
         QObject::connect(updateInformationButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(updateInfoButtonClick()));
+        QObject::connect(taskButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(taskButtonClick()));
 
         QMetaObject::connectSlotsByName(MainWindowPersonal);
     } // setupUi

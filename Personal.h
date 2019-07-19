@@ -15,6 +15,7 @@ public slots:
 	void changePasswordButtonClick();
 	void topUpButtonClick();
 	void updateInfoButtonClick();
+	void taskButtonClick();
 
 private:
 	Ui::MainWindowPersonal ui;

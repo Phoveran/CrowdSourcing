@@ -25,18 +25,21 @@ QT_BEGIN_NAMESPACE
 class Ui_DialogRegister
 {
 public:
-    QFrame *formFrame;
+    QFrame *inputFrame;
     QFormLayout *formLayout;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QLineEdit *pwLineEdit;
     QLabel *label_2;
-    QLineEdit *lineEdit_2;
+    QLineEdit *pwAgainLineEdit;
     QLabel *label_3;
-    QComboBox *comboBox;
-    QFrame *horizontalFrame;
+    QComboBox *certificateBox;
+    QLabel *label_4;
+    QLineEdit *teleLineEdit;
+    QFrame *buttonFrame;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *registerButton;
+    QPushButton *cancelButton;
+    QLabel *noticeLabel;
 
     void setupUi(QDialog *DialogRegister)
     {
@@ -45,14 +48,14 @@ public:
         DialogRegister->resize(800, 600);
         DialogRegister->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda4.jpg);\n"
 ""));
-        formFrame = new QFrame(DialogRegister);
-        formFrame->setObjectName(QString::fromUtf8("formFrame"));
-        formFrame->setGeometry(QRect(60, 130, 511, 221));
-        formFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        formLayout = new QFormLayout(formFrame);
+        inputFrame = new QFrame(DialogRegister);
+        inputFrame->setObjectName(QString::fromUtf8("inputFrame"));
+        inputFrame->setGeometry(QRect(60, 80, 511, 241));
+        inputFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        formLayout = new QFormLayout(inputFrame);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
-        formLayout->setVerticalSpacing(50);
-        label = new QLabel(formFrame);
+        formLayout->setVerticalSpacing(30);
+        label = new QLabel(inputFrame);
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
         font.setFamily(QString::fromUtf8("Century Gothic"));
@@ -65,76 +68,92 @@ public:
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label);
 
-        lineEdit = new QLineEdit(formFrame);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        pwLineEdit = new QLineEdit(inputFrame);
+        pwLineEdit->setObjectName(QString::fromUtf8("pwLineEdit"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Century Gothic"));
         font1.setPointSize(14);
         font1.setBold(true);
         font1.setWeight(75);
-        lineEdit->setFont(font1);
-        lineEdit->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+        pwLineEdit->setFont(font1);
+        pwLineEdit->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(0, 0, 0);"));
-        lineEdit->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+        pwLineEdit->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit);
+        formLayout->setWidget(0, QFormLayout::FieldRole, pwLineEdit);
 
-        label_2 = new QLabel(formFrame);
+        label_2 = new QLabel(inputFrame);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setFont(font);
         label_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
 
-        lineEdit_2 = new QLineEdit(formFrame);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setFont(font1);
-        lineEdit_2->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+        pwAgainLineEdit = new QLineEdit(inputFrame);
+        pwAgainLineEdit->setObjectName(QString::fromUtf8("pwAgainLineEdit"));
+        pwAgainLineEdit->setFont(font1);
+        pwAgainLineEdit->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(0, 0, 0);"));
-        lineEdit_2->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+        pwAgainLineEdit->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_2);
+        formLayout->setWidget(1, QFormLayout::FieldRole, pwAgainLineEdit);
 
-        label_3 = new QLabel(formFrame);
+        label_3 = new QLabel(inputFrame);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setFont(font);
         label_3->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
 
         formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
 
-        comboBox = new QComboBox(formFrame);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setFont(font1);
-        comboBox->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
+        certificateBox = new QComboBox(inputFrame);
+        certificateBox->addItem(QString());
+        certificateBox->addItem(QString());
+        certificateBox->addItem(QString());
+        certificateBox->addItem(QString());
+        certificateBox->addItem(QString());
+        certificateBox->addItem(QString());
+        certificateBox->addItem(QString());
+        certificateBox->addItem(QString());
+        certificateBox->addItem(QString());
+        certificateBox->setObjectName(QString::fromUtf8("certificateBox"));
+        certificateBox->setFont(font1);
+        certificateBox->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, comboBox);
+        formLayout->setWidget(2, QFormLayout::FieldRole, certificateBox);
 
-        horizontalFrame = new QFrame(DialogRegister);
-        horizontalFrame->setObjectName(QString::fromUtf8("horizontalFrame"));
-        horizontalFrame->setGeometry(QRect(130, 390, 411, 80));
-        horizontalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        horizontalLayout = new QHBoxLayout(horizontalFrame);
+        label_4 = new QLabel(inputFrame);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setFont(font);
+        label_4->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_4);
+
+        teleLineEdit = new QLineEdit(inputFrame);
+        teleLineEdit->setObjectName(QString::fromUtf8("teleLineEdit"));
+        teleLineEdit->setFont(font1);
+        teleLineEdit->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+"color: rgb(0, 0, 0);"));
+        teleLineEdit->setEchoMode(QLineEdit::Normal);
+
+        formLayout->setWidget(3, QFormLayout::FieldRole, teleLineEdit);
+
+        buttonFrame = new QFrame(DialogRegister);
+        buttonFrame->setObjectName(QString::fromUtf8("buttonFrame"));
+        buttonFrame->setGeometry(QRect(130, 340, 411, 80));
+        buttonFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        horizontalLayout = new QHBoxLayout(buttonFrame);
         horizontalLayout->setSpacing(30);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        pushButton = new QPushButton(horizontalFrame);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        registerButton = new QPushButton(buttonFrame);
+        registerButton->setObjectName(QString::fromUtf8("registerButton"));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Century Gothic"));
         font2.setPointSize(22);
         font2.setBold(true);
         font2.setItalic(true);
         font2.setWeight(75);
-        pushButton->setFont(font2);
-        pushButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
+        registerButton->setFont(font2);
+        registerButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"
 "border-style:solid;  \n"
@@ -169,15 +188,15 @@ public:
 "border:1px;  \n"
 "border-radius:15px;padding:2px 4px;  \n"
 "};"));
-        pushButton->setAutoDefault(false);
-        pushButton->setFlat(true);
+        registerButton->setAutoDefault(false);
+        registerButton->setFlat(true);
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(registerButton);
 
-        pushButton_2 = new QPushButton(horizontalFrame);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setFont(font2);
-        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
+        cancelButton = new QPushButton(buttonFrame);
+        cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
+        cancelButton->setFont(font2);
+        cancelButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"
 "border-style:solid;  \n"
@@ -212,15 +231,21 @@ public:
 "border:1px;  \n"
 "border-radius:15px;padding:2px 4px;  \n"
 "};"));
-        pushButton_2->setAutoDefault(false);
-        pushButton_2->setFlat(true);
+        cancelButton->setAutoDefault(false);
+        cancelButton->setFlat(true);
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(cancelButton);
 
+        noticeLabel = new QLabel(DialogRegister);
+        noticeLabel->setObjectName(QString::fromUtf8("noticeLabel"));
+        noticeLabel->setGeometry(QRect(120, 460, 461, 41));
+        noticeLabel->setFont(font);
+        noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+"color: rgb(255, 0, 0);"));
 
         retranslateUi(DialogRegister);
-        QObject::connect(pushButton, SIGNAL(clicked()), DialogRegister, SLOT(RegisterClick()));
-        QObject::connect(pushButton_2, SIGNAL(clicked()), DialogRegister, SLOT(CancelClick()));
+        QObject::connect(registerButton, SIGNAL(clicked()), DialogRegister, SLOT(RegisterClick()));
+        QObject::connect(cancelButton, SIGNAL(clicked()), DialogRegister, SLOT(CancelClick()));
 
         QMetaObject::connectSlotsByName(DialogRegister);
     } // setupUi
@@ -229,22 +254,25 @@ public:
     {
         DialogRegister->setWindowTitle(QCoreApplication::translate("DialogRegister", "Register", nullptr));
         label->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Password:</span></p></body></html>", nullptr));
-        lineEdit->setText(QString());
+        pwLineEdit->setText(QString());
         label_2->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Password again:</span></p></body></html>", nullptr));
-        lineEdit_2->setText(QString());
+        pwAgainLineEdit->setText(QString());
         label_3->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Certificate:</span></p></body></html>", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("DialogRegister", "CET4", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("DialogRegister", "CET6", nullptr));
-        comboBox->setItemText(2, QCoreApplication::translate("DialogRegister", "TEM4", nullptr));
-        comboBox->setItemText(3, QCoreApplication::translate("DialogRegister", "TEM8", nullptr));
-        comboBox->setItemText(4, QCoreApplication::translate("DialogRegister", "IELTS6", nullptr));
-        comboBox->setItemText(5, QCoreApplication::translate("DialogRegister", "IELTS7", nullptr));
-        comboBox->setItemText(6, QCoreApplication::translate("DialogRegister", "TOFEL95", nullptr));
-        comboBox->setItemText(7, QCoreApplication::translate("DialogRegister", "TOFEL105", nullptr));
-        comboBox->setItemText(8, QCoreApplication::translate("DialogRegister", "TOFEL110", nullptr));
+        certificateBox->setItemText(0, QCoreApplication::translate("DialogRegister", "CET4", nullptr));
+        certificateBox->setItemText(1, QCoreApplication::translate("DialogRegister", "CET6", nullptr));
+        certificateBox->setItemText(2, QCoreApplication::translate("DialogRegister", "TEM4", nullptr));
+        certificateBox->setItemText(3, QCoreApplication::translate("DialogRegister", "TEM8", nullptr));
+        certificateBox->setItemText(4, QCoreApplication::translate("DialogRegister", "IELTS6", nullptr));
+        certificateBox->setItemText(5, QCoreApplication::translate("DialogRegister", "IELTS7", nullptr));
+        certificateBox->setItemText(6, QCoreApplication::translate("DialogRegister", "TOFEL95", nullptr));
+        certificateBox->setItemText(7, QCoreApplication::translate("DialogRegister", "TOFEL105", nullptr));
+        certificateBox->setItemText(8, QCoreApplication::translate("DialogRegister", "TOFEL110", nullptr));
 
-        pushButton->setText(QCoreApplication::translate("DialogRegister", "Register", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("DialogRegister", "Cancel", nullptr));
+        label_4->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Telephone:</span></p></body></html>", nullptr));
+        teleLineEdit->setText(QString());
+        registerButton->setText(QCoreApplication::translate("DialogRegister", "Register", nullptr));
+        cancelButton->setText(QCoreApplication::translate("DialogRegister", "Cancel", nullptr));
+        noticeLabel->setText(QString());
     } // retranslateUi
 
 };

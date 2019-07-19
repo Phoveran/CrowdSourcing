@@ -35,3 +35,7 @@ void Personal::updateInfoButtonClick()
 	u->show();
 	u->setAttribute(Qt::WA_DeleteOnClose, true);
 }
+
+void Personal::taskButtonClick()
+{
+}

@@ -75,7 +75,7 @@
       <property name="font">
        <font>
         <family>Century Gothic</family>
-        <pointsize>18</pointsize>
+        <pointsize>16</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -135,7 +135,9 @@
       <property name="font">
        <font>
         <family>Century Gothic</family>
-        <pointsize>18</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
      </widget>
@@ -146,7 +148,7 @@
    <property name="geometry">
     <rect>
      <x>210</x>
-     <y>380</y>
+     <y>360</y>
      <width>331</width>
      <height>80</height>
     </rect>
@@ -263,6 +265,32 @@ border-radius:15px;padding:2px 4px;
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="noticeLabel">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>460</y>
+     <width>311</width>
+     <height>39</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Century Gothic</family>
+     <pointsize>18</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: \*url();
+color: rgb(255, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
  </widget>
  <resources>

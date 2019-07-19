@@ -36,6 +36,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *okButton;
     QPushButton *cancelButton;
+    QLabel *noticeLabel;
 
     void setupUi(QDialog *DialogUpdateInfo)
     {
@@ -83,7 +84,7 @@ public:
         certificateBox->setObjectName(QString::fromUtf8("certificateBox"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Century Gothic"));
-        font1.setPointSize(18);
+        font1.setPointSize(16);
         font1.setBold(true);
         font1.setWeight(75);
         certificateBox->setFont(font1);
@@ -93,29 +94,26 @@ public:
 
         teleLineEdit = new QLineEdit(formWidget);
         teleLineEdit->setObjectName(QString::fromUtf8("teleLineEdit"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Century Gothic"));
-        font2.setPointSize(18);
-        teleLineEdit->setFont(font2);
+        teleLineEdit->setFont(font1);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, teleLineEdit);
 
         horizontalFrame = new QFrame(DialogUpdateInfo);
         horizontalFrame->setObjectName(QString::fromUtf8("horizontalFrame"));
-        horizontalFrame->setGeometry(QRect(210, 380, 331, 80));
+        horizontalFrame->setGeometry(QRect(210, 360, 331, 80));
         horizontalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         horizontalLayout = new QHBoxLayout(horizontalFrame);
         horizontalLayout->setSpacing(80);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         okButton = new QPushButton(horizontalFrame);
         okButton->setObjectName(QString::fromUtf8("okButton"));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Century Gothic"));
-        font3.setPointSize(20);
-        font3.setBold(true);
-        font3.setItalic(true);
-        font3.setWeight(75);
-        okButton->setFont(font3);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Century Gothic"));
+        font2.setPointSize(20);
+        font2.setBold(true);
+        font2.setItalic(true);
+        font2.setWeight(75);
+        okButton->setFont(font2);
         okButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"
@@ -156,7 +154,7 @@ public:
 
         cancelButton = new QPushButton(horizontalFrame);
         cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
-        cancelButton->setFont(font3);
+        cancelButton->setFont(font2);
         cancelButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"
@@ -195,6 +193,12 @@ public:
 
         horizontalLayout->addWidget(cancelButton);
 
+        noticeLabel = new QLabel(DialogUpdateInfo);
+        noticeLabel->setObjectName(QString::fromUtf8("noticeLabel"));
+        noticeLabel->setGeometry(QRect(240, 460, 311, 39));
+        noticeLabel->setFont(font);
+        noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
+"color: rgb(255, 0, 0);"));
 
         retranslateUi(DialogUpdateInfo);
         QObject::connect(okButton, SIGNAL(clicked()), DialogUpdateInfo, SLOT(okClick()));
@@ -220,6 +224,7 @@ public:
 
         okButton->setText(QCoreApplication::translate("DialogUpdateInfo", "OK", nullptr));
         cancelButton->setText(QCoreApplication::translate("DialogUpdateInfo", "Cancel", nullptr));
+        noticeLabel->setText(QString());
     } // retranslateUi
 
 };
