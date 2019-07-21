@@ -6,6 +6,7 @@ TopUp::TopUp(QWidget* parent)
 {
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
 }
 
 void TopUp::topUpClick()

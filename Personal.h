@@ -5,7 +5,7 @@
 #include "ChangePassword.h"
 #include "TopUp.h"
 #include "UpdateInfo.h"
-#include <QCloseEvent>
+#include "TaskWin.h"
 
 class Personal : public QMainWindow
 {
@@ -20,11 +20,11 @@ public slots:
 	void topUpButtonClick();
 	void updateInfoButtonClick();
 	void taskButtonClick();
-	void closeEvent(QCloseEvent* event);
 
 private:
 	Ui::MainWindowPersonal ui;
 	ChangePassword* c;
-	TopUp* t;	
+	TopUp* to;	
 	UpdateInfo* u;
+	TaskWin* ta;
 };

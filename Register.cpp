@@ -6,7 +6,8 @@ Register::Register(QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
-//	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
 }
 
 void Register::RegisterClick()
@@ -32,9 +33,4 @@ void Register::RegisterClick()
 void Register::CancelClick()
 {
 	this->close();
-}
-
-void Register::closeEvent(QCloseEvent* event)
-{
-	delete this;
 }

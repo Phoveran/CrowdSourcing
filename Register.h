@@ -2,7 +2,6 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_Register.h"
-#include <QCloseEvent>
 
 
 class Register : public QDialog
@@ -18,5 +17,4 @@ public slots:
 
 private:
 	Ui::DialogRegister ui;
-	void closeEvent(QCloseEvent* event);
 };

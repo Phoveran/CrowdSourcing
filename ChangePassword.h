@@ -2,8 +2,6 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_ChangePassword.h"
-#include <QCloseEvent>
-
 
 class ChangePassword : public QDialog
 {
@@ -18,5 +16,4 @@ public slots:
 
 private:
 	Ui::DialogChangePassword ui;
-	void closeEvent(QCloseEvent* event);
 };

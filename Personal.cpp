@@ -6,19 +6,14 @@ Personal::Personal(QWidget* parent)
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	c = NULL;
-	t = NULL;
+	to = NULL;
 	u = NULL;
+	ta = NULL;
 }
 
 void Personal::logOutButtonClick()
 {
 	this->close();
-	if (c)
-		c->close();
-	if (u)
-		u->close();
-	if (t)
-		t->close();
 }
 
 void Personal::changePasswordButtonClick()
@@ -29,8 +24,8 @@ void Personal::changePasswordButtonClick()
 
 void Personal::topUpButtonClick()
 {
-	t = new TopUp;
-	t->show();
+	to = new TopUp;
+	to->show();
 }
 
 void Personal::updateInfoButtonClick()
@@ -41,15 +36,7 @@ void Personal::updateInfoButtonClick()
 
 void Personal::taskButtonClick()
 {
-}
-
-void Personal::closeEvent(QCloseEvent* event)
-{
-	delete this;
-	if (c)
-		c->close();
-	if (u)
-		u->close();
-	if (t)
-		t->close();
+	ta = new TaskWin;
+	ta->show();
+	this->close();
 }

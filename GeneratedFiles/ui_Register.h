@@ -139,7 +139,7 @@ public:
 
         buttonFrame = new QFrame(DialogRegister);
         buttonFrame->setObjectName(QString::fromUtf8("buttonFrame"));
-        buttonFrame->setGeometry(QRect(130, 340, 411, 80));
+        buttonFrame->setGeometry(QRect(120, 370, 411, 80));
         buttonFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         horizontalLayout = new QHBoxLayout(buttonFrame);
         horizontalLayout->setSpacing(30);
@@ -238,7 +238,7 @@ public:
 
         noticeLabel = new QLabel(DialogRegister);
         noticeLabel->setObjectName(QString::fromUtf8("noticeLabel"));
-        noticeLabel->setGeometry(QRect(120, 460, 461, 41));
+        noticeLabel->setGeometry(QRect(110, 490, 461, 41));
         noticeLabel->setFont(font);
         noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(255, 0, 0);"));

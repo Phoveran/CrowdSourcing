@@ -209,7 +209,7 @@ public:
 
     void retranslateUi(QDialog *DialogUpdateInfo)
     {
-        DialogUpdateInfo->setWindowTitle(QCoreApplication::translate("DialogUpdateInfo", "Dialog", nullptr));
+        DialogUpdateInfo->setWindowTitle(QCoreApplication::translate("DialogUpdateInfo", "UpdateInfo", nullptr));
         certificateLabel->setText(QCoreApplication::translate("DialogUpdateInfo", "Certificate", nullptr));
         teleLabel->setText(QCoreApplication::translate("DialogUpdateInfo", "Telephone", nullptr));
         certificateBox->setItemText(0, QCoreApplication::translate("DialogUpdateInfo", "CET4", nullptr));
