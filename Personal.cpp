@@ -1,4 +1,4 @@
-#include "Personal.h"
+#include "MainWin.h"
 
 Personal::Personal(QWidget* parent)
 	: QMainWindow(parent)

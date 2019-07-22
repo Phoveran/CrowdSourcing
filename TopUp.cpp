@@ -1,5 +1,6 @@
 #include "TopUp.h"
 #include <QString>
+#include <qvalidator.h>
 
 TopUp::TopUp(QWidget* parent)
 	: QDialog(parent)
@@ -7,6 +8,7 @@ TopUp::TopUp(QWidget* parent)
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
+	ui.lineEdit->setValidator(new QIntValidator);
 }
 
 void TopUp::topUpClick()

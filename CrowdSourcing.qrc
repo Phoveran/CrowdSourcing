@@ -1,6 +1,19 @@
 <RCC>
   <qresource prefix="/CrowdSourcing">
+    <file>Resources/pictures/Chi.png</file>
+    <file>Resources/pictures/Eng.png</file>
+    <file>Resources/pictures/Fra.png</file>
+    <file>Resources/pictures/right.png</file>
+    <file>Resources/pictures/refresh_clicked.png</file>
+    <file>Resources/pictures/refresh_norm.png</file>
+    <file>Resources/pictures/refresh_on.png</file>
+    <file>Resources/pictures/view_clicked.png</file>
+    <file>Resources/pictures/view_norm.png</file>
+    <file>Resources/pictures/view_on.png</file>
     <file>Resources/pictures/zelda8.jpg</file>
+    <file>Resources/pictures/back_clicked.png</file>
+    <file>Resources/pictures/back_norm.png</file>
+    <file>Resources/pictures/back_on.png</file>
     <file>Resources/pictures/responsibleTasks.png</file>
     <file>Resources/pictures/recruitingTask.png</file>
     <file>Resources/pictures/finishedTask.png</file>

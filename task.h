@@ -14,6 +14,7 @@ public:
 	vector<int> waitingAccount;//等待接取该任务的账号
 	int state;//状态，2为招募中，1为执行中，0为已完成
 	int rank;//任务序号
+	int type;//翻译类型，1为中=》英，2为中=》法，3为英=》中，4为英=》法，5为法=》中，6为法=》英
 //	void setPayment();
 //	void setBrief();
 
@@ -30,5 +31,6 @@ protected:
 class transTask : public Task
 {
 protected:
-	string content;//内容
+	string oriContent;//内容
+	string translation;//翻译
 };

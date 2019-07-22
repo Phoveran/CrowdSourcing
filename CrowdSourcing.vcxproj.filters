@@ -68,9 +68,6 @@
     <QtMoc Include="CrowdSourcing.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="Personal.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ChangePassword.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -83,7 +80,7 @@
     <QtMoc Include="UpdateInfo.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="TaskWin.h">
+    <QtMoc Include="MainWin.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -20,82 +20,164 @@
    <enum>QTabWidget::Triangular</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>150</y>
-      <width>421</width>
-      <height>631</height>
+      <x>30</x>
+      <y>130</y>
+      <width>691</width>
+      <height>911</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>16</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image:transparent;
+color: rgb(255, 85, 0);</string>
+       </property>
+       <property name="text">
+        <string>Recruiting Tasks:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="listWidgetRecTasks">
+       <property name="styleSheet">
+        <string notr="true">border-image:transparent;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="backButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>80</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Century Gothic</family>
-      <pointsize>9</pointsize>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::WheelFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image:transparent;</string>
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/back_norm.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/back_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/back_clicked.png);};
+</string>
     </property>
-    <property name="editTriggers">
-     <set>QAbstractItemView::NoEditTriggers</set>
+    <property name="text">
+     <string/>
     </property>
-    <property name="dragEnabled">
+    <property name="flat">
      <bool>false</bool>
     </property>
-    <property name="selectionBehavior">
-     <enum>QAbstractItemView::SelectRows</enum>
-    </property>
-    <property name="verticalScrollMode">
-     <enum>QAbstractItemView::ScrollPerPixel</enum>
-    </property>
-    <property name="sortingEnabled">
-     <bool>true</bool>
-    </property>
-    <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>100</number>
-    </attribute>
-    <attribute name="horizontalHeaderHighlightSections">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderDefaultSectionSize">
-     <number>30</number>
-    </attribute>
-    <column>
-     <property name="text">
-      <string>Rank</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Type</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>State</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Pay</string>
-     </property>
-    </column>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>90</y>
-      <width>221</width>
-      <height>41</height>
+      <x>1190</x>
+      <y>20</y>
+      <width>671</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>16</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image:transparent;
+color: rgb(255, 85, 0);</string>
+       </property>
+       <property name="text">
+        <string>My Tasks:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="listWidgetMyTasks">
+       <property name="styleSheet">
+        <string notr="true">border-image:transparent;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>1190</x>
+      <y>570</y>
+      <width>671</width>
+      <height>471</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>16</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image:transparent;
+color: rgb(255, 85, 0);</string>
+       </property>
+       <property name="text">
+        <string>Finished Tasks:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="listWidgetFiniTasks">
+       <property name="styleSheet">
+        <string notr="true">border-image:transparent;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="viewButton">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>20</y>
+      <width>80</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
@@ -108,84 +190,99 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image:transparent;
-color: rgb(255, 85, 0);</string>
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};</string>
     </property>
     <property name="text">
-     <string>Recruiting Tasks:</string>
+     <string/>
     </property>
    </widget>
-   <widget class="QFrame" name="verticalFrame">
+   <widget class="QPushButton" name="refreshButton">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>800</y>
-      <width>201</width>
-      <height>71</height>
+      <x>250</x>
+      <y>20</y>
+      <width>80</width>
+      <height>80</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">border-image:transparent;</string>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="font">
-        <font>
-         <family>Century Gothic</family>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{  
-color:rgb(85, 85, 0);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
-border:1px;  
-border-radius:15px;padding:2px 4px;
-}  
-QPushButton:hover{
-color:rgb(255, 255, 255);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(37,189,252),  
-							  stop: 1 rgb(32,170,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-}  
-QPushButton:pressed{ 
-color:rgb(233, 236, 243);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(38,190,255),  
-							  stop: 1 rgb(33,184,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-};</string>
-       </property>
-       <property name="text">
-        <string>View details</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>
  <resources>
   <include location="CrowdSourcing.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>backButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowTask</receiver>
+   <slot>backButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>57</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>248</x>
+     <y>62</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>viewButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowTask</receiver>
+   <slot>viewButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>181</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refreshButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowTask</receiver>
+   <slot>refreshButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>61</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>82</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>backButtonClick()</slot>
+  <slot>viewButtonClick()</slot>
+  <slot>refreshButtonClick()</slot>
+ </slots>
 </ui>
