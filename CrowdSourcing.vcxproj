@@ -113,21 +113,13 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ChangePassword.cpp" />
-    <ClCompile Include="CrowdSourcing.cpp" />
+    <ClCompile Include="Dialogs.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operation.cpp" />
-    <ClCompile Include="Personal.cpp" />
-    <ClCompile Include="Register.cpp" />
+    <ClCompile Include="MainWins.cpp" />
     <ClCompile Include="task.cpp" />
     <ClCompile Include="TaskItem.cpp" />
-    <ClCompile Include="TaskWin.cpp" />
-    <ClCompile Include="TopUp.cpp" />
-    <ClCompile Include="UpdateInfo.cpp" />
     <ClCompile Include="user.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="CrowdSourcing.h" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ChangePassword.ui" />
@@ -143,23 +135,20 @@
     <QtRcc Include="CrowdSourcing.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ChangePassword.h">
+    <QtMoc Include="Dialogs.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
+    <ClInclude Include="data.h" />
     <ClInclude Include="GeneratedFiles\ui_ChangePassword.h" />
     <ClInclude Include="GeneratedFiles\ui_CrowdSourcing.h" />
-    <QtMoc Include="MainWin.h">
+    <QtMoc Include="MainWins.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
     <ClInclude Include="GeneratedFiles\ui_Personal.h" />
     <ClInclude Include="GeneratedFiles\ui_recTaskItem.h" />
     <ClInclude Include="GeneratedFiles\ui_Register.h" />
-    <QtMoc Include="Register.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-    </QtMoc>
     <ClInclude Include="GeneratedFiles\ui_TaskWin.h" />
     <ClInclude Include="GeneratedFiles\ui_TopUp.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateInfo.h" />
@@ -169,14 +158,6 @@
     </QtMoc>
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="task.h" />
-    <QtMoc Include="TopUp.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-    </QtMoc>
-    <QtMoc Include="UpdateInfo.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-    </QtMoc>
     <ClInclude Include="user.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -33,9 +33,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CrowdSourcing.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="operation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,48 +42,24 @@
     <ClCompile Include="user.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Personal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ChangePassword.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Register.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TopUp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UpdateInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TaskWin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TaskItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWins.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="CrowdSourcing.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="ChangePassword.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Register.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TopUp.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="UpdateInfo.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="MainWin.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="TaskItem.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Dialogs.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="MainWins.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -154,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_recTaskItem.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
