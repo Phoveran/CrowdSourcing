@@ -38,7 +38,8 @@ class Personal : public QMainWindow
 	Q_OBJECT
 
 public:
-	Personal(QWidget* parent = Q_NULLPTR);
+	Personal(Data* data, QWidget* parent = Q_NULLPTR);
+	Data* dataPtr;
 
 public slots:
 	void logOutButtonClick();
@@ -61,7 +62,8 @@ class TaskWin : public QMainWindow
 	Q_OBJECT
 
 public:
-	TaskWin(QWidget* parent = Q_NULLPTR);
+	TaskWin(Data* data, QWidget* parent = Q_NULLPTR);
+	Data* dataPtr;
 
 public slots:
 	void backButtonClick();

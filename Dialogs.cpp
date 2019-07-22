@@ -4,10 +4,11 @@
 #include "Dialogs.h"
 using namespace std;
 
-ChangePassword::ChangePassword(QWidget* parent)
+ChangePassword::ChangePassword(Data* data, QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	dataPtr = data;
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
 }
@@ -34,10 +35,11 @@ void ChangePassword::CancelClick()
 }
 
 
-Register::Register(QWidget* parent)
+Register::Register(Data* data, QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	dataPtr = data;
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
 	ui.teleLineEdit->setValidator(new QIntValidator);
@@ -69,10 +71,11 @@ void Register::CancelClick()
 }
 
 
-TopUp::TopUp(QWidget* parent)
+TopUp::TopUp(Data* data, QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	dataPtr = data;
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
 	ui.lineEdit->setValidator(new QIntValidator);
@@ -100,10 +103,11 @@ void TopUp::closeClick()
 }
 
 
-UpdateInfo::UpdateInfo(QWidget* parent)
+UpdateInfo::UpdateInfo(Data* data, QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	dataPtr = data;
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
 	ui.teleLineEdit->setValidator(new QIntValidator);

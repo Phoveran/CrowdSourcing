@@ -9,4 +9,5 @@ public:
 	vector<User*> userVec;
 	vector<Task*> taskVec;
 	Data();
+	void save();
 }; 

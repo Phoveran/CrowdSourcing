@@ -115,7 +115,7 @@
   <ItemGroup>
     <ClCompile Include="Dialogs.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="operation.cpp" />
+    <ClCompile Include="data.cpp" />
     <ClCompile Include="MainWins.cpp" />
     <ClCompile Include="task.cpp" />
     <ClCompile Include="TaskItem.cpp" />
