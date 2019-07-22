@@ -26,7 +26,7 @@
       <x>30</x>
       <y>130</y>
       <width>691</width>
-      <height>911</height>
+      <height>881</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -54,6 +54,9 @@ color: rgb(255, 85, 0);</string>
       <widget class="QListWidget" name="listWidgetRecTasks">
        <property name="styleSheet">
         <string notr="true">border-image:transparent;</string>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectItems</enum>
        </property>
       </widget>
      </item>
@@ -98,7 +101,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/back_cl
      <rect>
       <x>1190</x>
       <y>20</y>
-      <width>671</width>
+      <width>611</width>
       <height>541</height>
      </rect>
     </property>
@@ -128,6 +131,9 @@ color: rgb(255, 85, 0);</string>
        <property name="styleSheet">
         <string notr="true">border-image:transparent;</string>
        </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectItems</enum>
+       </property>
       </widget>
      </item>
     </layout>
@@ -137,7 +143,7 @@ color: rgb(255, 85, 0);</string>
      <rect>
       <x>1190</x>
       <y>570</y>
-      <width>671</width>
+      <width>611</width>
       <height>471</height>
      </rect>
     </property>
@@ -167,15 +173,18 @@ color: rgb(255, 85, 0);</string>
        <property name="styleSheet">
         <string notr="true">border-image:transparent;</string>
        </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectItems</enum>
+       </property>
       </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="viewButton">
+   <widget class="QPushButton" name="recViewButton">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>20</y>
+      <x>740</x>
+      <y>930</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -201,7 +210,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
    <widget class="QPushButton" name="refreshButton">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>140</x>
       <y>20</y>
       <width>80</width>
       <height>80</height>
@@ -220,6 +229,60 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  
 QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}
 QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="myViewButton">
+    <property name="geometry">
+     <rect>
+      <x>1820</x>
+      <y>480</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="finiViewButton">
+    <property name="geometry">
+     <rect>
+      <x>1820</x>
+      <y>960</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};</string>
     </property>
     <property name="text">
      <string/>
@@ -248,29 +311,13 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh
    </hints>
   </connection>
   <connection>
-   <sender>viewButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindowTask</receiver>
-   <slot>viewButtonClick()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>181</x>
-     <y>53</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>77</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>refreshButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindowTask</receiver>
    <slot>refreshButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>279</x>
+     <x>169</x>
      <y>61</y>
     </hint>
     <hint type="destinationlabel">
@@ -279,10 +326,26 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>recViewButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowTask</receiver>
+   <slot>recViewButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>848</x>
+     <y>663</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>849</x>
+     <y>819</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>backButtonClick()</slot>
-  <slot>viewButtonClick()</slot>
+  <slot>recViewButtonClick()</slot>
   <slot>refreshButtonClick()</slot>
  </slots>
 </ui>

@@ -1,5 +1,6 @@
 #include "UpdateInfo.h"
 #include <regex>
+#include <qvalidator.h>
 using namespace std;
 
 UpdateInfo::UpdateInfo(QWidget* parent)
@@ -8,6 +9,7 @@ UpdateInfo::UpdateInfo(QWidget* parent)
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
+	ui.teleLineEdit->setValidator(new QIntValidator);
 }
 
 void UpdateInfo::okClick()

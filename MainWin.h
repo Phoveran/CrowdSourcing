@@ -1,11 +1,14 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <vector>
 #include "ui_Personal.h"
 #include "ChangePassword.h"
 #include "TopUp.h"
 #include "UpdateInfo.h"
 #include "ui_TaskWin.h"
+#include "TaskItem.h"
+using namespace std;
 
 class TaskWin;
 
@@ -40,10 +43,12 @@ public:
 
 public slots:
 	void backButtonClick();
-	void viewButtonClick();
+	void recViewButtonClick();
 	void refreshButtonClick();
 
 private:
 	Ui::MainWindowTask ui;
 	Personal* p;
+	vector<recTaskItem*> recTaskVec;
+	vector<QListWidgetItem*> liWiItemVec;
 };

@@ -6,6 +6,12 @@ TaskWin::TaskWin(QWidget* parent)
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	p = NULL;
+	QListWidgetItem* li1 = new QListWidgetItem;
+	li1->setSizeHint(QSize(680, 59));
+	li1->setWhatsThis(QString("s"));
+	recTaskItem* test = new recTaskItem;
+	ui.listWidgetRecTasks->addItem(li1);
+	ui.listWidgetRecTasks->setItemWidget(li1, test);
 }
 
 void TaskWin::backButtonClick()
@@ -20,6 +26,7 @@ void TaskWin::refreshButtonClick()
 {
 }
 
-void TaskWin::viewButtonClick()
+void TaskWin::recViewButtonClick()
 {
+	ui.label->setText(ui.listWidgetRecTasks->currentItem()->whatsThis());
 }

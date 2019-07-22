@@ -3,7 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_CrowdSourcing.h"
 #include "Register.h"
-#include "Personal.h"
+#include "MainWin.h"
 
 class CrowdSourcing : public QMainWindow
 {

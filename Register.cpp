@@ -1,5 +1,6 @@
 #include "Register.h"
 #include <regex>
+#include <qvalidator.h>
 using namespace std;
 
 Register::Register(QWidget* parent)
@@ -8,6 +9,7 @@ Register::Register(QWidget* parent)
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
+	ui.teleLineEdit->setValidator(new QIntValidator);
 }
 
 void Register::RegisterClick()

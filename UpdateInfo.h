@@ -1,9 +1,7 @@
 #pragma once
 
-
 #include <QtWidgets/QMainWindow>
 #include "ui_UpdateInfo.h"
-
 
 class UpdateInfo : public QDialog
 {

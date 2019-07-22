@@ -120,6 +120,7 @@
     <ClCompile Include="Personal.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="task.cpp" />
+    <ClCompile Include="TaskItem.cpp" />
     <ClCompile Include="TaskWin.cpp" />
     <ClCompile Include="TopUp.cpp" />
     <ClCompile Include="UpdateInfo.cpp" />
@@ -132,6 +133,7 @@
     <QtUic Include="ChangePassword.ui" />
     <QtUic Include="CrowdSourcing.ui" />
     <QtUic Include="Personal.ui" />
+    <QtUic Include="recTaskItem.ui" />
     <QtUic Include="Register.ui" />
     <QtUic Include="TaskWin.ui" />
     <QtUic Include="TopUp.ui" />
@@ -152,6 +154,7 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
     <ClInclude Include="GeneratedFiles\ui_Personal.h" />
+    <ClInclude Include="GeneratedFiles\ui_recTaskItem.h" />
     <ClInclude Include="GeneratedFiles\ui_Register.h" />
     <QtMoc Include="Register.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
@@ -160,6 +163,10 @@
     <ClInclude Include="GeneratedFiles\ui_TaskWin.h" />
     <ClInclude Include="GeneratedFiles\ui_TopUp.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateInfo.h" />
+    <QtMoc Include="TaskItem.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="task.h" />
     <QtMoc Include="TopUp.h">

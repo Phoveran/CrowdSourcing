@@ -63,6 +63,9 @@
     <ClCompile Include="TaskWin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TaskItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CrowdSourcing.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="MainWin.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TaskItem.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -104,6 +110,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="TaskWin.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="recTaskItem.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -141,6 +150,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_TaskWin.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_recTaskItem.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

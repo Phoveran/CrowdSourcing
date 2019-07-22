@@ -12,7 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
@@ -27,17 +27,20 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
-    QListView *recTasksListView;
+    QListWidget *listWidgetRecTasks;
     QPushButton *backButton;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_3;
     QLabel *label_2;
-    QListView *myTasksListView;
+    QListWidget *listWidgetMyTasks;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_3;
-    QListView *finiTasksListView;
-    QPushButton *viewButton;
+    QListWidget *listWidgetFiniTasks;
+    QPushButton *recViewButton;
+    QPushButton *refreshButton;
+    QPushButton *myViewButton;
+    QPushButton *finiViewButton;
 
     void setupUi(QMainWindow *MainWindowTask)
     {
@@ -50,7 +53,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(30, 130, 691, 911));
+        verticalLayoutWidget->setGeometry(QRect(30, 130, 691, 881));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -68,12 +71,12 @@ public:
 
         verticalLayout_2->addWidget(label);
 
-        recTasksListView = new QListView(verticalLayoutWidget);
-        recTasksListView->setObjectName(QString::fromUtf8("recTasksListView"));
-        recTasksListView->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
-        recTasksListView->setFrameShadow(QFrame::Sunken);
+        listWidgetRecTasks = new QListWidget(verticalLayoutWidget);
+        listWidgetRecTasks->setObjectName(QString::fromUtf8("listWidgetRecTasks"));
+        listWidgetRecTasks->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
+        listWidgetRecTasks->setSelectionBehavior(QAbstractItemView::SelectItems);
 
-        verticalLayout_2->addWidget(recTasksListView);
+        verticalLayout_2->addWidget(listWidgetRecTasks);
 
         backButton = new QPushButton(centralwidget);
         backButton->setObjectName(QString::fromUtf8("backButton"));
@@ -87,7 +90,7 @@ public:
         backButton->setFlat(false);
         verticalLayoutWidget_2 = new QWidget(centralwidget);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(1190, 20, 671, 541));
+        verticalLayoutWidget_2->setGeometry(QRect(1190, 20, 611, 541));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -99,16 +102,16 @@ public:
 
         verticalLayout_3->addWidget(label_2);
 
-        myTasksListView = new QListView(verticalLayoutWidget_2);
-        myTasksListView->setObjectName(QString::fromUtf8("myTasksListView"));
-        myTasksListView->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
-        myTasksListView->setFrameShadow(QFrame::Sunken);
+        listWidgetMyTasks = new QListWidget(verticalLayoutWidget_2);
+        listWidgetMyTasks->setObjectName(QString::fromUtf8("listWidgetMyTasks"));
+        listWidgetMyTasks->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
+        listWidgetMyTasks->setSelectionBehavior(QAbstractItemView::SelectItems);
 
-        verticalLayout_3->addWidget(myTasksListView);
+        verticalLayout_3->addWidget(listWidgetMyTasks);
 
         verticalLayoutWidget_3 = new QWidget(centralwidget);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(1190, 570, 671, 471));
+        verticalLayoutWidget_3->setGeometry(QRect(1190, 570, 611, 471));
         verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -120,25 +123,47 @@ public:
 
         verticalLayout_4->addWidget(label_3);
 
-        finiTasksListView = new QListView(verticalLayoutWidget_3);
-        finiTasksListView->setObjectName(QString::fromUtf8("finiTasksListView"));
-        finiTasksListView->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
-        finiTasksListView->setFrameShadow(QFrame::Sunken);
+        listWidgetFiniTasks = new QListWidget(verticalLayoutWidget_3);
+        listWidgetFiniTasks->setObjectName(QString::fromUtf8("listWidgetFiniTasks"));
+        listWidgetFiniTasks->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
+        listWidgetFiniTasks->setSelectionBehavior(QAbstractItemView::SelectItems);
 
-        verticalLayout_4->addWidget(finiTasksListView);
+        verticalLayout_4->addWidget(listWidgetFiniTasks);
 
-        viewButton = new QPushButton(centralwidget);
-        viewButton->setObjectName(QString::fromUtf8("viewButton"));
-        viewButton->setGeometry(QRect(140, 20, 80, 80));
-        viewButton->setFont(font);
-        viewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
+        recViewButton = new QPushButton(centralwidget);
+        recViewButton->setObjectName(QString::fromUtf8("recViewButton"));
+        recViewButton->setGeometry(QRect(740, 930, 80, 80));
+        recViewButton->setFont(font);
+        recViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
+"QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
+"QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};"));
+        refreshButton = new QPushButton(centralwidget);
+        refreshButton->setObjectName(QString::fromUtf8("refreshButton"));
+        refreshButton->setGeometry(QRect(140, 20, 80, 80));
+        refreshButton->setFont(font);
+        refreshButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  \n"
+"QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}\n"
+"QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);};"));
+        myViewButton = new QPushButton(centralwidget);
+        myViewButton->setObjectName(QString::fromUtf8("myViewButton"));
+        myViewButton->setGeometry(QRect(1820, 480, 80, 80));
+        myViewButton->setFont(font);
+        myViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
+"QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
+"QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};"));
+        finiViewButton = new QPushButton(centralwidget);
+        finiViewButton->setObjectName(QString::fromUtf8("finiViewButton"));
+        finiViewButton->setGeometry(QRect(1820, 960, 80, 80));
+        finiViewButton->setFont(font);
+        finiViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};"));
         MainWindowTask->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindowTask);
         QObject::connect(backButton, SIGNAL(clicked()), MainWindowTask, SLOT(backButtonClick()));
-        QObject::connect(viewButton, SIGNAL(clicked()), MainWindowTask, SLOT(viewButtonClick()));
+        QObject::connect(refreshButton, SIGNAL(clicked()), MainWindowTask, SLOT(refreshButtonClick()));
+        QObject::connect(recViewButton, SIGNAL(clicked()), MainWindowTask, SLOT(recViewButtonClick()));
 
         QMetaObject::connectSlotsByName(MainWindowTask);
     } // setupUi
@@ -150,7 +175,10 @@ public:
         backButton->setText(QString());
         label_2->setText(QCoreApplication::translate("MainWindowTask", "My Tasks:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindowTask", "Finished Tasks:", nullptr));
-        viewButton->setText(QString());
+        recViewButton->setText(QString());
+        refreshButton->setText(QString());
+        myViewButton->setText(QString());
+        finiViewButton->setText(QString());
     } // retranslateUi
 
 };
