@@ -11,6 +11,8 @@ ChangePassword::ChangePassword(Data* data, QWidget* parent)
 	dataPtr = data;
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
+	ui.newPwLineEdit->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]*$")));
+	ui.newPwAgainLineEdit->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]*$")));
 }
 
 void ChangePassword::OkClick()
@@ -43,6 +45,8 @@ Register::Register(Data* data, QWidget* parent)
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
 	ui.teleLineEdit->setValidator(new QIntValidator);
+	ui.pwLineEdit->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]*$")));
+	ui.pwAgainLineEdit->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]*$")));
 }
 
 void Register::RegisterClick()
@@ -85,7 +89,7 @@ void TopUp::topUpClick()
 {
 	QString str = ui.lineEdit->text();
 	int num = str.toInt();
-	if (num > 0 && num < 9999)
+	if (num > 0 && num < 1000000 && num % 100 == 0)
 	{
 		ui.noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\ncolor: rgb(0, 170, 0);"));
 		ui.noticeLabel->setText(QString::number(num, 10) + " Ruby topped up!");
@@ -93,15 +97,9 @@ void TopUp::topUpClick()
 	else
 	{
 		ui.noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\ncolor: rgb(255, 0, 0);"));
-		ui.noticeLabel->setText("Amount not supported");
+		ui.noticeLabel->setText("Amount not supported!");
 	}
 }
-
-void TopUp::closeClick()
-{
-	this->close();
-}
-
 
 UpdateInfo::UpdateInfo(Data* data, QWidget* parent)
 	: QDialog(parent)

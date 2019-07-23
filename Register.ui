@@ -149,27 +149,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <item>
        <property name="text">
-        <string>CET4</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>CET6</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>TEM4</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
         <string>TEM8</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>IELTS6</string>
        </property>
       </item>
       <item>
@@ -179,17 +159,47 @@ color: rgb(0, 0, 0);</string>
       </item>
       <item>
        <property name="text">
+        <string>IELTS7.5</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>IELTS8</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
         <string>TOFEL95</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>TOFEL105</string>
+        <string>TOFEL102</string>
        </property>
       </item>
       <item>
        <property name="text">
         <string>TOFEL110</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>TEF699</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>TEF834</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>TCF500</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>TCF600</string>
        </property>
       </item>
      </widget>

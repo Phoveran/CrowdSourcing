@@ -49,7 +49,6 @@ public:
 
 public slots:
 	void topUpClick();
-	void closeClick();
 
 private:
 	Ui::DialogTopUp ui;
