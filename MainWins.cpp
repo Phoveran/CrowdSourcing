@@ -1,4 +1,5 @@
 #include "MainWins.h"
+#include <qmessagebox.h>
 
 //µÇÂ½½çÃæ
 CrowdSourcing::CrowdSourcing(Data* d, QWidget* parent)
@@ -8,13 +9,38 @@ CrowdSourcing::CrowdSourcing(Data* d, QWidget* parent)
 	p = NULL;
 	r = NULL;
 	dataPtr = d;
+	ui.usernameInput->setValidator(new QRegExpValidator(QRegExp("^[0-9]{5}$")));
 }
 
 void CrowdSourcing::loginButtonClick()
 {
-	p = new Personal(dataPtr);
-	p->show();
-	this->close();
+	if (regex_match(ui.usernameInput->text().toStdString(), regex("^[1-9][0-9]{4}$")))
+	{
+		if (ui.passwordInput->text().toStdString() == dataPtr->userVec[ui.usernameInput->text().toInt() - 10000]->password)
+		{
+			dataPtr->nowAccountNum = ui.usernameInput->text().toInt();
+			dataPtr->nowAccount = dataPtr->userVec[dataPtr->nowAccountNum - 10000];
+			p = new Personal(dataPtr);
+			p->show();
+			this->close();
+		}
+		else
+		{
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setWindowTitle("Wrong Password!");
+			mesBox->setText("Wrong Password!");
+			mesBox->show();
+		}
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setWindowTitle("Invalid username!");
+		mesBox->setText("Invalid username!");
+		mesBox->show();
+	}
 }
 
 void CrowdSourcing::registerButtonClick()
@@ -34,6 +60,28 @@ Personal::Personal(Data* data, QWidget* parent)
 	to = NULL;
 	u = NULL;
 	ta = NULL;
+	ui.balanceDisplay->setText(QString::number(dataPtr->nowAccount->balance)+QString(" Ruby"));
+	ui.creditsDisplay->setText(QString("Eng: ") + QString::number(dataPtr->nowAccount->engCredits) + QString("       Fra: ") + QString::number(dataPtr->nowAccount->fraCredits));
+	if (dataPtr->nowAccount->level == 1)
+	{
+		ui.memberTypeDisplay->setText(QString("Normal member"));
+	}
+	else if (dataPtr->nowAccount->level == 2)
+	{
+		ui.memberTypeDisplay->setText(QString("VIP member"));
+	}
+	ui.telephoneDisplay->setText(QString::fromStdString(dataPtr->nowAccount->telephone));
+	ui.usernameDisplay->setText(QString::number(dataPtr->nowAccount->account));
+	QString cert;
+	for (int i = 0; i < dataPtr->nowAccount->certificationType.size(); i++)
+	{
+		cert += QString::fromStdString(dataPtr->nowAccount->certificationType[i]);
+		if (i != dataPtr->nowAccount->certificationType.size() - 1)
+		{
+			cert += QString(";");
+		}
+	}
+	ui.certificateDisplay->setText(cert);
 }
 
 void Personal::logOutButtonClick()

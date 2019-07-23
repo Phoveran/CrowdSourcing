@@ -22,7 +22,7 @@
     <rect>
      <x>60</x>
      <y>80</y>
-     <width>511</width>
+     <width>691</width>
      <height>241</height>
     </rect>
    </property>
@@ -130,7 +130,7 @@ color: rgb(0, 0, 0);</string>
        <string notr="true">border-image: \*url();</string>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#55007f;&quot;&gt;Certificate:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#55007f;&quot;&gt;Certificates:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
@@ -195,8 +195,8 @@ color: rgb(0, 0, 0);</string>
   <widget class="QFrame" name="buttonFrame">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>370</y>
+     <x>180</x>
+     <y>350</y>
      <width>411</width>
      <height>80</height>
     </rect>
@@ -329,8 +329,8 @@ border-radius:15px;padding:2px 4px;
   <widget class="QLabel" name="noticeLabel">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>490</y>
+     <x>150</x>
+     <y>480</y>
      <width>461</width>
      <height>41</height>
     </rect>

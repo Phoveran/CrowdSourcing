@@ -52,6 +52,8 @@ private:
 	bool bSelected;
 	QString strSelectedText;
 	vector<QString> certificates;
+
+	void submitRegister();
 };
 
 class TopUp : public QDialog

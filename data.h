@@ -8,6 +8,7 @@ class Task;
 class resTask;
 class transTask;
 class User;
+vector<string> split(const string& str, const string& pattern);
 
 //全局数据
 class Data
@@ -15,6 +16,8 @@ class Data
 public:
 	vector<User*> userVec;
 	vector<Task*> taskVec;
+	int nowAccountNum;//当前登陆账号
+	User* nowAccount;//当前登陆账户
 	Data();
 	void save();
 }; 
@@ -23,7 +26,7 @@ public:
 class Task
 {
 public:
-	Task(int r, string bri, int acc, int type, int per, Data* data, int reqCre);
+	Task(int r, string bri, int acc, int type, int per, Data* data, int reqEngCre = 0, int reqFraCre = 0);
 	Task(const Task& obj);
 	~Task(void);
 	Data* dataPtr;//全局数据指针
@@ -35,7 +38,8 @@ public:
 	int transType;//翻译类型，1为中=》英，2为中=》法，3为英=》中，4为英=》法，5为法=》中，6为法=》英
 	string brief;//简介
 	int period;//任务周期,单位为天
-	int reqCredits;//接取任务需要的积分
+	int reqEngCredits;//接取任务需要的英语积分
+	int reqFraCredits;//接取任务需要的法语积分
 	virtual bool taken(int) = 0;
 };
 
@@ -69,13 +73,15 @@ public:
 class User
 {
 public:
-	User(int acc, string passwd);
+	User(int acc, string passwd, vector<string> cer, string tele);
 	~User(void);
 	int level;//等级，1不可做负责人，2可做负责人
 	int account;//账户名，五位数且首位为1~9
 	int balance;//余额,以Ruby为单位，100Ruby=1RMB
-	int credits;//积分,每完成1翻译任务增加1；增至10时level变为2，可接负责任务
+	int engCredits;//英语积分,每完成1英语翻译任务增加1；
+	int fraCredits;//法语积分,每完成1法语翻译任务增加1；
 	string password;//密码，4~12位数字或字母组合
+	string telephone;//手机号码
 	vector<string> certificationType;//资质证明种类
 	vector<int> issuedTasks;//发布的任务编号
 	vector<int> takenTasks;//接取的任务编号

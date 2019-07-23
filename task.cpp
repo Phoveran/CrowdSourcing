@@ -1,6 +1,6 @@
 #include"data.h"
 
-Task::Task(int r, string bri, int acc, int type, int per, Data* data, int reqCre)
+Task::Task(int r, string bri, int acc, int type, int per, Data* data, int reqEngCre, int reqFraCre)
 {
 	dataPtr = data;
 	state = 0;
@@ -11,7 +11,8 @@ Task::Task(int r, string bri, int acc, int type, int per, Data* data, int reqCre
 	waitingAccount = vector<int>();
 	transType = type;
 	period = per;
-	reqCredits = reqCre;
+	reqEngCredits = reqEngCre;
+	reqFraCredits = reqFraCre;
 }
 
 Task::Task(const Task& obj)
@@ -25,7 +26,8 @@ Task::Task(const Task& obj)
 	waitingAccount = obj.waitingAccount;
 	transType = obj.transType;
 	period = obj.period;
-	reqCredits = obj.reqCredits;
+	reqEngCredits = obj.reqEngCredits;
+	reqFraCredits = obj.reqFraCredits;
 }
 
 Task::~Task(void)
@@ -48,7 +50,7 @@ bool resTask::taken(int acc)
 bool transTask::taken(int acc)
 {
 	int i = acc - 10000;
-	if (dataPtr->userVec[i]->credits >= reqCredits)
+	if (dataPtr->userVec[i]->engCredits >= reqEngCredits && dataPtr->userVec[i]->fraCredits >= reqFraCredits)
 	{
 		takenAccount = acc;
 		waitingAccount.clear();

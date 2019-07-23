@@ -50,7 +50,7 @@ public:
 ""));
         inputFrame = new QFrame(DialogRegister);
         inputFrame->setObjectName(QString::fromUtf8("inputFrame"));
-        inputFrame->setGeometry(QRect(60, 80, 511, 241));
+        inputFrame->setGeometry(QRect(60, 80, 691, 241));
         inputFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         formLayout = new QFormLayout(inputFrame);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
@@ -130,7 +130,7 @@ public:
 
         buttonFrame = new QFrame(DialogRegister);
         buttonFrame->setObjectName(QString::fromUtf8("buttonFrame"));
-        buttonFrame->setGeometry(QRect(120, 370, 411, 80));
+        buttonFrame->setGeometry(QRect(180, 350, 411, 80));
         buttonFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         horizontalLayout = new QHBoxLayout(buttonFrame);
         horizontalLayout->setSpacing(30);
@@ -229,7 +229,7 @@ public:
 
         noticeLabel = new QLabel(DialogRegister);
         noticeLabel->setObjectName(QString::fromUtf8("noticeLabel"));
-        noticeLabel->setGeometry(QRect(110, 490, 461, 41));
+        noticeLabel->setGeometry(QRect(150, 480, 461, 41));
         noticeLabel->setFont(font);
         noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(255, 0, 0);"));
@@ -248,7 +248,7 @@ public:
         pwLineEdit->setText(QString());
         label_2->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Password again:</span></p></body></html>", nullptr));
         pwAgainLineEdit->setText(QString());
-        label_3->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Certificate:</span></p></body></html>", nullptr));
+        label_3->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Certificates:</span></p></body></html>", nullptr));
         label_4->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Telephone:</span></p></body></html>", nullptr));
         teleLineEdit->setText(QString());
         registerButton->setText(QCoreApplication::translate("DialogRegister", "Register", nullptr));

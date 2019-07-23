@@ -8,6 +8,7 @@
 #include "Dialogs.h"
 #include "TaskItem.h"
 #include "data.h"
+
 using namespace std;
 
 class TaskWin;

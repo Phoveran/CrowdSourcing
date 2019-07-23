@@ -1,3 +1,4 @@
+#include <qmessagebox.h>
 #include <QString>
 #include <regex>
 #include <qvalidator.h>
@@ -50,7 +51,7 @@ Register::Register(Data* data, QWidget* parent)
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
 	//设置Validator
-	ui.teleLineEdit->setValidator(new QIntValidator);
+	ui.teleLineEdit->setValidator(new QRegExpValidator(QRegExp("^[0-9]{11}$")));
 	ui.pwLineEdit->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]*$")));
 	ui.pwAgainLineEdit->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]*$")));
 	//设置多选下拉栏
@@ -92,6 +93,12 @@ void Register::RegisterClick()
 	}
 	else
 	{
+		submitRegister();
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Register Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Your account is ") + QString::number(dataPtr->userVec[dataPtr->userVec.size() - 1]->account) + "\nYour password is " + QString::fromStdString(dataPtr->userVec[dataPtr->userVec.size() - 1]->password));
+		mesBox->show();
 		this->close();
 	}
 }
@@ -121,7 +128,6 @@ void Register::stateChanged(int state)
 		strSelectedData.remove(strSelectedData.count() - 1, 1);
 	if (!strSelectedData.isEmpty())
 	{
-		//ui.comboBox->setEditText(strSelectedData);
 		strSelectedText = strSelectedData;
 		pLineEdit->setText(strSelectedData);
 		pLineEdit->setToolTip(strSelectedData);
@@ -129,7 +135,6 @@ void Register::stateChanged(int state)
 	else
 	{
 		pLineEdit->clear();
-		//ui.comboBox->setEditText("");
 	}
 	bSelected = false;
 }
@@ -138,6 +143,16 @@ void Register::textChanged(const QString& text)
 {
 	if (!bSelected)
 		pLineEdit->setText(strSelectedText);
+}
+
+void Register::submitRegister()
+{
+	int account = 10000 + dataPtr->userVec.size();
+	string password = ui.pwLineEdit->text().toStdString();
+	string telephone = ui.teleLineEdit->text().toStdString();
+	vector<string> certifi = split(pLineEdit->text().toStdString(), string(";"));
+	User* user = new User(account, password, certifi, telephone);
+	dataPtr->userVec.push_back(user);
 }
 
 //充值界面
