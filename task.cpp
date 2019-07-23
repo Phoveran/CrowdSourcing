@@ -1,6 +1,6 @@
 #include"data.h"
 
-Task::Task(int r, string bri, int acc, int type, int per, Data* data)
+Task::Task(int r, string bri, int acc, int type, int per, Data* data, int reqCre)
 {
 	dataPtr = data;
 	state = 0;
@@ -11,6 +11,7 @@ Task::Task(int r, string bri, int acc, int type, int per, Data* data)
 	waitingAccount = vector<int>();
 	transType = type;
 	period = per;
+	reqCredits = reqCre;
 }
 
 Task::Task(const Task& obj)
@@ -24,6 +25,7 @@ Task::Task(const Task& obj)
 	waitingAccount = obj.waitingAccount;
 	transType = obj.transType;
 	period = obj.period;
+	reqCredits = obj.reqCredits;
 }
 
 Task::~Task(void)
@@ -32,19 +34,26 @@ Task::~Task(void)
 
 bool resTask::taken(int acc)
 {
-	int i;
-	for (i = 0; i < dataPtr->userVec.size(); i++)
+	int i = acc - 10000;
+	if (dataPtr->userVec[i]->level == 2)
 	{
-		if (dataPtr->userVec[i]->account == acc)
-		{
-			if (dataPtr->userVec[i]->level == 2)
-			{
-				takenAccount = acc;
-				waitingAccount.clear();
-				state = 1;
-				return true;
-			}
-		}
+		takenAccount = acc;
+		waitingAccount.clear();
+		state = 1;
+		return true;
+	}
+	return false;
+}
+
+bool transTask::taken(int acc)
+{
+	int i = acc - 10000;
+	if (dataPtr->userVec[i]->credits >= reqCredits)
+	{
+		takenAccount = acc;
+		waitingAccount.clear();
+		state = 1;
+		return true;
 	}
 	return false;
 }

@@ -72,17 +72,6 @@ public:
         formLayout->setWidget(1, QFormLayout::LabelRole, teleLabel);
 
         certificateBox = new QComboBox(formWidget);
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
         certificateBox->setObjectName(QString::fromUtf8("certificateBox"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Century Gothic"));
@@ -214,18 +203,6 @@ public:
         DialogUpdateInfo->setWindowTitle(QCoreApplication::translate("DialogUpdateInfo", "UpdateInfo", nullptr));
         certificateLabel->setText(QCoreApplication::translate("DialogUpdateInfo", "Certificate", nullptr));
         teleLabel->setText(QCoreApplication::translate("DialogUpdateInfo", "Telephone", nullptr));
-        certificateBox->setItemText(0, QCoreApplication::translate("DialogUpdateInfo", "TEM8", nullptr));
-        certificateBox->setItemText(1, QCoreApplication::translate("DialogUpdateInfo", "IELTS7", nullptr));
-        certificateBox->setItemText(2, QCoreApplication::translate("DialogUpdateInfo", "IELTS7.5", nullptr));
-        certificateBox->setItemText(3, QCoreApplication::translate("DialogUpdateInfo", "IELTS8", nullptr));
-        certificateBox->setItemText(4, QCoreApplication::translate("DialogUpdateInfo", "TOFEL95", nullptr));
-        certificateBox->setItemText(5, QCoreApplication::translate("DialogUpdateInfo", "TOFEL102", nullptr));
-        certificateBox->setItemText(6, QCoreApplication::translate("DialogUpdateInfo", "TOFEL110", nullptr));
-        certificateBox->setItemText(7, QCoreApplication::translate("DialogUpdateInfo", "TEF699", nullptr));
-        certificateBox->setItemText(8, QCoreApplication::translate("DialogUpdateInfo", "TEF834", nullptr));
-        certificateBox->setItemText(9, QCoreApplication::translate("DialogUpdateInfo", "TCF500", nullptr));
-        certificateBox->setItemText(10, QCoreApplication::translate("DialogUpdateInfo", "TCF600", nullptr));
-
         okButton->setText(QCoreApplication::translate("DialogUpdateInfo", "OK", nullptr));
         cancelButton->setText(QCoreApplication::translate("DialogUpdateInfo", "Cancel", nullptr));
         noticeLabel->setText(QString());

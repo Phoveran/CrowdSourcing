@@ -1,6 +1,10 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QComboBox>
 #include "ui_ChangePassword.h"
 #include "ui_Register.h"
 #include "ui_TopUp.h"
@@ -35,8 +39,19 @@ public slots:
 	void RegisterClick();
 	void CancelClick();
 
+private slots:
+//复选框的相关槽
+	void stateChanged(int state);
+	void textChanged(const QString& text);
+
 private:
 	Ui::DialogRegister ui;
+//复选框相关属性
+	QListWidget* pListWidget;
+	QLineEdit* pLineEdit;
+	bool bSelected;
+	QString strSelectedText;
+	vector<QString> certificates;
 };
 
 class TopUp : public QDialog
@@ -66,6 +81,17 @@ public slots:
 	void okClick();
 	void cancelClick();
 
+private slots:
+//复选框的相关槽
+	void stateChanged(int state);
+	void textChanged(const QString& text);
+
 private:
 	Ui::DialogUpdateInfo ui;
+//复选框相关属性
+	QListWidget* pListWidget;
+	QLineEdit* pLineEdit;
+	bool bSelected;
+	QString strSelectedText;
+	vector<QString> certificates;
 };

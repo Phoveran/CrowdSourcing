@@ -4,6 +4,7 @@
 #include "Dialogs.h"
 using namespace std;
 
+//改密码界面
 ChangePassword::ChangePassword(Data* data, QWidget* parent)
 	: QDialog(parent)
 {
@@ -36,17 +37,43 @@ void ChangePassword::CancelClick()
 	this->close();
 }
 
-
+//注册界面
 Register::Register(Data* data, QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
 	dataPtr = data;
+	bSelected = false;
+	strSelectedText = QString();
+
+	//设置窗口属性
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
+	//设置Validator
 	ui.teleLineEdit->setValidator(new QIntValidator);
 	ui.pwLineEdit->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]*$")));
 	ui.pwAgainLineEdit->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]*$")));
+	//设置多选下拉栏
+	certificates = { "TEM8","IELTS7","IELTS7.5","IELTS8","TOFEL95","TOFEL102","TOFEL110","TEF699","TEF834","TCF500","TCF600" };
+	pListWidget = new QListWidget(this);
+	pLineEdit = new QLineEdit(this);
+	pLineEdit->setFont(QFont("Century Gothic", 14, 75));
+	for (int i = 0; i < certificates.size(); i++)
+	{
+		QListWidgetItem* pItem = new QListWidgetItem(pListWidget);
+		pListWidget->addItem(pItem);
+		QCheckBox* pCheckBox = new QCheckBox(this);
+		pCheckBox->setText(certificates[i]);
+		pCheckBox->setFont(QFont("Century Gothic", 14, 75));
+		pListWidget->addItem(pItem);
+		pListWidget->setItemWidget(pItem, pCheckBox);
+		connect(pCheckBox, SIGNAL(stateChanged(int)), this, SLOT(stateChanged(int)));
+	}
+	ui.certificateBox->setModel(pListWidget->model());
+	ui.certificateBox->setView(pListWidget);
+	ui.certificateBox->setLineEdit(pLineEdit);
+	pLineEdit->setReadOnly(true);
+	connect(pLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(textChanged(const QString&)));
 }
 
 void Register::RegisterClick()
@@ -74,7 +101,46 @@ void Register::CancelClick()
 	this->close();
 }
 
+void Register::stateChanged(int state)
+{
+	bSelected = true;
+	QString strSelectedData("");
+	strSelectedText.clear();
+	for (int i = 0; i < certificates.size(); ++i)
+	{
+		QListWidgetItem* pItem = pListWidget->item(i);
+		QWidget* pWidget = pListWidget->itemWidget(pItem);
+		QCheckBox* pCheckBox = (QCheckBox*)pWidget;
+		if (pCheckBox->isChecked())
+		{
+			QString strText = pCheckBox->text();
+			strSelectedData.append(strText).append(";");
+		}
+	}
+	if (strSelectedData.endsWith(";"))
+		strSelectedData.remove(strSelectedData.count() - 1, 1);
+	if (!strSelectedData.isEmpty())
+	{
+		//ui.comboBox->setEditText(strSelectedData);
+		strSelectedText = strSelectedData;
+		pLineEdit->setText(strSelectedData);
+		pLineEdit->setToolTip(strSelectedData);
+	}
+	else
+	{
+		pLineEdit->clear();
+		//ui.comboBox->setEditText("");
+	}
+	bSelected = false;
+}
 
+void Register::textChanged(const QString& text)
+{
+	if (!bSelected)
+		pLineEdit->setText(strSelectedText);
+}
+
+//充值界面
 TopUp::TopUp(Data* data, QWidget* parent)
 	: QDialog(parent)
 {
@@ -101,14 +167,41 @@ void TopUp::topUpClick()
 	}
 }
 
+//更改信息界面
 UpdateInfo::UpdateInfo(Data* data, QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
 	dataPtr = data;
+	bSelected = false;
+	strSelectedText = QString();
+
+//设置窗口属性
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
+//设置Validator
 	ui.teleLineEdit->setValidator(new QIntValidator);
+//设置多选下拉栏
+	certificates = { "TEM8","IELTS7","IELTS7.5","IELTS8","TOFEL95","TOFEL102","TOFEL110","TEF699","TEF834","TCF500","TCF600" };
+	pListWidget = new QListWidget(this);
+	pLineEdit = new QLineEdit(this);
+	pLineEdit->setFont(QFont("Century Gothic", 14, 75));
+	for (int i = 0; i < certificates.size(); i++)
+	{
+		QListWidgetItem* pItem = new QListWidgetItem(pListWidget);
+		pListWidget->addItem(pItem);
+		QCheckBox* pCheckBox = new QCheckBox(this);
+		pCheckBox->setText(certificates[i]);
+		pCheckBox->setFont(QFont("Century Gothic", 14, 75));
+		pListWidget->addItem(pItem);
+		pListWidget->setItemWidget(pItem, pCheckBox);
+		connect(pCheckBox, SIGNAL(stateChanged(int)), this, SLOT(stateChanged(int)));
+	}
+	ui.certificateBox->setModel(pListWidget->model());
+	ui.certificateBox->setView(pListWidget);
+	ui.certificateBox->setLineEdit(pLineEdit);
+	pLineEdit->setReadOnly(true);
+	connect(pLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(textChanged(const QString&)));
 }
 
 void UpdateInfo::okClick()
@@ -126,4 +219,41 @@ void UpdateInfo::okClick()
 void UpdateInfo::cancelClick()
 {
 	this->close();
+}
+
+void UpdateInfo::stateChanged(int state)
+{
+	bSelected = true;
+	QString strSelectedData("");
+	strSelectedText.clear();
+	for (int i = 0; i < certificates.size(); ++i)
+	{
+		QListWidgetItem* pItem = pListWidget->item(i);
+		QWidget* pWidget = pListWidget->itemWidget(pItem);
+		QCheckBox* pCheckBox = (QCheckBox*)pWidget;
+		if (pCheckBox->isChecked())
+		{
+			QString strText = pCheckBox->text();
+			strSelectedData.append(strText).append(";");
+		}
+	}
+	if (strSelectedData.endsWith(";"))
+		strSelectedData.remove(strSelectedData.count() - 1, 1);
+	if (!strSelectedData.isEmpty())
+	{
+		strSelectedText = strSelectedData;
+		pLineEdit->setText(strSelectedData);
+		pLineEdit->setToolTip(strSelectedData);
+	}
+	else
+	{
+		pLineEdit->clear();
+	}
+	bSelected = false;
+}
+
+void UpdateInfo::textChanged(const QString& text)
+{
+	if (!bSelected)
+		pLineEdit->setText(strSelectedText);
 }

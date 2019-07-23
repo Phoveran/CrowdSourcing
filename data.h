@@ -23,7 +23,7 @@ public:
 class Task
 {
 public:
-	Task(int r, string bri, int acc, int type, int per, Data* data);
+	Task(int r, string bri, int acc, int type, int per, Data* data, int reqCre);
 	Task(const Task& obj);
 	~Task(void);
 	Data* dataPtr;//全局数据指针
@@ -35,13 +35,14 @@ public:
 	int transType;//翻译类型，1为中=》英，2为中=》法，3为英=》中，4为英=》法，5为法=》中，6为法=》英
 	string brief;//简介
 	int period;//任务周期,单位为天
+	int reqCredits;//接取任务需要的积分
 	virtual bool taken(int) = 0;
 };
 
 class resTask : public Task
 {
 public:
-	resTask(int r, string bri, int acc, int type, int per, Data* data, int pay, string con) :Task(r, bri, acc, type, per, data)
+	resTask(int r, string bri, int acc, int type, int per, Data* data, int reqCre, int pay, string con) :Task(r, bri, acc, type, per, data, reqCre)
 	{
 		payment = pay;
 		content = con;
@@ -56,8 +57,9 @@ public:
 class transTask : public Task
 {
 public:
-	string oriContent;//内容
-	string translation;//翻译
+	string origin;//原文
+	string transTemp;//暂存翻译
+	string transSubmit;//最终翻译
 	int payment;//每千字报酬
 	int parentTask;//父任务的序号
 	bool taken(int acc);
@@ -72,9 +74,9 @@ public:
 	int level;//等级，1不可做负责人，2可做负责人
 	int account;//账户名，五位数且首位为1~9
 	int balance;//余额,以Ruby为单位，100Ruby=1RMB
-	int credits;//积分,每完成1翻译任务增加1；增至10自动转为VIP，可接负责任务
+	int credits;//积分,每完成1翻译任务增加1；增至10时level变为2，可接负责任务
 	string password;//密码，4~12位数字或字母组合
-	string certificationType;//资质证明种类
+	vector<string> certificationType;//资质证明种类
 	vector<int> issuedTasks;//发布的任务编号
 	vector<int> takenTasks;//接取的任务编号
 };

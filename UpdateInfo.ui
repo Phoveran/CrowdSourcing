@@ -83,61 +83,6 @@
       <property name="styleSheet">
        <string notr="true">color: rgb(170, 0, 255);</string>
       </property>
-      <item>
-       <property name="text">
-        <string>TEM8</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>IELTS7</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>IELTS7.5</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>IELTS8</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>TOFEL95</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>TOFEL102</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>TOFEL110</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>TEF699</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>TEF834</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>TCF500</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>TCF600</string>
-       </property>
-      </item>
      </widget>
     </item>
     <item row="1" column="1">

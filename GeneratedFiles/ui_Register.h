@@ -106,17 +106,6 @@ public:
         formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
 
         certificateBox = new QComboBox(inputFrame);
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
-        certificateBox->addItem(QString());
         certificateBox->setObjectName(QString::fromUtf8("certificateBox"));
         certificateBox->setFont(font1);
         certificateBox->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
@@ -260,18 +249,6 @@ public:
         label_2->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Password again:</span></p></body></html>", nullptr));
         pwAgainLineEdit->setText(QString());
         label_3->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Certificate:</span></p></body></html>", nullptr));
-        certificateBox->setItemText(0, QCoreApplication::translate("DialogRegister", "TEM8", nullptr));
-        certificateBox->setItemText(1, QCoreApplication::translate("DialogRegister", "IELTS7", nullptr));
-        certificateBox->setItemText(2, QCoreApplication::translate("DialogRegister", "IELTS7.5", nullptr));
-        certificateBox->setItemText(3, QCoreApplication::translate("DialogRegister", "IELTS8", nullptr));
-        certificateBox->setItemText(4, QCoreApplication::translate("DialogRegister", "TOFEL95", nullptr));
-        certificateBox->setItemText(5, QCoreApplication::translate("DialogRegister", "TOFEL102", nullptr));
-        certificateBox->setItemText(6, QCoreApplication::translate("DialogRegister", "TOFEL110", nullptr));
-        certificateBox->setItemText(7, QCoreApplication::translate("DialogRegister", "TEF699", nullptr));
-        certificateBox->setItemText(8, QCoreApplication::translate("DialogRegister", "TEF834", nullptr));
-        certificateBox->setItemText(9, QCoreApplication::translate("DialogRegister", "TCF500", nullptr));
-        certificateBox->setItemText(10, QCoreApplication::translate("DialogRegister", "TCF600", nullptr));
-
         label_4->setText(QCoreApplication::translate("DialogRegister", "<html><head/><body><p><span style=\" color:#55007f;\">Telephone:</span></p></body></html>", nullptr));
         teleLineEdit->setText(QString());
         registerButton->setText(QCoreApplication::translate("DialogRegister", "Register", nullptr));

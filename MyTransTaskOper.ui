@@ -25,6 +25,12 @@
      <height>600</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Century Gothic</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true"/>
    </property>
@@ -32,7 +38,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tabInfo">
     <attribute name="title">
@@ -72,10 +78,10 @@ p, li { white-space: pre-wrap; }
     <widget class="QFrame" name="buttonFrame">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>139</x>
        <y>490</y>
-       <width>521</width>
-       <height>61</height>
+       <width>520</width>
+       <height>60</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -241,6 +247,7 @@ p, li { white-space: pre-wrap; }
      <property name="font">
       <font>
        <family>Century Gothic</family>
+       <pointsize>16</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -265,6 +272,7 @@ color: rgb(255, 85, 0);</string>
      <property name="font">
       <font>
        <family>Century Gothic</family>
+       <pointsize>16</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
