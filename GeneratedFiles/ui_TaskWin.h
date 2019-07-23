@@ -47,7 +47,7 @@ public:
         if (MainWindowTask->objectName().isEmpty())
             MainWindowTask->setObjectName(QString::fromUtf8("MainWindowTask"));
         MainWindowTask->resize(1920, 1080);
-        MainWindowTask->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda8.jpg);"));
+        MainWindowTask->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda9.jpg);"));
         MainWindowTask->setTabShape(QTabWidget::Triangular);
         centralwidget = new QWidget(MainWindowTask);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -90,7 +90,7 @@ public:
         backButton->setFlat(false);
         verticalLayoutWidget_2 = new QWidget(centralwidget);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(1190, 20, 611, 541));
+        verticalLayoutWidget_2->setGeometry(QRect(1210, 20, 611, 541));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -111,7 +111,7 @@ public:
 
         verticalLayoutWidget_3 = new QWidget(centralwidget);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(1190, 570, 611, 471));
+        verticalLayoutWidget_3->setGeometry(QRect(1210, 570, 611, 471));
         verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -146,14 +146,14 @@ public:
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);};"));
         myViewButton = new QPushButton(centralwidget);
         myViewButton->setObjectName(QString::fromUtf8("myViewButton"));
-        myViewButton->setGeometry(QRect(1820, 480, 80, 80));
+        myViewButton->setGeometry(QRect(1820, 470, 80, 80));
         myViewButton->setFont(font);
         myViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};"));
         finiViewButton = new QPushButton(centralwidget);
         finiViewButton->setObjectName(QString::fromUtf8("finiViewButton"));
-        finiViewButton->setGeometry(QRect(1820, 960, 80, 80));
+        finiViewButton->setGeometry(QRect(1820, 950, 80, 80));
         finiViewButton->setFont(font);
         finiViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
