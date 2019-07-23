@@ -88,6 +88,15 @@
     <QtUic Include="recTaskItem.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="RecTaskOper.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MyResTaskOper.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MyTransTaskOper.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CrowdSourcing.qrc">
