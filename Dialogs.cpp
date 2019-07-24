@@ -147,7 +147,7 @@ void Register::textChanged(const QString& text)
 
 void Register::submitRegister()
 {
-	int account = 10000 + dataPtr->userVec.size();
+	int account = 1000 + dataPtr->userVec.size();
 	string password = ui.pwLineEdit->text().toStdString();
 	string telephone = ui.teleLineEdit->text().toStdString();
 	vector<string> certifi = split(pLineEdit->text().toStdString(), string(";"));

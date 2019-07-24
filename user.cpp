@@ -10,6 +10,8 @@ User::User(int acc, string passwd, vector<string> cer, string tele)
 	fraCredits = 0;
 	certificationType = cer;
 	telephone = tele;
+	issuedTasks = vector<int>();
+	takenTasks = vector<int>();
 }
 
 User::~User(void)

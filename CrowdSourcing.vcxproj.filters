@@ -104,9 +104,6 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sqlite3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_CrowdSourcing.h">
       <Filter>Generated Files</Filter>
     </ClInclude>

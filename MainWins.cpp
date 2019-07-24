@@ -14,12 +14,12 @@ CrowdSourcing::CrowdSourcing(Data* d, QWidget* parent)
 
 void CrowdSourcing::loginButtonClick()
 {
-	if (regex_match(ui.usernameInput->text().toStdString(), regex("^[1-9][0-9]{4}$")))
+	if (regex_match(ui.usernameInput->text().toStdString(), regex("^[1-9][0-9]{3}$")) && ui.usernameInput->text().toInt() - 1000 < dataPtr->userVec.size())
 	{
-		if (ui.passwordInput->text().toStdString() == dataPtr->userVec[ui.usernameInput->text().toInt() - 10000]->password)
+		if (ui.passwordInput->text().toStdString() == dataPtr->userVec[ui.usernameInput->text().toInt() - 1000]->password)
 		{
 			dataPtr->nowAccountNum = ui.usernameInput->text().toInt();
-			dataPtr->nowAccount = dataPtr->userVec[dataPtr->nowAccountNum - 10000];
+			dataPtr->nowAccount = dataPtr->userVec[dataPtr->nowAccountNum - 1000];
 			p = new Personal(dataPtr);
 			p->show();
 			this->close();

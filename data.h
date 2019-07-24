@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 #include <regex>
+#include "sqlite3.h"
+#pragma comment(lib, "sqlite3.lib")
 using namespace std;
 
 class Task;
@@ -20,6 +22,12 @@ public:
 	User* nowAccount;//当前登陆账户
 	Data();
 	void save();
+	void read();
+private:
+	static int readUserCallBack(void* p, int argc, char** argvs, char** colNames);
+	static int readTaskCallBack(void* p, int argc, char** argvs, char** colNames);
+	void dbUserInsert(User* user, sqlite3* db, char** zErrMsg);
+	void dbTaskInsertStr(Task* task, char* str);
 }; 
 
 //任务
@@ -75,9 +83,9 @@ class User
 public:
 	User(int acc, string passwd, vector<string> cer, string tele);
 	~User(void);
-	int level;//等级，1不可做负责人，2可做负责人
 	int account;//账户名，五位数且首位为1~9
 	int balance;//余额,以Ruby为单位，100Ruby=1RMB
+	int level;//等级，1不可做负责人，2可做负责人
 	int engCredits;//英语积分,每完成1英语翻译任务增加1；
 	int fraCredits;//法语积分,每完成1法语翻译任务增加1；
 	string password;//密码，4~12位数字或字母组合
