@@ -48,6 +48,7 @@ public slots:
 	void topUpButtonClick();
 	void updateInfoButtonClick();
 	void taskButtonClick();
+	void refreshButtonClick();
 
 private:
 	Ui::MainWindowPersonal ui;

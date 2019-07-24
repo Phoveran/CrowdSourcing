@@ -31,7 +31,6 @@ public:
     QPushButton *taskButton;
     QPushButton *updateInformationButton;
     QPushButton *changePasswordButton;
-    QPushButton *logOutButton;
     QFrame *infoFram;
     QFormLayout *formLayout;
     QLabel *usernameLabel;
@@ -46,6 +45,8 @@ public:
     QLabel *certificateDisplay;
     QLabel *telephoneLabel;
     QLabel *telephoneDisplay;
+    QPushButton *refreshButton_2;
+    QPushButton *logOutButton;
 
     void setupUi(QMainWindow *MainWindowPersonal)
     {
@@ -57,7 +58,7 @@ public:
         centralwidget->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda2.jpg);"));
         buttonFram = new QFrame(centralwidget);
         buttonFram->setObjectName(QString::fromUtf8("buttonFram"));
-        buttonFram->setGeometry(QRect(280, 520, 341, 431));
+        buttonFram->setGeometry(QRect(410, 520, 341, 431));
         buttonFram->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         verticalLayout_4 = new QVBoxLayout(buttonFram);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -242,51 +243,9 @@ public:
 
         verticalLayout_4->addWidget(changePasswordButton);
 
-        logOutButton = new QPushButton(buttonFram);
-        logOutButton->setObjectName(QString::fromUtf8("logOutButton"));
-        logOutButton->setFont(font);
-        logOutButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
-"color:rgb(85, 85, 0);  \n"
-"min-height:20;  \n"
-"border-style:solid;  \n"
-"border-top-left-radius:2px;  \n"
-"border-top-right-radius:2px;  \n"
-"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  \n"
-"border:1px;  \n"
-"border-radius:15px;padding:2px 4px;\n"
-"}  \n"
-"QPushButton:hover{\n"
-"color:rgb(255, 255, 255);  \n"
-"min-height:20;  \n"
-"border-style:solid;  \n"
-"border-top-left-radius:2px;  \n"
-"border-top-right-radius:2px;  \n"
-"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   \n"
-"							stop: 0.3 rgb(37,189,252),  \n"
-"							  stop: 1 rgb(32,170,240));  \n"
-"border:1px;  \n"
-"border-radius:15px;padding:2px 4px;  \n"
-"}  \n"
-"QPushButton:pressed{ \n"
-"color:rgb(233, 236, 243);  \n"
-"min-height:20;  \n"
-"border-style:solid;  \n"
-"border-top-left-radius:2px;  \n"
-"border-top-right-radius:2px;  \n"
-"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226"
-                        ",236,241),   \n"
-"							stop: 0.3 rgb(38,190,255),  \n"
-"							  stop: 1 rgb(33,184,240));  \n"
-"border:1px;  \n"
-"border-radius:15px;padding:2px 4px;  \n"
-"};"));
-        logOutButton->setFlat(true);
-
-        verticalLayout_4->addWidget(logOutButton);
-
         infoFram = new QFrame(centralwidget);
         infoFram->setObjectName(QString::fromUtf8("infoFram"));
-        infoFram->setGeometry(QRect(150, 90, 791, 411));
+        infoFram->setGeometry(QRect(150, 90, 1031, 411));
         infoFram->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         formLayout = new QFormLayout(infoFram);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
@@ -384,6 +343,27 @@ public:
 
         formLayout->setWidget(5, QFormLayout::FieldRole, telephoneDisplay);
 
+        refreshButton_2 = new QPushButton(centralwidget);
+        refreshButton_2->setObjectName(QString::fromUtf8("refreshButton_2"));
+        refreshButton_2->setGeometry(QRect(190, 600, 80, 80));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Century Gothic"));
+        font2.setPointSize(16);
+        font2.setBold(true);
+        font2.setItalic(true);
+        font2.setWeight(75);
+        refreshButton_2->setFont(font2);
+        refreshButton_2->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  \n"
+"QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}\n"
+"QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);};"));
+        logOutButton = new QPushButton(centralwidget);
+        logOutButton->setObjectName(QString::fromUtf8("logOutButton"));
+        logOutButton->setGeometry(QRect(190, 800, 80, 80));
+        logOutButton->setFont(font);
+        logOutButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/logout_norm.png);}  \n"
+"QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/logout_on.png);}\n"
+"QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_clicked.png);};"));
+        logOutButton->setFlat(false);
         MainWindowPersonal->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindowPersonal);
@@ -392,6 +372,7 @@ public:
         QObject::connect(topUpButoon, SIGNAL(clicked()), MainWindowPersonal, SLOT(topUpButtonClick()));
         QObject::connect(updateInformationButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(updateInfoButtonClick()));
         QObject::connect(taskButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(taskButtonClick()));
+        QObject::connect(refreshButton_2, SIGNAL(clicked()), MainWindowPersonal, SLOT(refreshButtonClick()));
 
         QMetaObject::connectSlotsByName(MainWindowPersonal);
     } // setupUi
@@ -403,7 +384,6 @@ public:
         taskButton->setText(QCoreApplication::translate("MainWindowPersonal", "Tasks", nullptr));
         updateInformationButton->setText(QCoreApplication::translate("MainWindowPersonal", "Update info", nullptr));
         changePasswordButton->setText(QCoreApplication::translate("MainWindowPersonal", "Change password", nullptr));
-        logOutButton->setText(QCoreApplication::translate("MainWindowPersonal", "Log out", nullptr));
         usernameLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Username:</span></p></body></html>", nullptr));
         creditsLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Credits:</span></p></body></html>", nullptr));
         memberTypeLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Member type:</span></p></body></html>", nullptr));
@@ -416,6 +396,8 @@ public:
         certificateDisplay->setText(QString());
         telephoneLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Telephone:</span></p></body></html>", nullptr));
         telephoneDisplay->setText(QString());
+        refreshButton_2->setText(QString());
+        logOutButton->setText(QString());
     } // retranslateUi
 
 };

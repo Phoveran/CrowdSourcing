@@ -26,8 +26,8 @@ public:
 private:
 	static int readUserCallBack(void* p, int argc, char** argvs, char** colNames);
 	static int readTaskCallBack(void* p, int argc, char** argvs, char** colNames);
-	void dbUserInsert(User* user, sqlite3* db, char** zErrMsg);
-	void dbTaskInsertStr(Task* task, char* str);
+	void dbUserInsert(User* user, sqlite3* db, char** errMsg);
+	void dbTaskInsert(Task* task, sqlite3* db, char** errMsg);
 }; 
 
 //хннЯ

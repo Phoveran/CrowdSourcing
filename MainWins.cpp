@@ -114,6 +114,32 @@ void Personal::taskButtonClick()
 	this->close();
 }
 
+void Personal::refreshButtonClick()
+{
+	ui.balanceDisplay->setText(QString::number(dataPtr->nowAccount->balance) + QString(" Ruby"));
+	ui.creditsDisplay->setText(QString("Eng: ") + QString::number(dataPtr->nowAccount->engCredits) + QString("       Fra: ") + QString::number(dataPtr->nowAccount->fraCredits));
+	if (dataPtr->nowAccount->level == 1)
+	{
+		ui.memberTypeDisplay->setText(QString("Normal member"));
+	}
+	else if (dataPtr->nowAccount->level == 2)
+	{
+		ui.memberTypeDisplay->setText(QString("VIP member"));
+	}
+	ui.telephoneDisplay->setText(QString::fromStdString(dataPtr->nowAccount->telephone));
+	ui.usernameDisplay->setText(QString::number(dataPtr->nowAccount->account));
+	QString cert;
+	for (int i = 0; i < dataPtr->nowAccount->certificationType.size(); i++)
+	{
+		cert += QString::fromStdString(dataPtr->nowAccount->certificationType[i]);
+		if (i != dataPtr->nowAccount->certificationType.size() - 1)
+		{
+			cert += QString(";");
+		}
+	}
+	ui.certificateDisplay->setText(cert);
+}
+
 //任务界面
 TaskWin::TaskWin(Data* data, QWidget* parent)
 	: QMainWindow(parent)

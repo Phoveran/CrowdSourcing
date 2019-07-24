@@ -25,6 +25,8 @@ public slots:
 
 private:
 	Ui::DialogChangePassword ui;
+
+	void submitChange();
 };
 
 class Register : public QDialog
@@ -69,6 +71,8 @@ public slots:
 
 private:
 	Ui::DialogTopUp ui;
+
+	void submitTopUp();
 };
 
 class UpdateInfo : public QDialog
@@ -96,4 +100,7 @@ private:
 	bool bSelected;
 	QString strSelectedText;
 	vector<QString> certificates;
+
+//Ë½ÓÐº¯Êý
+	void submitChange();
 };

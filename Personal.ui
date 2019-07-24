@@ -20,7 +20,7 @@
    <widget class="QFrame" name="buttonFram">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>410</x>
       <y>520</y>
       <width>341</width>
       <height>431</height>
@@ -253,61 +253,6 @@ border-radius:15px;padding:2px 4px;
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="logOutButton">
-       <property name="font">
-        <font>
-         <family>Century Gothic</family>
-         <pointsize>18</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{  
-color:rgb(85, 85, 0);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
-border:1px;  
-border-radius:15px;padding:2px 4px;
-}  
-QPushButton:hover{
-color:rgb(255, 255, 255);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(37,189,252),  
-							  stop: 1 rgb(32,170,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-}  
-QPushButton:pressed{ 
-color:rgb(233, 236, 243);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(38,190,255),  
-							  stop: 1 rgb(33,184,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-};</string>
-       </property>
-       <property name="text">
-        <string>Log out</string>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
    <widget class="QFrame" name="infoFram">
@@ -315,7 +260,7 @@ border-radius:15px;padding:2px 4px;
      <rect>
       <x>150</x>
       <y>90</y>
-      <width>791</width>
+      <width>1031</width>
       <height>411</height>
      </rect>
     </property>
@@ -571,6 +516,63 @@ color: rgb(170, 85, 255);</string>
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="refreshButton_2">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>600</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="logOutButton">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>800</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/logout_norm.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/logout_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_clicked.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>
@@ -584,8 +586,8 @@ color: rgb(170, 85, 255);</string>
    <slot>changePasswordButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>307</x>
-     <y>801</y>
+     <x>448</x>
+     <y>895</y>
     </hint>
     <hint type="destinationlabel">
      <x>415</x>
@@ -600,8 +602,8 @@ color: rgb(170, 85, 255);</string>
    <slot>logOutButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>313</x>
-     <y>879</y>
+     <x>223</x>
+     <y>759</y>
     </hint>
     <hint type="destinationlabel">
      <x>421</x>
@@ -632,8 +634,8 @@ color: rgb(170, 85, 255);</string>
    <slot>updateInfoButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>352</x>
-     <y>743</y>
+     <x>493</x>
+     <y>801</y>
     </hint>
     <hint type="destinationlabel">
      <x>639</x>
@@ -648,12 +650,28 @@ color: rgb(170, 85, 255);</string>
    <slot>taskButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>569</x>
-     <y>651</y>
+     <x>710</x>
+     <y>709</y>
     </hint>
     <hint type="destinationlabel">
      <x>699</x>
      <y>644</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refreshButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowPersonal</receiver>
+   <slot>refreshButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>241</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>335</x>
+     <y>533</y>
     </hint>
    </hints>
   </connection>
@@ -664,5 +682,6 @@ color: rgb(170, 85, 255);</string>
   <slot>topUpButtonClick()</slot>
   <slot>updateInfoButtonClick()</slot>
   <slot>taskButtonClick()</slot>
+  <slot>refreshButtonClick()</slot>
  </slots>
 </ui>

@@ -46,12 +46,13 @@ string intCombine2String(vector<int> ori, const string& pattern = "")
 	return res;
 }
 
+
+
 Data::Data()
 {
 	userVec = vector<User*>();
 	taskVec = vector<Task*>();
 }
-
 
 
 void Data::save()
@@ -122,10 +123,9 @@ void Data::dbUserInsert(User* user, sqlite3* db, char** errMsg)
 	sqlite3_exec(db, str, 0, 0, errMsg);
 }
 
-void Data::dbTaskInsertStr(Task* task, char* str)
+void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 {
 }
-
 
 
 void Data::read()

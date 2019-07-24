@@ -38,6 +38,11 @@ void ChangePassword::CancelClick()
 	this->close();
 }
 
+void ChangePassword::submitChange()
+{
+	dataPtr->nowAccount->password = ui.newPwLineEdit->text().toStdString();
+}
+
 //注册界面
 Register::Register(Data* data, QWidget* parent)
 	: QDialog(parent)
@@ -173,6 +178,7 @@ void TopUp::topUpClick()
 	if (num > 0 && num < 1000000 && num % 100 == 0)
 	{
 		ui.noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\ncolor: rgb(0, 170, 0);"));
+		submitTopUp();
 		ui.noticeLabel->setText(QString::number(num, 10) + " Ruby topped up!");
 	}
 	else
@@ -181,6 +187,12 @@ void TopUp::topUpClick()
 		ui.noticeLabel->setText("Amount not supported!");
 	}
 }
+
+void TopUp::submitTopUp()
+{
+	dataPtr->nowAccount->balance += ui.lineEdit->text().toInt();
+}
+
 
 //更改信息界面
 UpdateInfo::UpdateInfo(Data* data, QWidget* parent)
@@ -195,7 +207,7 @@ UpdateInfo::UpdateInfo(Data* data, QWidget* parent)
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
 //设置Validator
-	ui.teleLineEdit->setValidator(new QIntValidator);
+	ui.teleLineEdit->setValidator(new QRegExpValidator(QRegExp("^[0-9]{11}$")));
 //设置多选下拉栏
 	certificates = { "TEM8","IELTS7","IELTS7.5","IELTS8","TOFEL95","TOFEL102","TOFEL110","TEF699","TEF834","TCF500","TCF600" };
 	pListWidget = new QListWidget(this);
@@ -227,6 +239,7 @@ void UpdateInfo::okClick()
 	}
 	else
 	{
+		submitChange();
 		this->close();
 	}
 }
@@ -271,4 +284,12 @@ void UpdateInfo::textChanged(const QString& text)
 {
 	if (!bSelected)
 		pLineEdit->setText(strSelectedText);
+}
+
+void UpdateInfo::submitChange()
+{
+	vector<string> certifi = split(pLineEdit->text().toStdString(), string(";"));
+	string tele = ui.teleLineEdit->text().toStdString();
+	dataPtr->nowAccount->telephone = tele;
+	dataPtr->nowAccount->certificationType = certifi;
 }
