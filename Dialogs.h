@@ -9,6 +9,7 @@
 #include "ui_Register.h"
 #include "ui_TopUp.h"
 #include "ui_UpdateInfo.h"
+#include "ui_RecTaskOper.h"
 #include "data.h"
 
 class ChangePassword : public QDialog
@@ -103,4 +104,18 @@ private:
 
 //Ë½ÓÐº¯Êý
 	void submitChange();
+};
+
+class RecTaskOper : public QDialog
+{
+	Q_OBJECT
+
+public:
+	RecTaskOper(Task* task, Data* data, QWidget* parent = Q_NULLPTR);
+	Data* dataPtr;
+
+public slots:
+
+private:
+	Ui::DialogRecTaskOper ui;
 };

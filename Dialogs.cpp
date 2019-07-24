@@ -293,3 +293,15 @@ void UpdateInfo::submitChange()
 	dataPtr->nowAccount->telephone = tele;
 	dataPtr->nowAccount->certificationType = certifi;
 }
+
+
+//招募中任务界面
+RecTaskOper::RecTaskOper(Task* tas, Data* data, QWidget* parent)
+	: QDialog(parent)
+{
+	ui.setupUi(this);
+	dataPtr = data;
+	if (tas->type())
+	{
+	}
+}

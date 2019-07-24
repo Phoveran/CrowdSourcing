@@ -1,6 +1,6 @@
 #include"data.h"
 
-Task::Task(int r, string bri, int acc, int type, int per, Data* data, int reqEngCre, int reqFraCre)
+Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con, int reqEngCre, int reqFraCre)
 {
 	dataPtr = data;
 	state = 0;
@@ -11,8 +11,11 @@ Task::Task(int r, string bri, int acc, int type, int per, Data* data, int reqEng
 	waitingAccount = vector<int>();
 	transType = type;
 	period = per;
+	content = con;
 	reqEngCredits = reqEngCre;
 	reqFraCredits = reqFraCre;
+	transTemp = string();
+	transSubmit = string();
 }
 
 Task::Task(const Task& obj)
@@ -26,6 +29,7 @@ Task::Task(const Task& obj)
 	waitingAccount = obj.waitingAccount;
 	transType = obj.transType;
 	period = obj.period;
+	content = obj.content;
 	reqEngCredits = obj.reqEngCredits;
 	reqFraCredits = obj.reqFraCredits;
 }
@@ -34,7 +38,14 @@ Task::~Task(void)
 {
 }
 
-bool resTask::taken(int acc)
+
+
+vector<int> ResTask::getChildren()
+{
+	return childrenTasks;
+}
+
+bool ResTask::taken(int acc)
 {
 	int i = acc - 10000;
 	if (dataPtr->userVec[i]->level == 2)
@@ -47,7 +58,14 @@ bool resTask::taken(int acc)
 	return false;
 }
 
-bool transTask::taken(int acc)
+int ResTask::type()
+{
+	return 0;
+}
+
+
+
+bool TransTask::taken(int acc)
 {
 	int i = acc - 10000;
 	if (dataPtr->userVec[i]->engCredits >= reqEngCredits && dataPtr->userVec[i]->fraCredits >= reqFraCredits)
@@ -58,4 +76,14 @@ bool transTask::taken(int acc)
 		return true;
 	}
 	return false;
+}
+
+int TransTask::type()
+{
+	return 1;
+}
+
+int TransTask::getParent()
+{
+	return parentTask;
 }

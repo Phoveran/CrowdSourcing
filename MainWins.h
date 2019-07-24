@@ -56,6 +56,8 @@ private:
 	TopUp* to;	
 	UpdateInfo* u;
 	TaskWin* ta;
+
+	void loadInfo();
 };
 
 //任务界面
@@ -76,5 +78,6 @@ private:
 	Ui::MainWindowTask ui;
 	Personal* p;
 	vector<recTaskItem*> recTaskVec;
-	vector<QListWidgetItem*> liWiItemVec;
+
+	void loadInfo();
 };

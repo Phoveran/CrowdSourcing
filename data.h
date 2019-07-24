@@ -7,8 +7,8 @@
 using namespace std;
 
 class Task;
-class resTask;
-class transTask;
+class ResTask;
+class TransTask;
 class User;
 vector<string> split(const string& str, const string& pattern);
 
@@ -24,8 +24,8 @@ public:
 	void save();
 	void read();
 private:
-	static int readUserCallBack(void* p, int argc, char** argvs, char** colNames);
-	static int readTaskCallBack(void* p, int argc, char** argvs, char** colNames);
+	static int readUserCallBack(void* ptr, int argc, char** argvs, char** colNames);
+	static int readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames);
 	void dbUserInsert(User* user, sqlite3* db, char** errMsg);
 	void dbTaskInsert(Task* task, sqlite3* db, char** errMsg);
 }; 
@@ -34,47 +34,58 @@ private:
 class Task
 {
 public:
-	Task(int r, string bri, int acc, int type, int per, Data* data, int reqEngCre = 0, int reqFraCre = 0);
+	Task(int r, string bri, int acc, int type, int per, Data* data, string con, int reqEngCre = 0, int reqFraCre = 0);
 	Task(const Task& obj);
 	~Task(void);
 	Data* dataPtr;//全局数据指针
+	int rank;//任务序号
 	int issuingAccount;//发布该任务的账号
 	int takenAccount;//领取该任务的账号
 	vector<int> waitingAccount;//等待接取该任务的账号
 	int state;//状态，2为招募中，1为执行中，0为已完成
-	int rank;//任务序号
 	int transType;//翻译类型，1为中=》英，2为中=》法，3为英=》中，4为英=》法，5为法=》中，6为法=》英
-	string brief;//简介
 	int period;//任务周期,单位为天
 	int reqEngCredits;//接取任务需要的英语积分
 	int reqFraCredits;//接取任务需要的法语积分
-	virtual bool taken(int) = 0;
-};
-
-class resTask : public Task
-{
-public:
-	resTask(int r, string bri, int acc, int type, int per, Data* data, int reqCre, int pay, string con) :Task(r, bri, acc, type, per, data, reqCre)
-	{
-		payment = pay;
-		content = con;
-		childrenTasks = vector<int>();
-	}
-	int payment;//报酬
-	string content;//内容
-	vector<int> childrenTasks;//子任务序号
-	bool taken(int acc);
-};
-
-class transTask : public Task
-{
-public:
-	string origin;//原文
+	int payment;//每千字报酬
+	string brief;//简介
+	string content;//原文
 	string transTemp;//暂存翻译
 	string transSubmit;//最终翻译
-	int payment;//每千字报酬
-	int parentTask;//父任务的序号
+	virtual bool taken(int) = 0;
+	virtual int type() = 0;
+	virtual vector<int> getChildren() = 0;
+	virtual int getParent() = 0;
+};
+
+class ResTask : public Task
+{
+public:
+	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con) :Task(r, bri, acc, type, per, data, con)
+	{
+		childrenTasks = vector<int>();
+	}
+	vector<int> getChildren();
 	bool taken(int acc);
+	int type();
+
+private:
+	vector<int> childrenTasks;//子任务序号
+};
+
+class TransTask : public Task
+{
+public:
+	TransTask(int r, string bri, int acc, int type, int per, Data* data, int parent, string con) :Task(r, bri, acc, type, per, data, con)
+	{
+		parentTask = parent;
+	};
+	bool taken(int acc);
+	int type();
+	int getParent();
+
+private:
+	int parentTask;//父任务的序号
 };
 
 //用户

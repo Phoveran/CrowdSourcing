@@ -1,6 +1,7 @@
 #include "MainWins.h"
 #include <qmessagebox.h>
 
+
 //登陆界面
 CrowdSourcing::CrowdSourcing(Data* d, QWidget* parent)
 	: QMainWindow(parent)
@@ -49,6 +50,7 @@ void CrowdSourcing::registerButtonClick()
 	r->show();
 }
 
+
 //个人信息界面
 Personal::Personal(Data* data, QWidget* parent)
 	: QMainWindow(parent)
@@ -60,28 +62,7 @@ Personal::Personal(Data* data, QWidget* parent)
 	to = NULL;
 	u = NULL;
 	ta = NULL;
-	ui.balanceDisplay->setText(QString::number(dataPtr->nowAccount->balance)+QString(" Ruby"));
-	ui.creditsDisplay->setText(QString("Eng: ") + QString::number(dataPtr->nowAccount->engCredits) + QString("       Fra: ") + QString::number(dataPtr->nowAccount->fraCredits));
-	if (dataPtr->nowAccount->level == 1)
-	{
-		ui.memberTypeDisplay->setText(QString("Normal member"));
-	}
-	else if (dataPtr->nowAccount->level == 2)
-	{
-		ui.memberTypeDisplay->setText(QString("VIP member"));
-	}
-	ui.telephoneDisplay->setText(QString::fromStdString(dataPtr->nowAccount->telephone));
-	ui.usernameDisplay->setText(QString::number(dataPtr->nowAccount->account));
-	QString cert;
-	for (int i = 0; i < dataPtr->nowAccount->certificationType.size(); i++)
-	{
-		cert += QString::fromStdString(dataPtr->nowAccount->certificationType[i]);
-		if (i != dataPtr->nowAccount->certificationType.size() - 1)
-		{
-			cert += QString(";");
-		}
-	}
-	ui.certificateDisplay->setText(cert);
+	loadInfo();
 }
 
 void Personal::logOutButtonClick()
@@ -116,6 +97,11 @@ void Personal::taskButtonClick()
 
 void Personal::refreshButtonClick()
 {
+	loadInfo();
+}
+
+void Personal::loadInfo()
+{
 	ui.balanceDisplay->setText(QString::number(dataPtr->nowAccount->balance) + QString(" Ruby"));
 	ui.creditsDisplay->setText(QString("Eng: ") + QString::number(dataPtr->nowAccount->engCredits) + QString("       Fra: ") + QString::number(dataPtr->nowAccount->fraCredits));
 	if (dataPtr->nowAccount->level == 1)
@@ -140,6 +126,7 @@ void Personal::refreshButtonClick()
 	ui.certificateDisplay->setText(cert);
 }
 
+
 //任务界面
 TaskWin::TaskWin(Data* data, QWidget* parent)
 	: QMainWindow(parent)
@@ -148,13 +135,7 @@ TaskWin::TaskWin(Data* data, QWidget* parent)
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	p = NULL;
 	dataPtr = data;
-	//测试
-	QListWidgetItem* li1 = new QListWidgetItem;
-	li1->setSizeHint(QSize(680, 59));
-	li1->setWhatsThis(QString("s"));
-	recTaskItem* test = new recTaskItem;
-	ui.listWidgetRecTasks->addItem(li1);
-	ui.listWidgetRecTasks->setItemWidget(li1, test);
+	loadInfo();
 }
 
 void TaskWin::backButtonClick()
@@ -167,10 +148,43 @@ void TaskWin::backButtonClick()
 
 void TaskWin::refreshButtonClick()
 {
+	loadInfo();
+}
+
+void TaskWin::loadInfo()
+{
+	for (int i = 0; i < dataPtr->taskVec.size(); i++)
+	{
+		if (dataPtr->taskVec[i]->state == 2)
+		{
+			QListWidgetItem* li = new QListWidgetItem;
+			li->setWhatsThis(QString(dataPtr->taskVec[i]->rank));
+			li->setSizeHint(QSize(680, 59));
+			recTaskItem* rti = new recTaskItem(dataPtr->taskVec[i]);
+			ui.listWidgetRecTasks->addItem(li);
+			ui.listWidgetRecTasks->setItemWidget(li, rti);
+		}
+		else if (dataPtr->taskVec[i]->takenAccount == dataPtr->nowAccountNum)
+		{
+			QListWidgetItem* li = new QListWidgetItem;
+			li->setWhatsThis(QString(dataPtr->taskVec[i]->rank));
+			li->setSizeHint(QSize(600, 59));
+			recTaskItem* rti = new recTaskItem(dataPtr->taskVec[i]);
+			if (dataPtr->taskVec[i]->state == 1)
+			{
+				ui.listWidgetMyTasks->addItem(li);
+				ui.listWidgetMyTasks->setItemWidget(li, rti);
+			}
+			else if (dataPtr->taskVec[i]->state == 0)
+			{
+				ui.listWidgetFiniTasks->addItem(li);
+				ui.listWidgetFiniTasks->setItemWidget(li, rti);
+			}
+		}
+	}
 }
 
 void TaskWin::recViewButtonClick()
 {
-	//测试
-	ui.label->setText(ui.listWidgetRecTasks->currentItem()->whatsThis());
+	int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt();
 }

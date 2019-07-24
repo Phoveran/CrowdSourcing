@@ -55,15 +55,17 @@ public:
         DialogRecTaskOper->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda8.jpg);"));
         formFrame = new QFrame(DialogRecTaskOper);
         formFrame->setObjectName(QString::fromUtf8("formFrame"));
-        formFrame->setGeometry(QRect(90, 10, 621, 211));
-        formFrame->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
+        formFrame->setGeometry(QRect(90, 0, 621, 221));
+        formFrame->setStyleSheet(QString::fromUtf8("border-image:transparent;\n"
+"color: rgb(85, 85, 0);"));
         formLayout = new QFormLayout(formFrame);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
+        formLayout->setVerticalSpacing(3);
         label_1 = new QLabel(formFrame);
         label_1->setObjectName(QString::fromUtf8("label_1"));
         QFont font;
         font.setFamily(QString::fromUtf8("Century Gothic"));
-        font.setPointSize(16);
+        font.setPointSize(12);
         label_1->setFont(font);
         label_1->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);"));
 
@@ -113,75 +115,78 @@ public:
 
         labelRank = new QLabel(formFrame);
         labelRank->setObjectName(QString::fromUtf8("labelRank"));
-        labelRank->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Century Gothic"));
+        font1.setPointSize(16);
+        labelRank->setFont(font1);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, labelRank);
 
         labelTransType = new QLabel(formFrame);
         labelTransType->setObjectName(QString::fromUtf8("labelTransType"));
-        labelTransType->setFont(font);
+        labelTransType->setFont(font1);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, labelTransType);
 
         labelTaskType = new QLabel(formFrame);
         labelTaskType->setObjectName(QString::fromUtf8("labelTaskType"));
-        labelTaskType->setFont(font);
+        labelTaskType->setFont(font1);
 
         formLayout->setWidget(2, QFormLayout::FieldRole, labelTaskType);
 
         labelPayment = new QLabel(formFrame);
         labelPayment->setObjectName(QString::fromUtf8("labelPayment"));
-        labelPayment->setFont(font);
+        labelPayment->setFont(font1);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, labelPayment);
 
         labelIssAcc = new QLabel(formFrame);
         labelIssAcc->setObjectName(QString::fromUtf8("labelIssAcc"));
-        labelIssAcc->setFont(font);
+        labelIssAcc->setFont(font1);
 
         formLayout->setWidget(4, QFormLayout::FieldRole, labelIssAcc);
 
         labelTaskPer = new QLabel(formFrame);
         labelTaskPer->setObjectName(QString::fromUtf8("labelTaskPer"));
-        labelTaskPer->setFont(font);
+        labelTaskPer->setFont(font1);
 
         formLayout->setWidget(5, QFormLayout::FieldRole, labelTaskPer);
 
         labelReqCredits = new QLabel(formFrame);
         labelReqCredits->setObjectName(QString::fromUtf8("labelReqCredits"));
-        labelReqCredits->setFont(font);
+        labelReqCredits->setFont(font1);
 
         formLayout->setWidget(6, QFormLayout::FieldRole, labelReqCredits);
 
         textBrowserBrief = new QTextBrowser(DialogRecTaskOper);
         textBrowserBrief->setObjectName(QString::fromUtf8("textBrowserBrief"));
         textBrowserBrief->setGeometry(QRect(520, 240, 261, 351));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("\345\215\216\346\226\207\347\273\206\351\273\221"));
-        font1.setPointSize(12);
-        textBrowserBrief->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("\345\215\216\346\226\207\347\273\206\351\273\221"));
+        font2.setPointSize(12);
+        textBrowserBrief->setFont(font2);
         textBrowserBrief->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
         frame = new QFrame(DialogRecTaskOper);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(90, 280, 180, 250));
+        frame->setGeometry(QRect(80, 290, 180, 250));
         frame->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/in_morocco.jpg);"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         verticalFrame = new QFrame(DialogRecTaskOper);
         verticalFrame->setObjectName(QString::fromUtf8("verticalFrame"));
-        verticalFrame->setGeometry(QRect(320, 400, 160, 161));
+        verticalFrame->setGeometry(QRect(320, 410, 161, 151));
         verticalFrame->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
         verticalLayout = new QVBoxLayout(verticalFrame);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         acceptButton = new QPushButton(verticalFrame);
         acceptButton->setObjectName(QString::fromUtf8("acceptButton"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Century Gothic"));
-        font2.setPointSize(22);
-        font2.setBold(true);
-        font2.setItalic(true);
-        font2.setWeight(75);
-        acceptButton->setFont(font2);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Century Gothic"));
+        font3.setPointSize(18);
+        font3.setBold(true);
+        font3.setItalic(true);
+        font3.setWeight(75);
+        acceptButton->setFont(font3);
         acceptButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"
@@ -224,7 +229,7 @@ public:
 
         cancelButton = new QPushButton(verticalFrame);
         cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
-        cancelButton->setFont(font2);
+        cancelButton->setFont(font3);
         cancelButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"

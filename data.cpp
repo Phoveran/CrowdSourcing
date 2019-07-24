@@ -60,10 +60,11 @@ void Data::save()
 	sqlite3* db;
 	sqlite3_open("data.db", &db);
 	char* zErrMsg = 0;
-	char* sqlDrop = "DROP TABLE USER;"/*\
-		"DROP TABLE TASK;"*/;
+	char* sqlDrop = "DROP TABLE USER;"\
+		"DROP TABLE TASK;";
 	sqlite3_exec(db, sqlDrop, 0, 0, &zErrMsg);
-	char* sqlCreate = 
+	char* sqlCreate =
+		//创建用户表
 		"CREATE TABLE USER("\
 		"ACCOUNT INT PRIMARY KEY NOT NULL,"\
 		"BALANCE INT NOT NULL,"\
@@ -74,11 +75,32 @@ void Data::save()
 		"TELEPHONE TEXT NOT NULL,"\
 		"CERTIFICATES TEXT,"\
 		"iSSUEDTASKS TEXT,"\
-		"TAKENTASKS TEXT)";
+		"TAKENTASKS TEXT);"\
+		//创建任务表
+		"CREATE TABLE TASK("\
+		"RANK INT PRIMARY KEY NOT NULL,"\
+		"TYPE INT NOT NULL,"\
+		"ISSUINGACCOUNT INT NOT NULL,"\
+		"TAKENACCOUNT INT,"\
+		"WAITING ACCOUNT TEXT,"\
+		"STATE INT NOT NULL,"\
+		"TRANSTYPE INT NOT NULL,"\
+		"PERIOD INT NOT NULL,"\
+		"REQENGCRE INT NOT NULL,"\
+		"REQFRACRE INT NOT NULL,"\
+		"PAYMENT INT NOT NULL,"\
+		"BRIEF TEXT NOT NULL,"\
+		"CONTENT TEXT NOT NULL,"\
+		"TRANSTEMP TEXT,"\
+		"TRANSSUBMIT TEXT);";
 	sqlite3_exec(db, sqlCreate, 0, 0, &zErrMsg);
 	for (int i = 0; i < userVec.size(); i++)
 	{
 		dbUserInsert(userVec[i], db, &zErrMsg);
+	}
+	for (int i = 0; i < taskVec.size(); i++)
+	{
+		dbTaskInsert(taskVec[i], db, &zErrMsg);
 	}
 	sqlite3_close(db);
 }
@@ -108,7 +130,7 @@ void Data::dbUserInsert(User* user, sqlite3* db, char** errMsg)
 	}
 	else
 	{
-		strs.push_back(intCombine2String(user->issuedTasks, ";") + string(", "));
+		strs.push_back(string("\"") + intCombine2String(user->issuedTasks, ";") + string("\"") + string(", "));
 	}
 	if (user->takenTasks.empty())
 	{
@@ -116,7 +138,7 @@ void Data::dbUserInsert(User* user, sqlite3* db, char** errMsg)
 	}
 	else
 	{
-		strs.push_back(intCombine2String(user->takenTasks, ";") + string(")"));
+		strs.push_back(string("\"") + intCombine2String(user->takenTasks, ";") + string("\"") + string(")"));
 	}
 	string tempStr = stringCombine(strs);
 	const char* str = tempStr.c_str();
@@ -125,6 +147,47 @@ void Data::dbUserInsert(User* user, sqlite3* db, char** errMsg)
 
 void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 {
+	vector<string> strs = vector<string>();
+	strs.push_back(string("INSERT INTO TASK VALUES("));
+	strs.push_back(to_string(task->rank) + string(", "));
+	strs.push_back(to_string(task->type()) + string(", "));
+	strs.push_back(to_string(task->issuingAccount) + string(", "));
+	strs.push_back(to_string(task->takenAccount) + string(", "));
+	if (task->waitingAccount.empty())
+	{
+		strs.push_back(string("NULL, "));
+	}
+	else
+	{
+		strs.push_back(string("\"") + intCombine2String(task->waitingAccount) + string("\"") + string(", "));
+	}
+	strs.push_back(to_string(task->state) + string(", "));
+	strs.push_back(to_string(task->transType) + string(", "));
+	strs.push_back(to_string(task->period) + string(", "));
+	strs.push_back(to_string(task->reqEngCredits) + string(", "));
+	strs.push_back(to_string(task->reqFraCredits) + string(", "));
+	strs.push_back(to_string(task->payment) + string(", "));
+	strs.push_back(string("\"") + task->brief + string("\"") + string(", "));
+	strs.push_back(string("\"") + task->content + string("\"") + string(", "));
+	if (task->transTemp.empty())
+	{
+		strs.push_back(string("NULL, "));
+	}
+	else
+	{
+		strs.push_back(string("\"") + task->transTemp + string("\"") + string(", "));
+	}
+	if (task->transSubmit.empty())
+	{
+		strs.push_back(string("NULL)"));
+	}
+	else
+	{
+		strs.push_back(string("\"") + task->transSubmit + string("\"") + string(")"));
+	}
+	string tempStr = stringCombine(strs);
+	const char* str = tempStr.c_str();
+	sqlite3_exec(db, str, 0, 0, errMsg);
 }
 
 
@@ -135,8 +198,8 @@ void Data::read()
 	char* zErrMsg = 0;
 	char* sqlUser = "SELECT * FROM USER";
 	sqlite3_exec(db, sqlUser, readUserCallBack, this, &zErrMsg);
-/*	char* sqlTask = "SELECT * FROM TASK;";
-	sqlite3_exec(db, sqlTask, readTaskCallBack, NULL, &zErrMsg);*/
+	char* sqlTask = "SELECT * FROM TASK;";
+	sqlite3_exec(db, sqlTask, readTaskCallBack, this, &zErrMsg);
 	sqlite3_close(db);
 }
 
@@ -178,7 +241,9 @@ int Data::readUserCallBack(void* ptr, int argc, char** argvs, char** colNames)
 	return 0;
 }
 
-int Data::readTaskCallBack(void* p, int argc, char** argvs, char** colNames)
+int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 {
+	Data* data = (Data*)ptr;
+	Task* task;
 	return 0;
 }

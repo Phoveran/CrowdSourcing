@@ -141,9 +141,9 @@ public:
         refreshButton->setObjectName(QString::fromUtf8("refreshButton"));
         refreshButton->setGeometry(QRect(140, 20, 80, 80));
         refreshButton->setFont(font);
-        refreshButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  \n"
+        refreshButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}\n"
-"QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);};"));
+"QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);};"));
         myViewButton = new QPushButton(centralwidget);
         myViewButton->setObjectName(QString::fromUtf8("myViewButton"));
         myViewButton->setGeometry(QRect(1820, 470, 80, 80));

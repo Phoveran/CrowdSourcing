@@ -33,7 +33,8 @@ public:
         if (recTaskItem->objectName().isEmpty())
             recTaskItem->setObjectName(QString::fromUtf8("recTaskItem"));
         recTaskItem->resize(680, 50);
-        recTaskItem->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);"));
+        recTaskItem->setStyleSheet(QString::fromUtf8("color: rgb(0, 85, 0);\n"
+"border-image: url(:/CrowdSourcing/Resources/pictures/wood.jpg);"));
         labelRank = new QLabel(recTaskItem);
         labelRank->setObjectName(QString::fromUtf8("labelRank"));
         labelRank->setGeometry(QRect(86, 17, 100, 16));
@@ -71,8 +72,9 @@ public:
         labelType->setFont(font);
         labelPayment = new QLabel(recTaskItem);
         labelPayment->setObjectName(QString::fromUtf8("labelPayment"));
-        labelPayment->setGeometry(QRect(494, 17, 100, 16));
+        labelPayment->setGeometry(QRect(522, 17, 100, 16));
         labelPayment->setFont(font);
+        labelPayment->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
 
         retranslateUi(recTaskItem);
 

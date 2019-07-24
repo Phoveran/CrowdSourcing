@@ -1,6 +1,7 @@
 #pragma once
 #include <QtWidgets/QMainWindow>
 #include "ui_recTaskItem.h"
+#include "data.h"
 
 
 class recTaskItem : public QWidget
@@ -8,8 +9,11 @@ class recTaskItem : public QWidget
 	Q_OBJECT
 
 public:
-	recTaskItem(QWidget* parent = Q_NULLPTR);
+	recTaskItem(Task* task, QWidget* parent = Q_NULLPTR);
+	void setLan(int type);
 
 private:
 	Ui::recTaskItem ui;
+	void setFromLan(int type);
+	void setToLan(int type);
 };

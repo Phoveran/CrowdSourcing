@@ -226,9 +226,9 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);}  
 QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}
-QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);};</string>
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);};</string>
     </property>
     <property name="text">
      <string/>
