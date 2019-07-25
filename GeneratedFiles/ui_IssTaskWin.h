@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'TaskWin.ui'
+** Form generated from reading UI file 'IssTaskWin.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_TASKWIN_H
-#define UI_TASKWIN_H
+#ifndef UI_ISSTASKWIN_H
+#define UI_ISSTASKWIN_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -20,7 +20,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_MainWindowTask
+class Ui_MainWindowIssTask
 {
 public:
     QWidget *centralwidget;
@@ -39,17 +39,17 @@ public:
     QListWidget *listWidgetFiniTasks;
     QPushButton *recViewButton;
     QPushButton *refreshButton;
-    QPushButton *myViewButton;
+    QPushButton *weViewButton;
     QPushButton *finiViewButton;
 
-    void setupUi(QMainWindow *MainWindowTask)
+    void setupUi(QMainWindow *MainWindowIssTask)
     {
-        if (MainWindowTask->objectName().isEmpty())
-            MainWindowTask->setObjectName(QString::fromUtf8("MainWindowTask"));
-        MainWindowTask->resize(1920, 1080);
-        MainWindowTask->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda9.jpg);"));
-        MainWindowTask->setTabShape(QTabWidget::Triangular);
-        centralwidget = new QWidget(MainWindowTask);
+        if (MainWindowIssTask->objectName().isEmpty())
+            MainWindowIssTask->setObjectName(QString::fromUtf8("MainWindowIssTask"));
+        MainWindowIssTask->resize(1920, 1080);
+        MainWindowIssTask->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda9.jpg);"));
+        MainWindowIssTask->setTabShape(QTabWidget::Triangular);
+        centralwidget = new QWidget(MainWindowIssTask);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
@@ -73,7 +73,7 @@ public:
 
         listWidgetRecTasks = new QListWidget(verticalLayoutWidget);
         listWidgetRecTasks->setObjectName(QString::fromUtf8("listWidgetRecTasks"));
-        listWidgetRecTasks->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
+        listWidgetRecTasks->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         listWidgetRecTasks->setSelectionBehavior(QAbstractItemView::SelectItems);
 
         verticalLayout_2->addWidget(listWidgetRecTasks);
@@ -144,49 +144,49 @@ public:
         refreshButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);};"));
-        myViewButton = new QPushButton(centralwidget);
-        myViewButton->setObjectName(QString::fromUtf8("myViewButton"));
-        myViewButton->setGeometry(QRect(1820, 470, 80, 80));
-        myViewButton->setFont(font);
-        myViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
+        weViewButton = new QPushButton(centralwidget);
+        weViewButton->setObjectName(QString::fromUtf8("weViewButton"));
+        weViewButton->setGeometry(QRect(1840, 470, 80, 80));
+        weViewButton->setFont(font);
+        weViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};"));
         finiViewButton = new QPushButton(centralwidget);
         finiViewButton->setObjectName(QString::fromUtf8("finiViewButton"));
-        finiViewButton->setGeometry(QRect(1820, 950, 80, 80));
+        finiViewButton->setGeometry(QRect(1840, 950, 80, 80));
         finiViewButton->setFont(font);
         finiViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};"));
-        MainWindowTask->setCentralWidget(centralwidget);
+        MainWindowIssTask->setCentralWidget(centralwidget);
 
-        retranslateUi(MainWindowTask);
-        QObject::connect(backButton, SIGNAL(clicked()), MainWindowTask, SLOT(backButtonClick()));
-        QObject::connect(refreshButton, SIGNAL(clicked()), MainWindowTask, SLOT(refreshButtonClick()));
-        QObject::connect(recViewButton, SIGNAL(clicked()), MainWindowTask, SLOT(recViewButtonClick()));
+        retranslateUi(MainWindowIssTask);
+        QObject::connect(backButton, SIGNAL(clicked()), MainWindowIssTask, SLOT(backButtonClick()));
+        QObject::connect(refreshButton, SIGNAL(clicked()), MainWindowIssTask, SLOT(refreshButtonClick()));
+        QObject::connect(recViewButton, SIGNAL(clicked()), MainWindowIssTask, SLOT(recViewButtonClick()));
 
-        QMetaObject::connectSlotsByName(MainWindowTask);
+        QMetaObject::connectSlotsByName(MainWindowIssTask);
     } // setupUi
 
-    void retranslateUi(QMainWindow *MainWindowTask)
+    void retranslateUi(QMainWindow *MainWindowIssTask)
     {
-        MainWindowTask->setWindowTitle(QCoreApplication::translate("MainWindowTask", "Tasks", nullptr));
-        label->setText(QCoreApplication::translate("MainWindowTask", "Recruiting Tasks:", nullptr));
+        MainWindowIssTask->setWindowTitle(QCoreApplication::translate("MainWindowIssTask", "Tasks", nullptr));
+        label->setText(QCoreApplication::translate("MainWindowIssTask", "Recruiting Tasks:", nullptr));
         backButton->setText(QString());
-        label_2->setText(QCoreApplication::translate("MainWindowTask", "My Tasks:", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindowTask", "Finished Tasks:", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindowIssTask", "Waiting-Examine Tasks:", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindowIssTask", "Finished Tasks:", nullptr));
         recViewButton->setText(QString());
         refreshButton->setText(QString());
-        myViewButton->setText(QString());
+        weViewButton->setText(QString());
         finiViewButton->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class MainWindowTask: public Ui_MainWindowTask {};
+    class MainWindowIssTask: public Ui_MainWindowIssTask {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_TASKWIN_H
+#endif // UI_ISSTASKWIN_H

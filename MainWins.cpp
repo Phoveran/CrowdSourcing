@@ -7,8 +7,6 @@ CrowdSourcing::CrowdSourcing(Data* d, QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
-	p = NULL;
-	r = NULL;
 	dataPtr = d;
 	ui.usernameInput->setValidator(new QRegExpValidator(QRegExp("^[0-9]{5}$")));
 }
@@ -21,7 +19,7 @@ void CrowdSourcing::loginButtonClick()
 		{
 			dataPtr->nowAccountNum = ui.usernameInput->text().toInt();
 			dataPtr->nowAccount = dataPtr->userVec[dataPtr->nowAccountNum - 1000];
-			p = new Personal(dataPtr);
+			Personal *p = new Personal(dataPtr);
 			p->show();
 			this->close();
 		}
@@ -46,7 +44,7 @@ void CrowdSourcing::loginButtonClick()
 
 void CrowdSourcing::registerButtonClick()
 {
-	r = new Register(dataPtr);
+	Register* r = new Register(dataPtr);
 	r->show();
 }
 
@@ -58,10 +56,6 @@ Personal::Personal(Data* data, QWidget* parent)
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	dataPtr = data;
-	c = NULL;
-	to = NULL;
-	u = NULL;
-	ta = NULL;
 	loadInfo();
 }
 
@@ -72,25 +66,32 @@ void Personal::logOutButtonClick()
 
 void Personal::changePasswordButtonClick()
 {
-	c = new ChangePassword(dataPtr);
+	ChangePassword* c = new ChangePassword(dataPtr);
 	c->show();
 }
 
 void Personal::topUpButtonClick()
 {
-	to = new TopUp(dataPtr);
+	TopUp* to = new TopUp(dataPtr);
 	to->show();
 }
 
 void Personal::updateInfoButtonClick()
 {
-	u = new UpdateInfo(dataPtr);
+	UpdateInfo* u = new UpdateInfo(dataPtr);
 	u->show();
 }
 
-void Personal::taskButtonClick()
+void Personal::issTaskButtonClick()
 {
-	ta = new TaskWin(dataPtr);
+	IssTaskWin* i = new IssTaskWin(dataPtr);
+	i->show();
+	this->close();
+}
+
+void Personal::accTaskButtonClick()
+{
+	AccTaskWin* ta = new AccTaskWin(dataPtr);
 	ta->show();
 	this->close();
 }
@@ -127,32 +128,34 @@ void Personal::loadInfo()
 }
 
 
-//任务界面
-TaskWin::TaskWin(Data* data, QWidget* parent)
+//接受的任务界面
+AccTaskWin::AccTaskWin(Data* data, QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
-	p = NULL;
 	dataPtr = data;
 	loadInfo();
 }
 
-void TaskWin::backButtonClick()
+void AccTaskWin::backButtonClick()
 {
-	p = new Personal(dataPtr);
+	Personal* p = new Personal(dataPtr);
 	p->setAttribute(Qt::WA_DeleteOnClose, true);
 	p->show();
 	this->close();
 }
 
-void TaskWin::refreshButtonClick()
+void AccTaskWin::refreshButtonClick()
 {
 	loadInfo();
 }
 
-void TaskWin::loadInfo()
+void AccTaskWin::loadInfo()
 {
+	ui.listWidgetRecTasks->clear();
+	ui.listWidgetMyTasks->clear();
+	ui.listWidgetFiniTasks->clear();
 	for (int i = 0; i < dataPtr->taskVec.size(); i++)
 	{
 		if (dataPtr->taskVec[i]->state == 2)
@@ -184,7 +187,39 @@ void TaskWin::loadInfo()
 	}
 }
 
-void TaskWin::recViewButtonClick()
+void AccTaskWin::recViewButtonClick()
 {
 	int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt();
+}
+
+
+//发布的任务界面
+IssTaskWin::IssTaskWin(Data* data, QWidget* parent)
+	: QMainWindow(parent)
+{
+	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	dataPtr = data;
+	loadInfo();
+}
+
+void IssTaskWin::recViewButtonClick()
+{
+}
+
+void IssTaskWin::refreshButtonClick()
+{
+	loadInfo();
+}
+
+void IssTaskWin::loadInfo()
+{
+}
+
+void IssTaskWin::backButtonClick()
+{
+	Personal* p = new Personal(dataPtr);
+	p->setAttribute(Qt::WA_DeleteOnClose, true);
+	p->show();
+	this->close();
 }

@@ -82,17 +82,19 @@ void Data::save()
 		"TYPE INT NOT NULL,"\
 		"ISSUINGACCOUNT INT NOT NULL,"\
 		"TAKENACCOUNT INT,"\
-		"WAITING ACCOUNT TEXT,"\
+		"WAITINGACCOUNT TEXT,"\
 		"STATE INT NOT NULL,"\
 		"TRANSTYPE INT NOT NULL,"\
 		"PERIOD INT NOT NULL,"\
-		"REQENGCRE INT NOT NULL,"\
-		"REQFRACRE INT NOT NULL,"\
+		"REQENGCRE INT,"\
+		"REQFRACRE INT,"\
 		"PAYMENT INT NOT NULL,"\
 		"BRIEF TEXT NOT NULL,"\
 		"CONTENT TEXT NOT NULL,"\
 		"TRANSTEMP TEXT,"\
-		"TRANSSUBMIT TEXT);";
+		"TRANSSUBMIT TEXT,"\
+		"PARENT INT,"\
+		"CHILDREN TEXT);";
 	sqlite3_exec(db, sqlCreate, 0, 0, &zErrMsg);
 	for (int i = 0; i < userVec.size(); i++)
 	{
@@ -159,13 +161,21 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 	}
 	else
 	{
-		strs.push_back(string("\"") + intCombine2String(task->waitingAccount) + string("\"") + string(", "));
+		strs.push_back(string("\"") + intCombine2String(task->waitingAccount, ";") + string("\"") + string(", "));
 	}
 	strs.push_back(to_string(task->state) + string(", "));
 	strs.push_back(to_string(task->transType) + string(", "));
 	strs.push_back(to_string(task->period) + string(", "));
-	strs.push_back(to_string(task->reqEngCredits) + string(", "));
-	strs.push_back(to_string(task->reqFraCredits) + string(", "));
+	if (task->type())
+	{
+		strs.push_back(to_string(task->getReqEngCre()) + string(", "));
+		strs.push_back(to_string(task->getReqFraCre()) + string(", "));
+	}
+	else
+	{
+		strs.push_back("NULL, ");
+		strs.push_back("NULL, ");
+	}
 	strs.push_back(to_string(task->payment) + string(", "));
 	strs.push_back(string("\"") + task->brief + string("\"") + string(", "));
 	strs.push_back(string("\"") + task->content + string("\"") + string(", "));
@@ -179,11 +189,28 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 	}
 	if (task->transSubmit.empty())
 	{
-		strs.push_back(string("NULL)"));
+		strs.push_back(string("NULL, "));
 	}
 	else
 	{
-		strs.push_back(string("\"") + task->transSubmit + string("\"") + string(")"));
+		strs.push_back(string("\"") + task->transSubmit + string("\"") + string(", "));
+	}
+	if (task->type())
+	{
+		strs.push_back(to_string(task->getParent()) + string(", "));
+		strs.push_back("NULL);");
+	}
+	else
+	{
+		strs.push_back("NULL, ");
+		if (!task->getChildren().empty())
+		{
+			strs.push_back(intCombine2String(task->getChildren(), ";") + string(");"));
+		}
+		else
+		{
+			strs.push_back("NULL);");
+		}
 	}
 	string tempStr = stringCombine(strs);
 	const char* str = tempStr.c_str();
@@ -214,7 +241,7 @@ int Data::readUserCallBack(void* ptr, int argc, char** argvs, char** colNames)
 	}
 	else
 	{
-		cer = split(string(argvs[7]), ";");
+		cer = split(argvs[7], ";");
 	}
 	user = new User(atoi(argvs[0]), string(argvs[5]), cer, argvs[6]);
 	user->balance = atoi(argvs[1]);
@@ -244,6 +271,72 @@ int Data::readUserCallBack(void* ptr, int argc, char** argvs, char** colNames)
 int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 {
 	Data* data = (Data*)ptr;
+	int rank = atoi(argvs[0]);
+	int type = atoi(argvs[1]);
+	int issAcc= atoi(argvs[2]);
+	int takenAcc = 0;
+	if (argvs[3])
+	{
+		takenAcc= atoi(argvs[3]);
+	}
+	vector<int> waiAcc = vector<int>();
+	if (argvs[4])
+	{
+		vector<string> str = split(argvs[4], ";");
+		for (int i = 0; i < str.size(); i++)
+		{
+			waiAcc.push_back(stoi(str[i]));
+		}
+	}
+	int sta = atoi(argvs[5]);
+	int trType = atoi(argvs[6]);
+	int peri = atoi(argvs[7]);
+	int pay = atoi(argvs[10]);
+	string brief = argvs[11];
+	string cont = argvs[12];
+	string trTem = string();
+	string trSub = string();
+	if (argvs[13])
+	{
+		trTem = argvs[13];
+	}
+	if (argvs[14])
+	{
+		trSub = argvs[14];
+	}
 	Task* task;
+	if (type)
+	{
+		int reqEng = atoi(argvs[8]);
+		int reqFra = atoi(argvs[9]);
+		int parent = atoi(argvs[15]);
+		TransTask* taskTemp = new TransTask(rank, brief, issAcc, trType, peri, data, parent, cont, pay, reqEng, reqFra);
+		taskTemp->state = sta;
+		taskTemp->takenAccount = takenAcc;
+		taskTemp->transTemp = trTem;
+		taskTemp->transSubmit = trSub;
+		taskTemp->waitingAccount = waiAcc;
+		task = taskTemp;
+	}
+	else
+	{
+		vector<int> child = vector<int>();
+		if (argvs[16])
+		{
+			vector<string> str = split(argvs[16], ";");
+			for (int i = 0; i < str.size(); i++)
+			{
+				child.push_back(stoi(str[i]));
+			}
+		}
+		ResTask* taskTemp = new ResTask(rank, brief, issAcc, trType, peri, data, cont, pay, child);
+		taskTemp->state = sta;
+		taskTemp->takenAccount = takenAcc;
+		taskTemp->transTemp = trTem;
+		taskTemp->transSubmit = trSub;
+		taskTemp->waitingAccount = waiAcc;
+		task = taskTemp;
+	}
+	data->taskVec.push_back(task);
 	return 0;
 }

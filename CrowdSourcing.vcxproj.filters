@@ -82,9 +82,6 @@
     <QtUic Include="UpdateInfo.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="TaskWin.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="recTaskItem.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -95,6 +92,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="MyTransTaskOper.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="AccTaskWin.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="IssTaskWin.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -122,14 +125,26 @@
     <ClInclude Include="GeneratedFiles\ui_UpdateInfo.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_TaskWin.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_recTaskItem.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="data.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_AccTaskWin.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MyResTaskOper.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MyTransTaskOper.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_RecTaskOper.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_IssTaskWin.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

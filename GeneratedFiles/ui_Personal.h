@@ -27,8 +27,9 @@ public:
     QWidget *centralwidget;
     QFrame *buttonFram;
     QVBoxLayout *verticalLayout_4;
+    QPushButton *accTaskButton;
+    QPushButton *issTaskButton;
     QPushButton *topUpButoon;
-    QPushButton *taskButton;
     QPushButton *updateInformationButton;
     QPushButton *changePasswordButton;
     QFrame *infoFram;
@@ -62,15 +63,105 @@ public:
         buttonFram->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         verticalLayout_4 = new QVBoxLayout(buttonFram);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        topUpButoon = new QPushButton(buttonFram);
-        topUpButoon->setObjectName(QString::fromUtf8("topUpButoon"));
+        accTaskButton = new QPushButton(buttonFram);
+        accTaskButton->setObjectName(QString::fromUtf8("accTaskButton"));
         QFont font;
         font.setFamily(QString::fromUtf8("Century Gothic"));
-        font.setPointSize(18);
+        font.setPointSize(20);
         font.setBold(true);
         font.setItalic(true);
         font.setWeight(75);
-        topUpButoon->setFont(font);
+        accTaskButton->setFont(font);
+        accTaskButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
+"color:rgb(85, 85, 0);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;\n"
+"}  \n"
+"QPushButton:hover{\n"
+"color:rgb(255, 255, 255);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   \n"
+"							stop: 0.3 rgb(37,189,252),  \n"
+"							  stop: 1 rgb(32,170,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"}  \n"
+"QPushButton:pressed{ \n"
+"color:rgb(233, 236, 243);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226"
+                        ",236,241),   \n"
+"							stop: 0.3 rgb(38,190,255),  \n"
+"							  stop: 1 rgb(33,184,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"};"));
+        accTaskButton->setFlat(true);
+
+        verticalLayout_4->addWidget(accTaskButton);
+
+        issTaskButton = new QPushButton(buttonFram);
+        issTaskButton->setObjectName(QString::fromUtf8("issTaskButton"));
+        issTaskButton->setFont(font);
+        issTaskButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
+"color:rgb(85, 85, 0);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;\n"
+"}  \n"
+"QPushButton:hover{\n"
+"color:rgb(255, 255, 255);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   \n"
+"							stop: 0.3 rgb(37,189,252),  \n"
+"							  stop: 1 rgb(32,170,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"}  \n"
+"QPushButton:pressed{ \n"
+"color:rgb(233, 236, 243);  \n"
+"min-height:20;  \n"
+"border-style:solid;  \n"
+"border-top-left-radius:2px;  \n"
+"border-top-right-radius:2px;  \n"
+"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226"
+                        ",236,241),   \n"
+"							stop: 0.3 rgb(38,190,255),  \n"
+"							  stop: 1 rgb(33,184,240));  \n"
+"border:1px;  \n"
+"border-radius:15px;padding:2px 4px;  \n"
+"};"));
+        issTaskButton->setFlat(true);
+
+        verticalLayout_4->addWidget(issTaskButton);
+
+        topUpButoon = new QPushButton(buttonFram);
+        topUpButoon->setObjectName(QString::fromUtf8("topUpButoon"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Century Gothic"));
+        font1.setPointSize(18);
+        font1.setBold(true);
+        font1.setItalic(true);
+        font1.setWeight(75);
+        topUpButoon->setFont(font1);
         topUpButoon->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"
@@ -110,57 +201,9 @@ public:
 
         verticalLayout_4->addWidget(topUpButoon);
 
-        taskButton = new QPushButton(buttonFram);
-        taskButton->setObjectName(QString::fromUtf8("taskButton"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Century Gothic"));
-        font1.setPointSize(20);
-        font1.setBold(true);
-        font1.setItalic(true);
-        font1.setWeight(75);
-        taskButton->setFont(font1);
-        taskButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
-"color:rgb(85, 85, 0);  \n"
-"min-height:20;  \n"
-"border-style:solid;  \n"
-"border-top-left-radius:2px;  \n"
-"border-top-right-radius:2px;  \n"
-"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  \n"
-"border:1px;  \n"
-"border-radius:15px;padding:2px 4px;\n"
-"}  \n"
-"QPushButton:hover{\n"
-"color:rgb(255, 255, 255);  \n"
-"min-height:20;  \n"
-"border-style:solid;  \n"
-"border-top-left-radius:2px;  \n"
-"border-top-right-radius:2px;  \n"
-"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   \n"
-"							stop: 0.3 rgb(37,189,252),  \n"
-"							  stop: 1 rgb(32,170,240));  \n"
-"border:1px;  \n"
-"border-radius:15px;padding:2px 4px;  \n"
-"}  \n"
-"QPushButton:pressed{ \n"
-"color:rgb(233, 236, 243);  \n"
-"min-height:20;  \n"
-"border-style:solid;  \n"
-"border-top-left-radius:2px;  \n"
-"border-top-right-radius:2px;  \n"
-"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226"
-                        ",236,241),   \n"
-"							stop: 0.3 rgb(38,190,255),  \n"
-"							  stop: 1 rgb(33,184,240));  \n"
-"border:1px;  \n"
-"border-radius:15px;padding:2px 4px;  \n"
-"};"));
-        taskButton->setFlat(true);
-
-        verticalLayout_4->addWidget(taskButton);
-
         updateInformationButton = new QPushButton(buttonFram);
         updateInformationButton->setObjectName(QString::fromUtf8("updateInformationButton"));
-        updateInformationButton->setFont(font);
+        updateInformationButton->setFont(font1);
         updateInformationButton->setContextMenuPolicy(Qt::ActionsContextMenu);
         updateInformationButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
@@ -203,7 +246,7 @@ public:
 
         changePasswordButton = new QPushButton(buttonFram);
         changePasswordButton->setObjectName(QString::fromUtf8("changePasswordButton"));
-        changePasswordButton->setFont(font1);
+        changePasswordButton->setFont(font);
         changePasswordButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"
@@ -253,7 +296,7 @@ public:
         formLayout->setVerticalSpacing(30);
         usernameLabel = new QLabel(infoFram);
         usernameLabel->setObjectName(QString::fromUtf8("usernameLabel"));
-        usernameLabel->setFont(font1);
+        usernameLabel->setFont(font);
         usernameLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
@@ -261,7 +304,7 @@ public:
 
         creditsLabel = new QLabel(infoFram);
         creditsLabel->setObjectName(QString::fromUtf8("creditsLabel"));
-        creditsLabel->setFont(font1);
+        creditsLabel->setFont(font);
         creditsLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
@@ -269,7 +312,7 @@ public:
 
         memberTypeLabel = new QLabel(infoFram);
         memberTypeLabel->setObjectName(QString::fromUtf8("memberTypeLabel"));
-        memberTypeLabel->setFont(font1);
+        memberTypeLabel->setFont(font);
         memberTypeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
@@ -277,7 +320,7 @@ public:
 
         balanceLabel = new QLabel(infoFram);
         balanceLabel->setObjectName(QString::fromUtf8("balanceLabel"));
-        balanceLabel->setFont(font1);
+        balanceLabel->setFont(font);
         balanceLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
@@ -285,7 +328,7 @@ public:
 
         certificateLabel = new QLabel(infoFram);
         certificateLabel->setObjectName(QString::fromUtf8("certificateLabel"));
-        certificateLabel->setFont(font1);
+        certificateLabel->setFont(font);
         certificateLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
@@ -293,7 +336,7 @@ public:
 
         usernameDisplay = new QLabel(infoFram);
         usernameDisplay->setObjectName(QString::fromUtf8("usernameDisplay"));
-        usernameDisplay->setFont(font1);
+        usernameDisplay->setFont(font);
         usernameDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
         usernameDisplay->setFrameShape(QFrame::NoFrame);
         usernameDisplay->setFrameShadow(QFrame::Plain);
@@ -302,35 +345,35 @@ public:
 
         creditsDisplay = new QLabel(infoFram);
         creditsDisplay->setObjectName(QString::fromUtf8("creditsDisplay"));
-        creditsDisplay->setFont(font1);
+        creditsDisplay->setFont(font);
         creditsDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, creditsDisplay);
 
         memberTypeDisplay = new QLabel(infoFram);
         memberTypeDisplay->setObjectName(QString::fromUtf8("memberTypeDisplay"));
-        memberTypeDisplay->setFont(font1);
+        memberTypeDisplay->setFont(font);
         memberTypeDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
         formLayout->setWidget(2, QFormLayout::FieldRole, memberTypeDisplay);
 
         balanceDisplay = new QLabel(infoFram);
         balanceDisplay->setObjectName(QString::fromUtf8("balanceDisplay"));
-        balanceDisplay->setFont(font1);
+        balanceDisplay->setFont(font);
         balanceDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
         formLayout->setWidget(3, QFormLayout::FieldRole, balanceDisplay);
 
         certificateDisplay = new QLabel(infoFram);
         certificateDisplay->setObjectName(QString::fromUtf8("certificateDisplay"));
-        certificateDisplay->setFont(font1);
+        certificateDisplay->setFont(font);
         certificateDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
         formLayout->setWidget(4, QFormLayout::FieldRole, certificateDisplay);
 
         telephoneLabel = new QLabel(infoFram);
         telephoneLabel->setObjectName(QString::fromUtf8("telephoneLabel"));
-        telephoneLabel->setFont(font1);
+        telephoneLabel->setFont(font);
         telephoneLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
 "color: rgb(170, 85, 255);"));
 
@@ -338,7 +381,7 @@ public:
 
         telephoneDisplay = new QLabel(infoFram);
         telephoneDisplay->setObjectName(QString::fromUtf8("telephoneDisplay"));
-        telephoneDisplay->setFont(font1);
+        telephoneDisplay->setFont(font);
         telephoneDisplay->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 127);"));
 
         formLayout->setWidget(5, QFormLayout::FieldRole, telephoneDisplay);
@@ -359,7 +402,7 @@ public:
         logOutButton = new QPushButton(centralwidget);
         logOutButton->setObjectName(QString::fromUtf8("logOutButton"));
         logOutButton->setGeometry(QRect(190, 800, 80, 80));
-        logOutButton->setFont(font);
+        logOutButton->setFont(font1);
         logOutButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/logout_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/logout_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_clicked.png);};"));
@@ -371,8 +414,9 @@ public:
         QObject::connect(logOutButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(logOutButtonClick()));
         QObject::connect(topUpButoon, SIGNAL(clicked()), MainWindowPersonal, SLOT(topUpButtonClick()));
         QObject::connect(updateInformationButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(updateInfoButtonClick()));
-        QObject::connect(taskButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(taskButtonClick()));
         QObject::connect(refreshButton_2, SIGNAL(clicked()), MainWindowPersonal, SLOT(refreshButtonClick()));
+        QObject::connect(accTaskButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(accTaskButtonClick()));
+        QObject::connect(issTaskButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(issTaskButtonClick()));
 
         QMetaObject::connectSlotsByName(MainWindowPersonal);
     } // setupUi
@@ -380,8 +424,9 @@ public:
     void retranslateUi(QMainWindow *MainWindowPersonal)
     {
         MainWindowPersonal->setWindowTitle(QCoreApplication::translate("MainWindowPersonal", "CrowdSourcing", nullptr));
+        accTaskButton->setText(QCoreApplication::translate("MainWindowPersonal", "Accept/ed Tasks", nullptr));
+        issTaskButton->setText(QCoreApplication::translate("MainWindowPersonal", "Issue/d Tasks", nullptr));
         topUpButoon->setText(QCoreApplication::translate("MainWindowPersonal", "Top up", nullptr));
-        taskButton->setText(QCoreApplication::translate("MainWindowPersonal", "Tasks", nullptr));
         updateInformationButton->setText(QCoreApplication::translate("MainWindowPersonal", "Update info", nullptr));
         changePasswordButton->setText(QCoreApplication::translate("MainWindowPersonal", "Change password", nullptr));
         usernameLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Username:</span></p></body></html>", nullptr));

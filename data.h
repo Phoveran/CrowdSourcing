@@ -34,7 +34,7 @@ private:
 class Task
 {
 public:
-	Task(int r, string bri, int acc, int type, int per, Data* data, string con, int reqEngCre = 0, int reqFraCre = 0);
+	Task(int r, string bri, int acc, int type, int per, Data* data, string con, int pay);
 	Task(const Task& obj);
 	~Task(void);
 	Data* dataPtr;//全局数据指针
@@ -45,8 +45,6 @@ public:
 	int state;//状态，2为招募中，1为执行中，0为已完成
 	int transType;//翻译类型，1为中=》英，2为中=》法，3为英=》中，4为英=》法，5为法=》中，6为法=》英
 	int period;//任务周期,单位为天
-	int reqEngCredits;//接取任务需要的英语积分
-	int reqFraCredits;//接取任务需要的法语积分
 	int payment;//每千字报酬
 	string brief;//简介
 	string content;//原文
@@ -54,16 +52,18 @@ public:
 	string transSubmit;//最终翻译
 	virtual bool taken(int) = 0;
 	virtual int type() = 0;
-	virtual vector<int> getChildren() = 0;
-	virtual int getParent() = 0;
+	virtual vector<int> getChildren();
+	virtual int getParent();
+	virtual int getReqEngCre();
+	virtual int getReqFraCre();
 };
 
 class ResTask : public Task
 {
 public:
-	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con) :Task(r, bri, acc, type, per, data, con)
+	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, vector<int> child) :Task(r, bri, acc, type, per, data, con, pay)
 	{
-		childrenTasks = vector<int>();
+		childrenTasks = child;
 	}
 	vector<int> getChildren();
 	bool taken(int acc);
@@ -76,15 +76,21 @@ private:
 class TransTask : public Task
 {
 public:
-	TransTask(int r, string bri, int acc, int type, int per, Data* data, int parent, string con) :Task(r, bri, acc, type, per, data, con)
+	TransTask(int r, string bri, int acc, int type, int per, Data* data, int parent, string con, int pay, int reqEngCre = 0, int reqFraCre = 0) :Task(r, bri, acc, type, per, data, con, pay)
 	{
 		parentTask = parent;
+		reqEngCredits = reqEngCre;
+		reqFraCredits = reqFraCre;
 	};
 	bool taken(int acc);
 	int type();
 	int getParent();
+	int getReqEngCre();
+	int getReqFraCre();
 
 private:
+	int reqEngCredits;//接取任务需要的英语积分
+	int reqFraCredits;//接取任务需要的法语积分
 	int parentTask;//父任务的序号
 };
 

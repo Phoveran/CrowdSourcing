@@ -20,32 +20,32 @@ QT_BEGIN_NAMESPACE
 class Ui_recTaskItem
 {
 public:
-    QLabel *labelRank;
+    QFrame *frame_2;
     QFrame *frame;
     QFrame *fromPic;
     QFrame *fixPic;
     QFrame *toPic;
-    QLabel *labelType;
     QLabel *labelPayment;
+    QLabel *labelType;
+    QLabel *labelRank;
 
     void setupUi(QWidget *recTaskItem)
     {
         if (recTaskItem->objectName().isEmpty())
             recTaskItem->setObjectName(QString::fromUtf8("recTaskItem"));
-        recTaskItem->resize(680, 50);
-        recTaskItem->setStyleSheet(QString::fromUtf8("color: rgb(0, 85, 0);\n"
-"border-image: url(:/CrowdSourcing/Resources/pictures/wood.jpg);"));
-        labelRank = new QLabel(recTaskItem);
-        labelRank->setObjectName(QString::fromUtf8("labelRank"));
-        labelRank->setGeometry(QRect(86, 17, 100, 16));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Courier"));
-        font.setBold(true);
-        font.setWeight(75);
-        labelRank->setFont(font);
-        frame = new QFrame(recTaskItem);
+        recTaskItem->resize(689, 50);
+        recTaskItem->setStyleSheet(QString::fromUtf8(""));
+        frame_2 = new QFrame(recTaskItem);
+        frame_2->setObjectName(QString::fromUtf8("frame_2"));
+        frame_2->setGeometry(QRect(0, 0, 689, 50));
+        frame_2->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/wood.jpg);"));
+        frame_2->setFrameShape(QFrame::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Raised);
+        frame = new QFrame(frame_2);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(358, 15, 90, 20));
+        frame->setGeometry(QRect(350, 15, 90, 20));
+        frame->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
+"border-image:transparent;"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         fromPic = new QFrame(frame);
@@ -66,15 +66,28 @@ public:
         toPic->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/Fra.png);"));
         toPic->setFrameShape(QFrame::StyledPanel);
         toPic->setFrameShadow(QFrame::Raised);
-        labelType = new QLabel(recTaskItem);
-        labelType->setObjectName(QString::fromUtf8("labelType"));
-        labelType->setGeometry(QRect(222, 17, 100, 16));
-        labelType->setFont(font);
-        labelPayment = new QLabel(recTaskItem);
+        labelPayment = new QLabel(frame_2);
         labelPayment->setObjectName(QString::fromUtf8("labelPayment"));
-        labelPayment->setGeometry(QRect(522, 17, 100, 16));
+        labelPayment->setGeometry(QRect(480, 17, 211, 16));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Courier"));
+        font.setBold(true);
+        font.setWeight(75);
         labelPayment->setFont(font);
-        labelPayment->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
+        labelPayment->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
+"border-image:transparent;"));
+        labelType = new QLabel(frame_2);
+        labelType->setObjectName(QString::fromUtf8("labelType"));
+        labelType->setGeometry(QRect(160, 17, 181, 16));
+        labelType->setFont(font);
+        labelType->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
+"border-image:transparent;"));
+        labelRank = new QLabel(frame_2);
+        labelRank->setObjectName(QString::fromUtf8("labelRank"));
+        labelRank->setGeometry(QRect(40, 17, 100, 16));
+        labelRank->setFont(font);
+        labelRank->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
+"background-image: transparent;"));
 
         retranslateUi(recTaskItem);
 
@@ -84,9 +97,9 @@ public:
     void retranslateUi(QWidget *recTaskItem)
     {
         recTaskItem->setWindowTitle(QCoreApplication::translate("recTaskItem", "Form", nullptr));
-        labelRank->setText(QCoreApplication::translate("recTaskItem", "Rank", nullptr));
-        labelType->setText(QCoreApplication::translate("recTaskItem", "Type", nullptr));
         labelPayment->setText(QCoreApplication::translate("recTaskItem", "Payment", nullptr));
+        labelType->setText(QCoreApplication::translate("recTaskItem", "Type", nullptr));
+        labelRank->setText(QCoreApplication::translate("recTaskItem", "Rank", nullptr));
     } // retranslateUi
 
 };

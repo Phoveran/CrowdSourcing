@@ -5,16 +5,16 @@ recTaskItem::recTaskItem(Task* task, QWidget* parent)
 {
 	ui.setupUi(this);
 	setLan(task->transType);
-	ui.labelRank->setText(QString(task->rank));
+	ui.labelRank->setText(QString("Rank: ") + QString::number(task->rank));
 	if (task->type())
 	{
-		ui.labelType->setText(QString("Translation"));
+		ui.labelType->setText(QString("Translation task"));
 	}
 	else
 	{
-		ui.labelType->setText(QString("Arrangement"));
+		ui.labelType->setText(QString("Arrangement task"));
 	}
-	ui.labelPayment->setText(QString(task->payment));
+	ui.labelPayment->setText(QString::number(task->payment) + QString("Ruby/1000 words"));
 }
 
 void recTaskItem::setFromLan(int type)

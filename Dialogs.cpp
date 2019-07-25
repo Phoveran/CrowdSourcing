@@ -288,10 +288,16 @@ void UpdateInfo::textChanged(const QString& text)
 
 void UpdateInfo::submitChange()
 {
-	vector<string> certifi = split(pLineEdit->text().toStdString(), string(";"));
-	string tele = ui.teleLineEdit->text().toStdString();
-	dataPtr->nowAccount->telephone = tele;
-	dataPtr->nowAccount->certificationType = certifi;
+	if (!pLineEdit->text().isEmpty())
+	{
+		vector<string> certifi = split(pLineEdit->text().toStdString(), string(";"));
+		dataPtr->nowAccount->certificationType = certifi;
+	}
+	if (!ui.teleLineEdit->text().isEmpty())
+	{
+		string tele = ui.teleLineEdit->text().toStdString();
+		dataPtr->nowAccount->telephone = tele;
+	}
 }
 
 

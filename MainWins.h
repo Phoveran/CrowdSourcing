@@ -3,7 +3,8 @@
 #include <QtWidgets/QMainWindow>
 #include <vector>
 #include "ui_Personal.h"
-#include "ui_TaskWin.h"
+#include "ui_AccTaskWin.h"
+#include "ui_IssTaskWin.h"
 #include "ui_CrowdSourcing.h"
 #include "Dialogs.h"
 #include "TaskItem.h"
@@ -11,8 +12,9 @@
 
 using namespace std;
 
-class TaskWin;
+class AccTaskWin;
 class Personal;
+class IssTaskWin;
 
 //登陆界面
 class CrowdSourcing : public QMainWindow
@@ -29,8 +31,6 @@ public slots:
 
 private:
 	Ui::CrowdSourcingClass ui;
-	Register* r;
-	Personal* p;
 };
 
 //个人信息界面
@@ -47,26 +47,23 @@ public slots:
 	void changePasswordButtonClick();
 	void topUpButtonClick();
 	void updateInfoButtonClick();
-	void taskButtonClick();
+	void issTaskButtonClick();
+	void accTaskButtonClick();
 	void refreshButtonClick();
 
 private:
 	Ui::MainWindowPersonal ui;
-	ChangePassword* c;
-	TopUp* to;	
-	UpdateInfo* u;
-	TaskWin* ta;
 
 	void loadInfo();
 };
 
-//任务界面
-class TaskWin : public QMainWindow
+//接受任务界面
+class AccTaskWin : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	TaskWin(Data* data, QWidget* parent = Q_NULLPTR);
+	AccTaskWin(Data* data, QWidget* parent = Q_NULLPTR);
 	Data* dataPtr;
 
 public slots:
@@ -75,9 +72,27 @@ public slots:
 	void refreshButtonClick();
 
 private:
-	Ui::MainWindowTask ui;
-	Personal* p;
-	vector<recTaskItem*> recTaskVec;
+	Ui::MainWindowAccTask ui;
+
+	void loadInfo();
+};
+
+//发布的任务界面
+class IssTaskWin : public QMainWindow
+{
+	Q_OBJECT
+
+public:
+	IssTaskWin(Data* data, QWidget* parent = Q_NULLPTR);
+	Data* dataPtr;
+
+public slots:
+	void backButtonClick();
+	void recViewButtonClick();
+	void refreshButtonClick();
+
+private:
+	Ui::MainWindowAccTask ui;
 
 	void loadInfo();
 };

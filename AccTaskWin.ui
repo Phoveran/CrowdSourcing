@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindowTask</class>
- <widget class="QMainWindow" name="MainWindowTask">
+ <class>MainWindowAccTask</class>
+ <widget class="QMainWindow" name="MainWindowAccTask">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -53,7 +53,7 @@ color: rgb(255, 85, 0);</string>
      <item>
       <widget class="QListWidget" name="listWidgetRecTasks">
        <property name="styleSheet">
-        <string notr="true">border-image:transparent;</string>
+        <string notr="true">border-image: \*url();</string>
        </property>
        <property name="selectionBehavior">
         <enum>QAbstractItemView::SelectItems</enum>
@@ -237,7 +237,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh
    <widget class="QPushButton" name="myViewButton">
     <property name="geometry">
      <rect>
-      <x>1820</x>
+      <x>1840</x>
       <y>470</y>
       <width>80</width>
       <height>80</height>
@@ -264,7 +264,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
    <widget class="QPushButton" name="finiViewButton">
     <property name="geometry">
      <rect>
-      <x>1820</x>
+      <x>1840</x>
       <y>950</y>
       <width>80</width>
       <height>80</height>
@@ -297,7 +297,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
   <connection>
    <sender>backButton</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindowTask</receiver>
+   <receiver>MainWindowAccTask</receiver>
    <slot>backButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -313,7 +313,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
   <connection>
    <sender>refreshButton</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindowTask</receiver>
+   <receiver>MainWindowAccTask</receiver>
    <slot>refreshButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -329,7 +329,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
   <connection>
    <sender>recViewButton</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindowTask</receiver>
+   <receiver>MainWindowAccTask</receiver>
    <slot>recViewButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">

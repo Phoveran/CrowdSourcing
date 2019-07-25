@@ -1,6 +1,6 @@
 #include"data.h"
 
-Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con, int reqEngCre, int reqFraCre)
+Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con, int pay)
 {
 	dataPtr = data;
 	state = 0;
@@ -12,10 +12,9 @@ Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con
 	transType = type;
 	period = per;
 	content = con;
-	reqEngCredits = reqEngCre;
-	reqFraCredits = reqFraCre;
 	transTemp = string();
 	transSubmit = string();
+	payment = pay;
 }
 
 Task::Task(const Task& obj)
@@ -30,12 +29,30 @@ Task::Task(const Task& obj)
 	transType = obj.transType;
 	period = obj.period;
 	content = obj.content;
-	reqEngCredits = obj.reqEngCredits;
-	reqFraCredits = obj.reqFraCredits;
 }
 
 Task::~Task(void)
 {
+}
+
+vector<int> Task::getChildren()
+{
+	return vector<int>();
+}
+
+int Task::getParent()
+{
+	return 0;
+}
+
+int Task::getReqEngCre()
+{
+	return 0;
+}
+
+int Task::getReqFraCre()
+{
+	return 0;
 }
 
 
@@ -47,7 +64,7 @@ vector<int> ResTask::getChildren()
 
 bool ResTask::taken(int acc)
 {
-	int i = acc - 10000;
+	int i = acc - 1000;
 	if (dataPtr->userVec[i]->level == 2)
 	{
 		takenAccount = acc;
@@ -86,4 +103,14 @@ int TransTask::type()
 int TransTask::getParent()
 {
 	return parentTask;
+}
+
+int TransTask::getReqEngCre()
+{
+	return reqEngCredits;
+}
+
+int TransTask::getReqFraCre()
+{
+	return reqFraCredits;
 }

@@ -31,6 +31,116 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
+      <widget class="QPushButton" name="accTaskButton">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
+       </property>
+       <property name="text">
+        <string>Accept/ed Tasks</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="issTaskButton">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{  
+color:rgb(85, 85, 0);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
+border:1px;  
+border-radius:15px;padding:2px 4px;
+}  
+QPushButton:hover{
+color:rgb(255, 255, 255);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(37,189,252),  
+							  stop: 1 rgb(32,170,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+}  
+QPushButton:pressed{ 
+color:rgb(233, 236, 243);  
+min-height:20;  
+border-style:solid;  
+border-top-left-radius:2px;  
+border-top-right-radius:2px;  
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
+							stop: 0.3 rgb(38,190,255),  
+							  stop: 1 rgb(33,184,240));  
+border:1px;  
+border-radius:15px;padding:2px 4px;  
+};</string>
+       </property>
+       <property name="text">
+        <string>Issue/d Tasks</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="topUpButoon">
        <property name="font">
         <font>
@@ -79,61 +189,6 @@ border-radius:15px;padding:2px 4px;
        </property>
        <property name="text">
         <string>Top up</string>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="taskButton">
-       <property name="font">
-        <font>
-         <family>Century Gothic</family>
-         <pointsize>20</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{  
-color:rgb(85, 85, 0);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
-border:1px;  
-border-radius:15px;padding:2px 4px;
-}  
-QPushButton:hover{
-color:rgb(255, 255, 255);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(37,189,252),  
-							  stop: 1 rgb(32,170,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-}  
-QPushButton:pressed{ 
-color:rgb(233, 236, 243);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(38,190,255),  
-							  stop: 1 rgb(33,184,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-};</string>
-       </property>
-       <property name="text">
-        <string>Tasks</string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -618,8 +673,8 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_
    <slot>topUpButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>496</x>
-     <y>599</y>
+     <x>507</x>
+     <y>755</y>
     </hint>
     <hint type="destinationlabel">
      <x>546</x>
@@ -644,22 +699,6 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_
    </hints>
   </connection>
   <connection>
-   <sender>taskButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindowPersonal</receiver>
-   <slot>taskButtonClick()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>710</x>
-     <y>709</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>699</x>
-     <y>644</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>refreshButton_2</sender>
    <signal>clicked()</signal>
    <receiver>MainWindowPersonal</receiver>
@@ -675,13 +714,46 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>accTaskButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowPersonal</receiver>
+   <slot>accTaskButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>701</x>
+     <y>601</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>993</x>
+     <y>685</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>issTaskButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowPersonal</receiver>
+   <slot>issTaskButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>649</x>
+     <y>656</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>933</x>
+     <y>654</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>logOutButtonClick()</slot>
   <slot>changePasswordButtonClick()</slot>
   <slot>topUpButtonClick()</slot>
   <slot>updateInfoButtonClick()</slot>
-  <slot>taskButtonClick()</slot>
+  <slot>accTaskButtonClick()</slot>
   <slot>refreshButtonClick()</slot>
+  <slot>issTaskButtonClick()</slot>
  </slots>
 </ui>
