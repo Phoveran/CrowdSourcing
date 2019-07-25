@@ -308,8 +308,10 @@ RecTaskOper::RecTaskOper(Task* tas, Data* data, QWidget* parent)
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
+
 	dataPtr = data;
 	task = tas;
+
 	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
 	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby/1000 words"));
 	ui.labelRank->setText(QString::number(task->rank));
@@ -360,4 +362,66 @@ QString RecTaskOper::transTypeJudge()
 	case 6: return QString("French to English");
 	default: return QString();
 	}
+}
+
+
+//我的翻译任务界面
+MyTransTaskOper::MyTransTaskOper(Task* tas, Data* data, QWidget* parent)
+{
+	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
+
+	dataPtr = data;
+	task = tas;
+	
+	loadInfo();
+}
+
+void MyTransTaskOper::saveButtonClick()
+{
+	task->transTemp = ui.textBrowserTrans->toPlainText().toStdString();
+	loadInfo();
+}
+
+QString MyTransTaskOper::transTypeJudge()
+{
+	switch (task->transType)
+	{
+	case 1: return QString("Chinese to English");
+	case 2: return QString("Chinese to French");
+	case 3: return QString("English to Chinese");
+	case 4: return QString("English to French");
+	case 5: return QString("French to Chinese");
+	case 6: return QString("French to English");
+	default: return QString();
+	}
+}
+
+void MyTransTaskOper::loadInfo()
+{
+	ui.textBrowserOrigin->setText(QString::fromStdString(task->content));
+	ui.textBrowserTrans->setText(QString::fromStdString(task->transTemp));
+	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
+	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby/1000 words"));
+	ui.labelRank->setText(QString::number(task->rank));
+	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Day"));
+	ui.labelTransType->setText(transTypeJudge());
+	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
+	if (task->type())
+	{
+		ui.labelTaskType->setText(QString("Translation task"));
+		ui.labelReqCredits->setText(QString("Eng: ") + QString::number(task->getReqEngCre()) + QString("    Fre:") + QString::number(task->getReqFraCre()));
+	}
+	else
+	{
+		ui.labelTaskType->setText(QString("Arrangement task"));
+	}
+}
+
+void MyTransTaskOper::submitButtonClick()
+{
+	task->transSubmit = ui.textBrowserTrans->toPlainText().toStdString();
+	task->state = 0;
+	this->close();
 }

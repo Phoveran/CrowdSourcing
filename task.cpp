@@ -1,4 +1,5 @@
 #include"data.h"
+#include<algorithm>
 
 Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con, int pay)
 {
@@ -65,7 +66,8 @@ vector<int> ResTask::getChildren()
 bool ResTask::applied(int acc)
 {
 	int i = acc - 1000;
-	if (dataPtr->userVec[i]->level == 2)
+	if (count(waitingAccount.begin(), waitingAccount.end(), acc));
+	else if (dataPtr->userVec[i]->level == 2)
 	{
 		waitingAccount.push_back(i);
 		return true;
@@ -83,7 +85,8 @@ int ResTask::type()
 bool TransTask::applied(int acc)
 {
 	int i = acc - 1000;
-	if (dataPtr->userVec[i]->engCredits >= reqEngCredits && dataPtr->userVec[i]->fraCredits >= reqFraCredits)
+	if (count(waitingAccount.begin(), waitingAccount.end(), acc));
+	else if (dataPtr->userVec[i]->engCredits >= reqEngCredits && dataPtr->userVec[i]->fraCredits >= reqFraCredits)
 	{
 		waitingAccount.push_back(acc);
 		return true;

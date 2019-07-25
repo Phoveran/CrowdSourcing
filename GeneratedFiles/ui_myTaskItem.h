@@ -25,7 +25,7 @@ public:
     QFrame *fromPic;
     QFrame *fixPic;
     QFrame *toPic;
-    QLabel *labelPeriod;
+    QLabel *labelType;
     QLabel *labelState;
     QLabel *labelRank;
 
@@ -43,7 +43,7 @@ public:
         bigFrame->setFrameShadow(QFrame::Raised);
         frame = new QFrame(bigFrame);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(330, 15, 90, 20));
+        frame->setGeometry(QRect(300, 15, 90, 20));
         frame->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));
         frame->setFrameShape(QFrame::StyledPanel);
@@ -66,15 +66,15 @@ public:
         toPic->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/Fra.png);"));
         toPic->setFrameShape(QFrame::StyledPanel);
         toPic->setFrameShadow(QFrame::Raised);
-        labelPeriod = new QLabel(bigFrame);
-        labelPeriod->setObjectName(QString::fromUtf8("labelPeriod"));
-        labelPeriod->setGeometry(QRect(480, 17, 211, 16));
+        labelType = new QLabel(bigFrame);
+        labelType->setObjectName(QString::fromUtf8("labelType"));
+        labelType->setGeometry(QRect(420, 17, 211, 16));
         QFont font;
         font.setFamily(QString::fromUtf8("Courier"));
         font.setBold(true);
         font.setWeight(75);
-        labelPeriod->setFont(font);
-        labelPeriod->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
+        labelType->setFont(font);
+        labelType->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));
         labelState = new QLabel(bigFrame);
         labelState->setObjectName(QString::fromUtf8("labelState"));
@@ -97,7 +97,7 @@ public:
     void retranslateUi(QWidget *myTaskItem)
     {
         myTaskItem->setWindowTitle(QCoreApplication::translate("myTaskItem", "Form", nullptr));
-        labelPeriod->setText(QCoreApplication::translate("myTaskItem", "Period", nullptr));
+        labelType->setText(QCoreApplication::translate("myTaskItem", "translation task", nullptr));
         labelState->setText(QCoreApplication::translate("myTaskItem", "State", nullptr));
         labelRank->setText(QCoreApplication::translate("myTaskItem", "Rank", nullptr));
     } // retranslateUi

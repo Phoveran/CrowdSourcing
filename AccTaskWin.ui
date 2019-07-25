@@ -342,10 +342,27 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>myViewButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowAccTask</receiver>
+   <slot>myViewButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1850</x>
+     <y>516</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1836</x>
+     <y>598</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>backButtonClick()</slot>
   <slot>recViewButtonClick()</slot>
   <slot>refreshButtonClick()</slot>
+  <slot>myViewButtonClick()</slot>
  </slots>
 </ui>

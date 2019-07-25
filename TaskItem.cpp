@@ -68,13 +68,22 @@ myTaskItem::myTaskItem(Task* task, QWidget* parent)
 	ui.labelRank->setText(QString("Rank: ") + QString::number(task->rank));
 	if (task->state == 1)
 	{
+		ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
 		ui.labelState->setText(QString("Conducting"));
 	}
 	else
 	{
+		ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\nborder-image:transparent; "));
 		ui.labelState->setText(QString("Recruiting"));
 	}
-	ui.labelPeriod->setText(QString::number(task->period) + QString(" Days"));
+	if (task->type())
+	{
+		ui.labelType->setText(QString("Translation task"));
+	}
+	else
+	{
+		ui.labelType->setText(QString("Arrangement task"));
+	}
 }
 
 void myTaskItem::setFromLan(int type)

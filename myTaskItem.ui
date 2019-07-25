@@ -37,7 +37,7 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>300</x>
       <y>15</y>
       <width>90</width>
       <height>20</height>
@@ -111,10 +111,10 @@ border-image:transparent;</string>
      </property>
     </widget>
    </widget>
-   <widget class="QLabel" name="labelPeriod">
+   <widget class="QLabel" name="labelType">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>420</x>
       <y>17</y>
       <width>211</width>
       <height>16</height>
@@ -132,7 +132,7 @@ border-image:transparent;</string>
 border-image:transparent;</string>
     </property>
     <property name="text">
-     <string>Period</string>
+     <string>translation task</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelState">

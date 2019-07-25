@@ -190,9 +190,46 @@ void AccTaskWin::loadInfo()
 
 void AccTaskWin::recViewButtonClick()
 {
-	int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt() - 1;
-	RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr);
-	r->show();
+	if (ui.listWidgetRecTasks->currentItem())
+	{
+		int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt() - 1;
+		RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr);
+		r->show();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You haven't chosen a task!"));
+		mesBox->show();
+	}
+}
+
+void AccTaskWin::myViewButtonClick()
+{
+	if (ui.listWidgetMyTasks->currentItem())
+	{
+		int rank = ui.listWidgetMyTasks->currentItem()->whatsThis().toInt() - 1;
+		if (dataPtr->taskVec[rank]->state == 1)
+		{
+			MyTransTaskOper* m = new MyTransTaskOper(dataPtr->taskVec[rank], dataPtr);
+			m->show();
+		}
+		else if (dataPtr->taskVec[rank]->state == 2)
+		{
+			RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr);
+			r->show();
+		}
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You haven't chosen a task!"));
+		mesBox->show();
+	}
 }
 
 

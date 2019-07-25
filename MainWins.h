@@ -68,8 +68,9 @@ public:
 
 public slots:
 	void backButtonClick();
-	void recViewButtonClick();
 	void refreshButtonClick();
+	void recViewButtonClick();
+	void myViewButtonClick();
 
 private:
 	Ui::MainWindowAccTask ui;
