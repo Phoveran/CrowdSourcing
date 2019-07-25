@@ -50,7 +50,7 @@ public:
 	string content;//原文
 	string transTemp;//暂存翻译
 	string transSubmit;//最终翻译
-	virtual bool taken(int) = 0;
+	virtual bool applied(int) = 0;
 	virtual int type() = 0;
 	virtual vector<int> getChildren();
 	virtual int getParent();
@@ -66,7 +66,7 @@ public:
 		childrenTasks = child;
 	}
 	vector<int> getChildren();
-	bool taken(int acc);
+	bool applied(int acc);
 	int type();
 
 private:
@@ -82,7 +82,7 @@ public:
 		reqEngCredits = reqEngCre;
 		reqFraCredits = reqFraCre;
 	};
-	bool taken(int acc);
+	bool applied(int acc);
 	int type();
 	int getParent();
 	int getReqEngCre();
@@ -110,6 +110,9 @@ public:
 	vector<string> certificationType;//资质证明种类
 	vector<int> issuedTasks;//发布的任务编号
 	vector<int> takenTasks;//接取的任务编号
+
+	void take(int taskNum);
+	void issue(int taskNum);
 };
 
 /*

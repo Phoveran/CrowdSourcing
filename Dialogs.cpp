@@ -233,14 +233,14 @@ UpdateInfo::UpdateInfo(Data* data, QWidget* parent)
 
 void UpdateInfo::okClick()
 {
-	if (!regex_match(ui.teleLineEdit->text().toStdString(), regex("^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$")))
-	{
-		ui.noticeLabel->setText("Telephone not valid!");
-	}
-	else
+	if (ui.teleLineEdit->text().isEmpty() || regex_match(ui.teleLineEdit->text().toStdString(), regex("^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$")))
 	{
 		submitChange();
 		this->close();
+	}
+	else
+	{
+		ui.noticeLabel->setText("Telephone not valid!");
 	}
 }
 
@@ -301,13 +301,63 @@ void UpdateInfo::submitChange()
 }
 
 
-//招募中任务界面
+//查看别人发布的招募中任务界面
 RecTaskOper::RecTaskOper(Task* tas, Data* data, QWidget* parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
 	dataPtr = data;
-	if (tas->type())
+	task = tas;
+	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
+	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby/1000 words"));
+	ui.labelRank->setText(QString::number(task->rank));
+	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Day"));
+	ui.labelTransType->setText(transTypeJudge());
+	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
+	if (task->type())
 	{
+		ui.labelTaskType->setText(QString("Translation task"));
+		ui.labelReqCredits->setText(QString("Eng: ") + QString::number(task->getReqEngCre()) + QString("    Fre:") + QString::number(task->getReqFraCre()));
+	}
+	else
+	{
+		ui.labelTaskType->setText(QString("Arrangement task"));
+	}
+}
+
+void RecTaskOper::cancelButtonClick()
+{
+	this->close();
+}
+
+void RecTaskOper::applyButtonClick()
+{
+	if (task->applied(dataPtr->nowAccountNum))
+	{
+		this->close();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You can't take this task!"));
+		mesBox->show();
+	}
+}
+
+QString RecTaskOper::transTypeJudge()
+{
+	switch (task->transType)
+	{
+	case 1: return QString("Chinese to English");
+	case 2: return QString("Chinese to French");
+	case 3: return QString("English to Chinese");
+	case 4: return QString("English to French");
+	case 5: return QString("French to Chinese");
+	case 6: return QString("French to English");
+	default: return QString();
 	}
 }

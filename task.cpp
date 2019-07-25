@@ -62,14 +62,12 @@ vector<int> ResTask::getChildren()
 	return childrenTasks;
 }
 
-bool ResTask::taken(int acc)
+bool ResTask::applied(int acc)
 {
 	int i = acc - 1000;
 	if (dataPtr->userVec[i]->level == 2)
 	{
-		takenAccount = acc;
-		waitingAccount.clear();
-		state = 1;
+		waitingAccount.push_back(i);
 		return true;
 	}
 	return false;
@@ -82,14 +80,12 @@ int ResTask::type()
 
 
 
-bool TransTask::taken(int acc)
+bool TransTask::applied(int acc)
 {
-	int i = acc - 10000;
+	int i = acc - 1000;
 	if (dataPtr->userVec[i]->engCredits >= reqEngCredits && dataPtr->userVec[i]->fraCredits >= reqFraCredits)
 	{
-		takenAccount = acc;
-		waitingAccount.clear();
-		state = 1;
+		waitingAccount.push_back(acc);
 		return true;
 	}
 	return false;

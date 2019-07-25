@@ -17,3 +17,13 @@ User::User(int acc, string passwd, vector<string> cer, string tele)
 User::~User(void)
 {
 }
+
+void User::take(int taskNum)
+{
+	takenTasks.push_back(taskNum);
+}
+
+void User::issue(int taskNum)
+{
+	issuedTasks.push_back(taskNum);
+}

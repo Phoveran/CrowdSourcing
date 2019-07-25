@@ -126,6 +126,7 @@
     <QtUic Include="CrowdSourcing.ui" />
     <QtUic Include="IssTaskWin.ui" />
     <QtUic Include="MyResTaskOper.ui" />
+    <QtUic Include="myTaskItem.ui" />
     <QtUic Include="MyTransTaskOper.ui" />
     <QtUic Include="Personal.ui" />
     <QtUic Include="recTaskItem.ui" />
@@ -153,6 +154,7 @@
     </QtMoc>
     <ClInclude Include="GeneratedFiles\ui_IssTaskWin.h" />
     <ClInclude Include="GeneratedFiles\ui_MyResTaskOper.h" />
+    <ClInclude Include="GeneratedFiles\ui_myTaskItem.h" />
     <ClInclude Include="GeneratedFiles\ui_MyTransTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_Personal.h" />
     <ClInclude Include="GeneratedFiles\ui_recTaskItem.h" />

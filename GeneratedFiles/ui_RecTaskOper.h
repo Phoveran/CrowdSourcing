@@ -44,8 +44,9 @@ public:
     QFrame *frame;
     QFrame *verticalFrame;
     QVBoxLayout *verticalLayout;
-    QPushButton *acceptButton;
+    QPushButton *applyButton;
     QPushButton *cancelButton;
+    QLabel *label_8;
 
     void setupUi(QDialog *DialogRecTaskOper)
     {
@@ -60,7 +61,8 @@ public:
 "color: rgb(85, 85, 0);"));
         formLayout = new QFormLayout(formFrame);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
-        formLayout->setVerticalSpacing(3);
+        formLayout->setHorizontalSpacing(20);
+        formLayout->setVerticalSpacing(4);
         label_1 = new QLabel(formFrame);
         label_1->setObjectName(QString::fromUtf8("label_1"));
         QFont font;
@@ -115,56 +117,53 @@ public:
 
         labelRank = new QLabel(formFrame);
         labelRank->setObjectName(QString::fromUtf8("labelRank"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Century Gothic"));
-        font1.setPointSize(16);
-        labelRank->setFont(font1);
+        labelRank->setFont(font);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, labelRank);
 
         labelTransType = new QLabel(formFrame);
         labelTransType->setObjectName(QString::fromUtf8("labelTransType"));
-        labelTransType->setFont(font1);
+        labelTransType->setFont(font);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, labelTransType);
 
         labelTaskType = new QLabel(formFrame);
         labelTaskType->setObjectName(QString::fromUtf8("labelTaskType"));
-        labelTaskType->setFont(font1);
+        labelTaskType->setFont(font);
 
         formLayout->setWidget(2, QFormLayout::FieldRole, labelTaskType);
 
         labelPayment = new QLabel(formFrame);
         labelPayment->setObjectName(QString::fromUtf8("labelPayment"));
-        labelPayment->setFont(font1);
+        labelPayment->setFont(font);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, labelPayment);
 
         labelIssAcc = new QLabel(formFrame);
         labelIssAcc->setObjectName(QString::fromUtf8("labelIssAcc"));
-        labelIssAcc->setFont(font1);
+        labelIssAcc->setFont(font);
 
         formLayout->setWidget(4, QFormLayout::FieldRole, labelIssAcc);
 
         labelTaskPer = new QLabel(formFrame);
         labelTaskPer->setObjectName(QString::fromUtf8("labelTaskPer"));
-        labelTaskPer->setFont(font1);
+        labelTaskPer->setFont(font);
 
         formLayout->setWidget(5, QFormLayout::FieldRole, labelTaskPer);
 
         labelReqCredits = new QLabel(formFrame);
         labelReqCredits->setObjectName(QString::fromUtf8("labelReqCredits"));
-        labelReqCredits->setFont(font1);
+        labelReqCredits->setFont(font);
 
         formLayout->setWidget(6, QFormLayout::FieldRole, labelReqCredits);
 
         textBrowserBrief = new QTextBrowser(DialogRecTaskOper);
         textBrowserBrief->setObjectName(QString::fromUtf8("textBrowserBrief"));
-        textBrowserBrief->setGeometry(QRect(520, 240, 261, 351));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("\345\215\216\346\226\207\347\273\206\351\273\221"));
-        font2.setPointSize(12);
-        textBrowserBrief->setFont(font2);
+        textBrowserBrief->setGeometry(QRect(520, 250, 261, 341));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\345\215\216\346\226\207\347\273\206\351\273\221"));
+        font1.setPointSize(12);
+        textBrowserBrief->setFont(font1);
         textBrowserBrief->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
         frame = new QFrame(DialogRecTaskOper);
         frame->setObjectName(QString::fromUtf8("frame"));
@@ -178,16 +177,16 @@ public:
         verticalFrame->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
         verticalLayout = new QVBoxLayout(verticalFrame);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        acceptButton = new QPushButton(verticalFrame);
-        acceptButton->setObjectName(QString::fromUtf8("acceptButton"));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Century Gothic"));
-        font3.setPointSize(18);
-        font3.setBold(true);
-        font3.setItalic(true);
-        font3.setWeight(75);
-        acceptButton->setFont(font3);
-        acceptButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
+        applyButton = new QPushButton(verticalFrame);
+        applyButton->setObjectName(QString::fromUtf8("applyButton"));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Century Gothic"));
+        font2.setPointSize(18);
+        font2.setBold(true);
+        font2.setItalic(true);
+        font2.setWeight(75);
+        applyButton->setFont(font2);
+        applyButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"
 "border-style:solid;  \n"
@@ -222,14 +221,14 @@ public:
 "border:1px;  \n"
 "border-radius:15px;padding:2px 4px;  \n"
 "};"));
-        acceptButton->setAutoDefault(false);
-        acceptButton->setFlat(true);
+        applyButton->setAutoDefault(false);
+        applyButton->setFlat(true);
 
-        verticalLayout->addWidget(acceptButton);
+        verticalLayout->addWidget(applyButton);
 
         cancelButton = new QPushButton(verticalFrame);
         cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
-        cancelButton->setFont(font3);
+        cancelButton->setFont(font2);
         cancelButton->setStyleSheet(QString::fromUtf8("QPushButton{  \n"
 "color:rgb(85, 85, 0);  \n"
 "min-height:20;  \n"
@@ -270,8 +269,16 @@ public:
 
         verticalLayout->addWidget(cancelButton);
 
+        label_8 = new QLabel(DialogRecTaskOper);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        label_8->setGeometry(QRect(520, 225, 61, 24));
+        label_8->setFont(font);
+        label_8->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
+"border-image:transparent;"));
 
         retranslateUi(DialogRecTaskOper);
+        QObject::connect(applyButton, SIGNAL(clicked()), DialogRecTaskOper, SLOT(applyButtonClick()));
+        QObject::connect(cancelButton, SIGNAL(clicked()), DialogRecTaskOper, SLOT(cancelButtonClick()));
 
         QMetaObject::connectSlotsByName(DialogRecTaskOper);
     } // setupUi
@@ -298,8 +305,9 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'\345\215\216\346\226\207\347\273\206\351\273\221'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
-        acceptButton->setText(QCoreApplication::translate("DialogRecTaskOper", "Accept", nullptr));
+        applyButton->setText(QCoreApplication::translate("DialogRecTaskOper", "apply", nullptr));
         cancelButton->setText(QCoreApplication::translate("DialogRecTaskOper", "Cancel", nullptr));
+        label_8->setText(QCoreApplication::translate("DialogRecTaskOper", "Brief\357\274\232", nullptr));
     } // retranslateUi
 
 };

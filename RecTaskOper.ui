@@ -30,8 +30,11 @@
 color: rgb(85, 85, 0);</string>
    </property>
    <layout class="QFormLayout" name="formLayout">
+    <property name="horizontalSpacing">
+     <number>20</number>
+    </property>
     <property name="verticalSpacing">
-     <number>3</number>
+     <number>4</number>
     </property>
     <item row="0" column="0">
      <widget class="QLabel" name="label_1">
@@ -150,7 +153,7 @@ color: rgb(85, 85, 0);</string>
       <property name="font">
        <font>
         <family>Century Gothic</family>
-        <pointsize>16</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -163,7 +166,7 @@ color: rgb(85, 85, 0);</string>
       <property name="font">
        <font>
         <family>Century Gothic</family>
-        <pointsize>16</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -176,7 +179,7 @@ color: rgb(85, 85, 0);</string>
       <property name="font">
        <font>
         <family>Century Gothic</family>
-        <pointsize>16</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -189,7 +192,7 @@ color: rgb(85, 85, 0);</string>
       <property name="font">
        <font>
         <family>Century Gothic</family>
-        <pointsize>16</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -202,7 +205,7 @@ color: rgb(85, 85, 0);</string>
       <property name="font">
        <font>
         <family>Century Gothic</family>
-        <pointsize>16</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -215,7 +218,7 @@ color: rgb(85, 85, 0);</string>
       <property name="font">
        <font>
         <family>Century Gothic</family>
-        <pointsize>16</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -228,7 +231,7 @@ color: rgb(85, 85, 0);</string>
       <property name="font">
        <font>
         <family>Century Gothic</family>
-        <pointsize>16</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -242,9 +245,9 @@ color: rgb(85, 85, 0);</string>
    <property name="geometry">
     <rect>
      <x>520</x>
-     <y>240</y>
+     <y>250</y>
      <width>261</width>
-     <height>351</height>
+     <height>341</height>
     </rect>
    </property>
    <property name="font">
@@ -297,7 +300,7 @@ p, li { white-space: pre-wrap; }
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QPushButton" name="acceptButton">
+     <widget class="QPushButton" name="applyButton">
       <property name="font">
        <font>
         <family>Century Gothic</family>
@@ -344,7 +347,7 @@ border-radius:15px;padding:2px 4px;
 };</string>
       </property>
       <property name="text">
-       <string>Accept</string>
+       <string>apply</string>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -414,9 +417,69 @@ border-radius:15px;padding:2px 4px;
     </item>
    </layout>
   </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>225</y>
+     <width>61</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Century Gothic</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(85, 85, 0);
+border-image:transparent;</string>
+   </property>
+   <property name="text">
+    <string>Brief：</string>
+   </property>
+  </widget>
  </widget>
  <resources>
   <include location="CrowdSourcing.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>applyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogRecTaskOper</receiver>
+   <slot>applyButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>382</x>
+     <y>458</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>385</x>
+     <y>396</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogRecTaskOper</receiver>
+   <slot>cancelButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>430</x>
+     <y>522</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>415</x>
+     <y>569</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>applyButtonClick()</slot>
+  <slot>cancelButtonClick()</slot>
+ </slots>
 </ui>

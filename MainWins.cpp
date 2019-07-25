@@ -1,5 +1,6 @@
 #include "MainWins.h"
 #include <qmessagebox.h>
+#include <algorithm>
 
 
 //µÇÂ½½çÃæ
@@ -104,7 +105,7 @@ void Personal::refreshButtonClick()
 void Personal::loadInfo()
 {
 	ui.balanceDisplay->setText(QString::number(dataPtr->nowAccount->balance) + QString(" Ruby"));
-	ui.creditsDisplay->setText(QString("Eng: ") + QString::number(dataPtr->nowAccount->engCredits) + QString("       Fra: ") + QString::number(dataPtr->nowAccount->fraCredits));
+	ui.creditsDisplay->setText(QString("Eng: ") + QString::number(dataPtr->nowAccount->engCredits) + QString("       Fre: ") + QString::number(dataPtr->nowAccount->fraCredits));
 	if (dataPtr->nowAccount->level == 1)
 	{
 		ui.memberTypeDisplay->setText(QString("Normal member"));
@@ -158,27 +159,27 @@ void AccTaskWin::loadInfo()
 	ui.listWidgetFiniTasks->clear();
 	for (int i = 0; i < dataPtr->taskVec.size(); i++)
 	{
-		if (dataPtr->taskVec[i]->state == 2)
+		if (dataPtr->taskVec[i]->state == 2 && !count(dataPtr->taskVec[i]->waitingAccount.begin(), dataPtr->taskVec[i]->waitingAccount.end(), dataPtr->nowAccountNum))
 		{
 			QListWidgetItem* li = new QListWidgetItem;
-			li->setWhatsThis(QString(dataPtr->taskVec[i]->rank));
+			li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
 			li->setSizeHint(QSize(680, 59));
 			recTaskItem* rti = new recTaskItem(dataPtr->taskVec[i]);
 			ui.listWidgetRecTasks->addItem(li);
 			ui.listWidgetRecTasks->setItemWidget(li, rti);
 		}
-		else if (dataPtr->taskVec[i]->takenAccount == dataPtr->nowAccountNum)
+		else if (dataPtr->taskVec[i]->takenAccount == dataPtr->nowAccountNum || count(dataPtr->taskVec[i]->waitingAccount.begin(), dataPtr->taskVec[i]->waitingAccount.end(), dataPtr->nowAccountNum))
 		{
 			QListWidgetItem* li = new QListWidgetItem;
-			li->setWhatsThis(QString(dataPtr->taskVec[i]->rank));
+			li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
 			li->setSizeHint(QSize(600, 59));
-			recTaskItem* rti = new recTaskItem(dataPtr->taskVec[i]);
-			if (dataPtr->taskVec[i]->state == 1)
+			myTaskItem* rti = new myTaskItem(dataPtr->taskVec[i]);
+			if (dataPtr->taskVec[i]->state)
 			{
 				ui.listWidgetMyTasks->addItem(li);
 				ui.listWidgetMyTasks->setItemWidget(li, rti);
 			}
-			else if (dataPtr->taskVec[i]->state == 0)
+			else
 			{
 				ui.listWidgetFiniTasks->addItem(li);
 				ui.listWidgetFiniTasks->setItemWidget(li, rti);
@@ -189,7 +190,9 @@ void AccTaskWin::loadInfo()
 
 void AccTaskWin::recViewButtonClick()
 {
-	int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt();
+	int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt() - 1;
+	RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr);
+	r->show();
 }
 
 

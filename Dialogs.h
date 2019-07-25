@@ -111,11 +111,15 @@ class RecTaskOper : public QDialog
 	Q_OBJECT
 
 public:
-	RecTaskOper(Task* task, Data* data, QWidget* parent = Q_NULLPTR);
+	RecTaskOper(Task* tas, Data* data, QWidget* parent = Q_NULLPTR);
 	Data* dataPtr;
+	Task* task;
 
 public slots:
+	void applyButtonClick();
+	void cancelButtonClick();
 
 private:
 	Ui::DialogRecTaskOper ui;
+	QString transTypeJudge();
 };
