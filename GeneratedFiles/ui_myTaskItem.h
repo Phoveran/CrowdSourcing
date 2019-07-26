@@ -43,7 +43,7 @@ public:
         bigFrame->setFrameShadow(QFrame::Raised);
         frame = new QFrame(bigFrame);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(300, 15, 90, 20));
+        frame->setGeometry(QRect(310, 15, 90, 20));
         frame->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));
         frame->setFrameShape(QFrame::StyledPanel);
@@ -78,7 +78,7 @@ public:
 "border-image:transparent;"));
         labelState = new QLabel(bigFrame);
         labelState->setObjectName(QString::fromUtf8("labelState"));
-        labelState->setGeometry(QRect(160, 17, 151, 16));
+        labelState->setGeometry(QRect(140, 17, 151, 16));
         labelState->setFont(font);
         labelState->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));

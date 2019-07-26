@@ -93,7 +93,7 @@ public slots:
 	void refreshButtonClick();
 
 private:
-	Ui::MainWindowAccTask ui;
+	Ui::MainWindowIssTask ui;
 
 	void loadInfo();
 };

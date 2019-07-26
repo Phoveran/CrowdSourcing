@@ -159,30 +159,33 @@ void AccTaskWin::loadInfo()
 	ui.listWidgetFiniTasks->clear();
 	for (int i = 0; i < dataPtr->taskVec.size(); i++)
 	{
-		if (dataPtr->taskVec[i]->state == 2 && !count(dataPtr->taskVec[i]->waitingAccount.begin(), dataPtr->taskVec[i]->waitingAccount.end(), dataPtr->nowAccountNum))
+		if (dataPtr->taskVec[i]->issuingAccount != dataPtr->nowAccountNum)
 		{
-			QListWidgetItem* li = new QListWidgetItem;
-			li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
-			li->setSizeHint(QSize(680, 59));
-			recTaskItem* rti = new recTaskItem(dataPtr->taskVec[i]);
-			ui.listWidgetRecTasks->addItem(li);
-			ui.listWidgetRecTasks->setItemWidget(li, rti);
-		}
-		else if (dataPtr->taskVec[i]->takenAccount == dataPtr->nowAccountNum || count(dataPtr->taskVec[i]->waitingAccount.begin(), dataPtr->taskVec[i]->waitingAccount.end(), dataPtr->nowAccountNum))
-		{
-			QListWidgetItem* li = new QListWidgetItem;
-			li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
-			li->setSizeHint(QSize(600, 59));
-			myTaskItem* rti = new myTaskItem(dataPtr->taskVec[i]);
-			if (dataPtr->taskVec[i]->state)
+			if (dataPtr->taskVec[i]->state == 2 && !count(dataPtr->taskVec[i]->waitingAccount.begin(), dataPtr->taskVec[i]->waitingAccount.end(), dataPtr->nowAccountNum))
 			{
-				ui.listWidgetMyTasks->addItem(li);
-				ui.listWidgetMyTasks->setItemWidget(li, rti);
+				QListWidgetItem* li = new QListWidgetItem;
+				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
+				li->setSizeHint(QSize(680, 59));
+				recTaskItem* rti = new recTaskItem(dataPtr->taskVec[i]);
+				ui.listWidgetRecTasks->addItem(li);
+				ui.listWidgetRecTasks->setItemWidget(li, rti);
 			}
-			else
+			else if (dataPtr->taskVec[i]->takenAccount == dataPtr->nowAccountNum || count(dataPtr->taskVec[i]->waitingAccount.begin(), dataPtr->taskVec[i]->waitingAccount.end(), dataPtr->nowAccountNum))
 			{
-				ui.listWidgetFiniTasks->addItem(li);
-				ui.listWidgetFiniTasks->setItemWidget(li, rti);
+				QListWidgetItem* li = new QListWidgetItem;
+				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
+				li->setSizeHint(QSize(600, 59));
+				myTaskItem* mti = new myTaskItem(dataPtr->taskVec[i]);
+				if (dataPtr->taskVec[i]->state)
+				{
+					ui.listWidgetMyTasks->addItem(li);
+					ui.listWidgetMyTasks->setItemWidget(li, mti);
+				}
+				else
+				{
+					ui.listWidgetFiniTasks->addItem(li);
+					ui.listWidgetFiniTasks->setItemWidget(li, mti);
+				}
 			}
 		}
 	}
@@ -213,8 +216,16 @@ void AccTaskWin::myViewButtonClick()
 		int rank = ui.listWidgetMyTasks->currentItem()->whatsThis().toInt() - 1;
 		if (dataPtr->taskVec[rank]->state == 1)
 		{
-			MyTransTaskOper* m = new MyTransTaskOper(dataPtr->taskVec[rank], dataPtr);
-			m->show();
+			if (dataPtr->taskVec[rank]->type())
+			{
+				MyTransTaskOper* m = new MyTransTaskOper(dataPtr->taskVec[rank], dataPtr);
+				m->show();
+			}
+			else
+			{
+				MyResTaskOper* m = new MyResTaskOper(dataPtr->taskVec[rank], dataPtr);
+				m->show();
+			}
 		}
 		else if (dataPtr->taskVec[rank]->state == 2)
 		{
@@ -254,6 +265,53 @@ void IssTaskWin::refreshButtonClick()
 
 void IssTaskWin::loadInfo()
 {
+	ui.listWidgetRecTasks->clear();
+	ui.listWidgetConTasks->clear();
+	ui.listWidgetFiniTasks->clear();
+	for (int i = 0; i < dataPtr->nowAccount->issuedTasks.size(); i++)
+	{
+		int ra = dataPtr->nowAccount->issuedTasks[i] - 1;
+		if (dataPtr->taskVec[ra]->state == 2)
+		{
+			QListWidgetItem* li = new QListWidgetItem;
+			li->setWhatsThis(QString::number(ra + 1));
+			li->setSizeHint(QSize(680, 59));
+			recTaskItem* rti = new recTaskItem(dataPtr->taskVec[ra]);
+			rti->ui.labelPayment->setText(QString::number(dataPtr->taskVec[ra]->waitingAccount.size()) + QString(" Waiting"));
+			ui.listWidgetRecTasks->addItem(li);
+			ui.listWidgetRecTasks->setItemWidget(li, rti);
+		}
+		else if (dataPtr->taskVec[ra]->state == 1)
+		{
+			QListWidgetItem* li = new QListWidgetItem;
+			li->setWhatsThis(QString::number(ra + 1));
+			li->setSizeHint(QSize(600, 59));
+			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra]);		
+			if (!dataPtr->taskVec[ra]->transSubmit.empty())
+			{
+				mti->ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+				mti->ui.labelState->setText(QString("Waiting Examine"));
+			}
+			else
+			{
+				mti->ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
+				mti->ui.labelState->setText(QString("Conducting"));
+			}
+			ui.listWidgetConTasks->addItem(li);
+			ui.listWidgetConTasks->setItemWidget(li, mti);
+		}
+		else if (dataPtr->taskVec[ra]->state == 0)
+		{
+			QListWidgetItem* li = new QListWidgetItem;
+			li->setWhatsThis(QString::number(ra + 1));
+			li->setSizeHint(QSize(600, 59));
+			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra]);
+			mti->ui.labelState->setStyleSheet(QString("color: rgb(85, 85, 0); \n border-image:transparent;"));
+			mti->ui.labelState->setText(QString::number(dataPtr->taskVec[ra]->period) + QString("Days"));
+			ui.listWidgetFiniTasks->addItem(li);
+			ui.listWidgetFiniTasks->setItemWidget(li, mti);
+		}
+	}
 }
 
 void IssTaskWin::backButtonClick()

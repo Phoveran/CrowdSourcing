@@ -45,7 +45,7 @@ public:
 	int state;//状态，2为招募中，1为执行中，0为已完成
 	int transType;//翻译类型，1为中=》英，2为中=》法，3为英=》中，4为英=》法，5为法=》中，6为法=》英
 	int period;//任务周期,单位为天
-	int payment;//每千字报酬
+	int payment;//报酬
 	string brief;//简介
 	string content;//原文
 	string transTemp;//暂存翻译

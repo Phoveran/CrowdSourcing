@@ -401,7 +401,15 @@ QString MyTransTaskOper::transTypeJudge()
 void MyTransTaskOper::loadInfo()
 {
 	ui.textBrowserOrigin->setText(QString::fromStdString(task->content));
-	ui.textBrowserTrans->setText(QString::fromStdString(task->transTemp));
+	if (task->transSubmit.empty())
+	{
+		ui.textBrowserTrans->setText(QString::fromStdString(task->transTemp));
+	}
+	else
+	{
+		ui.textBrowserTrans->setText(QString::fromStdString(task->transSubmit));
+		ui.textBrowserTrans->setReadOnly(true);
+	}
 	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
 	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby/1000 words"));
 	ui.labelRank->setText(QString::number(task->rank));
@@ -420,6 +428,95 @@ void MyTransTaskOper::loadInfo()
 }
 
 void MyTransTaskOper::submitButtonClick()
+{
+
+	task->transSubmit = ui.textBrowserTrans->toPlainText().toStdString();
+	this->close();
+}
+
+
+//我的负责任务界面
+MyResTaskOper::MyResTaskOper(Task* tas, Data* data, QWidget* parent)
+{
+	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
+	ui.newEngReqEdit->setValidator(new QIntValidator);
+	ui.newFreReqEdit->setValidator(new QIntValidator);
+	ui.newPayEdit->setValidator(new QIntValidator);
+	ui.newPeriodEdit->setValidator(new QIntValidator);
+
+	dataPtr = data;
+	task = tas;
+
+	loadInfo();
+}
+
+void MyResTaskOper::saveButtonClick()
+{
+	task->transTemp = ui.textBrowserTrans->toPlainText().toStdString();
+	loadInfo();
+}
+
+void MyResTaskOper::newChildButtonClick()
+{
+	if (ui.newPeriodEdit->text().isEmpty() || ui.newEngReqEdit->text().isEmpty() || ui.newFreReqEdit->text().isEmpty() || ui.newPayEdit->text().isEmpty() || ui.textBrowserNewChild->toPlainText().isEmpty())
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Please fill all blanks!"));
+		mesBox->show();
+	}
+	else
+	{
+		int period = ui.newPeriodEdit->text().toInt();
+		int engReq = ui.newEngReqEdit->text().toInt();
+		int freReq = ui.newFreReqEdit->text().toInt();
+		int pay = ui.newPayEdit->text().toInt();
+		string content = ui.textBrowserNewChild->toPlainText().toStdString();
+		TransTask* newTask = new TransTask(dataPtr->taskVec.size() + 1, task->brief, dataPtr->nowAccountNum, task->transType, period, dataPtr, task->rank, content, pay, engReq, freReq);
+		dataPtr->taskVec.push_back(newTask);
+	}
+}
+
+QString MyResTaskOper::transTypeJudge()
+{
+	switch (task->transType)
+	{
+	case 1: return QString("Chinese to English");
+	case 2: return QString("Chinese to French");
+	case 3: return QString("English to Chinese");
+	case 4: return QString("English to French");
+	case 5: return QString("French to Chinese");
+	case 6: return QString("French to English");
+	default: return QString();
+	}
+}
+
+void MyResTaskOper::loadInfo()
+{
+	ui.textBrowserOrigin->setText(QString::fromStdString(task->content));
+	ui.textBrowserOrigin_2->setText(QString::fromStdString(task->content));
+	ui.textBrowserTrans->setText(QString::fromStdString(task->transTemp));
+	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
+	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby/1000 words"));
+	ui.labelRank->setText(QString::number(task->rank));
+	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Day"));
+	ui.labelTransType->setText(transTypeJudge());
+	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
+	if (task->type())
+	{
+		ui.labelTaskType->setText(QString("Translation task"));
+		ui.labelReqCredits->setText(QString("Eng: ") + QString::number(task->getReqEngCre()) + QString("    Fre:") + QString::number(task->getReqFraCre()));
+	}
+	else
+	{
+		ui.labelTaskType->setText(QString("Arrangement task"));
+	}
+}
+
+void MyResTaskOper::submitButtonClick()
 {
 	task->transSubmit = ui.textBrowserTrans->toPlainText().toStdString();
 	task->state = 0;

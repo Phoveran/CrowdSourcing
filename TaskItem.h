@@ -12,9 +12,9 @@ class recTaskItem : public QWidget
 public:
 	recTaskItem(Task* task, QWidget* parent = Q_NULLPTR);
 	void setLan(int type);
+	Ui::recTaskItem ui;
 
 private:
-	Ui::recTaskItem ui;
 	void setFromLan(int type);
 	void setToLan(int type);
 };
@@ -26,9 +26,9 @@ class myTaskItem : public QWidget
 public:
 	myTaskItem(Task* task, QWidget* parent = Q_NULLPTR);
 	void setLan(int type);
+	Ui::myTaskItem ui;
 
 private:
-	Ui::myTaskItem ui;
 	void setFromLan(int type);
 	void setToLan(int type);
 };

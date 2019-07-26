@@ -176,7 +176,7 @@ public:
 
         frame_2 = new QFrame(tabInfo);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        frame_2->setGeometry(QRect(90, 250, 180, 250));
+        frame_2->setGeometry(QRect(90, 260, 180, 250));
         frame_2->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/in_morocco.jpg);"));
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);

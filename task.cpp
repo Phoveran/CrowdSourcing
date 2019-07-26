@@ -4,7 +4,7 @@
 Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con, int pay)
 {
 	dataPtr = data;
-	state = 0;
+	state = 2;
 	rank = r;
 	brief = bri;
 	issuingAccount = acc;

@@ -32,7 +32,7 @@ public:
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_3;
     QLabel *label_2;
-    QListWidget *listWidgetMyTasks;
+    QListWidget *listWidgetConTasks;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_3;
@@ -102,12 +102,12 @@ public:
 
         verticalLayout_3->addWidget(label_2);
 
-        listWidgetMyTasks = new QListWidget(verticalLayoutWidget_2);
-        listWidgetMyTasks->setObjectName(QString::fromUtf8("listWidgetMyTasks"));
-        listWidgetMyTasks->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
-        listWidgetMyTasks->setSelectionBehavior(QAbstractItemView::SelectItems);
+        listWidgetConTasks = new QListWidget(verticalLayoutWidget_2);
+        listWidgetConTasks->setObjectName(QString::fromUtf8("listWidgetConTasks"));
+        listWidgetConTasks->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
+        listWidgetConTasks->setSelectionBehavior(QAbstractItemView::SelectItems);
 
-        verticalLayout_3->addWidget(listWidgetMyTasks);
+        verticalLayout_3->addWidget(listWidgetConTasks);
 
         verticalLayoutWidget_3 = new QWidget(centralwidget);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
@@ -170,10 +170,10 @@ public:
 
     void retranslateUi(QMainWindow *MainWindowIssTask)
     {
-        MainWindowIssTask->setWindowTitle(QCoreApplication::translate("MainWindowIssTask", "Tasks", nullptr));
+        MainWindowIssTask->setWindowTitle(QCoreApplication::translate("MainWindowIssTask", "MyIssuedTasks", nullptr));
         label->setText(QCoreApplication::translate("MainWindowIssTask", "Recruiting Tasks:", nullptr));
         backButton->setText(QString());
-        label_2->setText(QCoreApplication::translate("MainWindowIssTask", "Waiting-Examine Tasks:", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindowIssTask", "Conducting Tasks:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindowIssTask", "Finished Tasks:", nullptr));
         recViewButton->setText(QString());
         refreshButton->setText(QString());

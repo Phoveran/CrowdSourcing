@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="/CrowdSourcing">
+    <file>Resources/pictures/new_clicked.png</file>
+    <file>Resources/pictures/new_norm.png</file>
+    <file>Resources/pictures/new_on.png</file>
     <file>Resources/pictures/wood.jpg</file>
     <file>Resources/pictures/in_morocco.jpg</file>
     <file>Resources/pictures/logout_clicked.png</file>

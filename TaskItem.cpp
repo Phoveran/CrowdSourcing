@@ -14,7 +14,7 @@ recTaskItem::recTaskItem(Task* task, QWidget* parent)
 	{
 		ui.labelType->setText(QString("Arrangement task"));
 	}
-	ui.labelPayment->setText(QString::number(task->payment) + QString("Ruby/1000 words"));
+	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby"));
 }
 
 void recTaskItem::setFromLan(int type)
@@ -66,16 +66,6 @@ myTaskItem::myTaskItem(Task* task, QWidget* parent)
 	ui.setupUi(this);
 	setLan(task->transType);
 	ui.labelRank->setText(QString("Rank: ") + QString::number(task->rank));
-	if (task->state == 1)
-	{
-		ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
-		ui.labelState->setText(QString("Conducting"));
-	}
-	else
-	{
-		ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\nborder-image:transparent; "));
-		ui.labelState->setText(QString("Recruiting"));
-	}
 	if (task->type())
 	{
 		ui.labelType->setText(QString("Translation task"));
@@ -83,6 +73,29 @@ myTaskItem::myTaskItem(Task* task, QWidget* parent)
 	else
 	{
 		ui.labelType->setText(QString("Arrangement task"));
+	}
+	if (task->state == 1)
+	{
+		if (task->transSubmit.empty())
+		{
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setText(QString("Conducting"));
+		}
+		else
+		{
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setText(QString("Waiting Examing"));
+		}
+	}
+	else if (task->state == 2)
+	{
+		ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
+		ui.labelState->setText(QString("Recruiting"));
+	}
+	else if (task->state == 0)
+	{
+		ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+		ui.labelState->setText(QString::number(task->payment) + QString("Ruby Received"));
 	}
 }
 

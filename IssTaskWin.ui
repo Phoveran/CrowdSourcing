@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Tasks</string>
+   <string>MyIssuedTasks</string>
   </property>
   <property name="styleSheet">
    <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda9.jpg);</string>
@@ -122,12 +122,12 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/back_cl
 color: rgb(255, 85, 0);</string>
        </property>
        <property name="text">
-        <string>Waiting-Examine Tasks:</string>
+        <string>Conducting Tasks:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QListWidget" name="listWidgetMyTasks">
+      <widget class="QListWidget" name="listWidgetConTasks">
        <property name="styleSheet">
         <string notr="true">border-image:transparent;</string>
        </property>

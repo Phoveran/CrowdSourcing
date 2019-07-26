@@ -43,7 +43,7 @@ public:
         frame_2->setFrameShadow(QFrame::Raised);
         frame = new QFrame(frame_2);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(350, 15, 90, 20));
+        frame->setGeometry(QRect(370, 15, 90, 20));
         frame->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));
         frame->setFrameShape(QFrame::StyledPanel);
@@ -68,7 +68,7 @@ public:
         toPic->setFrameShadow(QFrame::Raised);
         labelPayment = new QLabel(frame_2);
         labelPayment->setObjectName(QString::fromUtf8("labelPayment"));
-        labelPayment->setGeometry(QRect(480, 17, 211, 16));
+        labelPayment->setGeometry(QRect(520, 17, 211, 16));
         QFont font;
         font.setFamily(QString::fromUtf8("Courier"));
         font.setBold(true);
@@ -78,7 +78,7 @@ public:
 "border-image:transparent;"));
         labelType = new QLabel(frame_2);
         labelType->setObjectName(QString::fromUtf8("labelType"));
-        labelType->setGeometry(QRect(160, 17, 181, 16));
+        labelType->setGeometry(QRect(170, 17, 181, 16));
         labelType->setFont(font);
         labelType->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));
