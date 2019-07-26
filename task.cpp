@@ -18,20 +18,6 @@ Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con
 	payment = pay;
 }
 
-Task::Task(const Task& obj)
-{
-	dataPtr = obj.dataPtr;
-	state = obj.state;
-	rank = obj.rank;
-	brief = obj.brief;
-	issuingAccount = obj.issuingAccount;
-	takenAccount = obj.takenAccount;
-	waitingAccount = obj.waitingAccount;
-	transType = obj.transType;
-	period = obj.period;
-	content = obj.content;
-}
-
 Task::~Task(void)
 {
 }

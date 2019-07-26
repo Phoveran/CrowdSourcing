@@ -133,6 +133,7 @@
     <QtUic Include="RecTaskOper.ui" />
     <QtUic Include="Register.ui" />
     <QtUic Include="AccTaskWin.ui" />
+    <QtUic Include="StaticTaskOper.ui" />
     <QtUic Include="TopUp.ui" />
     <QtUic Include="UpdateInfo.ui" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="GeneratedFiles\ui_recTaskItem.h" />
     <ClInclude Include="GeneratedFiles\ui_RecTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_Register.h" />
+    <ClInclude Include="GeneratedFiles\ui_StaticTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_TopUp.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateInfo.h" />
     <QtMoc Include="TaskItem.h">

@@ -156,7 +156,7 @@ void Register::submitRegister()
 	string password = ui.pwLineEdit->text().toStdString();
 	string telephone = ui.teleLineEdit->text().toStdString();
 	vector<string> certifi = split(pLineEdit->text().toStdString(), string(";"));
-	User* user = new User(account, password, certifi, telephone);
+	User* user = new User(account, password, certifi, telephone, dataPtr);
 	dataPtr->userVec.push_back(user);
 }
 
@@ -177,14 +177,20 @@ void TopUp::topUpClick()
 	int num = str.toInt();
 	if (num > 0 && num < 1000000 && num % 100 == 0)
 	{
-		ui.noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\ncolor: rgb(0, 170, 0);"));
 		submitTopUp();
-		ui.noticeLabel->setText(QString::number(num, 10) + " Ruby topped up!");
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Topup Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(ui.lineEdit->text() + QString(" Ruby topped up"));
+		mesBox->show();
 	}
 	else
 	{
-		ui.noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\ncolor: rgb(255, 0, 0);"));
-		ui.noticeLabel->setText("Amount not supported!");
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Topup Failed");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Amount must be in multiples of 100 !\nTop up at most 1000000 Ruby once !"));
+		mesBox->show();
 	}
 }
 
@@ -292,6 +298,7 @@ void UpdateInfo::submitChange()
 	{
 		vector<string> certifi = split(pLineEdit->text().toStdString(), string(";"));
 		dataPtr->nowAccount->certificationType = certifi;
+		dataPtr->nowAccount->setCredits();
 	}
 	if (!ui.teleLineEdit->text().isEmpty())
 	{
@@ -313,9 +320,9 @@ RecTaskOper::RecTaskOper(Task* tas, Data* data, QWidget* parent)
 	task = tas;
 
 	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
-	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby/1000 words"));
+	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby"));
 	ui.labelRank->setText(QString::number(task->rank));
-	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Day"));
+	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Days"));
 	ui.labelTransType->setText(transTypeJudge());
 	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
 	if (task->type())
@@ -411,7 +418,7 @@ void MyTransTaskOper::loadInfo()
 		ui.textBrowserTrans->setReadOnly(true);
 	}
 	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
-	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby/1000 words"));
+	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby"));
 	ui.labelRank->setText(QString::number(task->rank));
 	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Day"));
 	ui.labelTransType->setText(transTypeJudge());
@@ -500,7 +507,7 @@ void MyResTaskOper::loadInfo()
 	ui.textBrowserOrigin_2->setText(QString::fromStdString(task->content));
 	ui.textBrowserTrans->setText(QString::fromStdString(task->transTemp));
 	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
-	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby/1000 words"));
+	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby"));
 	ui.labelRank->setText(QString::number(task->rank));
 	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Day"));
 	ui.labelTransType->setText(transTypeJudge());
@@ -521,4 +528,46 @@ void MyResTaskOper::submitButtonClick()
 	task->transSubmit = ui.textBrowserTrans->toPlainText().toStdString();
 	task->state = 0;
 	this->close();
+}
+
+
+//别人执行、完成的任务
+StaticTaskOper::StaticTaskOper(Task* tas, Data* data, QWidget* parent)
+	: QDialog(parent)
+{
+	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
+
+	dataPtr = data;
+	task = tas;
+
+	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
+	ui.labelTakenAcc->setText(QString::number(task->takenAccount));
+	ui.labelRank->setText(QString::number(task->rank));
+	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Days"));
+	ui.labelTransType->setText(transTypeJudge());
+	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
+	if (task->type())
+	{
+		ui.labelTaskType->setText(QString("Translation task"));
+	}
+	else
+	{
+		ui.labelTaskType->setText(QString("Arrangement task"));
+	}
+}
+
+QString StaticTaskOper::transTypeJudge()
+{
+	switch (task->transType)
+	{
+	case 1: return QString("Chinese to English");
+	case 2: return QString("Chinese to French");
+	case 3: return QString("English to Chinese");
+	case 4: return QString("English to French");
+	case 5: return QString("French to Chinese");
+	case 6: return QString("French to English");
+	default: return QString();
+	}
 }

@@ -234,7 +234,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="weViewButton">
+   <widget class="QPushButton" name="conViewButton">
     <property name="geometry">
      <rect>
       <x>1840</x>
@@ -283,6 +283,24 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  
 QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}
 QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="newTaskButton">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>20</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/new_clicked.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/new_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/new_norm.png);};</string>
     </property>
     <property name="text">
      <string/>
@@ -342,10 +360,61 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>newTaskButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowIssTask</receiver>
+   <slot>newTaskButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>289</x>
+     <y>59</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>959</x>
+     <y>539</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>conViewButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowIssTask</receiver>
+   <slot>conViewButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1879</x>
+     <y>509</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>959</x>
+     <y>539</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>finiViewButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowIssTask</receiver>
+   <slot>finiViewButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1879</x>
+     <y>989</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>959</x>
+     <y>539</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>backButtonClick()</slot>
   <slot>recViewButtonClick()</slot>
   <slot>refreshButtonClick()</slot>
+  <slot>newTaskButtonClick()</slot>
+  <slot>conViewButtonClick()</slot>
+  <slot>finiViewButtonClick()</slot>
  </slots>
 </ui>

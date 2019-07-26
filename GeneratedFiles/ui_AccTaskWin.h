@@ -27,7 +27,7 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
-    QListWidget *listWidgetRecTasks;
+    QListWidget *listWidgetOthTasks;
     QPushButton *backButton;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_3;
@@ -37,7 +37,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QLabel *label_3;
     QListWidget *listWidgetFiniTasks;
-    QPushButton *recViewButton;
+    QPushButton *othViewButton;
     QPushButton *refreshButton;
     QPushButton *myViewButton;
     QPushButton *finiViewButton;
@@ -71,12 +71,12 @@ public:
 
         verticalLayout_2->addWidget(label);
 
-        listWidgetRecTasks = new QListWidget(verticalLayoutWidget);
-        listWidgetRecTasks->setObjectName(QString::fromUtf8("listWidgetRecTasks"));
-        listWidgetRecTasks->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
-        listWidgetRecTasks->setSelectionBehavior(QAbstractItemView::SelectItems);
+        listWidgetOthTasks = new QListWidget(verticalLayoutWidget);
+        listWidgetOthTasks->setObjectName(QString::fromUtf8("listWidgetOthTasks"));
+        listWidgetOthTasks->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
+        listWidgetOthTasks->setSelectionBehavior(QAbstractItemView::SelectItems);
 
-        verticalLayout_2->addWidget(listWidgetRecTasks);
+        verticalLayout_2->addWidget(listWidgetOthTasks);
 
         backButton = new QPushButton(centralwidget);
         backButton->setObjectName(QString::fromUtf8("backButton"));
@@ -130,11 +130,11 @@ public:
 
         verticalLayout_4->addWidget(listWidgetFiniTasks);
 
-        recViewButton = new QPushButton(centralwidget);
-        recViewButton->setObjectName(QString::fromUtf8("recViewButton"));
-        recViewButton->setGeometry(QRect(740, 930, 80, 80));
-        recViewButton->setFont(font);
-        recViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
+        othViewButton = new QPushButton(centralwidget);
+        othViewButton->setObjectName(QString::fromUtf8("othViewButton"));
+        othViewButton->setGeometry(QRect(740, 930, 80, 80));
+        othViewButton->setFont(font);
+        othViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};"));
         refreshButton = new QPushButton(centralwidget);
@@ -163,7 +163,7 @@ public:
         retranslateUi(MainWindowAccTask);
         QObject::connect(backButton, SIGNAL(clicked()), MainWindowAccTask, SLOT(backButtonClick()));
         QObject::connect(refreshButton, SIGNAL(clicked()), MainWindowAccTask, SLOT(refreshButtonClick()));
-        QObject::connect(recViewButton, SIGNAL(clicked()), MainWindowAccTask, SLOT(recViewButtonClick()));
+        QObject::connect(othViewButton, SIGNAL(clicked()), MainWindowAccTask, SLOT(othViewButtonClick()));
         QObject::connect(myViewButton, SIGNAL(clicked()), MainWindowAccTask, SLOT(myViewButtonClick()));
 
         QMetaObject::connectSlotsByName(MainWindowAccTask);
@@ -172,11 +172,11 @@ public:
     void retranslateUi(QMainWindow *MainWindowAccTask)
     {
         MainWindowAccTask->setWindowTitle(QCoreApplication::translate("MainWindowAccTask", "Tasks", nullptr));
-        label->setText(QCoreApplication::translate("MainWindowAccTask", "Recruiting Tasks:", nullptr));
+        label->setText(QCoreApplication::translate("MainWindowAccTask", "Other Tasks:", nullptr));
         backButton->setText(QString());
         label_2->setText(QCoreApplication::translate("MainWindowAccTask", "My Tasks:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindowAccTask", "Finished Tasks:", nullptr));
-        recViewButton->setText(QString());
+        othViewButton->setText(QString());
         refreshButton->setText(QString());
         myViewButton->setText(QString());
         finiViewButton->setText(QString());

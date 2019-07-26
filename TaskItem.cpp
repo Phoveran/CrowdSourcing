@@ -14,7 +14,22 @@ recTaskItem::recTaskItem(Task* task, QWidget* parent)
 	{
 		ui.labelType->setText(QString("Arrangement task"));
 	}
-	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby"));
+
+	if (task->state == 0)
+	{
+		ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 255, 255); "));
+		ui.labelState->setText(QString("Finished"));
+	}
+	else if (task->state == 1)
+	{
+		ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+		ui.labelState->setText(QString("Conducting"));
+	}
+	else if (task->state == 2)
+	{
+		ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
+		ui.labelState->setText(QString("Recruiting"));
+	}
 }
 
 void recTaskItem::setFromLan(int type)

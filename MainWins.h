@@ -69,7 +69,7 @@ public:
 public slots:
 	void backButtonClick();
 	void refreshButtonClick();
-	void recViewButtonClick();
+	void othViewButtonClick();
 	void myViewButtonClick();
 
 private:
@@ -91,6 +91,9 @@ public slots:
 	void backButtonClick();
 	void recViewButtonClick();
 	void refreshButtonClick();
+	void conViewButtonClick();
+	void finiViewButtonClick();
+	void newButtonClick();
 
 private:
 	Ui::MainWindowIssTask ui;

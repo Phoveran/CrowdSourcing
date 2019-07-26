@@ -104,7 +104,7 @@ void Personal::refreshButtonClick()
 
 void Personal::loadInfo()
 {
-	ui.balanceDisplay->setText(QString::number(dataPtr->nowAccount->balance) + QString(" Ruby"));
+	ui.balanceDisplay->setText(QString::number(dataPtr->nowAccount->balance) + QString(" Ruby ( 1CNY = 100Ruby )"));
 	ui.creditsDisplay->setText(QString("Eng: ") + QString::number(dataPtr->nowAccount->engCredits) + QString("       Fre: ") + QString::number(dataPtr->nowAccount->fraCredits));
 	if (dataPtr->nowAccount->level == 1)
 	{
@@ -154,23 +154,23 @@ void AccTaskWin::refreshButtonClick()
 
 void AccTaskWin::loadInfo()
 {
-	ui.listWidgetRecTasks->clear();
+	ui.listWidgetOthTasks->clear();
 	ui.listWidgetMyTasks->clear();
 	ui.listWidgetFiniTasks->clear();
 	for (int i = 0; i < dataPtr->taskVec.size(); i++)
 	{
 		if (dataPtr->taskVec[i]->issuingAccount != dataPtr->nowAccountNum)
 		{
-			if (dataPtr->taskVec[i]->state == 2 && !count(dataPtr->taskVec[i]->waitingAccount.begin(), dataPtr->taskVec[i]->waitingAccount.end(), dataPtr->nowAccountNum))
+			if (dataPtr->taskVec[i]->takenAccount != dataPtr->nowAccountNum && !count(dataPtr->taskVec[i]->waitingAccount.begin(), dataPtr->taskVec[i]->waitingAccount.end(), dataPtr->nowAccountNum))
 			{
 				QListWidgetItem* li = new QListWidgetItem;
 				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
 				li->setSizeHint(QSize(680, 59));
 				recTaskItem* rti = new recTaskItem(dataPtr->taskVec[i]);
-				ui.listWidgetRecTasks->addItem(li);
-				ui.listWidgetRecTasks->setItemWidget(li, rti);
+				ui.listWidgetOthTasks->addItem(li);
+				ui.listWidgetOthTasks->setItemWidget(li, rti);
 			}
-			else if (dataPtr->taskVec[i]->takenAccount == dataPtr->nowAccountNum || count(dataPtr->taskVec[i]->waitingAccount.begin(), dataPtr->taskVec[i]->waitingAccount.end(), dataPtr->nowAccountNum))
+			else
 			{
 				QListWidgetItem* li = new QListWidgetItem;
 				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
@@ -191,13 +191,21 @@ void AccTaskWin::loadInfo()
 	}
 }
 
-void AccTaskWin::recViewButtonClick()
+void AccTaskWin::othViewButtonClick()
 {
-	if (ui.listWidgetRecTasks->currentItem())
+	if (ui.listWidgetOthTasks->currentItem())
 	{
-		int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt() - 1;
-		RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr);
-		r->show();
+		int rank = ui.listWidgetOthTasks->currentItem()->whatsThis().toInt() - 1;
+		if (dataPtr->taskVec[rank]->state == 1 || dataPtr->taskVec[rank]->state == 0)
+		{
+			StaticTaskOper* s = new StaticTaskOper(dataPtr->taskVec[rank], dataPtr);
+			s->show();
+		}
+		else
+		{
+			RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr);
+			r->show();
+		}
 	}
 	else
 	{
@@ -263,6 +271,18 @@ void IssTaskWin::refreshButtonClick()
 	loadInfo();
 }
 
+void IssTaskWin::conViewButtonClick()
+{
+}
+
+void IssTaskWin::finiViewButtonClick()
+{
+}
+
+void IssTaskWin::newButtonClick()
+{
+}
+
 void IssTaskWin::loadInfo()
 {
 	ui.listWidgetRecTasks->clear();
@@ -277,7 +297,7 @@ void IssTaskWin::loadInfo()
 			li->setWhatsThis(QString::number(ra + 1));
 			li->setSizeHint(QSize(680, 59));
 			recTaskItem* rti = new recTaskItem(dataPtr->taskVec[ra]);
-			rti->ui.labelPayment->setText(QString::number(dataPtr->taskVec[ra]->waitingAccount.size()) + QString(" Waiting"));
+			rti->ui.labelState->setText(QString::number(dataPtr->taskVec[ra]->waitingAccount.size()) + QString(" Waiting"));
 			ui.listWidgetRecTasks->addItem(li);
 			ui.listWidgetRecTasks->setItemWidget(li, rti);
 		}

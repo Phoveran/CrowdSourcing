@@ -10,6 +10,7 @@
 #include "ui_TopUp.h"
 #include "ui_UpdateInfo.h"
 #include "ui_RecTaskOper.h"
+#include "ui_StaticTaskOper.h"
 #include "ui_MyTransTaskOper.h"
 #include "ui_MyResTaskOper.h"
 #include "data.h"
@@ -123,6 +124,22 @@ public slots:
 
 private:
 	Ui::DialogRecTaskOper ui;
+	QString transTypeJudge();
+};
+
+class StaticTaskOper : public QDialog
+{
+	Q_OBJECT
+
+public:
+	StaticTaskOper(Task* tas, Data* data, QWidget* parent = Q_NULLPTR);
+	Data* dataPtr;
+	Task* task;
+
+public slots:
+
+private:
+	Ui::DialogStaticTaskOper ui;
 	QString transTypeJudge();
 };
 

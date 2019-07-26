@@ -39,8 +39,9 @@ public:
     QListWidget *listWidgetFiniTasks;
     QPushButton *recViewButton;
     QPushButton *refreshButton;
-    QPushButton *weViewButton;
+    QPushButton *conViewButton;
     QPushButton *finiViewButton;
+    QPushButton *newTaskButton;
 
     void setupUi(QMainWindow *MainWindowIssTask)
     {
@@ -144,11 +145,11 @@ public:
         refreshButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);};"));
-        weViewButton = new QPushButton(centralwidget);
-        weViewButton->setObjectName(QString::fromUtf8("weViewButton"));
-        weViewButton->setGeometry(QRect(1840, 470, 80, 80));
-        weViewButton->setFont(font);
-        weViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
+        conViewButton = new QPushButton(centralwidget);
+        conViewButton->setObjectName(QString::fromUtf8("conViewButton"));
+        conViewButton->setGeometry(QRect(1840, 470, 80, 80));
+        conViewButton->setFont(font);
+        conViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};"));
         finiViewButton = new QPushButton(centralwidget);
@@ -158,12 +159,21 @@ public:
         finiViewButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_clicked.png);};"));
+        newTaskButton = new QPushButton(centralwidget);
+        newTaskButton->setObjectName(QString::fromUtf8("newTaskButton"));
+        newTaskButton->setGeometry(QRect(250, 20, 80, 80));
+        newTaskButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/new_clicked.png);}  \n"
+"QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/new_on.png);}\n"
+"QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/new_norm.png);};"));
         MainWindowIssTask->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindowIssTask);
         QObject::connect(backButton, SIGNAL(clicked()), MainWindowIssTask, SLOT(backButtonClick()));
         QObject::connect(refreshButton, SIGNAL(clicked()), MainWindowIssTask, SLOT(refreshButtonClick()));
         QObject::connect(recViewButton, SIGNAL(clicked()), MainWindowIssTask, SLOT(recViewButtonClick()));
+        QObject::connect(newTaskButton, SIGNAL(clicked()), MainWindowIssTask, SLOT(newTaskButtonClick()));
+        QObject::connect(conViewButton, SIGNAL(clicked()), MainWindowIssTask, SLOT(conViewButtonClick()));
+        QObject::connect(finiViewButton, SIGNAL(clicked()), MainWindowIssTask, SLOT(finiViewButtonClick()));
 
         QMetaObject::connectSlotsByName(MainWindowIssTask);
     } // setupUi
@@ -177,8 +187,9 @@ public:
         label_3->setText(QCoreApplication::translate("MainWindowIssTask", "Finished Tasks:", nullptr));
         recViewButton->setText(QString());
         refreshButton->setText(QString());
-        weViewButton->setText(QString());
+        conViewButton->setText(QString());
         finiViewButton->setText(QString());
+        newTaskButton->setText(QString());
     } // retranslateUi
 
 };

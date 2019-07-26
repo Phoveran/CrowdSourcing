@@ -243,7 +243,7 @@ int Data::readUserCallBack(void* ptr, int argc, char** argvs, char** colNames)
 	{
 		cer = split(argvs[7], ";");
 	}
-	user = new User(atoi(argvs[0]), string(argvs[5]), cer, argvs[6]);
+	user = new User(atoi(argvs[0]), string(argvs[5]), cer, argvs[6], data);
 	user->balance = atoi(argvs[1]);
 	user->level = atoi(argvs[2]);
 	user->engCredits = atoi(argvs[3]);

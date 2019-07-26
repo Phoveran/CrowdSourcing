@@ -111,7 +111,7 @@ border-image:transparent;</string>
      </property>
     </widget>
    </widget>
-   <widget class="QLabel" name="labelPayment">
+   <widget class="QLabel" name="labelState">
     <property name="geometry">
      <rect>
       <x>520</x>
@@ -132,7 +132,7 @@ border-image:transparent;</string>
 border-image:transparent;</string>
     </property>
     <property name="text">
-     <string>Payment</string>
+     <string>State</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelType">

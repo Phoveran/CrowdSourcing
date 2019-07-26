@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DialogRecTaskOper</class>
- <widget class="QDialog" name="DialogRecTaskOper">
+ <class>DialogStaticTaskOper</class>
+ <widget class="QDialog" name="DialogStaticTaskOper">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>RecruitingTask</string>
+   <string>Others' Task</string>
   </property>
   <property name="styleSheet">
    <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda8.jpg);</string>
@@ -20,9 +20,9 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>0</y>
-     <width>411</width>
-     <height>221</height>
+     <y>30</y>
+     <width>421</width>
+     <height>191</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -52,102 +52,6 @@ color: rgb(85, 85, 0);</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="font">
-       <font>
-        <family>Century Gothic</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(85, 85, 0);</string>
-      </property>
-      <property name="text">
-       <string>Translation Type</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="font">
-       <font>
-        <family>Century Gothic</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(85, 85, 0);</string>
-      </property>
-      <property name="text">
-       <string>Task Type</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_4">
-      <property name="font">
-       <font>
-        <family>Century Gothic</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(85, 85, 0);</string>
-      </property>
-      <property name="text">
-       <string>Payment</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="label_5">
-      <property name="font">
-       <font>
-        <family>Century Gothic</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(85, 85, 0);</string>
-      </property>
-      <property name="text">
-       <string>Issuing Account</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_6">
-      <property name="font">
-       <font>
-        <family>Century Gothic</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(85, 85, 0);</string>
-      </property>
-      <property name="text">
-       <string>Task Period</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0">
-     <widget class="QLabel" name="label_7">
-      <property name="font">
-       <font>
-        <family>Century Gothic</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(85, 85, 0);</string>
-      </property>
-      <property name="text">
-       <string>Required Credits</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="1">
      <widget class="QLabel" name="labelRank">
       <property name="font">
@@ -161,6 +65,22 @@ color: rgb(85, 85, 0);</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <family>Century Gothic</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 85, 0);</string>
+      </property>
+      <property name="text">
+       <string>Translation Type</string>
       </property>
      </widget>
     </item>
@@ -180,6 +100,22 @@ color: rgb(85, 85, 0);</string>
       </property>
      </widget>
     </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <family>Century Gothic</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 85, 0);</string>
+      </property>
+      <property name="text">
+       <string>Task Type</string>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="1">
      <widget class="QLabel" name="labelTaskType">
       <property name="font">
@@ -196,8 +132,24 @@ color: rgb(85, 85, 0);</string>
       </property>
      </widget>
     </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <family>Century Gothic</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 85, 0);</string>
+      </property>
+      <property name="text">
+       <string>Taken Account</string>
+      </property>
+     </widget>
+    </item>
     <item row="3" column="1">
-     <widget class="QLabel" name="labelPayment">
+     <widget class="QLabel" name="labelTakenAcc">
       <property name="font">
        <font>
         <family>Century Gothic</family>
@@ -209,6 +161,22 @@ color: rgb(85, 85, 0);</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="font">
+       <font>
+        <family>Century Gothic</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 85, 0);</string>
+      </property>
+      <property name="text">
+       <string>Issuing Account</string>
       </property>
      </widget>
     </item>
@@ -228,8 +196,8 @@ color: rgb(85, 85, 0);</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
-     <widget class="QLabel" name="labelTaskPer">
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_6">
       <property name="font">
        <font>
         <family>Century Gothic</family>
@@ -237,15 +205,15 @@ color: rgb(85, 85, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(0, 85, 255);</string>
+       <string notr="true">color: rgb(85, 85, 0);</string>
       </property>
       <property name="text">
-       <string/>
+       <string>Task Period</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="1">
-     <widget class="QLabel" name="labelReqCredits">
+    <item row="5" column="1">
+     <widget class="QLabel" name="labelTaskPer">
       <property name="font">
        <font>
         <family>Century Gothic</family>
@@ -307,137 +275,6 @@ p, li { white-space: pre-wrap; }
     <enum>QFrame::Raised</enum>
    </property>
   </widget>
-  <widget class="QFrame" name="verticalFrame">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>410</y>
-     <width>161</width>
-     <height>151</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-image:transparent;</string>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QPushButton" name="applyButton">
-      <property name="font">
-       <font>
-        <family>Century Gothic</family>
-        <pointsize>18</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton{  
-color:rgb(85, 85, 0);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
-border:1px;  
-border-radius:15px;padding:2px 4px;
-}  
-QPushButton:hover{
-color:rgb(255, 255, 255);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(37,189,252),  
-							  stop: 1 rgb(32,170,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-}  
-QPushButton:pressed{ 
-color:rgb(233, 236, 243);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(38,190,255),  
-							  stop: 1 rgb(33,184,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-};</string>
-      </property>
-      <property name="text">
-       <string>apply</string>
-      </property>
-      <property name="autoDefault">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="cancelButton">
-      <property name="font">
-       <font>
-        <family>Century Gothic</family>
-        <pointsize>18</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton{  
-color:rgb(85, 85, 0);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
-border:1px;  
-border-radius:15px;padding:2px 4px;
-}  
-QPushButton:hover{
-color:rgb(255, 255, 255);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(37,189,252),  
-							  stop: 1 rgb(32,170,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-}  
-QPushButton:pressed{ 
-color:rgb(233, 236, 243);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(38,190,255),  
-							  stop: 1 rgb(33,184,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-};</string>
-      </property>
-      <property name="text">
-       <string>Cancel</string>
-      </property>
-      <property name="autoDefault">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
@@ -465,40 +302,7 @@ border-image:transparent;</string>
  <resources>
   <include location="CrowdSourcing.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>applyButton</sender>
-   <signal>clicked()</signal>
-   <receiver>DialogRecTaskOper</receiver>
-   <slot>applyButtonClick()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>382</x>
-     <y>458</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>385</x>
-     <y>396</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cancelButton</sender>
-   <signal>clicked()</signal>
-   <receiver>DialogRecTaskOper</receiver>
-   <slot>cancelButtonClick()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>430</x>
-     <y>522</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>415</x>
-     <y>569</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <slot>applyButtonClick()</slot>
   <slot>cancelButtonClick()</slot>

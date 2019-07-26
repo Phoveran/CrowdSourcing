@@ -56,7 +56,7 @@ public:
         DialogRecTaskOper->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda8.jpg);"));
         formFrame = new QFrame(DialogRecTaskOper);
         formFrame->setObjectName(QString::fromUtf8("formFrame"));
-        formFrame->setGeometry(QRect(90, 0, 621, 221));
+        formFrame->setGeometry(QRect(90, 0, 411, 221));
         formFrame->setStyleSheet(QString::fromUtf8("border-image:transparent;\n"
 "color: rgb(85, 85, 0);"));
         formLayout = new QFormLayout(formFrame);
@@ -118,48 +118,55 @@ public:
         labelRank = new QLabel(formFrame);
         labelRank->setObjectName(QString::fromUtf8("labelRank"));
         labelRank->setFont(font);
+        labelRank->setStyleSheet(QString::fromUtf8("color: rgb(0, 85, 255);"));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, labelRank);
 
         labelTransType = new QLabel(formFrame);
         labelTransType->setObjectName(QString::fromUtf8("labelTransType"));
         labelTransType->setFont(font);
+        labelTransType->setStyleSheet(QString::fromUtf8("color: rgb(0, 85, 255);"));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, labelTransType);
 
         labelTaskType = new QLabel(formFrame);
         labelTaskType->setObjectName(QString::fromUtf8("labelTaskType"));
         labelTaskType->setFont(font);
+        labelTaskType->setStyleSheet(QString::fromUtf8("color: rgb(0, 85, 255);"));
 
         formLayout->setWidget(2, QFormLayout::FieldRole, labelTaskType);
 
         labelPayment = new QLabel(formFrame);
         labelPayment->setObjectName(QString::fromUtf8("labelPayment"));
         labelPayment->setFont(font);
+        labelPayment->setStyleSheet(QString::fromUtf8("color: rgb(0, 85, 255);"));
 
         formLayout->setWidget(3, QFormLayout::FieldRole, labelPayment);
 
         labelIssAcc = new QLabel(formFrame);
         labelIssAcc->setObjectName(QString::fromUtf8("labelIssAcc"));
         labelIssAcc->setFont(font);
+        labelIssAcc->setStyleSheet(QString::fromUtf8("color: rgb(0, 85, 255);"));
 
         formLayout->setWidget(4, QFormLayout::FieldRole, labelIssAcc);
 
         labelTaskPer = new QLabel(formFrame);
         labelTaskPer->setObjectName(QString::fromUtf8("labelTaskPer"));
         labelTaskPer->setFont(font);
+        labelTaskPer->setStyleSheet(QString::fromUtf8("color: rgb(0, 85, 255);"));
 
         formLayout->setWidget(5, QFormLayout::FieldRole, labelTaskPer);
 
         labelReqCredits = new QLabel(formFrame);
         labelReqCredits->setObjectName(QString::fromUtf8("labelReqCredits"));
         labelReqCredits->setFont(font);
+        labelReqCredits->setStyleSheet(QString::fromUtf8("color: rgb(0, 85, 255);"));
 
         formLayout->setWidget(6, QFormLayout::FieldRole, labelReqCredits);
 
         textBrowserBrief = new QTextBrowser(DialogRecTaskOper);
         textBrowserBrief->setObjectName(QString::fromUtf8("textBrowserBrief"));
-        textBrowserBrief->setGeometry(QRect(520, 250, 261, 341));
+        textBrowserBrief->setGeometry(QRect(520, 30, 261, 561));
         QFont font1;
         font1.setFamily(QString::fromUtf8("\345\215\216\346\226\207\347\273\206\351\273\221"));
         font1.setPointSize(12);
@@ -271,7 +278,7 @@ public:
 
         label_8 = new QLabel(DialogRecTaskOper);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(520, 225, 61, 24));
+        label_8->setGeometry(QRect(520, 0, 61, 24));
         label_8->setFont(font);
         label_8->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));

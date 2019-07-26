@@ -35,7 +35,6 @@ class Task
 {
 public:
 	Task(int r, string bri, int acc, int type, int per, Data* data, string con, int pay);
-	Task(const Task& obj);
 	~Task(void);
 	Data* dataPtr;//全局数据指针
 	int rank;//任务序号
@@ -98,8 +97,9 @@ private:
 class User
 {
 public:
-	User(int acc, string passwd, vector<string> cer, string tele);
+	User(int acc, string passwd, vector<string> cer, string tele, Data* data);
 	~User(void);
+	Data* dataPtr;//全局数据指针
 	int account;//账户名，五位数且首位为1~9
 	int balance;//余额,以Ruby为单位，100Ruby=1RMB
 	int level;//等级，1不可做负责人，2可做负责人
@@ -113,42 +113,6 @@ public:
 
 	void take(int taskNum);
 	void issue(int taskNum);
+	void setCredits();
+	void finish(int taskNum);
 };
-
-/*
-class VipMember : public User//有审查权限的用户
-{
-public:
-	VipMember(int acc, string passwd) :User(acc, passwd)
-	{
-		issuedTask = vector<int>();
-		responsibleTask = vector<int>();
-		translateTask = vector<int>();
-		finishedIssuedTask = vector<int>();
-		finishedResponsibleTask = vector<int>();
-		finishedTranslateTask = vector<int>();
-	}
-	vector<int> issuedTask;//发布的任务序号
-	vector<int> responsibleTask;//负责的任务序号
-	vector<int>	translateTask;//翻译的任务序号
-	vector<int>	finishedIssuedTask;//已完成的发布任务序号
-	vector<int> finishedResponsibleTask;//已完成的负责任务序号
-	vector<int> finishedTranslateTask;//已完成的翻译任务序号
-};
-
-class normalMember : public User//普通权限用户
-{
-public:
-	normalMember(int acc, string passwd) :User(acc, passwd)
-	{
-		issuedTask = vector<int>();
-		translateTask = vector<int>();
-		finishedIssuedTask = vector<int>();
-		finishedTranslateTask = vector<int>();
-	}
-	vector<int> issuedTask;//发布的任务序号
-	vector<int>	translateTask;//翻译的任务序号
-	vector<int>	finishedIssuedTask;//已完成的发布任务序号
-	vector<int> finishedTranslateTask;//已完成的翻译任务序号
-};
-*/
