@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>IssuedTask</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(190, 190, 190);</string>
@@ -78,10 +78,10 @@
   <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>10</x>
      <y>90</y>
-     <width>407</width>
-     <height>209</height>
+     <width>461</width>
+     <height>212</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">

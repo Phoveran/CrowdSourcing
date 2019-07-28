@@ -322,17 +322,20 @@ RecTaskOper::RecTaskOper(Task* tas, Data* data, QWidget* parent)
 	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
 	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby"));
 	ui.labelRank->setText(QString::number(task->rank));
-	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Days"));
+	ui.labelConPeriod->setText(QString::number(task->period) + QString(" Days"));
 	ui.labelTransType->setText(transTypeJudge());
 	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
-	if (task->type())
+	ui.labelRecPeriod->setText(QString::number(task->applyPeriod) + QString(" Days"));
+	if (task->state == 3)
 	{
-		ui.labelTaskType->setText(QString("Translation task"));
-		ui.labelReqCredits->setText(QString("Eng: ") + QString::number(task->getReqEngCre()) + QString("    Fre:") + QString::number(task->getReqFraCre()));
+		ui.labelRecruitType->setText(QString("Translator"));
+		ui.labelReqCre->setText(QString("Eng: ") + QString::number(task->getReqEngCre()) + QString("    Fre:") + QString::number(task->getReqFraCre()));
 	}
 	else
 	{
-		ui.labelTaskType->setText(QString("Arrangement task"));
+		ui.labelRecruitType->setText(QString("Principal"));
+		ui.labelReqCre->setHidden(true);
+		ui.label_3->setHidden(true);
 	}
 }
 
@@ -653,5 +656,68 @@ void NewTaskOper::okButtonClick()
 		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
 		mesBox->setText(QString("You Don't Have Enough Balance!"));
 		mesBox->show();
+	}
+}
+
+
+//我发布的任务操作窗口
+IssRecTaskOper::IssRecTaskOper(Task* tas, Data* data, QWidget* parent)
+	: QDialog(parent)
+{
+	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
+
+	dataPtr = data;
+	task = tas;
+
+	loadInfo();
+}
+
+void IssRecTaskOper::cancelButtonClick()
+{
+}
+
+void IssRecTaskOper::okButtonClick()
+{
+}
+
+void IssRecTaskOper::loadInfo()
+{
+	ui.labelRank->setText(QString::number(task->rank));
+	ui.labelConPeriod->setText(QString::number(task->period));
+	ui.labelPayment->setText(QString::number(task->payment));
+	ui.labelRecPeriod->setText(QString::number(task->applyPeriod));
+	ui.labelTransType->setText(transTypeJudge());
+	switch (task->state)
+	{
+	case 3:
+	{
+		ui.labelState->setText(QString("Recruiting a principal"));
+		int rest = task->startTime + 86400 * task->period - time(0);
+		rest /= 3600;
+		ui.labelRemHours->setText(QString::number(rest) + QString(" Hours"));
+	}break;
+	case 2:
+	{
+		ui.labelState->setText(QString("Recruiting translators"));
+		int rest = task->issueTime + 86400 * task->applyPeriod - time(0);
+		rest /= 3600;
+		ui.labelRemHours->setText(QString::number(rest) + QString(" Hours"));
+	}break;
+	}
+}
+
+QString IssRecTaskOper::transTypeJudge()
+{
+	switch (task->transType)
+	{
+	case 1: return QString("Chinese to English");
+	case 2: return QString("Chinese to French");
+	case 3: return QString("English to Chinese");
+	case 4: return QString("English to French");
+	case 5: return QString("French to Chinese");
+	case 6: return QString("French to English");
+	default: return QString();
 	}
 }

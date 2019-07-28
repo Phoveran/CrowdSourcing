@@ -264,6 +264,20 @@ IssTaskWin::IssTaskWin(Data* data, QWidget* parent)
 
 void IssTaskWin::recViewButtonClick()
 {
+	if (ui.listWidgetRecTasks->currentItem())
+	{
+		int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt() - 1;
+		IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr);
+		i->show();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You haven't chosen a task!"));
+		mesBox->show();
+	}
 }
 
 void IssTaskWin::refreshButtonClick()
@@ -293,7 +307,7 @@ void IssTaskWin::loadInfo()
 	for (int i = 0; i < dataPtr->nowAccount->issuedTasks.size(); i++)
 	{
 		int ra = dataPtr->nowAccount->issuedTasks[i] - 1;
-		if (dataPtr->taskVec[ra]->state == 2)
+		if (dataPtr->taskVec[ra]->state == 2 || dataPtr->taskVec[ra]->state == 3)
 		{
 			QListWidgetItem* li = new QListWidgetItem;
 			li->setWhatsThis(QString::number(ra + 1));

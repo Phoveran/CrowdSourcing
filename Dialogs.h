@@ -14,6 +14,7 @@
 #include "ui_MyTransTaskOper.h"
 #include "ui_MyResTaskOper.h"
 #include "ui_NewTaskOper.h"
+#include "ui_IssRecTaskOper.h"
 #include "data.h"
 
 class ChangePassword : public QDialog
@@ -198,4 +199,23 @@ public slots:
 private:
 	Ui::DialogNewTaskOper ui;
 	int newResTask();
+};
+
+class IssRecTaskOper : public QDialog
+{
+	Q_OBJECT
+
+public:
+	IssRecTaskOper(Task* tas, Data* data, QWidget* parent = Q_NULLPTR);
+	Data* dataPtr;
+	Task* task;
+
+public slots:
+	void okButtonClick();
+	void cancelButtonClick();
+
+private:
+	Ui::DialogIssRecTaskOper ui;
+	void loadInfo();
+	QString transTypeJudge();
 };
