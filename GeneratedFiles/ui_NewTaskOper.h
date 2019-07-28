@@ -217,7 +217,13 @@ public:
     void retranslateUi(QDialog *DialogNewTaskOper)
     {
         DialogNewTaskOper->setWindowTitle(QCoreApplication::translate("DialogNewTaskOper", "NewTask", nullptr));
+#if QT_CONFIG(tooltip)
+        okButton->setToolTip(QCoreApplication::translate("DialogNewTaskOper", "Issue", nullptr));
+#endif // QT_CONFIG(tooltip)
         okButton->setText(QString());
+#if QT_CONFIG(tooltip)
+        cancelButton->setToolTip(QCoreApplication::translate("DialogNewTaskOper", "Cancel", nullptr));
+#endif // QT_CONFIG(tooltip)
         cancelButton->setText(QString());
         label_1->setText(QCoreApplication::translate("DialogNewTaskOper", "Translation Type", nullptr));
         label_2->setText(QCoreApplication::translate("DialogNewTaskOper", "Recruiting Period(Days)", nullptr));

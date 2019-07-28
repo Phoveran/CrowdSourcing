@@ -186,7 +186,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/new_nor
       <x>30</x>
       <y>140</y>
       <width>689</width>
-      <height>839</height>
+      <height>901</height>
      </rect>
     </property>
     <property name="autoFillBackground">

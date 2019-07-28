@@ -109,6 +109,9 @@
     <QtUic Include="NewTaskOper.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="IssRecTaskOper.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CrowdSourcing.qrc">

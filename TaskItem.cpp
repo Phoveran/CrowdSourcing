@@ -5,16 +5,17 @@ recTaskItem::recTaskItem(Task* task, QWidget* parent)
 {
 	ui.setupUi(this);
 	setLan(task->transType);
-	ui.labelRank->setText(QString("Rank: ") + QString::number(task->rank));
-	if (task->type())
+	ui.labelRank->setText(QString("Rank:") + QString::number(task->rank));
+	int rest = task->issueTime + (task->applyPeriod * 86400) - time(0);
+	if (rest > 0)
 	{
-		ui.labelType->setText(QString("Translation task"));
+		rest /= 3600;
+		ui.labelTime->setText(QString::number(rest) + QString(" hours letf"));
 	}
 	else
 	{
-		ui.labelType->setText(QString("Arrangement task"));
+		ui.labelTime->setText(QString("Time out"));
 	}
-
 	if (task->state == 0)
 	{
 		ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 255, 255); "));

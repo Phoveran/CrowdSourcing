@@ -135,7 +135,7 @@ border-image:transparent;</string>
      <string>State</string>
     </property>
    </widget>
-   <widget class="QLabel" name="labelType">
+   <widget class="QLabel" name="labelTime">
     <property name="geometry">
      <rect>
       <x>170</x>
@@ -156,7 +156,7 @@ border-image:transparent;</string>
 border-image:transparent;</string>
     </property>
     <property name="text">
-     <string>Type</string>
+     <string>Time</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelRank">

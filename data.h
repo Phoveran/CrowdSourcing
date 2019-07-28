@@ -43,7 +43,7 @@ public:
 	int issuingAccount;//发布该任务的账号
 	int takenAccount;//领取该任务的账号
 	vector<int> waitingAccount;//等待接取该任务的账号
-	int state;//状态，2为招募中，1为执行中，0为已完成
+	int state;//状态，3为招募译者中，2为招募负责人中，1为翻译中，0为已完成
 	int transType;//翻译类型，1为中=》英，2为中=》法，3为英=》中，4为英=》法，5为法=》中，6为法=》英
 	int issueTime;//任务发布日期
 	int startTime;//任务开始日期
@@ -60,42 +60,50 @@ public:
 	virtual int getParent();
 	virtual int getReqEngCre();
 	virtual int getReqFraCre();
+	virtual vector<int> getTranslators();
+	virtual string getAdvice();
 };
 
 class ResTask : public Task
 {
 public:
-	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, vector<int> child, int appPer, int iss, int sta = 0) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
+	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, vector<int> child, int appPer, int iss, int sta = 0, vector<int> translat = vector<int>()) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
 	{
 		childrenTasks = child;
+		translators = translat;
 	}
 	vector<int> getChildren();
 	bool applied(int acc);
 	int type();
+	vector<int> getTranslators();
 
 private:
 	vector<int> childrenTasks;//子任务序号
+	vector<int> translators;//译者账号
 };
 
 class TransTask : public Task
 {
 public:
-	TransTask(int r, string bri, int acc, int type, int per, Data* data, int parent, string con, int pay, int appPer, int iss, int sta = 0, int reqEngCre = 0, int reqFraCre = 0) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
+	TransTask(int r, string bri, int acc, int type, int per, Data* data, int parent, string con, int pay, int appPer, int iss, string adv, int sta = 0, int reqEngCre = 0, int reqFraCre = 0) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
 	{
 		parentTask = parent;
 		reqEngCredits = reqEngCre;
 		reqFraCredits = reqFraCre;
+		advice = adv;
 	};
 	bool applied(int acc);
 	int type();
 	int getParent();
 	int getReqEngCre();
 	int getReqFraCre();
+	string getAdvice();
 
 private:
 	int reqEngCredits;//接取任务需要的英语积分
 	int reqFraCredits;//接取任务需要的法语积分
 	int parentTask;//父任务的序号
+	string advice;//审核意见
 };
 
 //用户

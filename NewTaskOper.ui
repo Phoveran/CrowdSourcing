@@ -44,6 +44,9 @@
      <height>120</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>Issue</string>
+   </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot.png);}  
 QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_on.png);}
@@ -61,6 +64,9 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/link_sh
      <width>120</width>
      <height>120</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>Cancel</string>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman.png);}  

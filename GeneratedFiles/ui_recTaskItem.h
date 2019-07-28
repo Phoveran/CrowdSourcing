@@ -26,7 +26,7 @@ public:
     QFrame *fixPic;
     QFrame *toPic;
     QLabel *labelState;
-    QLabel *labelType;
+    QLabel *labelTime;
     QLabel *labelRank;
 
     void setupUi(QWidget *recTaskItem)
@@ -76,11 +76,11 @@ public:
         labelState->setFont(font);
         labelState->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));
-        labelType = new QLabel(frame_2);
-        labelType->setObjectName(QString::fromUtf8("labelType"));
-        labelType->setGeometry(QRect(170, 17, 181, 16));
-        labelType->setFont(font);
-        labelType->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
+        labelTime = new QLabel(frame_2);
+        labelTime->setObjectName(QString::fromUtf8("labelTime"));
+        labelTime->setGeometry(QRect(170, 17, 181, 16));
+        labelTime->setFont(font);
+        labelTime->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));
         labelRank = new QLabel(frame_2);
         labelRank->setObjectName(QString::fromUtf8("labelRank"));
@@ -98,7 +98,7 @@ public:
     {
         recTaskItem->setWindowTitle(QCoreApplication::translate("recTaskItem", "Form", nullptr));
         labelState->setText(QCoreApplication::translate("recTaskItem", "State", nullptr));
-        labelType->setText(QCoreApplication::translate("recTaskItem", "Type", nullptr));
+        labelTime->setText(QCoreApplication::translate("recTaskItem", "Time", nullptr));
         labelRank->setText(QCoreApplication::translate("recTaskItem", "Rank", nullptr));
     } // retranslateUi
 

@@ -45,6 +45,16 @@ int Task::getReqFraCre()
 	return 0;
 }
 
+vector<int> Task::getTranslators()
+{
+	return vector<int>();
+}
+
+string Task::getAdvice()
+{
+	return string();
+}
+
 
 
 vector<int> ResTask::getChildren()
@@ -67,6 +77,11 @@ bool ResTask::applied(int acc)
 int ResTask::type()
 {
 	return 0;
+}
+
+vector<int> ResTask::getTranslators()
+{
+	return translators;
 }
 
 
@@ -101,4 +116,9 @@ int TransTask::getReqEngCre()
 int TransTask::getReqFraCre()
 {
 	return reqFraCredits;
+}
+
+string TransTask::getAdvice()
+{
+	return advice;
 }

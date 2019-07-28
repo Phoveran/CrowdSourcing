@@ -124,6 +124,7 @@
   <ItemGroup>
     <QtUic Include="ChangePassword.ui" />
     <QtUic Include="CrowdSourcing.ui" />
+    <QtUic Include="IssRecTaskOper.ui" />
     <QtUic Include="NewTaskOper.ui" />
     <QtUic Include="IssTaskWin.ui" />
     <QtUic Include="MyResTaskOper.ui" />

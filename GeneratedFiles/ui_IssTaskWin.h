@@ -97,7 +97,7 @@ public:
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/new_norm.png);};"));
         listWidgetRecTasks = new QListWidget(centralwidget);
         listWidgetRecTasks->setObjectName(QString::fromUtf8("listWidgetRecTasks"));
-        listWidgetRecTasks->setGeometry(QRect(30, 140, 689, 839));
+        listWidgetRecTasks->setGeometry(QRect(30, 140, 689, 901));
         listWidgetRecTasks->setAutoFillBackground(true);
         listWidgetRecTasks->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
 "border-image:transparent;"));

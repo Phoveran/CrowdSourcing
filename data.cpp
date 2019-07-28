@@ -97,7 +97,9 @@ void Data::save()
 		"TRANSTEMP TEXT,"\
 		"TRANSSUBMIT TEXT,"\
 		"PARENT INT,"\
-		"CHILDREN TEXT);";
+		"CHILDREN TEXT,"\
+		"ADVICE TEXT,"
+		"TRANSLATORS TEXT);";
 	sqlite3_exec(db, sqlCreate, 0, 0, &zErrMsg);
 	for (int i = 0; i < userVec.size(); i++)
 	{
@@ -169,14 +171,7 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 	strs.push_back(to_string(task->state) + string(", "));
 	strs.push_back(to_string(task->transType) + string(", "));
 	strs.push_back(to_string(task->issueTime) + string(", "));
-	if (task->startTime)
-	{
-		strs.push_back(to_string(task->startTime) + string(", "));
-	}
-	else
-	{
-		strs.push_back("NULL, ");
-	}
+	strs.push_back(to_string(task->startTime) + string(", "));
 	strs.push_back(to_string(task->period) + string(", "));
 	strs.push_back(to_string(task->applyPeriod) + string(", "));
 	if (task->type())
@@ -211,6 +206,15 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 	if (task->type())
 	{
 		strs.push_back(to_string(task->getParent()) + string(", "));
+		strs.push_back("NULL, ");
+		if (task->getAdvice().empty())
+		{
+			strs.push_back("NULL, ");
+		}
+		else
+		{
+			strs.push_back(string("\"") + task->getAdvice() + string("\"") + string(", "));
+		}
 		strs.push_back("NULL);");
 	}
 	else
@@ -218,13 +222,23 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 		strs.push_back("NULL, ");
 		if (!task->getChildren().empty())
 		{
-			strs.push_back(intCombine2String(task->getChildren(), ";") + string(");"));
+			strs.push_back(intCombine2String(task->getChildren(), ";") + string(", "));
 		}
 		else
 		{
+			strs.push_back("NULL, ");
+		}
+		strs.push_back("NULL, ");
+		if (task->getTranslators().empty())
+		{
 			strs.push_back("NULL);");
 		}
+		else
+		{
+			strs.push_back(intCombine2String(task->getTranslators(), ";") + string(");"));
+		}
 	}
+
 	string tempStr = stringCombine(strs);
 	const char* str = tempStr.c_str();
 	sqlite3_exec(db, str, 0, 0, errMsg);
@@ -326,7 +340,12 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 		int reqEng = atoi(argvs[11]);
 		int reqFra = atoi(argvs[12]);
 		int parent = atoi(argvs[18]);
-		TransTask* taskTemp = new TransTask(rank, brief, issAcc, trType, peri, data, parent, cont, pay, appPeri, issTime, staTime, reqEng, reqFra);
+		string advice = string();
+		if (argvs[20])
+		{
+			advice = argvs[20];
+		}
+		TransTask* taskTemp = new TransTask(rank, brief, issAcc, trType, peri, data, parent, cont, pay, appPeri, issTime, advice, staTime, reqEng, reqFra);
 		taskTemp->state = sta;
 		taskTemp->takenAccount = takenAcc;
 		taskTemp->transTemp = trTem;
@@ -337,7 +356,8 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 	else
 	{
 		vector<int> child = vector<int>();
-		if (argvs[16])
+		vector<int> translators = vector<int>();
+		if (argvs[19])
 		{
 			vector<string> str = split(argvs[19], ";");
 			for (int i = 0; i < str.size(); i++)
@@ -345,7 +365,15 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 				child.push_back(stoi(str[i]));
 			}
 		}
-		ResTask* taskTemp = new ResTask(rank, brief, issAcc, trType, peri, data, cont, pay, child, appPeri, issTime, staTime);
+		if (argvs[21])
+		{
+			vector<string> str = split(argvs[21], ";");
+			for (int i = 0; i < str.size(); i++)
+			{
+				translators.push_back(stoi(str[i]));
+			}
+		}
+		ResTask* taskTemp = new ResTask(rank, brief, issAcc, trType, peri, data, cont, pay, child, appPeri, issTime, staTime, translators);
 		taskTemp->state = sta;
 		taskTemp->takenAccount = takenAcc;
 		taskTemp->transTemp = trTem;
