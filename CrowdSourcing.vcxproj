@@ -124,6 +124,7 @@
   <ItemGroup>
     <QtUic Include="ChangePassword.ui" />
     <QtUic Include="CrowdSourcing.ui" />
+    <QtUic Include="NewTaskOper.ui" />
     <QtUic Include="IssTaskWin.ui" />
     <QtUic Include="MyResTaskOper.ui" />
     <QtUic Include="myTaskItem.ui" />
@@ -157,6 +158,7 @@
     <ClInclude Include="GeneratedFiles\ui_MyResTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_myTaskItem.h" />
     <ClInclude Include="GeneratedFiles\ui_MyTransTaskOper.h" />
+    <ClInclude Include="GeneratedFiles\ui_NewTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_Personal.h" />
     <ClInclude Include="GeneratedFiles\ui_recTaskItem.h" />
     <ClInclude Include="GeneratedFiles\ui_RecTaskOper.h" />

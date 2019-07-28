@@ -48,6 +48,7 @@ public:
     QLabel *telephoneDisplay;
     QPushButton *refreshButton_2;
     QPushButton *logOutButton;
+    QFrame *frame_2;
 
     void setupUi(QMainWindow *MainWindowPersonal)
     {
@@ -59,7 +60,7 @@ public:
         centralwidget->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda2.jpg);"));
         buttonFram = new QFrame(centralwidget);
         buttonFram->setObjectName(QString::fromUtf8("buttonFram"));
-        buttonFram->setGeometry(QRect(410, 520, 341, 431));
+        buttonFram->setGeometry(QRect(480, 520, 341, 431));
         buttonFram->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         verticalLayout_4 = new QVBoxLayout(buttonFram);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -407,6 +408,12 @@ public:
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/logout_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_clicked.png);};"));
         logOutButton->setFlat(false);
+        frame_2 = new QFrame(centralwidget);
+        frame_2->setObjectName(QString::fromUtf8("frame_2"));
+        frame_2->setGeometry(QRect(1570, 20, 333, 262));
+        frame_2->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo.png);"));
+        frame_2->setFrameShape(QFrame::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Raised);
         MainWindowPersonal->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindowPersonal);

@@ -85,7 +85,10 @@ void Data::save()
 		"WAITINGACCOUNT TEXT,"\
 		"STATE INT NOT NULL,"\
 		"TRANSTYPE INT NOT NULL,"\
+		"ISSUETIME INT NOT NULL,"\
+		"STARTTIME INT NOT NULL,"\
 		"PERIOD INT NOT NULL,"\
+		"APPLYPERIOD INT NOT NULL,"\
 		"REQENGCRE INT,"\
 		"REQFRACRE INT,"\
 		"PAYMENT INT NOT NULL,"\
@@ -165,7 +168,17 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 	}
 	strs.push_back(to_string(task->state) + string(", "));
 	strs.push_back(to_string(task->transType) + string(", "));
+	strs.push_back(to_string(task->issueTime) + string(", "));
+	if (task->startTime)
+	{
+		strs.push_back(to_string(task->startTime) + string(", "));
+	}
+	else
+	{
+		strs.push_back("NULL, ");
+	}
 	strs.push_back(to_string(task->period) + string(", "));
+	strs.push_back(to_string(task->applyPeriod) + string(", "));
 	if (task->type())
 	{
 		strs.push_back(to_string(task->getReqEngCre()) + string(", "));
@@ -290,27 +303,30 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 	}
 	int sta = atoi(argvs[5]);
 	int trType = atoi(argvs[6]);
-	int peri = atoi(argvs[7]);
-	int pay = atoi(argvs[10]);
-	string brief = argvs[11];
-	string cont = argvs[12];
+	int issTime = atoi(argvs[7]);
+	int staTime = atoi(argvs[8]);
+	int peri = atoi(argvs[9]);
+	int appPeri = atoi(argvs[10]);
+	int pay = atoi(argvs[13]);
+	string brief = argvs[14];
+	string cont = argvs[15];
 	string trTem = string();
 	string trSub = string();
-	if (argvs[13])
+	if (argvs[16])
 	{
-		trTem = argvs[13];
+		trTem = argvs[16];
 	}
-	if (argvs[14])
+	if (argvs[17])
 	{
-		trSub = argvs[14];
+		trSub = argvs[17];
 	}
 	Task* task;
 	if (type)
 	{
-		int reqEng = atoi(argvs[8]);
-		int reqFra = atoi(argvs[9]);
-		int parent = atoi(argvs[15]);
-		TransTask* taskTemp = new TransTask(rank, brief, issAcc, trType, peri, data, parent, cont, pay, reqEng, reqFra);
+		int reqEng = atoi(argvs[11]);
+		int reqFra = atoi(argvs[12]);
+		int parent = atoi(argvs[18]);
+		TransTask* taskTemp = new TransTask(rank, brief, issAcc, trType, peri, data, parent, cont, pay, appPeri, issTime, staTime, reqEng, reqFra);
 		taskTemp->state = sta;
 		taskTemp->takenAccount = takenAcc;
 		taskTemp->transTemp = trTem;
@@ -323,13 +339,13 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 		vector<int> child = vector<int>();
 		if (argvs[16])
 		{
-			vector<string> str = split(argvs[16], ";");
+			vector<string> str = split(argvs[19], ";");
 			for (int i = 0; i < str.size(); i++)
 			{
 				child.push_back(stoi(str[i]));
 			}
 		}
-		ResTask* taskTemp = new ResTask(rank, brief, issAcc, trType, peri, data, cont, pay, child);
+		ResTask* taskTemp = new ResTask(rank, brief, issAcc, trType, peri, data, cont, pay, child, appPeri, issTime, staTime);
 		taskTemp->state = sta;
 		taskTemp->takenAccount = takenAcc;
 		taskTemp->transTemp = trTem;

@@ -20,7 +20,7 @@
    <widget class="QFrame" name="buttonFram">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>480</x>
       <y>520</y>
       <width>341</width>
       <height>431</height>
@@ -626,6 +626,25 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_
     </property>
     <property name="flat">
      <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>1570</x>
+      <y>20</y>
+      <width>333</width>
+      <height>262</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
    </widget>
   </widget>

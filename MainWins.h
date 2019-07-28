@@ -93,7 +93,7 @@ public slots:
 	void refreshButtonClick();
 	void conViewButtonClick();
 	void finiViewButtonClick();
-	void newButtonClick();
+	void newTaskButtonClick();
 
 private:
 	Ui::MainWindowIssTask ui;

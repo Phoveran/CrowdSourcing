@@ -1,7 +1,7 @@
 #include"data.h"
 #include<algorithm>
 
-Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con, int pay)
+Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, int appPer, int iss, int sta)
 {
 	dataPtr = data;
 	state = 2;
@@ -16,6 +16,9 @@ Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con
 	transTemp = string();
 	transSubmit = string();
 	payment = pay;
+	applyPeriod = appPer;
+	issueTime = iss;
+	startTime = sta;
 }
 
 Task::~Task(void)

@@ -33,6 +33,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *loginButton;
     QPushButton *registerButton;
+    QFrame *frame;
 
     void setupUi(QMainWindow *CrowdSourcingClass)
     {
@@ -189,6 +190,12 @@ public:
 
         horizontalLayout->addWidget(registerButton);
 
+        frame = new QFrame(centralWidget);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setGeometry(QRect(1540, 780, 333, 262));
+        frame->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo.png);"));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
         CrowdSourcingClass->setCentralWidget(centralWidget);
 
         retranslateUi(CrowdSourcingClass);

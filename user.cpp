@@ -80,6 +80,7 @@ void User::setCredits()
 
 void User::finish(int taskNum)
 {
-	dataPtr->taskVec[taskNum - 1]->state = 0;
+	dataPtr->taskVec[taskNum - long(1)]->state = 0;
+	balance += dataPtr->taskVec[taskNum - long(1)]->payment;
 	setCredits();
 }

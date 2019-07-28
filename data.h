@@ -1,9 +1,11 @@
 #pragma once
+#pragma comment(lib, "sqlite3.lib")
 #include <vector>
 #include <string>
 #include <regex>
 #include "sqlite3.h"
-#pragma comment(lib, "sqlite3.lib")
+#include <ctime>
+
 using namespace std;
 
 class Task;
@@ -34,7 +36,7 @@ private:
 class Task
 {
 public:
-	Task(int r, string bri, int acc, int type, int per, Data* data, string con, int pay);
+	Task(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, int appPer, int iss, int sta = 0);
 	~Task(void);
 	Data* dataPtr;//全局数据指针
 	int rank;//任务序号
@@ -43,7 +45,10 @@ public:
 	vector<int> waitingAccount;//等待接取该任务的账号
 	int state;//状态，2为招募中，1为执行中，0为已完成
 	int transType;//翻译类型，1为中=》英，2为中=》法，3为英=》中，4为英=》法，5为法=》中，6为法=》英
+	int issueTime;//任务发布日期
+	int startTime;//任务开始日期
 	int period;//任务周期,单位为天
+	int applyPeriod;//报名周期，单位天
 	int payment;//报酬
 	string brief;//简介
 	string content;//原文
@@ -60,7 +65,7 @@ public:
 class ResTask : public Task
 {
 public:
-	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, vector<int> child) :Task(r, bri, acc, type, per, data, con, pay)
+	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, vector<int> child, int appPer, int iss, int sta = 0) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
 	{
 		childrenTasks = child;
 	}
@@ -75,7 +80,7 @@ private:
 class TransTask : public Task
 {
 public:
-	TransTask(int r, string bri, int acc, int type, int per, Data* data, int parent, string con, int pay, int reqEngCre = 0, int reqFraCre = 0) :Task(r, bri, acc, type, per, data, con, pay)
+	TransTask(int r, string bri, int acc, int type, int per, Data* data, int parent, string con, int pay, int appPer, int iss, int sta = 0, int reqEngCre = 0, int reqFraCre = 0) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
 	{
 		parentTask = parent;
 		reqEngCredits = reqEngCre;

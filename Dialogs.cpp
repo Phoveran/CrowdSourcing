@@ -475,7 +475,7 @@ void MyResTaskOper::newChildButtonClick()
 		mesBox->setText(QString("Please fill all blanks!"));
 		mesBox->show();
 	}
-	else
+	/*else
 	{
 		int period = ui.newPeriodEdit->text().toInt();
 		int engReq = ui.newEngReqEdit->text().toInt();
@@ -484,7 +484,7 @@ void MyResTaskOper::newChildButtonClick()
 		string content = ui.textBrowserNewChild->toPlainText().toStdString();
 		TransTask* newTask = new TransTask(dataPtr->taskVec.size() + 1, task->brief, dataPtr->nowAccountNum, task->transType, period, dataPtr, task->rank, content, pay, engReq, freReq);
 		dataPtr->taskVec.push_back(newTask);
-	}
+	}*/
 }
 
 QString MyResTaskOper::transTypeJudge()
@@ -569,5 +569,89 @@ QString StaticTaskOper::transTypeJudge()
 	case 5: return QString("French to Chinese");
 	case 6: return QString("French to English");
 	default: return QString();
+	}
+}
+
+
+//新建任务窗口
+NewTaskOper::NewTaskOper(Data* data, QWidget* parent)
+{
+	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
+	ui.lineEditPay->setValidator(new QRegExpValidator(QRegExp("^[0-9]*$")));
+	dataPtr = data;
+}
+
+void NewTaskOper::cancelButtonClick()
+{
+	this->close();
+}
+
+int NewTaskOper::newResTask()
+{
+	int transType = ui.comboBoxTransType->currentIndex() + 1;
+	int period = ui.spinBoxConPeriod->value();
+	int appPeriod = ui.spinBoxRecPeriod->value();
+	if (period < 1 || appPeriod < 1)
+	{
+		return 1;
+	}
+	int engReq = ui.spinBoxReqEngCre->value();
+	int freReq = ui.spinBoxReqFreCre->value();
+	int pay;
+	if (ui.lineEditPay->text().isEmpty())
+	{
+		return 1;
+	}
+	else
+	{
+		pay = ui.lineEditPay->text().toInt();
+	}
+	if (pay > dataPtr->nowAccount->balance)
+	{
+		return 2;
+	}
+	if (ui.textBrowserBrief->toPlainText().isEmpty() || ui.textBrowserOrigin->toPlainText().isEmpty())
+	{
+		return 1;
+	}
+	else
+	{
+		string brief = ui.textBrowserBrief->toPlainText().toStdString();
+		string origin = ui.textBrowserOrigin->toPlainText().toStdString();
+		ResTask* task = new ResTask(dataPtr->taskVec.size() + 1, brief, dataPtr->nowAccountNum, transType, period, dataPtr, origin, pay, vector<int>(), appPeriod, time(0));
+		dataPtr->taskVec.push_back(task);
+		dataPtr->nowAccount->issue(task->rank);
+		return 0;
+	}
+}
+
+void NewTaskOper::okButtonClick()
+{
+	if (!newResTask())
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("New task issued"));
+		mesBox->show();
+		this->close();
+	}
+	else if (newResTask() == 1)
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You Must Fill All The Blanks!"));
+		mesBox->show();
+	}
+	else if (newResTask() == 2)
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You Don't Have Enough Balance!"));
+		mesBox->show();
 	}
 }

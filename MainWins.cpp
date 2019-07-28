@@ -9,7 +9,7 @@ CrowdSourcing::CrowdSourcing(Data* d, QWidget* parent)
 {
 	ui.setupUi(this);
 	dataPtr = d;
-	ui.usernameInput->setValidator(new QRegExpValidator(QRegExp("^[0-9]{5}$")));
+	ui.usernameInput->setValidator(new QRegExpValidator(QRegExp("^[0-9]{4}$")));
 }
 
 void CrowdSourcing::loginButtonClick()
@@ -279,8 +279,10 @@ void IssTaskWin::finiViewButtonClick()
 {
 }
 
-void IssTaskWin::newButtonClick()
+void IssTaskWin::newTaskButtonClick()
 {
+	NewTaskOper* n = new NewTaskOper(dataPtr);
+	n->show();
 }
 
 void IssTaskWin::loadInfo()
