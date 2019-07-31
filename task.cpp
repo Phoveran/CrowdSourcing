@@ -25,6 +25,11 @@ Task::~Task(void)
 {
 }
 
+bool Task::applied(int acc)
+{
+	return false;
+}
+
 vector<int> Task::getChildren()
 {
 	return vector<int>();
@@ -45,6 +50,14 @@ int Task::getReqFraCre()
 	return 0;
 }
 
+void Task::setReqEngCre(int n)
+{
+}
+
+void Task::setReqFraCre(int n)
+{
+}
+
 vector<int> Task::getTranslators()
 {
 	return vector<int>();
@@ -53,6 +66,14 @@ vector<int> Task::getTranslators()
 string Task::getAdvice()
 {
 	return string();
+}
+
+void Task::addTranslators(int n)
+{
+}
+
+void Task::deleteTranslators(int at)
+{
 }
 
 
@@ -66,10 +87,21 @@ bool ResTask::applied(int acc)
 {
 	int i = acc - 1000;
 	if (count(waitingAccount.begin(), waitingAccount.end(), acc));
-	else if (dataPtr->userVec[i]->level == 2)
+	else if (state == 2)
 	{
-		waitingAccount.push_back(i);
-		return true;
+		if (dataPtr->userVec[i]->level == 2)
+		{
+			waitingAccount.push_back(acc);
+			return true;
+		}
+	}
+	else if (state == 3)
+	{
+		if (dataPtr->userVec[i]->engCredits >= reqEngCredits && dataPtr->userVec[i]->fraCredits >= reqFraCredits)
+		{
+			waitingAccount.push_back(acc);
+			return true;
+		}
 	}
 	return false;
 }
@@ -79,6 +111,36 @@ int ResTask::type()
 	return 0;
 }
 
+int ResTask::getReqEngCre()
+{
+	return reqEngCredits;
+}
+
+int ResTask::getReqFraCre()
+{
+	return reqFraCredits;
+}
+
+void ResTask::setReqEngCre(int n)
+{
+	reqEngCredits = n;
+}
+
+void ResTask::setReqFraCre(int n)
+{
+	reqFraCredits = n;
+}
+
+void ResTask::addTranslators(int n)
+{
+	translators.push_back(n);
+}
+
+void ResTask::deleteTranslators(int at)
+{
+	translators.erase(translators.begin() + at);
+}
+
 vector<int> ResTask::getTranslators()
 {
 	return translators;
@@ -86,17 +148,6 @@ vector<int> ResTask::getTranslators()
 
 
 
-bool TransTask::applied(int acc)
-{
-	int i = acc - 1000;
-	if (count(waitingAccount.begin(), waitingAccount.end(), acc));
-	else if (dataPtr->userVec[i]->engCredits >= reqEngCredits && dataPtr->userVec[i]->fraCredits >= reqFraCredits)
-	{
-		waitingAccount.push_back(acc);
-		return true;
-	}
-	return false;
-}
 
 int TransTask::type()
 {
@@ -106,16 +157,6 @@ int TransTask::type()
 int TransTask::getParent()
 {
 	return parentTask;
-}
-
-int TransTask::getReqEngCre()
-{
-	return reqEngCredits;
-}
-
-int TransTask::getReqFraCre()
-{
-	return reqFraCredits;
 }
 
 string TransTask::getAdvice()

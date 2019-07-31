@@ -18,7 +18,7 @@ vector<string> split(const string& str, const string& pattern)
 	return res;
 }
 
-string stringCombine(vector<string> ori, const string& pattern = "")
+string stringCombine(vector<string> ori, const string& pattern)
 {
 	string res;
 	for (int i = 0; i < ori.size(); i++)
@@ -32,7 +32,7 @@ string stringCombine(vector<string> ori, const string& pattern = "")
 	return res;
 }
 
-string intCombine2String(vector<int> ori, const string& pattern = "")
+string intCombine2String(vector<int> ori, const string& pattern)
 {
 	string res;
 	for (int i = 0; i < ori.size(); i++)
@@ -174,7 +174,7 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 	strs.push_back(to_string(task->startTime) + string(", "));
 	strs.push_back(to_string(task->period) + string(", "));
 	strs.push_back(to_string(task->applyPeriod) + string(", "));
-	if (task->type())
+	if (!task->type())
 	{
 		strs.push_back(to_string(task->getReqEngCre()) + string(", "));
 		strs.push_back(to_string(task->getReqFraCre()) + string(", "));
@@ -337,15 +337,13 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 	Task* task;
 	if (type)
 	{
-		int reqEng = atoi(argvs[11]);
-		int reqFra = atoi(argvs[12]);
 		int parent = atoi(argvs[18]);
 		string advice = string();
 		if (argvs[20])
 		{
 			advice = argvs[20];
 		}
-		TransTask* taskTemp = new TransTask(rank, brief, issAcc, trType, peri, data, parent, cont, pay, appPeri, issTime, advice, staTime, reqEng, reqFra);
+		TransTask* taskTemp = new TransTask(rank, brief, issAcc, trType, peri, data, parent, cont, pay, appPeri, issTime, advice, staTime);
 		taskTemp->state = sta;
 		taskTemp->takenAccount = takenAcc;
 		taskTemp->transTemp = trTem;
@@ -355,6 +353,8 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 	}
 	else
 	{
+		int reqEng = atoi(argvs[11]);
+		int reqFra = atoi(argvs[12]);
 		vector<int> child = vector<int>();
 		vector<int> translators = vector<int>();
 		if (argvs[19])
@@ -373,7 +373,7 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 				translators.push_back(stoi(str[i]));
 			}
 		}
-		ResTask* taskTemp = new ResTask(rank, brief, issAcc, trType, peri, data, cont, pay, child, appPeri, issTime, staTime, translators);
+		ResTask* taskTemp = new ResTask(rank, brief, issAcc, trType, peri, data, cont, pay, child, appPeri, issTime, staTime, translators, reqEng, reqFra);
 		taskTemp->state = sta;
 		taskTemp->takenAccount = takenAcc;
 		taskTemp->transTemp = trTem;

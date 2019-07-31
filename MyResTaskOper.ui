@@ -11,10 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MyTask</string>
+   <string>My Responsible Task</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda8.jpg);</string>
+   <string notr="true">background-color: rgb(190, 190, 190);</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
@@ -29,13 +29,15 @@
     <font>
      <family>Century Gothic</family>
      <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
-   <property name="styleSheet">
-    <string notr="true"/>
+   <property name="toolTip">
+    <string/>
    </property>
-   <property name="tabShape">
-    <enum>QTabWidget::Rounded</enum>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(243, 162, 0);</string>
    </property>
    <property name="currentIndex">
     <number>0</number>
@@ -44,44 +46,18 @@
     <attribute name="title">
      <string>Infomation</string>
     </attribute>
-    <widget class="QFrame" name="formFrame">
+    <widget class="QWidget" name="formLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>0</y>
-       <width>421</width>
-       <height>211</height>
+       <x>40</x>
+       <y>40</y>
+       <width>461</width>
+       <height>284</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">border-image:transparent;
-color: rgb(85, 85, 0);</string>
-     </property>
      <layout class="QFormLayout" name="formLayout">
-      <property name="horizontalSpacing">
-       <number>20</number>
-      </property>
-      <property name="verticalSpacing">
-       <number>4</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_1">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(85, 85, 0);</string>
-        </property>
-        <property name="text">
-         <string>Rank</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_1">
         <property name="font">
          <font>
           <family>Century Gothic</family>
@@ -96,8 +72,24 @@ color: rgb(85, 85, 0);</string>
         </property>
        </widget>
       </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="labelTransType">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 0, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="label_2">
         <property name="font">
          <font>
           <family>Century Gothic</family>
@@ -108,12 +100,28 @@ color: rgb(85, 85, 0);</string>
          <string notr="true">color: rgb(85, 85, 0);</string>
         </property>
         <property name="text">
-         <string>Task Type</string>
+         <string>Recruiting Period(Days)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="labelRecPeriod">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 0, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="label_3">
         <property name="font">
          <font>
           <family>Century Gothic</family>
@@ -124,27 +132,27 @@ color: rgb(85, 85, 0);</string>
          <string notr="true">color: rgb(85, 85, 0);</string>
         </property>
         <property name="text">
-         <string>Payment</string>
+         <string>Conducting Period(Days)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="labelConPeriod">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 0, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(85, 85, 0);</string>
-        </property>
-        <property name="text">
-         <string>Issuing Account</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
        <widget class="QLabel" name="label_7">
         <property name="font">
          <font>
@@ -156,11 +164,43 @@ color: rgb(85, 85, 0);</string>
          <string notr="true">color: rgb(85, 85, 0);</string>
         </property>
         <property name="text">
-         <string>Task Period</string>
+         <string>Payment(Ruby)</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="0">
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 85, 0);</string>
+        </property>
+        <property name="text">
+         <string>State</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLabel" name="labelState">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 0, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
        <widget class="QLabel" name="label_8">
         <property name="font">
          <font>
@@ -172,7 +212,7 @@ color: rgb(85, 85, 0);</string>
          <string notr="true">color: rgb(85, 85, 0);</string>
         </property>
         <property name="text">
-         <string>Required Credits</string>
+         <string>Rank</string>
         </property>
        </widget>
       </item>
@@ -185,15 +225,15 @@ color: rgb(85, 85, 0);</string>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(0, 85, 255);</string>
+         <string notr="true">color: rgb(85, 0, 255);</string>
         </property>
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="labelTransType">
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_9">
         <property name="font">
          <font>
           <family>Century Gothic</family>
@@ -201,79 +241,15 @@ color: rgb(85, 85, 0);</string>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(0, 85, 255);</string>
+         <string notr="true">color: rgb(85, 85, 0);</string>
         </property>
         <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="labelTaskType">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(0, 85, 255);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLabel" name="labelPayment">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(0, 85, 255);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLabel" name="labelIssAcc">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(0, 85, 255);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLabel" name="labelTaskPer">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(0, 85, 255);</string>
-        </property>
-        <property name="text">
-         <string/>
+         <string>Remaining hours</string>
         </property>
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QLabel" name="labelReqCredits">
+       <widget class="QLabel" name="labelRemHours">
         <property name="font">
          <font>
           <family>Century Gothic</family>
@@ -281,7 +257,93 @@ color: rgb(85, 85, 0);</string>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(0, 85, 255);</string>
+         <string notr="true">color: rgb(85, 0, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 85, 0);</string>
+        </property>
+        <property name="text">
+         <string>Required English Credits</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="lineEditEngCre">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 0, 255);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 85, 0);</string>
+        </property>
+        <property name="text">
+         <string>Required French Credits</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="lineEditFreCre">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 0, 255);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLabel" name="labelPay">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 0, 255);</string>
         </property>
         <property name="text">
          <string/>
@@ -290,17 +352,109 @@ color: rgb(85, 85, 0);</string>
       </item>
      </layout>
     </widget>
-    <widget class="QFrame" name="frame_2">
+    <widget class="QPushButton" name="editInfoOkButton">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>260</y>
-       <width>180</width>
-       <height>250</height>
+       <x>70</x>
+       <y>370</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Set Infomation</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="editInfocancelButton">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>370</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Cancel</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="changeInfoButton">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>370</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Change Infomation</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowserBrief">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>40</y>
+       <width>281</width>
+       <height>341</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>594</x>
+       <y>476</y>
+       <width>200</width>
+       <height>82</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/in_morocco.jpg);</string>
+      <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo2.png);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -309,415 +463,327 @@ color: rgb(85, 85, 0);</string>
       <enum>QFrame::Raised</enum>
      </property>
     </widget>
-    <widget class="QTextBrowser" name="textBrowserBrief">
+    <widget class="QLabel" name="label_10">
      <property name="geometry">
       <rect>
-       <x>510</x>
-       <y>30</y>
-       <width>261</width>
-       <height>526</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>华文细黑</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image:transparent;</string>
-     </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'华文细黑'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_9">
-     <property name="geometry">
-      <rect>
-       <x>510</x>
-       <y>0</y>
-       <width>61</width>
-       <height>24</height>
+       <x>520</x>
+       <y>5</y>
+       <width>71</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Century Gothic</family>
        <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(85, 85, 0);
-border-image:transparent;</string>
-     </property>
-     <property name="text">
-      <string>Brief：</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tabTrans">
-    <attribute name="title">
-     <string>Translate</string>
-    </attribute>
-    <widget class="QTextBrowser" name="textBrowserOrigin">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>41</y>
-       <width>351</width>
-       <height>431</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>华文细黑</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image:transparent;</string>
-     </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'华文细黑'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;原文&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QFrame" name="buttonFrame">
-     <property name="geometry">
-      <rect>
-       <x>139</x>
-       <y>490</y>
-       <width>520</width>
-       <height>60</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: \*url();</string>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>80</number>
-      </property>
-      <item>
-       <widget class="QPushButton" name="saveButton">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>22</pointsize>
-          <weight>75</weight>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{  
-color:rgb(85, 85, 0);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
-border:1px;  
-border-radius:15px;padding:2px 4px;
-}  
-QPushButton:hover{
-color:rgb(255, 255, 255);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(37,189,252),  
-							  stop: 1 rgb(32,170,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-}  
-QPushButton:pressed{ 
-color:rgb(233, 236, 243);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(38,190,255),  
-							  stop: 1 rgb(33,184,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-};</string>
-        </property>
-        <property name="text">
-         <string>Save</string>
-        </property>
-        <property name="autoDefault">
-         <bool>false</bool>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="submitButton">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>22</pointsize>
-          <weight>75</weight>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{  
-color:rgb(85, 85, 0);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(248, 255, 250),stop: 0.3 rgb(255, 170, 0),stop: 1 rgb(255, 170, 127));  
-border:1px;  
-border-radius:15px;padding:2px 4px;
-}  
-QPushButton:hover{
-color:rgb(255, 255, 255);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(37,189,252),  
-							  stop: 1 rgb(32,170,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-}  
-QPushButton:pressed{ 
-color:rgb(233, 236, 243);  
-min-height:20;  
-border-style:solid;  
-border-top-left-radius:2px;  
-border-top-right-radius:2px;  
-background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 rgb(226,236,241),   
-							stop: 0.3 rgb(38,190,255),  
-							  stop: 1 rgb(33,184,240));  
-border:1px;  
-border-radius:15px;padding:2px 4px;  
-};</string>
-        </property>
-        <property name="text">
-         <string>Submit</string>
-        </property>
-        <property name="autoDefault">
-         <bool>false</bool>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QTextBrowser" name="textBrowserTrans">
-     <property name="geometry">
-      <rect>
-       <x>447</x>
-       <y>41</y>
-       <width>351</width>
-       <height>431</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>华文细黑</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image:transparent;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'华文细黑'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;译文&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>447</x>
-       <y>0</y>
-       <width>181</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Century Gothic</family>
-       <pointsize>16</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image:transparent;
-color: rgb(255, 85, 0);</string>
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
      </property>
      <property name="text">
-      <string>Translarion:</string>
+      <string>Brief:</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tabRec">
+    <attribute name="title">
+     <string>Recruitment</string>
+    </attribute>
+    <widget class="QListWidget" name="listWidgetAppliedAcc">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>301</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: transparent;
+color: rgb(0, 0, 0);</string>
      </property>
     </widget>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>126</width>
-       <height>41</height>
+       <x>50</x>
+       <y>8</y>
+       <width>191</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Century Gothic</family>
-       <pointsize>16</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image:transparent;
-color: rgb(255, 85, 0);</string>
-     </property>
-     <property name="text">
-      <string>Origin:</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tabNewChild">
-    <attribute name="title">
-     <string>New child task</string>
-    </attribute>
-    <widget class="QTextBrowser" name="textBrowserOrigin_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>41</y>
-       <width>351</width>
-       <height>491</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>华文细黑</family>
        <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image:transparent;</string>
-     </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'华文细黑'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;原文&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_10">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>126</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Century Gothic</family>
-       <pointsize>16</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image:transparent;
-color: rgb(255, 85, 0);</string>
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
      </property>
      <property name="text">
-      <string>Origin:</string>
+      <string>Applied accounts:</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="newChildButton">
+    <widget class="QPushButton" name="chooseTranslatorButton">
      <property name="geometry">
       <rect>
-       <x>710</x>
-       <y>480</y>
-       <width>80</width>
-       <height>80</height>
+       <x>130</x>
+       <y>440</y>
+       <width>120</width>
+       <height>120</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Choose as translator</string>
+     </property>
+     <property name="statusTip">
+      <string/>
+     </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/new_norm.png);}  
-QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/new_on.png);}
-QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/new_clicked.png);};</string>
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_clicked.png);};</string>
      </property>
      <property name="text">
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label_11">
+    <widget class="QFrame" name="frame_2">
      <property name="geometry">
       <rect>
-       <x>450</x>
-       <y>0</y>
-       <width>211</width>
-       <height>41</height>
+       <x>594</x>
+       <y>476</y>
+       <width>200</width>
+       <height>82</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo2.png);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="removeButton">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>440</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Remove</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidgetChosenAcc">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>40</y>
+       <width>301</width>
+       <height>391</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Century Gothic</family>
-       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: transparent;
+color: rgb(0, 0, 0);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_21">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>8</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image:transparent;
-color: rgb(255, 85, 0);</string>
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
      </property>
      <property name="text">
-      <string>New child task:</string>
+      <string>Chosen accounts:</string>
      </property>
     </widget>
-    <widget class="QTextBrowser" name="textBrowserNewChild">
+    <widget class="QPushButton" name="endRecruitingButton">
      <property name="geometry">
       <rect>
-       <x>450</x>
+       <x>650</x>
+       <y>200</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>End Recruiting</string>
+     </property>
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tabDistribution">
+    <attribute name="title">
+     <string>Distribution</string>
+    </attribute>
+    <widget class="QListWidget" name="listWidgetTranslators">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
        <y>40</y>
-       <width>341</width>
-       <height>321</height>
+       <width>311</width>
+       <height>171</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>华文细黑</family>
-       <pointsize>12</pointsize>
+       <family>Century Gothic</family>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image:transparent;</string>
+      <string notr="true">border-image: transparent;
+color: rgb(0, 0, 0);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>5</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Translators:</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowserOrigin">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>250</y>
+       <width>311</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>215</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Origin:</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowserChildContent">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>60</y>
+       <width>361</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="readOnly">
       <bool>false</bool>
@@ -726,156 +792,585 @@ color: rgb(255, 85, 0);</string>
       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'华文细黑'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QFrame" name="formFrame">
+    <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
-       <x>360</x>
-       <y>360</y>
-       <width>431</width>
-       <height>121</height>
+       <x>400</x>
+       <y>20</y>
+       <width>201</width>
+       <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="styleSheet">
-      <string notr="true">border-image: transparent;
-color: rgb(0, 0, 127);</string>
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Child Task Content:</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>350</y>
+       <width>321</width>
+       <height>67</height>
+      </rect>
      </property>
      <layout class="QFormLayout" name="formLayout_2">
       <item row="0" column="0">
-       <widget class="QLabel" name="label_12">
+       <widget class="QLabel" name="label_19">
         <property name="font">
          <font>
           <family>Century Gothic</family>
-          <pointsize>10</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">color: rgb(85, 85, 0);</string>
         </property>
         <property name="text">
-         <string>Payment(Ruby):</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_13">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>10</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Period(Day):</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_14">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>10</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>English credit requirement:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_15">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>10</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>French credit requirement:</string>
+         <string>Payment(Ruby)</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="newPayEdit">
+       <widget class="QLineEdit" name="lineEditChildPay">
         <property name="font">
          <font>
           <family>Century Gothic</family>
-          <pointsize>10</pointsize>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-image: transparent;
-</string>
+         <string notr="true">color: rgb(85, 85, 127);</string>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_22">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 85, 0);</string>
         </property>
         <property name="text">
-         <string/>
+         <string>Period(Days)</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="newPeriodEdit">
+       <widget class="QSpinBox" name="spinBoxChildPeriod">
         <property name="font">
          <font>
           <family>Century Gothic</family>
-          <pointsize>10</pointsize>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-image: transparent;
-</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="newEngReqEdit">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-image: transparent;
-</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="newFreReqEdit">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-image: transparent;
-</string>
+         <string notr="true">color: rgb(85, 85, 127);</string>
         </property>
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QFrame" name="frame_3">
+     <property name="geometry">
+      <rect>
+       <x>594</x>
+       <y>476</y>
+       <width>200</width>
+       <height>82</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo2.png);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="distributeButton">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>430</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Distribute Child Task</string>
+     </property>
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tabCom">
+    <attribute name="title">
+     <string>Communication</string>
+    </attribute>
+    <widget class="QListWidget" name="listWidgetChildTasks">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>311</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: transparent;
+color: rgb(0, 0, 0);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Child Tasks:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>285</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Advice:</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowserAdvice">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>320</y>
+       <width>311</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowserChildTranslation">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>60</y>
+       <width>361</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_16">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>20</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Translation:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="communicateButton">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>410</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Send Advice</string>
+     </property>
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_4">
+     <property name="geometry">
+      <rect>
+       <x>594</x>
+       <y>476</y>
+       <width>200</width>
+       <height>82</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo2.png);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="acceptButton">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>410</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Accept</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Submission</string>
+    </attribute>
+    <widget class="QListWidget" name="listWidgetChildTasks_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>311</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>9</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: transparent;
+color: rgb(0, 0, 0);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Child Tasks:</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowserChildTranslation_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>310</y>
+       <width>311</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_18">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>270</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Child Translation:</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowserChildTranslation_3">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>50</y>
+       <width>411</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_20">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>10</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:transparent;color: rgb(85, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Total Translation:</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_5">
+     <property name="geometry">
+      <rect>
+       <x>594</x>
+       <y>476</y>
+       <width>200</width>
+       <height>82</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo2.png);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="submitButton">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>410</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Set Infomation</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="saveButton">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>410</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Cancel</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman_on.png);}
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman_clicked.png);};</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
     </widget>
    </widget>
   </widget>
@@ -885,14 +1380,174 @@ color: rgb(0, 0, 127);</string>
  </resources>
  <connections>
   <connection>
+   <sender>listWidgetChildTasks</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>communicationRefresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>changeInfoButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>changeInfoButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>251</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>acceptButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>acceptButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>531</x>
+     <y>501</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chooseTranslatorButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>chooseTranslatorButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>171</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>communicateButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>communicateButtonClicl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>501</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>distributeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>distributeButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>471</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editInfoOkButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>editInfoOkButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editInfocancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>editInfoCancelButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>endRecruitingButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>endRecruitingButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>691</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>removeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogMyResTaskOper</receiver>
+   <slot>removeButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>saveButton</sender>
    <signal>clicked()</signal>
    <receiver>DialogMyResTaskOper</receiver>
    <slot>saveButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>254</x>
-     <y>550</y>
+     <x>531</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -907,24 +1562,8 @@ color: rgb(0, 0, 127);</string>
    <slot>submitButtonClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>543</x>
-     <y>550</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>newChildButton</sender>
-   <signal>clicked()</signal>
-   <receiver>DialogMyResTaskOper</receiver>
-   <slot>newChildButtonClick()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>749</x>
-     <y>550</y>
+     <x>401</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -934,8 +1573,17 @@ color: rgb(0, 0, 127);</string>
   </connection>
  </connections>
  <slots>
-  <slot>saveButtonClick()</slot>
+  <slot>changeInfoButtonClick()</slot>
+  <slot>editInfoOkButtonClick()</slot>
+  <slot>editInfoCancelButtonClick()</slot>
+  <slot>chooseTranslatorButtonClick()</slot>
+  <slot>distributeButtonClick()</slot>
+  <slot>communicateButtonClicl()</slot>
   <slot>submitButtonClick()</slot>
-  <slot>newChildButtonClick()</slot>
+  <slot>saveButtonClick()</slot>
+  <slot>acceptButtonClick()</slot>
+  <slot>communicationRefresh()</slot>
+  <slot>endRecruitingButtonClick()</slot>
+  <slot>removeButtonClick()</slot>
  </slots>
 </ui>

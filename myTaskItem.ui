@@ -114,7 +114,7 @@ border-image:transparent;</string>
    <widget class="QLabel" name="labelType">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>460</x>
       <y>17</y>
       <width>211</width>
       <height>16</height>
@@ -132,7 +132,7 @@ border-image:transparent;</string>
 border-image:transparent;</string>
     </property>
     <property name="text">
-     <string>translation task</string>
+     <string>Principal</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelState">

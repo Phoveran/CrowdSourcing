@@ -68,7 +68,7 @@ public:
         toPic->setFrameShadow(QFrame::Raised);
         labelType = new QLabel(bigFrame);
         labelType->setObjectName(QString::fromUtf8("labelType"));
-        labelType->setGeometry(QRect(420, 17, 211, 16));
+        labelType->setGeometry(QRect(460, 17, 211, 16));
         QFont font;
         font.setFamily(QString::fromUtf8("Courier"));
         font.setBold(true);
@@ -97,7 +97,7 @@ public:
     void retranslateUi(QWidget *myTaskItem)
     {
         myTaskItem->setWindowTitle(QCoreApplication::translate("myTaskItem", "Form", nullptr));
-        labelType->setText(QCoreApplication::translate("myTaskItem", "translation task", nullptr));
+        labelType->setText(QCoreApplication::translate("myTaskItem", "Principal", nullptr));
         labelState->setText(QCoreApplication::translate("myTaskItem", "State", nullptr));
         labelRank->setText(QCoreApplication::translate("myTaskItem", "Rank", nullptr));
     } // retranslateUi

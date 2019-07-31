@@ -2,7 +2,9 @@
 #include <QString>
 #include <regex>
 #include <qvalidator.h>
+#include <algorithm>
 #include "Dialogs.h"
+
 using namespace std;
 
 //改密码界面
@@ -451,43 +453,214 @@ MyResTaskOper::MyResTaskOper(Task* tas, Data* data, QWidget* parent)
 	ui.setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose, true);
 	this->setWindowModality(Qt::ApplicationModal);
-	ui.newEngReqEdit->setValidator(new QIntValidator);
-	ui.newFreReqEdit->setValidator(new QIntValidator);
-	ui.newPayEdit->setValidator(new QIntValidator);
-	ui.newPeriodEdit->setValidator(new QIntValidator);
 
 	dataPtr = data;
 	task = tas;
 
 	loadInfo();
+	ui.editInfoOkButton->setHidden(true);
+	ui.editInfocancelButton->setHidden(true);
+}
+//Info Tab
+void MyResTaskOper::changeInfoButtonClick()
+{
+	ui.editInfoOkButton->setHidden(false);
+	ui.editInfocancelButton->setHidden(false);
+	ui.changeInfoButton->setHidden(true);
+	ui.lineEditEngCre->setReadOnly(false);
+	ui.lineEditFreCre->setReadOnly(false);
 }
 
-void MyResTaskOper::saveButtonClick()
+void MyResTaskOper::editInfoOkButtonClick()
 {
-	task->transTemp = ui.textBrowserTrans->toPlainText().toStdString();
-	loadInfo();
+	ui.editInfoOkButton->setHidden(true);
+	ui.editInfocancelButton->setHidden(true);
+	ui.changeInfoButton->setHidden(false);
+	ui.lineEditEngCre->setReadOnly(true);
+	ui.lineEditFreCre->setReadOnly(true);
+	task->setReqEngCre(ui.lineEditEngCre->text().toInt());
+	task->setReqFraCre(ui.lineEditFreCre->text().toInt());
 }
 
-void MyResTaskOper::newChildButtonClick()
+void MyResTaskOper::editInfoCancelButtonClick()
 {
-	if (ui.newPeriodEdit->text().isEmpty() || ui.newEngReqEdit->text().isEmpty() || ui.newFreReqEdit->text().isEmpty() || ui.newPayEdit->text().isEmpty() || ui.textBrowserNewChild->toPlainText().isEmpty())
+	ui.editInfoOkButton->setHidden(true);
+	ui.editInfocancelButton->setHidden(true);
+	ui.changeInfoButton->setHidden(false);
+	ui.lineEditEngCre->setReadOnly(true);
+	ui.lineEditFreCre->setReadOnly(true);
+	ui.lineEditEngCre->setText(QString::number(task->getReqEngCre()));
+	ui.lineEditFreCre->setText(QString::number(task->getReqFraCre()));
+}
+//Communication Tab
+void MyResTaskOper::communicateButtonClick()
+{
+}
+
+void MyResTaskOper::communicationRefresh()
+{
+
+}
+
+void MyResTaskOper::acceptButtonClick()
+{
+}
+//Distribution Tab
+void MyResTaskOper::distributeButtonClick()
+{
+	if (ui.listWidgetTranslators->currentItem())
+	{
+		if (ui.textBrowserChildContent->toPlainText().isEmpty())
+		{
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Wrong");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("You haven't text the content!"));
+			mesBox->show();
+		}
+		else
+		{
+			if (ui.lineEditChildPay->text().isEmpty())
+			{
+				QMessageBox* mesBox = new QMessageBox;
+				mesBox->setWindowTitle("Wrong");
+				mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+				mesBox->setText(QString("You haven't text the Payment!"));
+				mesBox->show();
+			}
+			else
+			{
+				if (ui.spinBoxChildPeriod->text().toInt() < 1)
+				{
+					QMessageBox* mesBox = new QMessageBox;
+					mesBox->setWindowTitle("Wrong");
+					mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+					mesBox->setText(QString("Invalid Period!"));
+					mesBox->show();
+				}
+				else
+				{
+					bool judge = false;
+					for (int j = 0; j < dataPtr->userVec[task->getTranslators()[i] - 1000]->takenTasks.size(); j++)
+					{
+						if (dataPtr->taskVec[dataPtr->userVec[task->getTranslators()[i] - 1000]->takenTasks[j] - 1]->getParent() == task->rank)
+						{
+							judge = true;
+						}
+					}
+					if (!judge)
+					{
+						newChildTask(task->getTranslators()[ui.listWidgetTranslators->currentRow()], ui.textBrowserChildContent->toPlainText().toStdString(), ui.spinBoxChildPeriod->text().toInt(), ui.lineEditChildPay->text().toInt());
+						QMessageBox* mesBox = new QMessageBox;
+						mesBox->setWindowTitle("Done");
+						mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+						mesBox->setText(QString("Child task distributed"));
+						mesBox->show();
+					}
+					else
+					{
+						QMessageBox* mesBox = new QMessageBox;
+						mesBox->setWindowTitle("Wrong");
+						mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+						mesBox->setText(QString("A child task has been sent to this translator before"));
+						mesBox->show();
+					}
+				}
+			}
+		}
+	}
+	else
 	{
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Wrong");
 		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("Please fill all blanks!"));
+		mesBox->setText(QString("You haven't chosen a translator!"));
 		mesBox->show();
 	}
-	/*else
+}
+//Recruiting Tab
+void MyResTaskOper::chooseTranslatorButtonClick()
+{
+	if (task->state == 3)
 	{
-		int period = ui.newPeriodEdit->text().toInt();
-		int engReq = ui.newEngReqEdit->text().toInt();
-		int freReq = ui.newFreReqEdit->text().toInt();
-		int pay = ui.newPayEdit->text().toInt();
-		string content = ui.textBrowserNewChild->toPlainText().toStdString();
-		TransTask* newTask = new TransTask(dataPtr->taskVec.size() + 1, task->brief, dataPtr->nowAccountNum, task->transType, period, dataPtr, task->rank, content, pay, engReq, freReq);
-		dataPtr->taskVec.push_back(newTask);
-	}*/
+		if (ui.listWidgetAppliedAcc->currentItem())
+		{
+			task->addTranslators(task->waitingAccount[ui.listWidgetAppliedAcc->currentRow()]);
+			task->waitingAccount.erase(task->waitingAccount.begin() + ui.listWidgetAppliedAcc->currentRow());
+			loadInfo();
+		}
+		else
+		{
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Wrong");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("You haven't chosen an account!"));
+			mesBox->show();
+		}
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("It's not recruiting time!"));
+		mesBox->show();
+	}
+}
+
+void MyResTaskOper::removeButtonClick()
+{
+	if (task->state == 3)
+	{
+		if (ui.listWidgetChosenAcc->currentItem())
+		{
+			task->waitingAccount.push_back(task->getTranslators()[ui.listWidgetChosenAcc->currentRow()]);
+			task->deleteTranslators(ui.listWidgetChosenAcc->currentRow());
+			loadInfo();
+		}
+		else
+		{
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Wrong");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("You haven't chosen an account!"));
+			mesBox->show();
+		}
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("It's not recruiting time!"));
+		mesBox->show();
+	}
+}
+
+void MyResTaskOper::endRecruitingButtonClick()
+{
+	if (task->state == 3)
+	{
+		task->state = 1;
+		task->startTime = time(0);
+		task->waitingAccount.clear();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("It's not recruiting time!"));
+		mesBox->show();
+	}
+}
+//Submission Tab
+void MyResTaskOper::saveButtonClick()
+{
+}
+
+void MyResTaskOper::submitButtonClick()
+{
 }
 
 QString MyResTaskOper::transTypeJudge()
@@ -506,32 +679,140 @@ QString MyResTaskOper::transTypeJudge()
 
 void MyResTaskOper::loadInfo()
 {
-	ui.textBrowserOrigin->setText(QString::fromStdString(task->content));
-	ui.textBrowserOrigin_2->setText(QString::fromStdString(task->content));
-	ui.textBrowserTrans->setText(QString::fromStdString(task->transTemp));
-	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
-	ui.labelPayment->setText(QString::number(task->payment) + QString(" Ruby"));
+	ui.listWidgetAppliedAcc->clear();
+	ui.listWidgetChildTasks->clear();
+	ui.listWidgetChildTasks_2->clear();
+	ui.listWidgetChosenAcc->clear();
+	ui.listWidgetTranslators->clear();
+	//Infomation Tab
+	ui.labelConPeriod->setText(QString::number(task->period));
 	ui.labelRank->setText(QString::number(task->rank));
-	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Day"));
-	ui.labelTransType->setText(transTypeJudge());
-	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
-	if (task->type())
+	ui.labelRecPeriod->setText(QString::number(task->applyPeriod));
+	int rest;
+	if (task->state == 3)
 	{
-		ui.labelTaskType->setText(QString("Translation task"));
-		ui.labelReqCredits->setText(QString("Eng: ") + QString::number(task->getReqEngCre()) + QString("    Fre:") + QString::number(task->getReqFraCre()));
+		ui.labelState->setText("Recruiting");
+		rest = task->startTime + (task->applyPeriod * 86400) - time(0);
+		if (rest > 0)
+		{
+			rest /= 3600;
+			ui.labelRemHours->setText(QString::number(rest));
+		}
+		else
+		{
+			ui.labelRemHours->setText("Time Out");
+		}
 	}
-	else
+	else if (task->state == 1)
 	{
-		ui.labelTaskType->setText(QString("Arrangement task"));
+		ui.labelState->setText("Translating");
+		rest = task->startTime + (task->period * 86400) - time(0);
+		if (rest > 0)
+		{
+			rest /= 3600;
+			ui.labelRemHours->setText(QString::number(rest));
+		}
+		else
+		{
+			ui.labelRemHours->setText("Time Out");
+		}
+	}
+	ui.labelTransType->setText(transTypeJudge());
+	ui.labelPay->setText(QString::number(task->payment));
+	ui.lineEditEngCre->setText(QString::number(task->getReqEngCre()));
+	ui.lineEditFreCre->setText(QString::number(task->getReqFraCre()));
+	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
+	ui.editInfoOkButton->setHidden(true);
+	ui.editInfocancelButton->setHidden(true);
+	
+	//Recruitment Tab
+	for (int i = 0; i < task->waitingAccount.size(); i++)
+	{
+		QString info = "Account: ";
+		info += QString::number(task->waitingAccount[i]);
+		info += "\nCertificates: ";
+		info += QString::fromStdString(stringCombine(dataPtr->userVec[task->waitingAccount[i] - 1000]->certificationType, ";"));
+		info += "\nEnglish Credits: ";
+		info += QString::number(dataPtr->userVec[task->waitingAccount[i] - 1000]->engCredits);
+		info += "      French Credits: ";
+		info += QString::number(dataPtr->userVec[task->waitingAccount[i] - 1000]->fraCredits);
+		QListWidgetItem* li = new QListWidgetItem(info);
+		ui.listWidgetAppliedAcc->addItem(li);
+	}
+	for (int i = 0; i < task->getTranslators().size(); i++)
+	{
+		QString info = "Account: ";
+		info += QString::number(task->getTranslators()[i]);
+		info += "\nCertificates: ";
+		info += QString::fromStdString(stringCombine(dataPtr->userVec[task->getTranslators()[i] - 1000]->certificationType, ";"));
+		info += "\nEnglish Credits: ";
+		info += QString::number(dataPtr->userVec[task->getTranslators()[i] - 1000]->engCredits);
+		info += "      French Credits: ";
+		info += QString::number(dataPtr->userVec[task->getTranslators()[i] - 1000]->fraCredits);
+		QListWidgetItem* li = new QListWidgetItem(info);
+		ui.listWidgetChosenAcc->addItem(li);
+	}
+
+
+	//Distribution Tab
+	for (int i = 0; i < task->getTranslators().size(); i++)
+	{
+		QString info = "Account: ";
+		info += QString::number(task->getTranslators()[i]);
+		info += "\nEnglish Credits: ";
+		info += QString::number(dataPtr->userVec[task->getTranslators()[i] - 1000]->engCredits);
+		info += "  French Credits: ";
+		info += QString::number(dataPtr->userVec[task->getTranslators()[i] - 1000]->fraCredits);
+		QListWidgetItem* li;
+		bool judge = false;
+		for (int j = 0; j < dataPtr->userVec[task->getTranslators()[i] - 1000]->takenTasks.size(); j++)
+		{
+			if (dataPtr->taskVec[dataPtr->userVec[task->getTranslators()[i] - 1000]->takenTasks[j] - 1]->getParent() == task->rank)
+			{
+				judge = true;
+			}
+		}
+		if (judge)
+		{
+			li = new QListWidgetItem(QIcon("Resources/pictures/confirmed.png"), info);
+		}
+		else
+		{
+			li = new QListWidgetItem(info);
+		}
+		ui.listWidgetTranslators->addItem(li);
+		ui.textBrowserOrigin->setText(QString::fromStdString(task->content));
+	}
+
+	//Communication Tab & Submission Tab
+	for (int i = 0; i < task->getChildren().size(); i++)
+	{
+		QString info = "Rank: ";
+		info += QString::number(task->getChildren()[i]);
+		info += "Account: ";
+		info += QString::number(dataPtr->taskVec[task->getChildren()[i] - 1]->takenAccount);
+		QListWidgetItem* li;
+		if (dataPtr->taskVec[task->getChildren()[i] - 1]->state == 0)
+		{
+			li = new QListWidgetItem(QIcon("Resources/pictures/confirmed.png"), info);
+		}
+		else
+		{
+			li = new QListWidgetItem(info);
+		}
+		ui.listWidgetChildTasks->addItem(li);
+		ui.listWidgetChildTasks_2->addItem(li);
 	}
 }
 
-void MyResTaskOper::submitButtonClick()
+void MyResTaskOper::newChildTask(int acc, string ori, int period, int pay)
 {
-	task->transSubmit = ui.textBrowserTrans->toPlainText().toStdString();
-	task->state = 0;
-	this->close();
+	TransTask* childTask = new TransTask(dataPtr->taskVec.size() + 1, task->brief, dataPtr->nowAccountNum, task->transType, period, dataPtr, task->rank, ori, pay, 0, 0, string(), time(0));
+	childTask->takenAccount = acc;
+	dataPtr->userVec[acc - 1000]->take(childTask->rank);
+	dataPtr->taskVec.push_back(childTask);
 }
+
 
 
 //别人执行、完成的任务
@@ -676,10 +957,18 @@ IssRecTaskOper::IssRecTaskOper(Task* tas, Data* data, QWidget* parent)
 
 void IssRecTaskOper::cancelButtonClick()
 {
+	this->close();
 }
 
 void IssRecTaskOper::okButtonClick()
 {
+	choosePrincipal();
+	QMessageBox* mesBox = new QMessageBox;
+	mesBox->setWindowTitle("Done");
+	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+	mesBox->setText(QString("Principal Selected!"));
+	mesBox->show();
+	this->close();
 }
 
 void IssRecTaskOper::loadInfo()
@@ -693,19 +982,43 @@ void IssRecTaskOper::loadInfo()
 	{
 	case 3:
 	{
-		ui.labelState->setText(QString("Recruiting a principal"));
-		int rest = task->startTime + 86400 * task->period - time(0);
+		ui.labelState->setText(QString("Recruiting translators"));
+		int rest = task->startTime + 86400 * task->applyPeriod - time(0);
 		rest /= 3600;
 		ui.labelRemHours->setText(QString::number(rest) + QString(" Hours"));
 	}break;
 	case 2:
 	{
-		ui.labelState->setText(QString("Recruiting translators"));
+		ui.labelState->setText(QString("Recruiting a principal"));
 		int rest = task->issueTime + 86400 * task->applyPeriod - time(0);
 		rest /= 3600;
 		ui.labelRemHours->setText(QString::number(rest) + QString(" Hours"));
 	}break;
 	}
+	for (int i = 0; i < task->waitingAccount.size(); i++)
+	{
+		QString info = QString("Account: ") + QString::number(task->waitingAccount[i]);
+		info += QString("\nCertificates: ");
+		info += QString::fromStdString(stringCombine(dataPtr->userVec[task->waitingAccount[i] - 1000]->certificationType, ";"));
+		info += QString("\nEnglish Credits: ");
+		info += QString::number(dataPtr->userVec[task->waitingAccount[i] - 1000]->engCredits);
+		info += QString("     French Credits: ");
+		info += QString::number(dataPtr->userVec[task->waitingAccount[i] - 1000]->fraCredits);
+		QListWidgetItem* li = new QListWidgetItem(info);
+		ui.listWidgetAppliedAcc->addItem(li);
+	}
+	if (task->state == 3)
+	{
+		ui.okButton->setEnabled(false);
+	}
+}
+
+void IssRecTaskOper::choosePrincipal()
+{
+	task->takenAccount = task->waitingAccount[ui.listWidgetAppliedAcc->currentRow()];
+	task->waitingAccount.clear();
+	task->state = 3;
+	task->startTime = time(0);
 }
 
 QString IssRecTaskOper::transTypeJudge()

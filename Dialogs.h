@@ -175,13 +175,25 @@ public:
 
 public slots:
 	void submitButtonClick();
+	void changeInfoButtonClick();
+	void editInfoOkButtonClick();
+	void editInfoCancelButtonClick();
+	void chooseTranslatorButtonClick();
+	void distributeButtonClick();
+	void communicateButtonClick();
 	void saveButtonClick();
-	void newChildButtonClick();
+	void acceptButtonClick();
+	void removeButtonClick();
+	void endRecruitingButtonClick();
 
 private:
 	Ui::DialogMyResTaskOper ui;
 	QString transTypeJudge();
 	void loadInfo();
+	void newChildTask(int acc, string ori, int period, int pay);
+
+private slots:
+	void communicationRefresh();
 };
 
 class NewTaskOper : public QDialog
@@ -217,5 +229,6 @@ public slots:
 private:
 	Ui::DialogIssRecTaskOper ui;
 	void loadInfo();
+	void choosePrincipal();
 	QString transTypeJudge();
 };

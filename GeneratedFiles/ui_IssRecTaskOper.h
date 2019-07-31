@@ -15,7 +15,7 @@
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -25,7 +25,7 @@ class Ui_DialogIssRecTaskOper
 {
 public:
     QFrame *frame;
-    QListView *listViewAppliedAcc;
+    QListWidget *listWidgetAppliedAcc;
     QLabel *label;
     QWidget *formLayoutWidget;
     QFormLayout *formLayout;
@@ -59,10 +59,10 @@ public:
         frame->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo2.png);"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
-        listViewAppliedAcc = new QListView(DialogIssRecTaskOper);
-        listViewAppliedAcc->setObjectName(QString::fromUtf8("listViewAppliedAcc"));
-        listViewAppliedAcc->setGeometry(QRect(480, 60, 281, 411));
-        listViewAppliedAcc->setStyleSheet(QString::fromUtf8("border-image: transparent;"));
+        listWidgetAppliedAcc = new QListWidget(DialogIssRecTaskOper);
+        listWidgetAppliedAcc->setObjectName(QString::fromUtf8("listWidgetAppliedAcc"));
+        listWidgetAppliedAcc->setGeometry(QRect(480, 60, 311, 411));
+        listWidgetAppliedAcc->setStyleSheet(QString::fromUtf8("border-image: transparent;"));
         label = new QLabel(DialogIssRecTaskOper);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(480, 20, 191, 31));
@@ -202,7 +202,7 @@ public:
 
     void retranslateUi(QDialog *DialogIssRecTaskOper)
     {
-        DialogIssRecTaskOper->setWindowTitle(QCoreApplication::translate("DialogIssRecTaskOper", "IssuedTask", nullptr));
+        DialogIssRecTaskOper->setWindowTitle(QCoreApplication::translate("DialogIssRecTaskOper", "Issued Task", nullptr));
         label->setText(QCoreApplication::translate("DialogIssRecTaskOper", "Applied accounts:", nullptr));
         label_1->setText(QCoreApplication::translate("DialogIssRecTaskOper", "Translation Type", nullptr));
         labelTransType->setText(QString());

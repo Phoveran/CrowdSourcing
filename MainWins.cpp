@@ -10,6 +10,7 @@ CrowdSourcing::CrowdSourcing(Data* d, QWidget* parent)
 	ui.setupUi(this);
 	dataPtr = d;
 	ui.usernameInput->setValidator(new QRegExpValidator(QRegExp("^[0-9]{4}$")));
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 void CrowdSourcing::loginButtonClick()
@@ -45,7 +46,7 @@ void CrowdSourcing::loginButtonClick()
 
 void CrowdSourcing::registerButtonClick()
 {
-	Register* r = new Register(dataPtr);
+	Register* r = new Register(dataPtr,this);
 	r->show();
 }
 
@@ -62,6 +63,8 @@ Personal::Personal(Data* data, QWidget* parent)
 
 void Personal::logOutButtonClick()
 {
+	CrowdSourcing* c = new CrowdSourcing(dataPtr);
+	c->show();
 	this->close();
 }
 
@@ -166,7 +169,7 @@ void AccTaskWin::loadInfo()
 				QListWidgetItem* li = new QListWidgetItem;
 				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
 				li->setSizeHint(QSize(680, 59));
-				recTaskItem* rti = new recTaskItem(dataPtr->taskVec[i]);
+				recTaskItem* rti = new recTaskItem(dataPtr->taskVec[i], 1);
 				ui.listWidgetOthTasks->addItem(li);
 				ui.listWidgetOthTasks->setItemWidget(li, rti);
 			}
@@ -175,7 +178,7 @@ void AccTaskWin::loadInfo()
 				QListWidgetItem* li = new QListWidgetItem;
 				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
 				li->setSizeHint(QSize(600, 59));
-				myTaskItem* mti = new myTaskItem(dataPtr->taskVec[i]);
+				myTaskItem* mti = new myTaskItem(dataPtr->taskVec[i], 1);
 				if (dataPtr->taskVec[i]->state)
 				{
 					ui.listWidgetMyTasks->addItem(li);
@@ -239,6 +242,11 @@ void AccTaskWin::myViewButtonClick()
 		{
 			RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr);
 			r->show();
+		}
+		else if (dataPtr->taskVec[rank]->state == 3)
+		{
+			MyResTaskOper* m = new MyResTaskOper(dataPtr->taskVec[rank], dataPtr);
+			m->show();
 		}
 	}
 	else
@@ -312,8 +320,7 @@ void IssTaskWin::loadInfo()
 			QListWidgetItem* li = new QListWidgetItem;
 			li->setWhatsThis(QString::number(ra + 1));
 			li->setSizeHint(QSize(680, 59));
-			recTaskItem* rti = new recTaskItem(dataPtr->taskVec[ra]);
-			rti->ui.labelState->setText(QString::number(dataPtr->taskVec[ra]->waitingAccount.size()) + QString(" Waiting"));
+			recTaskItem* rti = new recTaskItem(dataPtr->taskVec[ra], 2);
 			ui.listWidgetRecTasks->addItem(li);
 			ui.listWidgetRecTasks->setItemWidget(li, rti);
 		}
@@ -322,7 +329,7 @@ void IssTaskWin::loadInfo()
 			QListWidgetItem* li = new QListWidgetItem;
 			li->setWhatsThis(QString::number(ra + 1));
 			li->setSizeHint(QSize(600, 59));
-			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra]);		
+			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra], 2);
 			if (!dataPtr->taskVec[ra]->transSubmit.empty())
 			{
 				mti->ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
@@ -341,7 +348,7 @@ void IssTaskWin::loadInfo()
 			QListWidgetItem* li = new QListWidgetItem;
 			li->setWhatsThis(QString::number(ra + 1));
 			li->setSizeHint(QSize(600, 59));
-			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra]);
+			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra], 2);
 			mti->ui.labelState->setStyleSheet(QString("color: rgb(85, 85, 0); \n border-image:transparent;"));
 			mti->ui.labelState->setText(QString::number(dataPtr->taskVec[ra]->period) + QString("Days"));
 			ui.listWidgetFiniTasks->addItem(li);

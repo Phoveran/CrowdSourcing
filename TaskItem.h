@@ -10,7 +10,7 @@ class recTaskItem : public QWidget
 	Q_OBJECT
 
 public:
-	recTaskItem(Task* task, QWidget* parent = Q_NULLPTR);
+	recTaskItem(Task* task, int model, QWidget* parent = Q_NULLPTR);
 	void setLan(int type);
 	Ui::recTaskItem ui;
 
@@ -24,7 +24,7 @@ class myTaskItem : public QWidget
 	Q_OBJECT
 
 public:
-	myTaskItem(Task* task, QWidget* parent = Q_NULLPTR);
+	myTaskItem(Task* task, int model, QWidget* parent = Q_NULLPTR);
 	void setLan(int type);
 	Ui::myTaskItem ui;
 

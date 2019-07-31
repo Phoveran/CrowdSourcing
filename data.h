@@ -13,6 +13,8 @@ class ResTask;
 class TransTask;
 class User;
 vector<string> split(const string& str, const string& pattern);
+string stringCombine(vector<string> ori, const string& pattern = "");
+string intCombine2String(vector<int> ori, const string& pattern = "");
 
 //全局数据
 class Data
@@ -54,54 +56,61 @@ public:
 	string content;//原文
 	string transTemp;//暂存翻译
 	string transSubmit;//最终翻译
-	virtual bool applied(int) = 0;
+	virtual bool applied(int acc);
 	virtual int type() = 0;
 	virtual vector<int> getChildren();
 	virtual int getParent();
 	virtual int getReqEngCre();
 	virtual int getReqFraCre();
+	virtual void setReqEngCre(int n);
+	virtual void setReqFraCre(int n);
 	virtual vector<int> getTranslators();
 	virtual string getAdvice();
+	virtual void addTranslators(int n);
+	virtual void deleteTranslators(int at);
 };
 
 class ResTask : public Task
 {
 public:
-	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, vector<int> child, int appPer, int iss, int sta = 0, vector<int> translat = vector<int>()) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
+	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, vector<int> child, int appPer, int iss, int sta = 0, vector<int> translat = vector<int>(), int reqEngCre = 0, int reqFraCre = 0) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
 	{
 		childrenTasks = child;
 		translators = translat;
+		reqEngCredits = reqEngCre;
+		reqFraCredits = reqFraCre;
 	}
 	vector<int> getChildren();
 	bool applied(int acc);
 	int type();
 	vector<int> getTranslators();
+	int getReqEngCre();
+	int getReqFraCre();
+	void setReqEngCre(int n);
+	void setReqFraCre(int n);
+	void addTranslators(int n);
+	void deleteTranslators(int at);
 
 private:
 	vector<int> childrenTasks;//子任务序号
 	vector<int> translators;//译者账号
+	int reqEngCredits;//接取任务需要的英语积分
+	int reqFraCredits;//接取任务需要的法语积分
 };
 
 class TransTask : public Task
 {
 public:
-	TransTask(int r, string bri, int acc, int type, int per, Data* data, int parent, string con, int pay, int appPer, int iss, string adv, int sta = 0, int reqEngCre = 0, int reqFraCre = 0) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
+	TransTask(int r, string bri, int acc, int type, int per, Data* data, int parent, string con, int pay, int appPer, int iss, string adv, int sta = 0) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
 	{
 		parentTask = parent;
-		reqEngCredits = reqEngCre;
-		reqFraCredits = reqFraCre;
 		advice = adv;
 	};
-	bool applied(int acc);
 	int type();
 	int getParent();
-	int getReqEngCre();
-	int getReqFraCre();
 	string getAdvice();
 
 private:
-	int reqEngCredits;//接取任务需要的英语积分
-	int reqFraCredits;//接取任务需要的法语积分
 	int parentTask;//父任务的序号
 	string advice;//审核意见
 };

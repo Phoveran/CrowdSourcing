@@ -9,7 +9,6 @@ int main(int argc, char *argv[])
 	Data* data = new Data;
 	data->read();
 	CrowdSourcing* w = new CrowdSourcing(data);
-	w->setAttribute(Qt::WA_DeleteOnClose, true);
 	w->show();
 	while (a.exec() == 0)
 	{
