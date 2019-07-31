@@ -148,12 +148,12 @@ myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
 		else if (task->state == 0)
 		{
 			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
-			ui.labelState->setText(QString("Payment Received"));
+			ui.labelState->setText(QString("Ruby Received"));
 		}
 		else
 		{
 			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(0, 170, 255); "));
-			ui.labelState->setText(QString("Waiting Payment"));
+			ui.labelState->setText(QString("Waiting Pay"));
 		}
 	}
 }

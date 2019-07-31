@@ -1393,7 +1393,7 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
      <property name="toolTip">
-      <string>Set Infomation</string>
+      <string>Submit</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot.png);}  
@@ -1414,7 +1414,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/link_sh
       </rect>
      </property>
      <property name="toolTip">
-      <string>Cancel</string>
+      <string>Save</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman.png);}  

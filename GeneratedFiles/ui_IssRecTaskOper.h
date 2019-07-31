@@ -258,8 +258,12 @@ public:
         tabWidget->addTab(tabReceive, QString());
 
         retranslateUi(DialogIssRecTaskOper);
+        QObject::connect(okButton, SIGNAL(clicked()), DialogIssRecTaskOper, SLOT(okButtonClick()));
+        QObject::connect(acceptButton, SIGNAL(clicked()), DialogIssRecTaskOper, SLOT(acceptButtonClick()));
+        QObject::connect(cancelButton, SIGNAL(clicked()), DialogIssRecTaskOper, SLOT(cancelButtonClick()));
+        QObject::connect(refuseButton, SIGNAL(clicked()), DialogIssRecTaskOper, SLOT(refuseButtonClick()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(DialogIssRecTaskOper);
@@ -293,7 +297,7 @@ public:
         cancelButton->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tabInfo), QCoreApplication::translate("DialogIssRecTaskOper", "Info&&Recruit", nullptr));
 #if QT_CONFIG(tooltip)
-        refuseButton->setToolTip(QCoreApplication::translate("DialogIssRecTaskOper", "Cancel", nullptr));
+        refuseButton->setToolTip(QCoreApplication::translate("DialogIssRecTaskOper", "Refuse", nullptr));
 #endif // QT_CONFIG(tooltip)
         refuseButton->setText(QString());
 #if QT_CONFIG(tooltip)

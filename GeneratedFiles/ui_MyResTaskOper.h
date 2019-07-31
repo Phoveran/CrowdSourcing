@@ -709,11 +709,11 @@ public:
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
         label_20->setText(QCoreApplication::translate("DialogMyResTaskOper", "Total Translation:", nullptr));
 #if QT_CONFIG(tooltip)
-        submitButton->setToolTip(QCoreApplication::translate("DialogMyResTaskOper", "Set Infomation", nullptr));
+        submitButton->setToolTip(QCoreApplication::translate("DialogMyResTaskOper", "Submit", nullptr));
 #endif // QT_CONFIG(tooltip)
         submitButton->setText(QString());
 #if QT_CONFIG(tooltip)
-        saveButton->setToolTip(QCoreApplication::translate("DialogMyResTaskOper", "Cancel", nullptr));
+        saveButton->setToolTip(QCoreApplication::translate("DialogMyResTaskOper", "Save", nullptr));
 #endif // QT_CONFIG(tooltip)
         saveButton->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("DialogMyResTaskOper", "Submission", nullptr));

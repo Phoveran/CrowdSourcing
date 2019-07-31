@@ -34,7 +34,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tabInfo">
     <attribute name="title">
@@ -389,7 +389,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_w
       </rect>
      </property>
      <property name="toolTip">
-      <string>Cancel</string>
+      <string>Refuse</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman.png);}  
@@ -552,9 +552,76 @@ p, li { white-space: pre-wrap; }
  <resources>
   <include location="CrowdSourcing.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogIssRecTaskOper</receiver>
+   <slot>okButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>141</x>
+     <y>451</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>acceptButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogIssRecTaskOper</receiver>
+   <slot>acceptButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>241</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogIssRecTaskOper</receiver>
+   <slot>cancelButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>321</x>
+     <y>451</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refuseButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogIssRecTaskOper</receiver>
+   <slot>refuseButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>451</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
   <slot>okButtonClick()</slot>
   <slot>cancelButtonClick()</slot>
+  <slot>acceptButtonClick()</slot>
+  <slot>refuseButtonClick()</slot>
  </slots>
 </ui>

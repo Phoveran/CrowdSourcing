@@ -295,6 +295,20 @@ void IssTaskWin::refreshButtonClick()
 
 void IssTaskWin::conViewButtonClick()
 {
+	if (ui.listWidgetConTasks->currentItem())
+	{
+		int rank = ui.listWidgetConTasks->currentItem()->whatsThis().toInt() - 1;
+		IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr);
+		i->show();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You haven't chosen a task!"));
+		mesBox->show();
+	}
 }
 
 void IssTaskWin::finiViewButtonClick()
@@ -324,13 +338,13 @@ void IssTaskWin::loadInfo()
 			ui.listWidgetRecTasks->addItem(li);
 			ui.listWidgetRecTasks->setItemWidget(li, rti);
 		}
-		else if (dataPtr->taskVec[ra]->state == 1)
+		else if (dataPtr->taskVec[ra]->state == 1 || dataPtr->taskVec[ra]->state == 4)
 		{
 			QListWidgetItem* li = new QListWidgetItem;
 			li->setWhatsThis(QString::number(ra + 1));
 			li->setSizeHint(QSize(600, 59));
 			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra], 2);
-			if (!dataPtr->taskVec[ra]->transSubmit.empty())
+			if (dataPtr->taskVec[ra]->state == 4)
 			{
 				mti->ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
 				mti->ui.labelState->setText(QString("Waiting Examine"));

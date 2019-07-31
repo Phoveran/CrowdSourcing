@@ -512,24 +512,35 @@ void MyResTaskOper::editInfoCancelButtonClick()
 //Communication Tab
 void MyResTaskOper::communicateButtonClick()
 {
-	Task* taskTemp = dataPtr->taskVec[task->getChildren()[ui.listWidgetChildTasks->currentRow()] - 1];
-	if (taskTemp->state == 1)
+	if (ui.listWidgetChildTasks->currentItem())
 	{
-		taskTemp->setAdvice(ui.textBrowserAdvice->toPlainText().toStdString());
-		taskTemp = nullptr;
-		communicationRefresh();
-		QMessageBox* mesBox = new QMessageBox;
-		mesBox->setWindowTitle("Done");
-		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("Advice sent"));
-		mesBox->show();
+		Task* taskTemp = dataPtr->taskVec[task->getChildren()[ui.listWidgetChildTasks->currentRow()] - 1];
+		if (taskTemp->state == 1)
+		{
+			taskTemp->setAdvice(ui.textBrowserAdvice->toPlainText().toStdString());
+			taskTemp = nullptr;
+			communicationRefresh();
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Done");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("Advice sent"));
+			mesBox->show();
+		}
+		else
+		{
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Wrong");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("Task Acomplished!"));
+			mesBox->show();
+		}
 	}
 	else
 	{
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Wrong");
 		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("Task acomplished"));
+		mesBox->setText(QString("You Haven't Chosen A Task!"));
 		mesBox->show();
 	}
 }
@@ -545,14 +556,25 @@ void MyResTaskOper::communicationRefresh()
 
 void MyResTaskOper::acceptButtonClick()
 {
-	Task* taskTemp = dataPtr->taskVec[task->getChildren()[ui.listWidgetChildTasks->currentRow()] - 1];
-	taskTemp->state = 4;
-	taskTemp = nullptr;
-	QMessageBox* mesBox = new QMessageBox;
-	mesBox->setWindowTitle("Done");
-	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-	mesBox->setText(QString("Translation accepted"));
-	mesBox->show();
+	if (ui.listWidgetChildTasks->currentItem())
+	{
+		Task* taskTemp = dataPtr->taskVec[task->getChildren()[ui.listWidgetChildTasks->currentRow()] - 1];
+		taskTemp->state = 4;
+		taskTemp = nullptr;
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Translation Accepted"));
+		mesBox->show();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You Haven't Chosen A Task!"));
+		mesBox->show();
+	}
 }
 //Distribution Tab
 void MyResTaskOper::distributeButtonClick()
@@ -726,6 +748,7 @@ void MyResTaskOper::submitButtonClick()
 {
 	task->transSubmit = ui.textBrowserTotalTranslation->toPlainText().toStdString();
 	task->transSwitch = 1;
+	task->state = 4;
 	QMessageBox* mesBox = new QMessageBox;
 	mesBox->setWindowTitle("Done");
 	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
@@ -795,7 +818,7 @@ void MyResTaskOper::loadInfo()
 			ui.labelRemHours->setText("Time Out");
 		}
 	}
-	else if (task->state = 4)
+	else if (task->state == 4)
 	{
 		ui.labelState->setText("Waiting for Payment");
 		rest = task->startTime + (task->period * 86400) - time(0);
@@ -895,6 +918,14 @@ void MyResTaskOper::loadInfo()
 		ui.listWidgetChildTasks->addItem(li);
 		QListWidgetItem* li2 = new QListWidgetItem(*li);
 		ui.listWidgetChildTasks_2->addItem(li2);
+	}
+	if (task->transSwitch)
+	{
+		ui.textBrowserTotalTranslation->setText(QString::fromStdString(task->transSubmit));
+	}
+	else
+	{
+		ui.textBrowserTotalTranslation->setText(QString::fromStdString(task->transTemp));
 	}
 }
 
@@ -1055,15 +1086,51 @@ void IssRecTaskOper::cancelButtonClick()
 	this->close();
 }
 
-void IssRecTaskOper::okButtonClick()
+void IssRecTaskOper::acceptButtonClick()
 {
-	choosePrincipal();
+	task->state = 0;
+	for (int i = 0; i < task->getChildren().size(); i++)
+	{
+		dataPtr->taskVec[task->getChildren()[i] - 1]->state = 0;
+	}
+	pay();
 	QMessageBox* mesBox = new QMessageBox;
 	mesBox->setWindowTitle("Done");
 	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-	mesBox->setText(QString("Principal Selected!"));
+	mesBox->setText(QString("Translation Accepted!"));
 	mesBox->show();
-	this->close();
+}
+
+void IssRecTaskOper::refuseButtonClick()
+{
+	task->state = 1;
+	QMessageBox* mesBox = new QMessageBox;
+	mesBox->setWindowTitle("Done");
+	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+	mesBox->setText(QString("Translation Refused!"));
+	mesBox->show();
+}
+
+void IssRecTaskOper::okButtonClick()
+{
+	if (ui.listWidgetAppliedAcc->currentItem())
+	{
+		choosePrincipal();
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Principal Selected!"));
+		mesBox->show();
+		this->close();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You Haven't Chosen A Principal!"));
+		mesBox->show();
+	}
 }
 
 void IssRecTaskOper::loadInfo()
@@ -1113,6 +1180,11 @@ void IssRecTaskOper::loadInfo()
 	{
 		ui.okButton->setEnabled(false);
 	}
+	ui.textBrowserOrigin->setText(QString::fromStdString(task->content));
+	if (task->state == 4)
+	{
+		ui.textBrowserTranslation->setText(QString::fromStdString(task->transSubmit));
+	}
 }
 
 void IssRecTaskOper::choosePrincipal()
@@ -1121,6 +1193,18 @@ void IssRecTaskOper::choosePrincipal()
 	task->waitingAccount.clear();
 	task->state = 3;
 	task->startTime = time(0);
+}
+
+void IssRecTaskOper::pay()
+{
+	int pay2Prin = task->payment;
+	for (int i = 0; i < task->getChildren().size(); i++)
+	{
+		pay2Prin -= dataPtr->taskVec[task->getChildren()[i] - 1]->payment;
+		dataPtr->userVec[dataPtr->taskVec[task->getChildren()[i] - 1]->takenAccount - 1000]->balance += dataPtr->taskVec[task->getChildren()[i] - 1]->payment;
+	}
+	dataPtr->userVec[task->takenAccount - 1000]->balance += pay2Prin;
+	dataPtr->nowAccount->balance -= task->payment;
 }
 
 QString IssRecTaskOper::transTypeJudge()

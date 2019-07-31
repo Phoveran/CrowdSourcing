@@ -226,10 +226,13 @@ public:
 public slots:
 	void okButtonClick();
 	void cancelButtonClick();
+	void acceptButtonClick();
+	void refuseButtonClick();
 
 private:
 	Ui::DialogIssRecTaskOper ui;
 	void loadInfo();
 	void choosePrincipal();
+	void pay();
 	QString transTypeJudge();
 };
