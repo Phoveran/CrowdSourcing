@@ -99,7 +99,8 @@ void Data::save()
 		"PARENT INT,"\
 		"CHILDREN TEXT,"\
 		"ADVICE TEXT,"
-		"TRANSLATORS TEXT);";
+		"TRANSLATORS TEXT,"\
+		"TRANSSWITCH INT NOT NULL);";
 	sqlite3_exec(db, sqlCreate, 0, 0, &zErrMsg);
 	for (int i = 0; i < userVec.size(); i++)
 	{
@@ -215,7 +216,7 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 		{
 			strs.push_back(string("\"") + task->getAdvice() + string("\"") + string(", "));
 		}
-		strs.push_back("NULL);");
+		strs.push_back("NULL, ");
 	}
 	else
 	{
@@ -231,14 +232,14 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 		strs.push_back("NULL, ");
 		if (task->getTranslators().empty())
 		{
-			strs.push_back("NULL);");
+			strs.push_back("NULL, ");
 		}
 		else
 		{
-			strs.push_back(intCombine2String(task->getTranslators(), ";") + string(");"));
+			strs.push_back(intCombine2String(task->getTranslators(), ";") + string(", "));
 		}
 	}
-
+	strs.push_back(to_string(task->transSwitch) + string(");"));
 	string tempStr = stringCombine(strs);
 	const char* str = tempStr.c_str();
 	sqlite3_exec(db, str, 0, 0, errMsg);
@@ -381,6 +382,7 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 		taskTemp->waitingAccount = waiAcc;
 		task = taskTemp;
 	}
+	task->transSwitch = atoi(argvs[22]);
 	data->taskVec.push_back(task);
 	return 0;
 }

@@ -179,12 +179,12 @@ void AccTaskWin::loadInfo()
 				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
 				li->setSizeHint(QSize(600, 59));
 				myTaskItem* mti = new myTaskItem(dataPtr->taskVec[i], 1);
-				if (dataPtr->taskVec[i]->state)
+				if (dataPtr->taskVec[i]->state == 1 || dataPtr->taskVec[i]->state == 2 || dataPtr->taskVec[i]->state == 3)
 				{
 					ui.listWidgetMyTasks->addItem(li);
 					ui.listWidgetMyTasks->setItemWidget(li, mti);
 				}
-				else
+				else if (dataPtr->taskVec[i]->state == 0 || dataPtr->taskVec[i]->state == 4)
 				{
 					ui.listWidgetFiniTasks->addItem(li);
 					ui.listWidgetFiniTasks->setItemWidget(li, mti);
@@ -225,7 +225,7 @@ void AccTaskWin::myViewButtonClick()
 	if (ui.listWidgetMyTasks->currentItem())
 	{
 		int rank = ui.listWidgetMyTasks->currentItem()->whatsThis().toInt() - 1;
-		if (dataPtr->taskVec[rank]->state == 1)
+		if (dataPtr->taskVec[rank]->state == 1 || dataPtr->taskVec[rank]->state == 4)
 		{
 			if (dataPtr->taskVec[rank]->type())
 			{

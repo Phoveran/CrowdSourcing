@@ -137,16 +137,8 @@ myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
 		}
 		if (task->state == 1)
 		{
-			if (task->transSubmit.empty())
-			{
-				ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
-				ui.labelState->setText(QString("Conducting"));
-			}
-			else
-			{
-				ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
-				ui.labelState->setText(QString("Waiting Examing"));
-			}
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setText(QString("Conducting"));
 		}
 		else if (task->state == 2 || task->state == 3)
 		{
@@ -156,7 +148,12 @@ myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
 		else if (task->state == 0)
 		{
 			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
-			ui.labelState->setText(QString::number(task->payment) + QString("Ruby Received"));
+			ui.labelState->setText(QString("Payment Received"));
+		}
+		else
+		{
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(0, 170, 255); "));
+			ui.labelState->setText(QString("Waiting Payment"));
 		}
 	}
 }

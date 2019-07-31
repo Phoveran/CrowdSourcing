@@ -194,6 +194,7 @@ private:
 
 private slots:
 	void communicationRefresh();
+	void submissionRefresh();
 };
 
 class NewTaskOper : public QDialog

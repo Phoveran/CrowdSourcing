@@ -19,6 +19,7 @@ Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con
 	applyPeriod = appPer;
 	issueTime = iss;
 	startTime = sta;
+	transSwitch = 0;
 }
 
 Task::~Task(void)
@@ -72,7 +73,15 @@ void Task::addTranslators(int n)
 {
 }
 
+void Task::addChild(int n)
+{
+}
+
 void Task::deleteTranslators(int at)
+{
+}
+
+void Task::setAdvice(string adv)
 {
 }
 
@@ -141,6 +150,11 @@ void ResTask::deleteTranslators(int at)
 	translators.erase(translators.begin() + at);
 }
 
+void ResTask::addChild(int n)
+{
+	childrenTasks.push_back(n);
+}
+
 vector<int> ResTask::getTranslators()
 {
 	return translators;
@@ -162,4 +176,9 @@ int TransTask::getParent()
 string TransTask::getAdvice()
 {
 	return advice;
+}
+
+void TransTask::setAdvice(string adv)
+{
+	advice = adv;
 }
