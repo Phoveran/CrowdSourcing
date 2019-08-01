@@ -3,6 +3,7 @@
 #include <regex>
 #include <qvalidator.h>
 #include <algorithm>
+#include <time.h>
 #include "Dialogs.h"
 
 using namespace std;
@@ -955,16 +956,46 @@ StaticTaskOper::StaticTaskOper(Task* tas, Data* data, QWidget* parent)
 	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
 	ui.labelTakenAcc->setText(QString::number(task->takenAccount));
 	ui.labelRank->setText(QString::number(task->rank));
-	ui.labelTaskPer->setText(QString::number(task->period) + QString(" Days"));
+	ui.labelConPeriod->setText(QString::number(task->period));
 	ui.labelTransType->setText(transTypeJudge());
 	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
 	if (task->type())
 	{
-		ui.labelTaskType->setText(QString("Translation task"));
+		ui.labelTaskType->setText(QString("Translator Task"));
+		time_t tmi = task->startTime;
+		tm* timeS = new tm;
+		localtime_s(timeS, &tmi);
+		QString t = QString::number(timeS->tm_mday);
+		t += "-";
+		t += QString::number(timeS->tm_mon + 1);
+		t += "-";
+		t += QString::number(timeS->tm_year + 1900);
+		ui.labelIssTime->setText(t);
 	}
 	else
 	{
-		ui.labelTaskType->setText(QString("Arrangement task"));
+		ui.labelTaskType->setText(QString("Principal Task"));
+		time_t tmi = task->issueTime;
+		tm* timeS = new tm;
+		localtime_s(timeS, &tmi);
+		QString t = QString::number(timeS->tm_mday);
+		t += "-";
+		t += QString::number(timeS->tm_mon + 1);
+		t += "-";
+		t += QString::number(timeS->tm_year + 1900);
+		ui.labelIssTime->setText(t);
+	}
+	if (task->state == 1)
+	{
+		ui.labelState->setText(QString("Conducting"));
+	}
+	else if(task->state == 0)
+	{
+		ui.labelState->setText(QString("Finished"));
+	}
+	else if (task->state == 4)
+	{
+		ui.labelState->setText(QString("Waiting for Confirmation"));
 	}
 }
 

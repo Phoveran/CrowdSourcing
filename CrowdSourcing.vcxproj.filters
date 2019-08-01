@@ -97,9 +97,6 @@
     <QtUic Include="myTaskItem.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="StaticTaskOper.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="NewTaskOper.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -110,6 +107,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="MyTransTaskOper.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="StaticTaskOper.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -153,9 +153,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_myTaskItem.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_StaticTaskOper.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_NewTaskOper.h">
