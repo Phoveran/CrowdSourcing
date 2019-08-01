@@ -400,11 +400,28 @@ color: rgb(255, 85, 0);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>finiViewButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowAccTask</receiver>
+   <slot>finiViewButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1879</x>
+     <y>1009</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>959</x>
+     <y>539</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>backButtonClick()</slot>
   <slot>othViewButtonClick()</slot>
   <slot>refreshButtonClick()</slot>
   <slot>myViewButtonClick()</slot>
+  <slot>finiViewButtonClick()</slot>
  </slots>
 </ui>

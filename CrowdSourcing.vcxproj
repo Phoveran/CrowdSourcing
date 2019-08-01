@@ -124,6 +124,7 @@
   <ItemGroup>
     <QtUic Include="ChangePassword.ui" />
     <QtUic Include="CrowdSourcing.ui" />
+    <QtUic Include="FiniTaskOper.ui" />
     <QtUic Include="IssRecTaskOper.ui" />
     <QtUic Include="MyResTaskOper.ui" />
     <QtUic Include="MyTransTaskOper.ui" />
@@ -155,13 +156,18 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
+    <ClInclude Include="GeneratedFiles\ui_FiniTaskOper.h" />
+    <ClInclude Include="GeneratedFiles\ui_IssRecTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_IssTaskWin.h" />
+    <ClInclude Include="GeneratedFiles\ui_MyResTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_myTaskItem.h" />
+    <ClInclude Include="GeneratedFiles\ui_MyTransTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_NewTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_Personal.h" />
     <ClInclude Include="GeneratedFiles\ui_recTaskItem.h" />
     <ClInclude Include="GeneratedFiles\ui_RecTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_Register.h" />
+    <ClInclude Include="GeneratedFiles\ui_StaticTaskOper.h" />
     <ClInclude Include="GeneratedFiles\ui_TopUp.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateInfo.h" />
     <QtMoc Include="TaskItem.h">

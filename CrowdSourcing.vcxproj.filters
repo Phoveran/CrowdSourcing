@@ -112,6 +112,9 @@
     <QtUic Include="StaticTaskOper.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="FiniTaskOper.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CrowdSourcing.qrc">
@@ -156,6 +159,21 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_NewTaskOper.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_FiniTaskOper.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_IssRecTaskOper.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MyResTaskOper.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MyTransTaskOper.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_StaticTaskOper.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

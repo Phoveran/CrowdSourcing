@@ -45,7 +45,7 @@ public:
 	int issuingAccount;//发布该任务的账号
 	int takenAccount;//领取该任务的账号
 	vector<int> waitingAccount;//等待接取该任务的账号
-	int state;//状态，4为等待支付，3为招募译者中，2为招募负责人中，1为翻译中，0为已完成
+	int state;//状态，5为等待支付，4为等待检验，3为招募译者中，2为招募负责人中，1为翻译中，0为已完成
 	int transType;//翻译类型，1为中=》英，2为中=》法，3为英=》中，4为英=》法，5为法=》中，6为法=》英
 	int issueTime;//任务发布日期
 	int startTime;//任务开始日期

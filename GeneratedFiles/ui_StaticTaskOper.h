@@ -53,7 +53,7 @@ public:
         DialogStaticTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
         formLayoutWidget = new QWidget(DialogStaticTaskOper);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(40, 90, 441, 251));
+        formLayoutWidget->setGeometry(QRect(40, 60, 441, 251));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -182,7 +182,7 @@ public:
 
         textBrowserBrief = new QTextBrowser(DialogStaticTaskOper);
         textBrowserBrief->setObjectName(QString::fromUtf8("textBrowserBrief"));
-        textBrowserBrief->setGeometry(QRect(500, 130, 261, 381));
+        textBrowserBrief->setGeometry(QRect(500, 90, 261, 401));
         QFont font1;
         font1.setFamily(QString::fromUtf8("\345\215\216\346\226\207\347\273\206\351\273\221"));
         font1.setPointSize(12);
@@ -190,7 +190,7 @@ public:
         textBrowserBrief->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
         label_8 = new QLabel(DialogStaticTaskOper);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(500, 90, 61, 24));
+        label_8->setGeometry(QRect(500, 50, 61, 24));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Century Gothic"));
         font2.setPointSize(12);

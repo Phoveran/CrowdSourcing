@@ -179,12 +179,12 @@ void AccTaskWin::loadInfo()
 				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
 				li->setSizeHint(QSize(600, 59));
 				myTaskItem* mti = new myTaskItem(dataPtr->taskVec[i], 1);
-				if (dataPtr->taskVec[i]->state == 1 || dataPtr->taskVec[i]->state == 2 || dataPtr->taskVec[i]->state == 3)
+				if (dataPtr->taskVec[i]->state == 1 || dataPtr->taskVec[i]->state == 2 || dataPtr->taskVec[i]->state == 3 || dataPtr->taskVec[i]->state == 4)
 				{
 					ui.listWidgetMyTasks->addItem(li);
 					ui.listWidgetMyTasks->setItemWidget(li, mti);
 				}
-				else if (dataPtr->taskVec[i]->state == 0 || dataPtr->taskVec[i]->state == 4)
+				else if (dataPtr->taskVec[i]->state == 0 || dataPtr->taskVec[i]->state == 5)
 				{
 					ui.listWidgetFiniTasks->addItem(li);
 					ui.listWidgetFiniTasks->setItemWidget(li, mti);
@@ -259,6 +259,26 @@ void AccTaskWin::myViewButtonClick()
 	}
 }
 
+void AccTaskWin::finiViewButtonClick()
+{
+	if (ui.listWidgetFiniTasks->currentItem())
+	{
+		int rank = ui.listWidgetFiniTasks->currentItem()->whatsThis().toInt() - 1;
+		StaticTaskOper* s = new StaticTaskOper(dataPtr->taskVec[rank], dataPtr);
+		s->ui.labelTakenAcc->setText(QString::number(dataPtr->taskVec[rank]->payment));
+		s->ui.label_10->setText(QString("Payment(Ruby)"));
+		s->show();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You haven't chosen a task!"));
+		mesBox->show();
+	}
+}
+
 
 //发布的任务界面
 IssTaskWin::IssTaskWin(Data* data, QWidget* parent)
@@ -313,6 +333,20 @@ void IssTaskWin::conViewButtonClick()
 
 void IssTaskWin::finiViewButtonClick()
 {
+	if (ui.listWidgetFiniTasks->currentItem())
+	{
+		int rank = ui.listWidgetFiniTasks->currentItem()->whatsThis().toInt() - 1;
+		FiniTaskOper* f = new FiniTaskOper(dataPtr->taskVec[rank], dataPtr);
+		f->show();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("You haven't chosen a task!"));
+		mesBox->show();
+	}
 }
 
 void IssTaskWin::newTaskButtonClick()
@@ -344,27 +378,15 @@ void IssTaskWin::loadInfo()
 			li->setWhatsThis(QString::number(ra + 1));
 			li->setSizeHint(QSize(600, 59));
 			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra], 2);
-			if (dataPtr->taskVec[ra]->state == 4)
-			{
-				mti->ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
-				mti->ui.labelState->setText(QString("Waiting Examine"));
-			}
-			else
-			{
-				mti->ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
-				mti->ui.labelState->setText(QString("Conducting"));
-			}
 			ui.listWidgetConTasks->addItem(li);
 			ui.listWidgetConTasks->setItemWidget(li, mti);
 		}
-		else if (dataPtr->taskVec[ra]->state == 0)
+		else if (dataPtr->taskVec[ra]->state == 0 || dataPtr->taskVec[ra]->state == 5)
 		{
 			QListWidgetItem* li = new QListWidgetItem;
 			li->setWhatsThis(QString::number(ra + 1));
 			li->setSizeHint(QSize(600, 59));
 			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra], 2);
-			mti->ui.labelState->setStyleSheet(QString("color: rgb(85, 85, 0); \n border-image:transparent;"));
-			mti->ui.labelState->setText(QString::number(dataPtr->taskVec[ra]->period) + QString("Days"));
 			ui.listWidgetFiniTasks->addItem(li);
 			ui.listWidgetFiniTasks->setItemWidget(li, mti);
 		}

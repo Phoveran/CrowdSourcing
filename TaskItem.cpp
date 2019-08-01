@@ -156,6 +156,37 @@ myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
 			ui.labelState->setText(QString("Waiting Pay"));
 		}
 	}
+	else if (model == 2)
+	{
+		if (task->state == 4)
+		{
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setText(QString("Waiting Examing"));
+		}
+		else if(task->state == 5)
+		{
+			ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
+			ui.labelState->setText(QString("Waiting Payment"));
+		}
+		else if (task->state == 0)
+		{
+			ui.labelState->setStyleSheet(QString("color: rgb(255, 255, 255);\n border-image:transparent; "));
+			ui.labelState->setText(QString("Finished"));
+		}
+		else if (task->state == 1)
+		{
+			ui.labelState->setStyleSheet(QString("color: rgb(255, 0, 0);\n border-image:transparent; "));
+			ui.labelState->setText(QString("Conducting"));
+		}
+		if (task->type())
+		{
+			ui.labelType->setText("Translation");
+		}
+		else
+		{
+			ui.labelType->setText("Principal");
+		}
+	}
 }
 
 void myTaskItem::setFromLan(int type)

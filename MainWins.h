@@ -71,6 +71,7 @@ public slots:
 	void refreshButtonClick();
 	void othViewButtonClick();
 	void myViewButtonClick();
+	void finiViewButtonClick();
 
 private:
 	Ui::MainWindowAccTask ui;

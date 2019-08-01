@@ -15,6 +15,7 @@
 #include "ui_MyResTaskOper.h"
 #include "ui_NewTaskOper.h"
 #include "ui_IssRecTaskOper.h"
+#include "ui_FiniTaskOper.h"
 #include "data.h"
 
 class ChangePassword : public QDialog
@@ -135,13 +136,13 @@ class StaticTaskOper : public QDialog
 
 public:
 	StaticTaskOper(Task* tas, Data* data, QWidget* parent = Q_NULLPTR);
+	Ui::DialogStaticTaskOper ui;
 	Data* dataPtr;
 	Task* task;
 
 public slots:
 
 private:
-	Ui::DialogStaticTaskOper ui;
 	QString transTypeJudge();
 };
 
@@ -234,5 +235,21 @@ private:
 	void loadInfo();
 	void choosePrincipal();
 	void pay();
+	QString transTypeJudge();
+};
+
+class FiniTaskOper : public QDialog
+{
+	Q_OBJECT
+
+public:
+	FiniTaskOper(Task* tas, Data* data, QWidget* parent = Q_NULLPTR);
+	Ui::DialogFiniTaskOper ui;
+	Data* dataPtr;
+	Task* task;
+
+public slots:
+
+private:
 	QString transTypeJudge();
 };

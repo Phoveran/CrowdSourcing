@@ -334,7 +334,7 @@ RecTaskOper::RecTaskOper(Task* tas, Data* data, QWidget* parent)
 		ui.labelRecruitType->setText(QString("Translator"));
 		ui.labelReqCre->setText(QString("Eng: ") + QString::number(task->getReqEngCre()) + QString("    Fre:") + QString::number(task->getReqFraCre()));
 	}
-	else
+	else if(task->state == 2)
 	{
 		ui.labelRecruitType->setText(QString("Principal"));
 		ui.labelReqCre->setHidden(true);
@@ -442,7 +442,7 @@ void MyTransTaskOper::loadInfo()
 	}
 	else if (task->state == 4)
 	{
-		ui.labelState->setText("Waiting to get paid");
+		ui.labelState->setText("Waiting Examing");
 	}
 	ui.textBrowserAdvice->setText(QString::fromStdString(task->getAdvice()));
 	if(task->transSwitch)
@@ -821,7 +821,7 @@ void MyResTaskOper::loadInfo()
 	}
 	else if (task->state == 4)
 	{
-		ui.labelState->setText("Waiting for Payment");
+		ui.labelState->setText("Waiting Examing");
 		rest = task->startTime + (task->period * 86400) - time(0);
 		if (rest > 0)
 		{
@@ -935,11 +935,11 @@ void MyResTaskOper::newChildTask(int acc, string ori, int period, int pay)
 	TransTask* childTask = new TransTask(dataPtr->taskVec.size() + 1, task->brief, dataPtr->nowAccountNum, task->transType, period, dataPtr, task->rank, ori, pay, 0, 0, string(), time(0));
 	childTask->state = 1;
 	task->addChild(childTask->rank);
+	dataPtr->nowAccount->issue(childTask->rank);
 	childTask->takenAccount = acc;
 	dataPtr->userVec[acc - 1000]->take(childTask->rank);
 	dataPtr->taskVec.push_back(childTask);
 }
-
 
 
 //别人执行、完成的任务
@@ -995,7 +995,11 @@ StaticTaskOper::StaticTaskOper(Task* tas, Data* data, QWidget* parent)
 	}
 	else if (task->state == 4)
 	{
-		ui.labelState->setText(QString("Waiting for Confirmation"));
+		ui.labelState->setText(QString("Waiting Examing"));
+	}
+	else if (task->state == 5)
+	{
+		ui.labelState->setText(QString("Waiting Payment"));
 	}
 }
 
@@ -1119,7 +1123,7 @@ void IssRecTaskOper::cancelButtonClick()
 
 void IssRecTaskOper::acceptButtonClick()
 {
-	task->state = 0;
+	task->state = 5;
 	for (int i = 0; i < task->getChildren().size(); i++)
 	{
 		dataPtr->taskVec[task->getChildren()[i] - 1]->state = 0;
@@ -1239,6 +1243,85 @@ void IssRecTaskOper::pay()
 }
 
 QString IssRecTaskOper::transTypeJudge()
+{
+	switch (task->transType)
+	{
+	case 1: return QString("Chinese to English");
+	case 2: return QString("Chinese to French");
+	case 3: return QString("English to Chinese");
+	case 4: return QString("English to French");
+	case 5: return QString("French to Chinese");
+	case 6: return QString("French to English");
+	default: return QString();
+	}
+}
+
+
+//完成的任务
+FiniTaskOper::FiniTaskOper(Task* tas, Data* data, QWidget* parent)
+	: QDialog(parent)
+{
+	ui.setupUi(this);
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
+
+	dataPtr = data;
+	task = tas;
+
+	ui.labelRank->setText(QString::number(task->rank));
+	ui.labelConPeriod->setText(QString::number(task->period));
+	ui.labelTransType->setText(transTypeJudge());
+	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
+	ui.textBrowserOrigin->setText(QString::fromStdString(task->content));
+	ui.textBrowserTranslation->setText(QString::fromStdString(task->transSubmit));
+	ui.labelPayment->setText(QString::number(task->payment));
+	if (task->type())
+	{
+		ui.labelTaskType->setText(QString("Translator Task"));
+		time_t tmi = task->startTime;
+		tm* timeS = new tm;
+		localtime_s(timeS, &tmi);
+		QString t = QString::number(timeS->tm_mday);
+		t += "-";
+		t += QString::number(timeS->tm_mon + 1);
+		t += "-";
+		t += QString::number(timeS->tm_year + 1900);
+		ui.labelIssTime->setText(t);
+	}
+	else
+	{
+		ui.labelTaskType->setText(QString("Principal Task"));
+		time_t tmi = task->issueTime;
+		tm* timeS = new tm;
+		localtime_s(timeS, &tmi);
+		QString t = QString::number(timeS->tm_mday);
+		t += "-";
+		t += QString::number(timeS->tm_mon + 1);
+		t += "-";
+		t += QString::number(timeS->tm_year + 1900);
+		ui.labelIssTime->setText(t);
+	}
+	if (task->state == 0)
+	{
+		ui.labelState->setText(QString("Finished"));
+	}
+	else if (task->state == 5)
+	{
+		ui.labelState->setText(QString("Waiting Payment"));
+	}
+	if (dataPtr->nowAccountNum == task->takenAccount)
+	{
+		ui.labelAccHead->setText("Issue Account");
+		ui.labelAcc->setText(QString::number(task->issuingAccount));
+	}
+	else if (dataPtr->nowAccountNum == task->issuingAccount)
+	{
+		ui.labelAccHead->setText("Taken Account");
+		ui.labelAcc->setText(QString::number(task->takenAccount));
+	}
+}
+
+QString FiniTaskOper::transTypeJudge()
 {
 	switch (task->transType)
 	{

@@ -144,6 +144,7 @@ public:
         QObject::connect(refreshButton, SIGNAL(clicked()), MainWindowAccTask, SLOT(refreshButtonClick()));
         QObject::connect(othViewButton, SIGNAL(clicked()), MainWindowAccTask, SLOT(othViewButtonClick()));
         QObject::connect(myViewButton, SIGNAL(clicked()), MainWindowAccTask, SLOT(myViewButtonClick()));
+        QObject::connect(finiViewButton, SIGNAL(clicked()), MainWindowAccTask, SLOT(finiViewButtonClick()));
 
         QMetaObject::connectSlotsByName(MainWindowAccTask);
     } // setupUi
