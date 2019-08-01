@@ -27,6 +27,7 @@ public:
 	Data();
 	void save();
 	void read();
+	void pushNotice(string content, int acc = -1);
 private:
 	static int readUserCallBack(void* ptr, int argc, char** argvs, char** colNames);
 	static int readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames);
@@ -137,6 +138,8 @@ public:
 	vector<string> certificationType;//资质证明种类
 	vector<int> issuedTasks;//发布的任务编号
 	vector<int> takenTasks;//接取的任务编号
+	vector<string> historyMess;//历史消息
+	vector<string> unreadMess;//未读消息
 
 	void take(int taskNum);
 	void issue(int taskNum);

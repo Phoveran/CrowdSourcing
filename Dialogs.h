@@ -16,6 +16,7 @@
 #include "ui_NewTaskOper.h"
 #include "ui_IssRecTaskOper.h"
 #include "ui_FiniTaskOper.h"
+#include "ui_MessageBox.h"
 #include "data.h"
 
 class ChangePassword : public QDialog
@@ -252,4 +253,20 @@ public slots:
 
 private:
 	QString transTypeJudge();
+};
+
+class MessageBox : public QDialog
+{
+	Q_OBJECT
+
+public:
+	MessageBox(Data* data, QWidget* parent = Q_NULLPTR);
+
+public slots:
+	void readButtonClick();
+
+private:
+	Ui::DialogMessageBox ui;
+	Data* dataPtr;
+	void loadInfo();
 };

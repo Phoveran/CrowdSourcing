@@ -73,7 +73,7 @@
        <string notr="true">color: rgb(85, 85, 0);</string>
       </property>
       <property name="text">
-       <string>Issue Time</string>
+       <string>Issue Date</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

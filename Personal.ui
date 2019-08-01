@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CrowdSourcing</string>
+   <string>Personal Information</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -20,7 +20,7 @@
    <widget class="QFrame" name="buttonFram">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>570</x>
       <y>520</y>
       <width>341</width>
       <height>431</height>
@@ -571,7 +571,7 @@ color: rgb(170, 85, 255);</string>
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="refreshButton_2">
+   <widget class="QPushButton" name="refreshButton">
     <property name="geometry">
      <rect>
       <x>190</x>
@@ -647,6 +647,57 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_
      <enum>QFrame::Raised</enum>
     </property>
    </widget>
+   <widget class="QPushButton" name="messageButton">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>690</y>
+      <width>100</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/mess_norm_0.png);}  
+QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/mess_on.png);}  
+QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/mess_clicked.png);};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelMess">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>680</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: transparent;
+color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>88</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>
@@ -718,7 +769,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_
    </hints>
   </connection>
   <connection>
-   <sender>refreshButton_2</sender>
+   <sender>refreshButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindowPersonal</receiver>
    <slot>refreshButtonClick()</slot>
@@ -765,6 +816,22 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>messageButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowPersonal</receiver>
+   <slot>messageButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>419</x>
+     <y>739</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>959</x>
+     <y>539</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>logOutButtonClick()</slot>
@@ -774,5 +841,6 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_
   <slot>accTaskButtonClick()</slot>
   <slot>refreshButtonClick()</slot>
   <slot>issTaskButtonClick()</slot>
+  <slot>messageButtonClick()</slot>
  </slots>
 </ui>

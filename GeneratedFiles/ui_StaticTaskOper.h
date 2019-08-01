@@ -216,7 +216,7 @@ public:
         DialogStaticTaskOper->setWindowTitle(QCoreApplication::translate("DialogStaticTaskOper", "Task", nullptr));
         label_1->setText(QCoreApplication::translate("DialogStaticTaskOper", "Rank", nullptr));
         labelRank->setText(QString());
-        label_4->setText(QCoreApplication::translate("DialogStaticTaskOper", "Issue Time", nullptr));
+        label_4->setText(QCoreApplication::translate("DialogStaticTaskOper", "Issue Date", nullptr));
         label_2->setText(QCoreApplication::translate("DialogStaticTaskOper", "Translation Type", nullptr));
         labelTransType->setText(QString());
         label_6->setText(QCoreApplication::translate("DialogStaticTaskOper", "Task Period", nullptr));

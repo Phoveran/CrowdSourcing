@@ -50,11 +50,11 @@ public slots:
 	void issTaskButtonClick();
 	void accTaskButtonClick();
 	void refreshButtonClick();
+	void messageButtonClick();
+	void loadInfo();
 
 private:
 	Ui::MainWindowPersonal ui;
-
-	void loadInfo();
 };
 
 //接受任务界面

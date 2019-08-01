@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="/CrowdSourcing">
+    <file>Resources/pictures/read_clicked.png</file>
+    <file>Resources/pictures/read_norm.png</file>
+    <file>Resources/pictures/read_on.png</file>
+    <file>Resources/pictures/mess_clicked.png</file>
+    <file>Resources/pictures/mess_norm_!0.png</file>
+    <file>Resources/pictures/mess_norm_0.png</file>
+    <file>Resources/pictures/mess_on.png</file>
     <file>Resources/pictures/confirmed.png</file>
     <file>Resources/pictures/zelda_hero_clicked.png</file>
     <file>Resources/pictures/zelda_hero_on.png</file>
@@ -28,7 +35,6 @@
     <file>Resources/pictures/view_clicked.png</file>
     <file>Resources/pictures/view_norm.png</file>
     <file>Resources/pictures/view_on.png</file>
-    <file>Resources/pictures/zelda8.jpg</file>
     <file>Resources/pictures/back_clicked.png</file>
     <file>Resources/pictures/back_norm.png</file>
     <file>Resources/pictures/back_on.png</file>

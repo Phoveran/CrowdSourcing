@@ -46,9 +46,11 @@ public:
     QLabel *certificateDisplay;
     QLabel *telephoneLabel;
     QLabel *telephoneDisplay;
-    QPushButton *refreshButton_2;
+    QPushButton *refreshButton;
     QPushButton *logOutButton;
     QFrame *frame_2;
+    QPushButton *messageButton;
+    QLabel *labelMess;
 
     void setupUi(QMainWindow *MainWindowPersonal)
     {
@@ -60,7 +62,7 @@ public:
         centralwidget->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda2.jpg);"));
         buttonFram = new QFrame(centralwidget);
         buttonFram->setObjectName(QString::fromUtf8("buttonFram"));
-        buttonFram->setGeometry(QRect(480, 520, 341, 431));
+        buttonFram->setGeometry(QRect(570, 520, 341, 431));
         buttonFram->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         verticalLayout_4 = new QVBoxLayout(buttonFram);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -387,17 +389,17 @@ public:
 
         formLayout->setWidget(5, QFormLayout::FieldRole, telephoneDisplay);
 
-        refreshButton_2 = new QPushButton(centralwidget);
-        refreshButton_2->setObjectName(QString::fromUtf8("refreshButton_2"));
-        refreshButton_2->setGeometry(QRect(190, 600, 80, 80));
+        refreshButton = new QPushButton(centralwidget);
+        refreshButton->setObjectName(QString::fromUtf8("refreshButton"));
+        refreshButton->setGeometry(QRect(190, 600, 80, 80));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Century Gothic"));
         font2.setPointSize(16);
         font2.setBold(true);
         font2.setItalic(true);
         font2.setWeight(75);
-        refreshButton_2->setFont(font2);
-        refreshButton_2->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  \n"
+        refreshButton->setFont(font2);
+        refreshButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);};"));
         logOutButton = new QPushButton(centralwidget);
@@ -414,6 +416,29 @@ public:
         frame_2->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo.png);"));
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);
+        messageButton = new QPushButton(centralwidget);
+        messageButton->setObjectName(QString::fromUtf8("messageButton"));
+        messageButton->setGeometry(QRect(370, 690, 100, 100));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Century Gothic"));
+        font3.setPointSize(12);
+        font3.setBold(true);
+        font3.setWeight(75);
+        messageButton->setFont(font3);
+        messageButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/mess_norm_0.png);}  \n"
+"QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/mess_on.png);}  \n"
+"QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/mess_clicked.png);};"));
+        labelMess = new QLabel(centralwidget);
+        labelMess->setObjectName(QString::fromUtf8("labelMess"));
+        labelMess->setGeometry(QRect(460, 680, 31, 31));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Century Gothic"));
+        font4.setPointSize(16);
+        font4.setBold(true);
+        font4.setWeight(75);
+        labelMess->setFont(font4);
+        labelMess->setStyleSheet(QString::fromUtf8("border-image: transparent;\n"
+"color: rgb(255, 0, 0);"));
         MainWindowPersonal->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindowPersonal);
@@ -421,16 +446,17 @@ public:
         QObject::connect(logOutButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(logOutButtonClick()));
         QObject::connect(topUpButoon, SIGNAL(clicked()), MainWindowPersonal, SLOT(topUpButtonClick()));
         QObject::connect(updateInformationButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(updateInfoButtonClick()));
-        QObject::connect(refreshButton_2, SIGNAL(clicked()), MainWindowPersonal, SLOT(refreshButtonClick()));
+        QObject::connect(refreshButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(refreshButtonClick()));
         QObject::connect(accTaskButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(accTaskButtonClick()));
         QObject::connect(issTaskButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(issTaskButtonClick()));
+        QObject::connect(messageButton, SIGNAL(clicked()), MainWindowPersonal, SLOT(messageButtonClick()));
 
         QMetaObject::connectSlotsByName(MainWindowPersonal);
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindowPersonal)
     {
-        MainWindowPersonal->setWindowTitle(QCoreApplication::translate("MainWindowPersonal", "CrowdSourcing", nullptr));
+        MainWindowPersonal->setWindowTitle(QCoreApplication::translate("MainWindowPersonal", "Personal Information", nullptr));
         accTaskButton->setText(QCoreApplication::translate("MainWindowPersonal", "Accept/ed Tasks", nullptr));
         issTaskButton->setText(QCoreApplication::translate("MainWindowPersonal", "Issue/d Tasks", nullptr));
         topUpButoon->setText(QCoreApplication::translate("MainWindowPersonal", "Top up", nullptr));
@@ -448,8 +474,10 @@ public:
         certificateDisplay->setText(QString());
         telephoneLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Telephone:</span></p></body></html>", nullptr));
         telephoneDisplay->setText(QString());
-        refreshButton_2->setText(QString());
+        refreshButton->setText(QString());
         logOutButton->setText(QString());
+        messageButton->setText(QString());
+        labelMess->setText(QCoreApplication::translate("MainWindowPersonal", "88", nullptr));
     } // retranslateUi
 
 };

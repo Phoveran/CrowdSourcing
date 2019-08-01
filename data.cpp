@@ -75,7 +75,9 @@ void Data::save()
 		"TELEPHONE TEXT NOT NULL,"\
 		"CERTIFICATES TEXT,"\
 		"iSSUEDTASKS TEXT,"\
-		"TAKENTASKS TEXT);"\
+		"TAKENTASKS TEXT,"\
+		"HISTORYMESSAGE TEXT,"\
+		"UNREADMESSAGE TEXT);"\
 		//创建任务表
 		"CREATE TABLE TASK("\
 		"RANK INT PRIMARY KEY NOT NULL,"\
@@ -142,11 +144,27 @@ void Data::dbUserInsert(User* user, sqlite3* db, char** errMsg)
 	}
 	if (user->takenTasks.empty())
 	{
-		strs.push_back(string("NULL)"));
+		strs.push_back(string("NULL, "));
 	}
 	else
 	{
-		strs.push_back(string("\"") + intCombine2String(user->takenTasks, ";") + string("\"") + string(")"));
+		strs.push_back(string("\"") + intCombine2String(user->takenTasks, ";") + string("\"") + string(", "));
+	}
+	if (user->historyMess.empty())
+	{
+		strs.push_back(string("NULL, "));
+	}
+	else
+	{
+		strs.push_back(string("\"") + stringCombine(user->historyMess, ";") + string("\"") + string(", "));
+	}
+	if (user->unreadMess.empty())
+	{
+		strs.push_back(string("NULL);"));
+	}
+	else
+	{
+		strs.push_back(string("\"") + stringCombine(user->unreadMess, ";") + string("\"") + string(");"));
 	}
 	string tempStr = stringCombine(strs);
 	const char* str = tempStr.c_str();
@@ -245,7 +263,6 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 	sqlite3_exec(db, str, 0, 0, errMsg);
 }
 
-
 void Data::read()
 {
 	sqlite3* db;
@@ -291,6 +308,14 @@ int Data::readUserCallBack(void* ptr, int argc, char** argvs, char** colNames)
 		{
 			user->takenTasks.push_back(stoi(strs[i]));
 		}
+	}
+	if (argvs[10])
+	{
+		user->historyMess = split(string(argvs[10]), ";");
+	}
+	if (argvs[11])
+	{
+		user->unreadMess = split(string(argvs[11]), ";");
 	}
 	data->userVec.push_back(user);
 	return 0;
@@ -385,4 +410,25 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 	task->transSwitch = atoi(argvs[22]);
 	data->taskVec.push_back(task);
 	return 0;
+}
+
+void Data::pushNotice(string content, int acc)
+{
+	tm ti = tm();
+	time_t t = time(0);
+	localtime_s(&ti, &t);
+	string strTime = to_string(ti.tm_mday) + "-" + to_string(ti.tm_mon + 1) + "-" + to_string(ti.tm_year + 1900);
+	strTime += "    ";
+	strTime += to_string(ti.tm_hour);
+	strTime += ":";
+	strTime += to_string(ti.tm_min);
+	string notice = strTime + "\n" + content;
+	if (acc != -1)
+	{
+		userVec[acc - 1000]->unreadMess.push_back(notice);
+	}
+	else
+	{
+		userVec[nowAccountNum - 1000]->unreadMess.push_back(notice);
+	}
 }

@@ -70,20 +70,23 @@ void Personal::logOutButtonClick()
 
 void Personal::changePasswordButtonClick()
 {
-	ChangePassword* c = new ChangePassword(dataPtr);
+	ChangePassword* c = new ChangePassword(dataPtr, this);
 	c->show();
+	connect(c, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 }
 
 void Personal::topUpButtonClick()
 {
-	TopUp* to = new TopUp(dataPtr);
+	TopUp* to = new TopUp(dataPtr, this);
 	to->show();
+	connect(to, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 }
 
 void Personal::updateInfoButtonClick()
 {
-	UpdateInfo* u = new UpdateInfo(dataPtr);
+	UpdateInfo* u = new UpdateInfo(dataPtr, this);
 	u->show();
+	connect(u, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 }
 
 void Personal::issTaskButtonClick()
@@ -102,6 +105,14 @@ void Personal::accTaskButtonClick()
 
 void Personal::refreshButtonClick()
 {
+	loadInfo();
+}
+
+void Personal::messageButtonClick()
+{
+	MessageBox* m = new MessageBox(dataPtr, this);
+	m->show();
+	connect(m, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 	loadInfo();
 }
 
@@ -129,6 +140,17 @@ void Personal::loadInfo()
 		}
 	}
 	ui.certificateDisplay->setText(cert);
+	if (dataPtr->nowAccount->unreadMess.empty())
+	{
+		ui.messageButton->setStyleSheet("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/mess_norm_0.png);}  \nQPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/mess_on.png);}  \nQPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/mess_clicked.png);};");
+		ui.labelMess->setHidden(true);
+	}
+	else
+	{
+		ui.messageButton->setStyleSheet("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/mess_norm_!0.png);}  \nQPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/mess_on.png);}  \nQPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/mess_clicked.png);};");
+		ui.labelMess->setHidden(false);
+		ui.labelMess->setText(QString::number(dataPtr->nowAccount->unreadMess.size()));
+	}
 }
 
 

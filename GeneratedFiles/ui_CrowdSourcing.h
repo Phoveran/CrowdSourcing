@@ -210,7 +210,7 @@ public:
 
     void retranslateUi(QMainWindow *CrowdSourcingClass)
     {
-        CrowdSourcingClass->setWindowTitle(QCoreApplication::translate("CrowdSourcingClass", "CrowdSourcing", nullptr));
+        CrowdSourcingClass->setWindowTitle(QCoreApplication::translate("CrowdSourcingClass", "Login&Register", nullptr));
         usernameInput->setText(QString());
         usernameInput->setPlaceholderText(QCoreApplication::translate("CrowdSourcingClass", "Username", nullptr));
         passwordInput->setText(QString());

@@ -32,6 +32,7 @@ void ChangePassword::OkClick()
 	}
 	else
 	{
+		submitChange();
 		this->close();
 	}
 }
@@ -44,9 +45,11 @@ void ChangePassword::CancelClick()
 void ChangePassword::submitChange()
 {
 	dataPtr->nowAccount->password = ui.newPwLineEdit->text().toStdString();
+	dataPtr->pushNotice("Your password has been changed to " + dataPtr->nowAccount->password);
 }
 
 //注册界面
+
 Register::Register(Data* data, QWidget* parent)
 	: QDialog(parent)
 {
@@ -161,6 +164,9 @@ void Register::submitRegister()
 	vector<string> certifi = split(pLineEdit->text().toStdString(), string(";"));
 	User* user = new User(account, password, certifi, telephone, dataPtr);
 	dataPtr->userVec.push_back(user);
+	QString notice = "Welcome dear, ";
+	notice += QString("your account is ") + QString::number(dataPtr->userVec[dataPtr->userVec.size() - 1]->account) + " and your password is " + QString::fromStdString(dataPtr->userVec[dataPtr->userVec.size() - 1]->password);
+	dataPtr->pushNotice(notice.toStdString(), account);
 }
 
 //充值界面
@@ -200,6 +206,7 @@ void TopUp::topUpClick()
 void TopUp::submitTopUp()
 {
 	dataPtr->nowAccount->balance += ui.lineEdit->text().toInt();
+	dataPtr->pushNotice("You have topped up " + ui.lineEdit->text().toStdString() + " Ruby");
 }
 
 
@@ -302,11 +309,13 @@ void UpdateInfo::submitChange()
 		vector<string> certifi = split(pLineEdit->text().toStdString(), string(";"));
 		dataPtr->nowAccount->certificationType = certifi;
 		dataPtr->nowAccount->setCredits();
+		dataPtr->pushNotice("You have reset your certificates to " + pLineEdit->text().toStdString());
 	}
 	if (!ui.teleLineEdit->text().isEmpty())
 	{
 		string tele = ui.teleLineEdit->text().toStdString();
 		dataPtr->nowAccount->telephone = tele;
+		dataPtr->pushNotice("You have reset your phone to " + ui.teleLineEdit->text().toStdString());
 	}
 }
 
@@ -351,7 +360,13 @@ void RecTaskOper::applyButtonClick()
 {
 	if (task->applied(dataPtr->nowAccountNum))
 	{
-		this->close();
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Applied successfully"));
+		mesBox->show();
+		dataPtr->pushNotice("You have applied for task " + to_string(task->rank));
+		dataPtr->pushNotice("You have a new applicant " + to_string(dataPtr->nowAccountNum), task->issuingAccount);
 	}
 	else
 	{
@@ -461,6 +476,8 @@ void MyTransTaskOper::submitButtonClick()
 	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
 	mesBox->setText(QString("Translation Submitted"));
 	mesBox->show();
+	dataPtr->pushNotice("You have submitted task " + to_string(task->rank));
+	dataPtr->pushNotice("Your task " + to_string(task->rank) + " has a new submission");
 	loadInfo();
 }
 
@@ -1333,4 +1350,41 @@ QString FiniTaskOper::transTypeJudge()
 	case 6: return QString("French to English");
 	default: return QString();
 	}
+}
+
+
+//消息盒子
+MessageBox::MessageBox(Data* data, QWidget* parent)
+{
+	ui.setupUi(this);
+	dataPtr = data;
+	this->setAttribute(Qt::WA_DeleteOnClose, true);
+	this->setWindowModality(Qt::ApplicationModal);
+	loadInfo();
+}
+
+void MessageBox::loadInfo()
+{
+	ui.listWidgetUn->clear();
+	ui.listWidgetHis->clear();
+	for (int i = dataPtr->nowAccount->unreadMess.size() - 1; i > -1; i--)
+	{
+		QListWidgetItem* li = new QListWidgetItem(QString::fromStdString(dataPtr->nowAccount->unreadMess[i]));
+		ui.listWidgetUn->addItem(li);
+	}
+	for (int i = dataPtr->nowAccount->historyMess.size() - 1; i > -1; i--)
+	{
+		QListWidgetItem* li = new QListWidgetItem(QString::fromStdString(dataPtr->nowAccount->historyMess[i]));
+		ui.listWidgetHis->addItem(li);
+	}
+}
+
+void MessageBox::readButtonClick()
+{
+	for (int i = 0; i < dataPtr->nowAccount->unreadMess.size(); i++)
+	{
+		dataPtr->nowAccount->historyMess.push_back(dataPtr->nowAccount->unreadMess[i]);
+	}
+	dataPtr->nowAccount->unreadMess.clear();
+	loadInfo();
 }

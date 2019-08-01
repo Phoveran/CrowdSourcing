@@ -12,6 +12,8 @@ User::User(int acc, string passwd, vector<string> cer, string tele, Data* data)
 	issuedTasks = vector<int>();
 	takenTasks = vector<int>();
 	setCredits();
+	historyMess = vector<string>();
+	unreadMess = vector<string>();
 }
 
 User::~User(void)
