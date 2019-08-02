@@ -50,7 +50,8 @@ public:
         if (DialogStaticTaskOper->objectName().isEmpty())
             DialogStaticTaskOper->setObjectName(QString::fromUtf8("DialogStaticTaskOper"));
         DialogStaticTaskOper->resize(800, 600);
-        DialogStaticTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
+        DialogStaticTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);\n"
+"border-image:transparent;"));
         formLayoutWidget = new QWidget(DialogStaticTaskOper);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
         formLayoutWidget->setGeometry(QRect(40, 60, 441, 251));

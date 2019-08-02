@@ -108,7 +108,8 @@ public:
         if (DialogMyResTaskOper->objectName().isEmpty())
             DialogMyResTaskOper->setObjectName(QString::fromUtf8("DialogMyResTaskOper"));
         DialogMyResTaskOper->resize(800, 600);
-        DialogMyResTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
+        DialogMyResTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);\n"
+"border-image:transparent;"));
         tabWidget = new QTabWidget(DialogMyResTaskOper);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setGeometry(QRect(0, 0, 800, 600));
@@ -573,7 +574,7 @@ public:
         QObject::connect(submitButton, SIGNAL(clicked()), DialogMyResTaskOper, SLOT(submitButtonClick()));
         QObject::connect(listWidgetChildTasks_2, SIGNAL(itemClicked(QListWidgetItem*)), DialogMyResTaskOper, SLOT(submissionRefresh()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(DialogMyResTaskOper);
@@ -634,7 +635,7 @@ public:
         removeButton->setText(QString());
         label_21->setText(QCoreApplication::translate("DialogMyResTaskOper", "Chosen accounts:", nullptr));
 #if QT_CONFIG(tooltip)
-        endRecruitingButton->setToolTip(QCoreApplication::translate("DialogMyResTaskOper", "End Recruiting", nullptr));
+        endRecruitingButton->setToolTip(QCoreApplication::translate("DialogMyResTaskOper", "Confirm", nullptr));
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
         endRecruitingButton->setStatusTip(QString());

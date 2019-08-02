@@ -34,7 +34,8 @@ public:
         if (DialogMessageBox->objectName().isEmpty())
             DialogMessageBox->setObjectName(QString::fromUtf8("DialogMessageBox"));
         DialogMessageBox->resize(800, 600);
-        DialogMessageBox->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
+        DialogMessageBox->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);\n"
+"border-image:transparent;"));
         frame = new QFrame(DialogMessageBox);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(400, 420, 391, 171));

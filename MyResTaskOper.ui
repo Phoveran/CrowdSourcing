@@ -14,7 +14,8 @@
    <string>My Responsible Task</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(190, 190, 190);</string>
+   <string notr="true">background-color: rgb(190, 190, 190);
+border-image:transparent;</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
@@ -40,7 +41,7 @@
     <string notr="true">color: rgb(243, 162, 0);</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tabInfo">
     <attribute name="title">
@@ -652,7 +653,7 @@ color: rgb(0, 0, 0);</string>
       </rect>
      </property>
      <property name="toolTip">
-      <string>End Recruiting</string>
+      <string>Confirm</string>
      </property>
      <property name="statusTip">
       <string/>

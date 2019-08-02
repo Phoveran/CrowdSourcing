@@ -365,10 +365,15 @@ void RecTaskOper::cancelButtonClick()
 
 void RecTaskOper::applyButtonClick()
 {
+	task->ifPassTime();
 	int judge = 0;
 	if ((count(task->waitingAccount.begin(), task->waitingAccount.end(), dataPtr->nowAccountNum)))
 	{
 		judge = 1;
+	}
+	else if (task->state == 6 || task->state == 7)
+	{
+		judge = 4;
 	}
 	else if (task->state == 2 && dataPtr->nowAccount->level != 2)
 	{
@@ -414,6 +419,10 @@ void RecTaskOper::applyButtonClick()
 		{
 			mesBox->setText(QString("Your credits can't match!"));
 		}
+		else if (judge == 4)
+		{
+			mesBox->setText(QString("It's not recruiting time!"));
+		}
 		mesBox->show();
 	}
 }
@@ -442,11 +451,11 @@ void RecTaskOper::loadInfo()
 	ui.labelTransType->setText(transTypeJudge());
 	ui.textBrowserBrief->setText(QString::fromStdString(task->brief));
 	ui.labelRecPeriod->setText(QString::number(task->applyPeriod) + QString(" Days"));
-	if (task->state == 3)
+	if (task->state == 3 || task->state == 7)
 	{
 		ui.labelRecruitType->setText(QString("Translator"));
 	}
-	else if (task->state == 2)
+	else if (task->state == 2 || task->state == 6)
 	{
 		ui.labelRecruitType->setText(QString("Principal"));
 	}
@@ -543,6 +552,7 @@ void MyTransTaskOper::submitButtonClick()
 {
 
 	task->transSubmit = ui.textBrowserTranslation->toPlainText().toStdString();
+	task->state = 4;
 	task->transSwitch = 1;
 	QMessageBox* mesBox = new QMessageBox;
 	mesBox->setWindowTitle("Done");
@@ -572,11 +582,23 @@ MyResTaskOper::MyResTaskOper(Task* tas, Data* data, QWidget* parent)
 //Info Tab
 void MyResTaskOper::changeInfoButtonClick()
 {
-	ui.editInfoOkButton->setHidden(false);
-	ui.editInfocancelButton->setHidden(false);
-	ui.changeInfoButton->setHidden(true);
-	ui.lineEditEngCre->setReadOnly(false);
-	ui.lineEditFreCre->setReadOnly(false);
+	task->ifPassTime();
+	if (task->state != 3)
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("It's not recruiting time!"));
+		mesBox->show();
+	}
+	else
+	{
+		ui.editInfoOkButton->setHidden(false);
+		ui.editInfocancelButton->setHidden(false);
+		ui.changeInfoButton->setHidden(true);
+		ui.lineEditEngCre->setReadOnly(false);
+		ui.lineEditFreCre->setReadOnly(false);
+	}
 }
 
 void MyResTaskOper::editInfoOkButtonClick()
@@ -759,7 +781,8 @@ void MyResTaskOper::distributeButtonClick()
 //Recruiting Tab
 void MyResTaskOper::chooseTranslatorButtonClick()
 {
-	if (task->state == 3)
+	task->ifPassTime();
+	if (task->state == 7)
 	{
 		if (ui.listWidgetAppliedAcc->currentItem())
 		{
@@ -788,7 +811,7 @@ void MyResTaskOper::chooseTranslatorButtonClick()
 
 void MyResTaskOper::removeButtonClick()
 {
-	if (task->state == 3)
+	if (task->state == 7)
 	{
 		if (ui.listWidgetChosenAcc->currentItem())
 		{
@@ -817,11 +840,11 @@ void MyResTaskOper::removeButtonClick()
 
 void MyResTaskOper::endRecruitingButtonClick()
 {
-	if (task->state == 3)
+	if (task->state == 7)
 	{
 		task->state = 1;
 		task->startTime = time(0);
-		dataPtr->pushNotice("You have ended the recruitment for task " + to_string(task->rank));
+		dataPtr->pushNotice("You have confirmed the recruitment for task " + to_string(task->rank));
 		for (int i = 0; i < task->getTranslators().size(); i++)
 		{
 			dataPtr->pushNotice("Congrats! You have been chosen as translator of task " + to_string(task->rank), task->getTranslators()[i]);
@@ -834,7 +857,7 @@ void MyResTaskOper::endRecruitingButtonClick()
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Done");
 		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("Recruiting ended"));
+		mesBox->setText(QString("Recruiting confirmed"));
 		mesBox->show();
 	}
 	else
@@ -929,6 +952,7 @@ void MyResTaskOper::loadInfo()
 	ui.listWidgetChildTasks_2->clear();
 	ui.listWidgetChosenAcc->clear();
 	ui.listWidgetTranslators->clear();
+	task->ifPassTime();
 	//Infomation Tab
 	ui.labelConPeriod->setText(QString::number(task->period));
 	ui.labelRank->setText(QString::number(task->rank));
@@ -938,15 +962,13 @@ void MyResTaskOper::loadInfo()
 	{
 		ui.labelState->setText("Recruiting Translators");
 		rest = task->startTime + (task->applyPeriod * 86400) - time(0);
-		if (rest > 0)
-		{
-			rest /= 3600;
-			ui.labelRemHours->setText(QString::number(rest));
-		}
-		else
-		{
-			ui.labelRemHours->setText("Time Out");
-		}
+		rest /= 3600;
+		ui.labelRemHours->setText(QString::number(rest));
+	}
+	else if (task->state == 7)
+	{
+		ui.labelState->setText("Waiting for Selection");
+		ui.labelRemHours->setText("Time Out");
 	}
 	else if (task->state == 1)
 	{
@@ -1098,6 +1120,7 @@ StaticTaskOper::StaticTaskOper(Task* tas, Data* data, QWidget* parent)
 	dataPtr = data;
 	task = tas;
 
+	task->ifPassTime();
 	ui.labelIssAcc->setText(QString::number(task->issuingAccount));
 	ui.labelTakenAcc->setText(QString::number(task->takenAccount));
 	ui.labelRank->setText(QString::number(task->rank));
@@ -1145,6 +1168,10 @@ StaticTaskOper::StaticTaskOper(Task* tas, Data* data, QWidget* parent)
 	else if (task->state == 5)
 	{
 		ui.labelState->setText(QString("Waiting Payment"));
+	}
+	else if (task->state == 6 || task->state == 7)
+	{
+		ui.labelState->setText(QString("Waiting Selection"));
 	}
 }
 
@@ -1261,6 +1288,7 @@ IssRecTaskOper::IssRecTaskOper(Task* tas, Data* data, int model, QWidget* parent
 	task = tas;
 	ui.tabWidget->setCurrentIndex(model - 1);
 	loadInfo();
+	task->ifPassTime();
 }
 
 void IssRecTaskOper::cancelButtonClick()
@@ -1270,51 +1298,84 @@ void IssRecTaskOper::cancelButtonClick()
 
 void IssRecTaskOper::acceptButtonClick()
 {
-	task->state = 4;
-	for (int i = 0; i < task->getChildren().size(); i++)
+	if (task->state == 4)
 	{
-		dataPtr->taskVec[task->getChildren()[i] - 1]->state = 0;
-	}
-	dataPtr->pushNotice("You accepted a translation for task " + to_string(task->rank));
-	dataPtr->pushNotice("Your translation for task " + to_string(task->rank) + " has been accepted", task->takenAccount);
-	pay();
-	QMessageBox* mesBox = new QMessageBox;
-	mesBox->setWindowTitle("Done");
-	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-	mesBox->setText(QString("Translation Accepted!"));
-	mesBox->show();
-}
-
-void IssRecTaskOper::refuseButtonClick()
-{
-	task->state = 1;
-	dataPtr->pushNotice("You refused a translation for task " + to_string(task->rank));
-	dataPtr->pushNotice("Your translation for task " + to_string(task->rank) + " has been refused", task->takenAccount);
-	QMessageBox* mesBox = new QMessageBox;
-	mesBox->setWindowTitle("Done");
-	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-	mesBox->setText(QString("Translation Refused!"));
-	mesBox->show();
-}
-
-void IssRecTaskOper::okButtonClick()
-{
-	if (ui.listWidgetAppliedAcc->currentItem())
-	{
-		choosePrincipal();
+		task->state = 0;
+		for (int i = 0; i < task->getChildren().size(); i++)
+		{
+			dataPtr->taskVec[task->getChildren()[i] - 1]->state = 0;
+		}
+		dataPtr->pushNotice("You accepted a translation for task " + to_string(task->rank));
+		dataPtr->pushNotice("Your translation for task " + to_string(task->rank) + " has been accepted", task->takenAccount);
+		pay();
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Done");
 		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("Principal Selected!"));
+		mesBox->setText(QString("Translation Accepted!"));
 		mesBox->show();
-		this->close();
 	}
 	else
 	{
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Wrong");
 		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("You Haven't Chosen A Principal!"));
+		mesBox->setText(QString("Not appropriate time!"));
+		mesBox->show();
+	}
+}
+
+void IssRecTaskOper::refuseButtonClick()
+{
+	if (task->state == 4)
+	{
+		task->state = 1;
+		dataPtr->pushNotice("You refused a translation for task " + to_string(task->rank));
+		dataPtr->pushNotice("Your translation for task " + to_string(task->rank) + " has been refused", task->takenAccount);
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Translation Refused!"));
+		mesBox->show();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Not appropriate time!"));
+		mesBox->show();
+	}
+}
+
+void IssRecTaskOper::okButtonClick()
+{
+	if (task->state == 6)
+	{
+		if (ui.listWidgetAppliedAcc->currentItem())
+		{
+			choosePrincipal();
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Done");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("Principal Selected!"));
+			mesBox->show();
+			this->close();
+		}
+		else
+		{
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Wrong");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("You Haven't Chosen A Principal!"));
+			mesBox->show();
+		}
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Not appropriate time!"));
 		mesBox->show();
 	}
 }
@@ -1349,6 +1410,16 @@ void IssRecTaskOper::loadInfo()
 		rest /= 3600;
 		ui.labelRemHours->setText(QString::number(rest) + QString(" Hours"));
 	}break;
+	case 6:
+	{
+		ui.labelState->setText(QString("Waiting Selection"));
+		ui.labelRemHours->setText("Time Out");
+	}break;
+	case 7:
+	{
+		ui.labelState->setText(QString("Waiting Selection"));
+		ui.labelRemHours->setText("Time Out");
+	}break;
 	}
 	for (int i = 0; i < task->waitingAccount.size(); i++)
 	{
@@ -1362,7 +1433,7 @@ void IssRecTaskOper::loadInfo()
 		QListWidgetItem* li = new QListWidgetItem(info);
 		ui.listWidgetAppliedAcc->addItem(li);
 	}
-	if (task->state != 2)
+	if (task->state != 6)
 	{
 		ui.okButton->setEnabled(false);
 	}

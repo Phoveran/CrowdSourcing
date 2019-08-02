@@ -63,7 +63,8 @@ public:
         if (DialogIssRecTaskOper->objectName().isEmpty())
             DialogIssRecTaskOper->setObjectName(QString::fromUtf8("DialogIssRecTaskOper"));
         DialogIssRecTaskOper->resize(800, 600);
-        DialogIssRecTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
+        DialogIssRecTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);\n"
+"border-image:transparent;"));
         tabWidget = new QTabWidget(DialogIssRecTaskOper);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setGeometry(QRect(0, 0, 800, 600));

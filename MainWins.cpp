@@ -118,7 +118,7 @@ void Personal::messageButtonClick()
 
 void Personal::loadInfo()
 {
-	ui.balanceDisplay->setText(QString::number(dataPtr->nowAccount->balance) + QString(" Ruby ( 1CNY = 100Ruby )"));
+	ui.balanceDisplay->setText(QString::number(dataPtr->nowAccount->balance) + QString(" Ruby"));
 	ui.creditsDisplay->setText(QString("Eng: ") + QString::number(dataPtr->nowAccount->engCredits) + QString("       Fre: ") + QString::number(dataPtr->nowAccount->fraCredits));
 	if (dataPtr->nowAccount->level == 1)
 	{
@@ -166,9 +166,8 @@ AccTaskWin::AccTaskWin(Data* data, QWidget* parent)
 
 void AccTaskWin::backButtonClick()
 {
-	Personal* p = new Personal(dataPtr, this);
+	Personal* p = new Personal(dataPtr);
 	p->setAttribute(Qt::WA_DeleteOnClose, true);
-	connect(p, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 	p->show();
 	this->close();
 }
@@ -202,7 +201,7 @@ void AccTaskWin::loadInfo()
 				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
 				li->setSizeHint(QSize(600, 59));
 				myTaskItem* mti = new myTaskItem(dataPtr->taskVec[i], 1);
-				if (dataPtr->taskVec[i]->state == 1 || dataPtr->taskVec[i]->state == 2 || dataPtr->taskVec[i]->state == 3 || dataPtr->taskVec[i]->state == 4)
+				if (dataPtr->taskVec[i]->state == 1 || dataPtr->taskVec[i]->state == 2 || dataPtr->taskVec[i]->state == 3 || dataPtr->taskVec[i]->state == 4 || dataPtr->taskVec[i]->state == 6 || dataPtr->taskVec[i]->state == 7)
 				{
 					ui.listWidgetMyTasks->addItem(li);
 					ui.listWidgetMyTasks->setItemWidget(li, mti);
@@ -222,7 +221,7 @@ void AccTaskWin::othViewButtonClick()
 	if (ui.listWidgetOthTasks->currentItem())
 	{
 		int rank = ui.listWidgetOthTasks->currentItem()->whatsThis().toInt() - 1;
-		if (dataPtr->taskVec[rank]->state == 1 || dataPtr->taskVec[rank]->state == 0)
+		if (dataPtr->taskVec[rank]->state == 1 || dataPtr->taskVec[rank]->state == 0 || dataPtr->taskVec[rank]->state == 5 || dataPtr->taskVec[rank]->state == 4)
 		{
 			StaticTaskOper* s = new StaticTaskOper(dataPtr->taskVec[rank], dataPtr, this);
 			connect(s, SIGNAL(destroyed()), this, SLOT(loadInfo()));
@@ -265,13 +264,13 @@ void AccTaskWin::myViewButtonClick()
 				m->show();
 			}
 		}
-		else if (dataPtr->taskVec[rank]->state == 2)
+		else if (dataPtr->taskVec[rank]->state == 2|| dataPtr->taskVec[rank]->state == 6)
 		{
 			RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr, this);
 			connect(r, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 			r->show();
 		}
-		else if (dataPtr->taskVec[rank]->state == 3)
+		else if (dataPtr->taskVec[rank]->state == 3 || dataPtr->taskVec[rank]->state == 7)
 		{
 			MyResTaskOper* m = new MyResTaskOper(dataPtr->taskVec[rank], dataPtr, this);
 			connect(m, SIGNAL(destroyed()), this, SLOT(loadInfo()));
@@ -409,7 +408,7 @@ void IssTaskWin::loadInfo()
 	for (int i = 0; i < dataPtr->nowAccount->issuedTasks.size(); i++)
 	{
 		int ra = dataPtr->nowAccount->issuedTasks[i] - 1;
-		if (dataPtr->taskVec[ra]->state == 2 || dataPtr->taskVec[ra]->state == 3)
+		if (dataPtr->taskVec[ra]->state == 2 || dataPtr->taskVec[ra]->state == 3 || dataPtr->taskVec[ra]->state == 6 || dataPtr->taskVec[ra]->state == 7)
 		{
 			QListWidgetItem* li = new QListWidgetItem;
 			li->setWhatsThis(QString::number(ra + 1));

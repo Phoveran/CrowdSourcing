@@ -4,6 +4,7 @@ recTaskItem::recTaskItem(Task* task, int model, QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+	task->ifPassTime();
 	setLan(task->transType);
 	ui.labelRank->setText(QString("Rank:") + QString::number(task->rank));
 	if (model == 1)
@@ -46,14 +47,25 @@ recTaskItem::recTaskItem(Task* task, int model, QWidget* parent)
 			ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
 			ui.labelState->setText(QString("Recruiting"));
 		}
+		else if (task->state == 6 || task->state == 7)
+		{
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setText(QString("Waiting Select"));
+		}
 		else if (task->state == 5)
 		{
-			ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
-			ui.labelState->setText(QString("Waiting for Pay"));
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setText(QString("Waiting Pay"));
+		}
+		else if (task->state == 4)
+		{
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setText(QString("Waiting Exam"));
 		}
 	}
 	else if (model == 2)
 	{
+		task->ifPassTime();
 		if (task->state == 2)
 		{
 			ui.labelState->setText(QString::number(task->waitingAccount.size()) + QString(" Waiting"));
@@ -72,15 +84,13 @@ recTaskItem::recTaskItem(Task* task, int model, QWidget* parent)
 		{
 			ui.labelState->setText(QString("For Translators"));
 			int rest = task->startTime + (task->applyPeriod * 86400) - time(0);
-			if (rest > 0)
-			{
-				rest /= 3600;
-				ui.labelTime->setText(QString::number(rest) + QString(" Hours Letf"));
-			}
-			else
-			{
-				ui.labelTime->setText(QString("Time Out"));
-			}
+			rest /= 3600;
+			ui.labelTime->setText(QString::number(rest) + QString(" Hours Letf"));
+		}
+		else if (task->state == 6 || task->state == 7)
+		{
+			ui.labelState->setText("Waiting Select");
+			ui.labelTime->setText(QString("Time Out"));
 		}
 	}
 }
@@ -146,7 +156,7 @@ myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
 		}
 		if (task->state == 1)
 		{
-			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(0, 170, 255); "));
 			ui.labelState->setText(QString("Conducting"));
 		}
 		else if (task->state == 2 || task->state == 3)
@@ -154,28 +164,39 @@ myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
 			ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
 			ui.labelState->setText(QString("Recruiting"));
 		}
+		else if (task->state == 6 || task->state == 7)
+		{
+			ui.labelState->setStyleSheet(QString("color: rgb(255, 0, 0);\n border-image:transparent; "));
+			ui.labelState->setText(QString("Waiting Select"));
+		}
 		else if (task->state == 0)
 		{
 			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
 			ui.labelState->setText(QString("Ruby Received"));
 		}
-		else
+		else if(task->state == 5)
 		{
-			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(0, 170, 255); "));
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
 			ui.labelState->setText(QString("Waiting Pay"));
 		}
+		else if (task->state == 4)
+		{
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setText(QString("Waiting Exam"));
+		}
+
 	}
 	else if (model == 2)
 	{
 		if (task->state == 4)
 		{
 			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
-			ui.labelState->setText(QString("Waiting Examing"));
+			ui.labelState->setText(QString("Waiting Exam"));
 		}
 		else if(task->state == 5)
 		{
 			ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
-			ui.labelState->setText(QString("Waiting Payment"));
+			ui.labelState->setText(QString("Waiting Pay"));
 		}
 		else if (task->state == 0)
 		{
@@ -184,8 +205,13 @@ myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
 		}
 		else if (task->state == 1)
 		{
-			ui.labelState->setStyleSheet(QString("color: rgb(255, 0, 0);\n border-image:transparent; "));
+			ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
 			ui.labelState->setText(QString("Conducting"));
+		}
+		else if (task->state == 6 || task->state == 7)
+		{
+			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
+			ui.labelState->setText(QString("Waiting Select"));
 		}
 		if (task->type())
 		{

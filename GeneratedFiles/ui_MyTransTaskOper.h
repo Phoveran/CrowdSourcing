@@ -63,7 +63,8 @@ public:
         if (DialogMyTransTaskOper->objectName().isEmpty())
             DialogMyTransTaskOper->setObjectName(QString::fromUtf8("DialogMyTransTaskOper"));
         DialogMyTransTaskOper->resize(800, 600);
-        DialogMyTransTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
+        DialogMyTransTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);\n"
+"border-image:transparent;"));
         tabWidget = new QTabWidget(DialogMyTransTaskOper);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setGeometry(QRect(0, 0, 800, 600));

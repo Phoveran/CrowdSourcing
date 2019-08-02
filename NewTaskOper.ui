@@ -14,7 +14,8 @@
    <string>NewTask</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(190, 190, 190);</string>
+   <string notr="true">background-color: rgb(190, 190, 190);
+border-image:transparent;</string>
   </property>
   <widget class="QFrame" name="frame">
    <property name="geometry">

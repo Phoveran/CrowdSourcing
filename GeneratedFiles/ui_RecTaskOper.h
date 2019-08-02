@@ -56,7 +56,8 @@ public:
         if (DialogRecTaskOper->objectName().isEmpty())
             DialogRecTaskOper->setObjectName(QString::fromUtf8("DialogRecTaskOper"));
         DialogRecTaskOper->resize(800, 600);
-        DialogRecTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
+        DialogRecTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);\n"
+"border-image:transparent;"));
         textBrowserBrief = new QTextBrowser(DialogRecTaskOper);
         textBrowserBrief->setObjectName(QString::fromUtf8("textBrowserBrief"));
         textBrowserBrief->setGeometry(QRect(30, 310, 261, 231));

@@ -20,10 +20,29 @@ Task::Task(int r, string bri, int acc, int type, int per, Data* data, string con
 	issueTime = iss;
 	startTime = sta;
 	transSwitch = 0;
+	ifPassTime();
 }
 
 Task::~Task(void)
 {
+}
+
+void Task::ifPassTime()
+{
+	if (state == 2)
+	{
+		if (time(0) - issueTime > applyPeriod * 86400)
+		{
+			state = 6;
+		}
+	}
+	else if (state == 3)
+	{
+		if (time(0) - startTime > applyPeriod * 86400)
+		{
+			state = 7;
+		}
+	}
 }
 
 vector<int> Task::getChildren()

@@ -54,7 +54,8 @@ public:
         if (DialogFiniTaskOper->objectName().isEmpty())
             DialogFiniTaskOper->setObjectName(QString::fromUtf8("DialogFiniTaskOper"));
         DialogFiniTaskOper->resize(800, 600);
-        DialogFiniTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
+        DialogFiniTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);\n"
+"border-image:transparent;"));
         formLayoutWidget = new QWidget(DialogFiniTaskOper);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
         formLayoutWidget->setGeometry(QRect(10, 20, 351, 243));

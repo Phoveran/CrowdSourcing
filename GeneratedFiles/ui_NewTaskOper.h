@@ -54,7 +54,8 @@ public:
         if (DialogNewTaskOper->objectName().isEmpty())
             DialogNewTaskOper->setObjectName(QString::fromUtf8("DialogNewTaskOper"));
         DialogNewTaskOper->resize(800, 600);
-        DialogNewTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
+        DialogNewTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);\n"
+"border-image:transparent;"));
         frame = new QFrame(DialogNewTaskOper);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(600, 508, 200, 82));
