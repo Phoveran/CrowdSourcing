@@ -64,7 +64,7 @@
         <string/>
        </property>
        <property name="placeholderText">
-        <string>Username</string>
+        <string>Account</string>
        </property>
        <property name="clearButtonEnabled">
         <bool>true</bool>
