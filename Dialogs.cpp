@@ -3,7 +3,6 @@
 #include <regex>
 #include <qvalidator.h>
 #include <algorithm>
-#include <time.h>
 #include "Dialogs.h"
 
 using namespace std;
@@ -477,7 +476,7 @@ void MyTransTaskOper::submitButtonClick()
 	mesBox->setText(QString("Translation Submitted"));
 	mesBox->show();
 	dataPtr->pushNotice("You have submitted task " + to_string(task->rank));
-	dataPtr->pushNotice("Your task " + to_string(task->rank) + " has a new submission");
+	dataPtr->pushNotice("Your task " + to_string(task->rank) + " has a new submission", task->issuingAccount);
 	loadInfo();
 }
 
@@ -536,6 +535,7 @@ void MyResTaskOper::communicateButtonClick()
 		if (taskTemp->state == 1)
 		{
 			taskTemp->setAdvice(ui.textBrowserAdvice->toPlainText().toStdString());
+			dataPtr->pushNotice("You have a new advice on task " + to_string(task->rank), taskTemp->takenAccount);
 			taskTemp = nullptr;
 			communicationRefresh();
 			QMessageBox* mesBox = new QMessageBox;
@@ -577,7 +577,9 @@ void MyResTaskOper::acceptButtonClick()
 	if (ui.listWidgetChildTasks->currentItem())
 	{
 		Task* taskTemp = dataPtr->taskVec[task->getChildren()[ui.listWidgetChildTasks->currentRow()] - 1];
-		taskTemp->state = 4;
+		taskTemp->state = 5;
+		dataPtr->pushNotice("You have accepted the translation of task " + to_string(taskTemp->rank));
+		dataPtr->pushNotice("Your translation of task" + to_string(taskTemp->rank) + " has been accepted", taskTemp->takenAccount);
 		taskTemp = nullptr;
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Done");
@@ -733,6 +735,15 @@ void MyResTaskOper::endRecruitingButtonClick()
 	{
 		task->state = 1;
 		task->startTime = time(0);
+		dataPtr->pushNotice("You have ended the recruitment for task " + to_string(task->rank));
+		for (int i = 0; i < task->getTranslators().size(); i++)
+		{
+			dataPtr->pushNotice("Congrats! You have been chosen as translator of task " + to_string(task->rank), task->getTranslators()[i]);
+		}
+		for (int i = 0; i < task->waitingAccount.size(); i++)
+		{
+			dataPtr->pushNotice("So sorry! You haven't been chosen as translator of task " + to_string(task->rank), task->waitingAccount[i]);
+		}
 		task->waitingAccount.clear();
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Done");
@@ -767,6 +778,8 @@ void MyResTaskOper::submitButtonClick()
 	task->transSubmit = ui.textBrowserTotalTranslation->toPlainText().toStdString();
 	task->transSwitch = 1;
 	task->state = 4;
+	dataPtr->pushNotice("You submitted a translation for task " + to_string(task->rank));
+	dataPtr->pushNotice("You received a new translation for task " + to_string(task->rank), task->issuingAccount);
 	QMessageBox* mesBox = new QMessageBox;
 	mesBox->setWindowTitle("Done");
 	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
@@ -956,6 +969,8 @@ void MyResTaskOper::newChildTask(int acc, string ori, int period, int pay)
 	childTask->takenAccount = acc;
 	dataPtr->userVec[acc - 1000]->take(childTask->rank);
 	dataPtr->taskVec.push_back(childTask);
+	dataPtr->pushNotice("You have distributed a new child task " + to_string(childTask->rank) + ", whose parent task is " + to_string(task->rank));
+	dataPtr->pushNotice("You have a new translation task, whose parent task is " + to_string(task->rank));
 }
 
 
@@ -1085,13 +1100,15 @@ int NewTaskOper::newResTask()
 		ResTask* task = new ResTask(dataPtr->taskVec.size() + 1, brief, dataPtr->nowAccountNum, transType, period, dataPtr, origin, pay, vector<int>(), appPeriod, time(0));
 		dataPtr->taskVec.push_back(task);
 		dataPtr->nowAccount->issue(task->rank);
+		dataPtr->pushNotice("You issued a new principal task " + to_string(task->rank));
 		return 0;
 	}
 }
 
 void NewTaskOper::okButtonClick()
 {
-	if (!newResTask())
+	int j = newResTask();
+	if (!j)
 	{
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Done");
@@ -1100,7 +1117,7 @@ void NewTaskOper::okButtonClick()
 		mesBox->show();
 		this->close();
 	}
-	else if (newResTask() == 1)
+	else if (j == 1)
 	{
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Wrong");
@@ -1108,7 +1125,7 @@ void NewTaskOper::okButtonClick()
 		mesBox->setText(QString("You Must Fill All The Blanks!"));
 		mesBox->show();
 	}
-	else if (newResTask() == 2)
+	else if (j == 2)
 	{
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Wrong");
@@ -1145,6 +1162,8 @@ void IssRecTaskOper::acceptButtonClick()
 	{
 		dataPtr->taskVec[task->getChildren()[i] - 1]->state = 0;
 	}
+	dataPtr->pushNotice("You accepted a translation for task " + to_string(task->rank));
+	dataPtr->pushNotice("Your translation for task " + to_string(task->rank) + " has been accepted", task->takenAccount);
 	pay();
 	QMessageBox* mesBox = new QMessageBox;
 	mesBox->setWindowTitle("Done");
@@ -1156,6 +1175,8 @@ void IssRecTaskOper::acceptButtonClick()
 void IssRecTaskOper::refuseButtonClick()
 {
 	task->state = 1;
+	dataPtr->pushNotice("You refused a translation for task " + to_string(task->rank));
+	dataPtr->pushNotice("Your translation for task " + to_string(task->rank) + " has been refused", task->takenAccount);
 	QMessageBox* mesBox = new QMessageBox;
 	mesBox->setWindowTitle("Done");
 	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
@@ -1242,6 +1263,11 @@ void IssRecTaskOper::loadInfo()
 void IssRecTaskOper::choosePrincipal()
 {
 	task->takenAccount = task->waitingAccount[ui.listWidgetAppliedAcc->currentRow()];
+	dataPtr->pushNotice("Congrats! You have been chosen as principal of task " + to_string(task->rank), task->takenAccount);
+	for(int i =0;i<task->waitingAccount.size();i++)
+	{
+		dataPtr->pushNotice("So sorry! You haven't been chosen as principal of task " + to_string(task->rank), task->waitingAccount[i]);
+	}
 	task->waitingAccount.clear();
 	task->state = 3;
 	task->startTime = time(0);
@@ -1254,9 +1280,12 @@ void IssRecTaskOper::pay()
 	{
 		pay2Prin -= dataPtr->taskVec[task->getChildren()[i] - 1]->payment;
 		dataPtr->userVec[dataPtr->taskVec[task->getChildren()[i] - 1]->takenAccount - 1000]->balance += dataPtr->taskVec[task->getChildren()[i] - 1]->payment;
+		dataPtr->pushNotice("You received " + to_string(dataPtr->taskVec[task->getChildren()[i] - 1]->payment) + " Ruby on task " + to_string(task->getChildren()[i]), dataPtr->taskVec[task->getChildren()[i] - 1]->takenAccount);
 	}
 	dataPtr->userVec[task->takenAccount - 1000]->balance += pay2Prin;
 	dataPtr->nowAccount->balance -= task->payment;
+	dataPtr->pushNotice("You received " + to_string(pay2Prin) + " Ruby on task " + to_string(task->rank), task->takenAccount);
+	dataPtr->pushNotice("You paid " + to_string(task->payment) + " on task " + to_string(task->rank));
 }
 
 QString IssRecTaskOper::transTypeJudge()
