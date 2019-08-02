@@ -72,11 +72,10 @@ public slots:
 	void othViewButtonClick();
 	void myViewButtonClick();
 	void finiViewButtonClick();
+	void loadInfo();
 
 private:
 	Ui::MainWindowAccTask ui;
-
-	void loadInfo();
 };
 
 //发布的任务界面
@@ -95,9 +94,8 @@ public slots:
 	void conViewButtonClick();
 	void finiViewButtonClick();
 	void newTaskButtonClick();
+	void loadInfo();
 
 private:
 	Ui::MainWindowIssTask ui;
-
-	void loadInfo();
 };

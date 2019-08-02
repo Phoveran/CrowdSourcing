@@ -166,8 +166,9 @@ AccTaskWin::AccTaskWin(Data* data, QWidget* parent)
 
 void AccTaskWin::backButtonClick()
 {
-	Personal* p = new Personal(dataPtr);
+	Personal* p = new Personal(dataPtr, this);
 	p->setAttribute(Qt::WA_DeleteOnClose, true);
+	connect(p, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 	p->show();
 	this->close();
 }
@@ -223,12 +224,14 @@ void AccTaskWin::othViewButtonClick()
 		int rank = ui.listWidgetOthTasks->currentItem()->whatsThis().toInt() - 1;
 		if (dataPtr->taskVec[rank]->state == 1 || dataPtr->taskVec[rank]->state == 0)
 		{
-			StaticTaskOper* s = new StaticTaskOper(dataPtr->taskVec[rank], dataPtr);
+			StaticTaskOper* s = new StaticTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+			connect(s, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 			s->show();
 		}
 		else
 		{
-			RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr);
+			RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+			connect(r, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 			r->show();
 		}
 	}
@@ -251,23 +254,27 @@ void AccTaskWin::myViewButtonClick()
 		{
 			if (dataPtr->taskVec[rank]->type())
 			{
-				MyTransTaskOper* m = new MyTransTaskOper(dataPtr->taskVec[rank], dataPtr);
+				MyTransTaskOper* m = new MyTransTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+				connect(m, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 				m->show();
 			}
 			else
 			{
-				MyResTaskOper* m = new MyResTaskOper(dataPtr->taskVec[rank], dataPtr);
+				MyResTaskOper* m = new MyResTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+				connect(m, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 				m->show();
 			}
 		}
 		else if (dataPtr->taskVec[rank]->state == 2)
 		{
-			RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr);
+			RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+			connect(r, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 			r->show();
 		}
 		else if (dataPtr->taskVec[rank]->state == 3)
 		{
-			MyResTaskOper* m = new MyResTaskOper(dataPtr->taskVec[rank], dataPtr);
+			MyResTaskOper* m = new MyResTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+			connect(m, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 			m->show();
 		}
 	}
@@ -286,7 +293,8 @@ void AccTaskWin::finiViewButtonClick()
 	if (ui.listWidgetFiniTasks->currentItem())
 	{
 		int rank = ui.listWidgetFiniTasks->currentItem()->whatsThis().toInt() - 1;
-		StaticTaskOper* s = new StaticTaskOper(dataPtr->taskVec[rank], dataPtr);
+		StaticTaskOper* s = new StaticTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+		connect(s, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 		s->ui.labelTakenAcc->setText(QString::number(dataPtr->taskVec[rank]->payment));
 		s->ui.label_10->setText(QString("Payment(Ruby)"));
 		s->show();
@@ -317,7 +325,8 @@ void IssTaskWin::recViewButtonClick()
 	if (ui.listWidgetRecTasks->currentItem())
 	{
 		int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt() - 1;
-		IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr, 1);
+		IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr, 1, this);
+		connect(i, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 		i->show();
 	}
 	else
@@ -351,7 +360,8 @@ void IssTaskWin::conViewButtonClick()
 		}
 		else
 		{
-			IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr, 2);
+			IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr, 2, this);
+			connect(i, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 			i->show();
 		}
 	}
@@ -370,7 +380,8 @@ void IssTaskWin::finiViewButtonClick()
 	if (ui.listWidgetFiniTasks->currentItem())
 	{
 		int rank = ui.listWidgetFiniTasks->currentItem()->whatsThis().toInt() - 1;
-		FiniTaskOper* f = new FiniTaskOper(dataPtr->taskVec[rank], dataPtr);
+		FiniTaskOper* f = new FiniTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+		connect(f, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 		f->show();
 	}
 	else
@@ -385,7 +396,8 @@ void IssTaskWin::finiViewButtonClick()
 
 void IssTaskWin::newTaskButtonClick()
 {
-	NewTaskOper* n = new NewTaskOper(dataPtr);
+	NewTaskOper* n = new NewTaskOper(dataPtr, this);
+	connect(n, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 	n->show();
 }
 

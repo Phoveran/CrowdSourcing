@@ -212,7 +212,7 @@ public:
     {
         CrowdSourcingClass->setWindowTitle(QCoreApplication::translate("CrowdSourcingClass", "Login&Register", nullptr));
         usernameInput->setText(QString());
-        usernameInput->setPlaceholderText(QCoreApplication::translate("CrowdSourcingClass", "Username", nullptr));
+        usernameInput->setPlaceholderText(QCoreApplication::translate("CrowdSourcingClass", "Account", nullptr));
         passwordInput->setText(QString());
         passwordInput->setPlaceholderText(QCoreApplication::translate("CrowdSourcingClass", "Password", nullptr));
         loginButton->setText(QCoreApplication::translate("CrowdSourcingClass", "Log in", nullptr));

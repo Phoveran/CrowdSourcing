@@ -462,7 +462,7 @@ public:
         topUpButoon->setText(QCoreApplication::translate("MainWindowPersonal", "Top up", nullptr));
         updateInformationButton->setText(QCoreApplication::translate("MainWindowPersonal", "Update info", nullptr));
         changePasswordButton->setText(QCoreApplication::translate("MainWindowPersonal", "Change password", nullptr));
-        usernameLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Username:</span></p></body></html>", nullptr));
+        usernameLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Account:</span></p></body></html>", nullptr));
         creditsLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Credits:</span></p></body></html>", nullptr));
         memberTypeLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Member type:</span></p></body></html>", nullptr));
         balanceLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Balance:</span></p></body></html>", nullptr));
