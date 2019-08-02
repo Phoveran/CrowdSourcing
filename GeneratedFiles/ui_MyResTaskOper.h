@@ -610,7 +610,7 @@ public:
 #endif // QT_CONFIG(tooltip)
         editInfocancelButton->setText(QString());
 #if QT_CONFIG(tooltip)
-        changeInfoButton->setToolTip(QCoreApplication::translate("DialogMyResTaskOper", "Change Infomation", nullptr));
+        changeInfoButton->setToolTip(QCoreApplication::translate("DialogMyResTaskOper", "Change required credits", nullptr));
 #endif // QT_CONFIG(tooltip)
         changeInfoButton->setText(QString());
         textBrowserBrief->setHtml(QCoreApplication::translate("DialogMyResTaskOper", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

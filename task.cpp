@@ -26,11 +26,6 @@ Task::~Task(void)
 {
 }
 
-bool Task::applied(int acc)
-{
-	return false;
-}
-
 vector<int> Task::getChildren()
 {
 	return vector<int>();
@@ -92,28 +87,6 @@ vector<int> ResTask::getChildren()
 	return childrenTasks;
 }
 
-bool ResTask::applied(int acc)
-{
-	int i = acc - 1000;
-	if (count(waitingAccount.begin(), waitingAccount.end(), acc));
-	else if (state == 2)
-	{
-		if (dataPtr->userVec[i]->level == 2)
-		{
-			waitingAccount.push_back(acc);
-			return true;
-		}
-	}
-	else if (state == 3)
-	{
-		if (dataPtr->userVec[i]->engCredits >= reqEngCredits && dataPtr->userVec[i]->fraCredits >= reqFraCredits)
-		{
-			waitingAccount.push_back(acc);
-			return true;
-		}
-	}
-	return false;
-}
 
 int ResTask::type()
 {

@@ -28,15 +28,14 @@ class Ui_DialogUpdateInfo
 public:
     QWidget *formWidget;
     QFormLayout *formLayout;
-    QLabel *certificateLabel;
-    QLabel *teleLabel;
     QComboBox *certificateBox;
+    QLabel *teleLabel;
     QLineEdit *teleLineEdit;
+    QLabel *certificateLabel;
     QFrame *horizontalFrame;
     QHBoxLayout *horizontalLayout;
     QPushButton *okButton;
     QPushButton *cancelButton;
-    QLabel *noticeLabel;
 
     void setupUi(QDialog *DialogUpdateInfo)
     {
@@ -46,52 +45,52 @@ public:
         DialogUpdateInfo->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda7.jpg);"));
         formWidget = new QWidget(DialogUpdateInfo);
         formWidget->setObjectName(QString::fromUtf8("formWidget"));
-        formWidget->setGeometry(QRect(90, 190, 501, 151));
+        formWidget->setGeometry(QRect(100, 180, 591, 151));
         formWidget->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         formLayout = new QFormLayout(formWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setVerticalSpacing(50);
-        certificateLabel = new QLabel(formWidget);
-        certificateLabel->setObjectName(QString::fromUtf8("certificateLabel"));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Century Gothic"));
-        font.setPointSize(18);
-        font.setBold(true);
-        font.setItalic(true);
-        font.setWeight(75);
-        certificateLabel->setFont(font);
-        certificateLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 0);"));
-
-        formLayout->setWidget(0, QFormLayout::LabelRole, certificateLabel);
-
-        teleLabel = new QLabel(formWidget);
-        teleLabel->setObjectName(QString::fromUtf8("teleLabel"));
-        teleLabel->setFont(font);
-        teleLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 0);"));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, teleLabel);
-
         certificateBox = new QComboBox(formWidget);
         certificateBox->setObjectName(QString::fromUtf8("certificateBox"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Century Gothic"));
-        font1.setPointSize(16);
-        font1.setBold(true);
-        font1.setWeight(75);
-        certificateBox->setFont(font1);
+        QFont font;
+        font.setFamily(QString::fromUtf8("Century Gothic"));
+        font.setPointSize(16);
+        font.setBold(true);
+        font.setWeight(75);
+        certificateBox->setFont(font);
         certificateBox->setStyleSheet(QString::fromUtf8("color: rgb(170, 0, 255);"));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, certificateBox);
 
+        teleLabel = new QLabel(formWidget);
+        teleLabel->setObjectName(QString::fromUtf8("teleLabel"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Century Gothic"));
+        font1.setPointSize(18);
+        font1.setBold(true);
+        font1.setItalic(true);
+        font1.setWeight(75);
+        teleLabel->setFont(font1);
+        teleLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 0);"));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, teleLabel);
+
         teleLineEdit = new QLineEdit(formWidget);
         teleLineEdit->setObjectName(QString::fromUtf8("teleLineEdit"));
-        teleLineEdit->setFont(font1);
+        teleLineEdit->setFont(font);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, teleLineEdit);
 
+        certificateLabel = new QLabel(formWidget);
+        certificateLabel->setObjectName(QString::fromUtf8("certificateLabel"));
+        certificateLabel->setFont(font1);
+        certificateLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 0);"));
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, certificateLabel);
+
         horizontalFrame = new QFrame(DialogUpdateInfo);
         horizontalFrame->setObjectName(QString::fromUtf8("horizontalFrame"));
-        horizontalFrame->setGeometry(QRect(210, 360, 331, 80));
+        horizontalFrame->setGeometry(QRect(230, 400, 331, 80));
         horizontalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         horizontalLayout = new QHBoxLayout(horizontalFrame);
         horizontalLayout->setSpacing(80);
@@ -184,12 +183,6 @@ public:
 
         horizontalLayout->addWidget(cancelButton);
 
-        noticeLabel = new QLabel(DialogUpdateInfo);
-        noticeLabel->setObjectName(QString::fromUtf8("noticeLabel"));
-        noticeLabel->setGeometry(QRect(240, 460, 311, 39));
-        noticeLabel->setFont(font);
-        noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 0, 0);"));
 
         retranslateUi(DialogUpdateInfo);
         QObject::connect(okButton, SIGNAL(clicked()), DialogUpdateInfo, SLOT(okClick()));
@@ -201,11 +194,10 @@ public:
     void retranslateUi(QDialog *DialogUpdateInfo)
     {
         DialogUpdateInfo->setWindowTitle(QCoreApplication::translate("DialogUpdateInfo", "UpdateInfo", nullptr));
-        certificateLabel->setText(QCoreApplication::translate("DialogUpdateInfo", "Certificate", nullptr));
         teleLabel->setText(QCoreApplication::translate("DialogUpdateInfo", "Telephone", nullptr));
+        certificateLabel->setText(QCoreApplication::translate("DialogUpdateInfo", "Certificate", nullptr));
         okButton->setText(QCoreApplication::translate("DialogUpdateInfo", "OK", nullptr));
         cancelButton->setText(QCoreApplication::translate("DialogUpdateInfo", "Cancel", nullptr));
-        noticeLabel->setText(QString());
     } // retranslateUi
 
 };

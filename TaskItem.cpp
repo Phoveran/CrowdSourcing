@@ -9,13 +9,17 @@ recTaskItem::recTaskItem(Task* task, int model, QWidget* parent)
 	if (model == 1)
 	{
 		int rest = 0;
-		if (task->state == 2 || task->state == 1)
+		if (task->state == 2)
 		{
 			rest = task->issueTime + (task->applyPeriod * 86400) - time(0);
 		}
-		if (task->state == 3)
+		else if (task->state == 3)
 		{
 			rest = task->startTime + (task->applyPeriod * 86400) - time(0);
+		}
+		else if (task->state == 1)
+		{
+			rest = task->startTime + (task->period * 86400) - time(0);
 		}
 		if (rest > 0)
 		{
@@ -41,6 +45,11 @@ recTaskItem::recTaskItem(Task* task, int model, QWidget* parent)
 		{
 			ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
 			ui.labelState->setText(QString("Recruiting"));
+		}
+		else if (task->state == 5)
+		{
+			ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
+			ui.labelState->setText(QString("Waiting for Pay"));
 		}
 	}
 	else if (model == 2)

@@ -58,7 +58,6 @@ public:
 	string content;//Ô­ÎÄ
 	string transTemp;//Ôİ´æ·­Òë
 	string transSubmit;//×îÖÕ·­Òë
-	virtual bool applied(int acc);
 	virtual int type() = 0;
 	virtual vector<int> getChildren();
 	virtual int getParent();
@@ -77,7 +76,7 @@ public:
 class ResTask : public Task
 {
 public:
-	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, vector<int> child, int appPer, int iss, int sta = 0, vector<int> translat = vector<int>(), int reqEngCre = 0, int reqFraCre = 0) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
+	ResTask(int r, string bri, int acc, int type, int per, Data* data, string con, int pay, vector<int> child, int appPer, int iss, int reqEngCre = 0, int reqFraCre = 0, int sta = 0, vector<int> translat = vector<int>()) :Task(r, bri, acc, type, per, data, con, pay, appPer, iss, sta)
 	{
 		childrenTasks = child;
 		translators = translat;
@@ -85,7 +84,6 @@ public:
 		reqFraCredits = reqFraCre;
 	}
 	vector<int> getChildren();
-	bool applied(int acc);
 	int type();
 	vector<int> getTranslators();
 	int getReqEngCre();

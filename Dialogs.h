@@ -129,6 +129,7 @@ public slots:
 private:
 	Ui::DialogRecTaskOper ui;
 	QString transTypeJudge();
+	void loadInfo();
 };
 
 class StaticTaskOper : public QDialog
@@ -221,7 +222,7 @@ class IssRecTaskOper : public QDialog
 	Q_OBJECT
 
 public:
-	IssRecTaskOper(Task* tas, Data* data, QWidget* parent = Q_NULLPTR);
+	IssRecTaskOper(Task* tas, Data* data, int model, QWidget* parent = Q_NULLPTR);
 	Data* dataPtr;
 	Task* task;
 

@@ -263,7 +263,7 @@ public:
         QObject::connect(cancelButton, SIGNAL(clicked()), DialogIssRecTaskOper, SLOT(cancelButtonClick()));
         QObject::connect(refuseButton, SIGNAL(clicked()), DialogIssRecTaskOper, SLOT(refuseButtonClick()));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(DialogIssRecTaskOper);

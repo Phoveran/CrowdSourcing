@@ -36,7 +36,6 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *okButton;
     QPushButton *cancelButton;
-    QLabel *noticeLabel;
 
     void setupUi(QDialog *DialogChangePassword)
     {
@@ -47,7 +46,7 @@ public:
 ""));
         formFrame = new QFrame(DialogChangePassword);
         formFrame->setObjectName(QString::fromUtf8("formFrame"));
-        formFrame->setGeometry(QRect(20, 90, 551, 231));
+        formFrame->setGeometry(QRect(10, 100, 551, 231));
         formFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         formLayout = new QFormLayout(formFrame);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
@@ -107,7 +106,7 @@ public:
 
         horizontalFrame = new QFrame(DialogChangePassword);
         horizontalFrame->setObjectName(QString::fromUtf8("horizontalFrame"));
-        horizontalFrame->setGeometry(QRect(70, 370, 371, 80));
+        horizontalFrame->setGeometry(QRect(100, 410, 371, 80));
         horizontalFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         horizontalLayout = new QHBoxLayout(horizontalFrame);
         horizontalLayout->setSpacing(80);
@@ -202,17 +201,6 @@ public:
 
         horizontalLayout->addWidget(cancelButton);
 
-        noticeLabel = new QLabel(DialogChangePassword);
-        noticeLabel->setObjectName(QString::fromUtf8("noticeLabel"));
-        noticeLabel->setGeometry(QRect(50, 470, 441, 51));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Century Gothic"));
-        font3.setPointSize(16);
-        font3.setBold(true);
-        font3.setWeight(75);
-        noticeLabel->setFont(font3);
-        noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 0, 0);"));
 
         retranslateUi(DialogChangePassword);
         QObject::connect(okButton, SIGNAL(clicked()), DialogChangePassword, SLOT(OkClick()));
@@ -230,7 +218,6 @@ public:
         oldPwLineEdit->setText(QString());
         okButton->setText(QCoreApplication::translate("DialogChangePassword", "OK", nullptr));
         cancelButton->setText(QCoreApplication::translate("DialogChangePassword", "Cancel", nullptr));
-        noticeLabel->setText(QString());
     } // retranslateUi
 
 };

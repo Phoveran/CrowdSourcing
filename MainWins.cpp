@@ -317,7 +317,7 @@ void IssTaskWin::recViewButtonClick()
 	if (ui.listWidgetRecTasks->currentItem())
 	{
 		int rank = ui.listWidgetRecTasks->currentItem()->whatsThis().toInt() - 1;
-		IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr);
+		IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr, 1);
 		i->show();
 	}
 	else
@@ -337,11 +337,23 @@ void IssTaskWin::refreshButtonClick()
 
 void IssTaskWin::conViewButtonClick()
 {
+
 	if (ui.listWidgetConTasks->currentItem())
 	{
 		int rank = ui.listWidgetConTasks->currentItem()->whatsThis().toInt() - 1;
-		IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr);
-		i->show();
+		if (dataPtr->taskVec[rank]->type())
+		{
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Wrong");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("Please go to your accepted principal task to see!"));
+			mesBox->show();
+		}
+		else
+		{
+			IssRecTaskOper* i = new IssRecTaskOper(dataPtr->taskVec[rank], dataPtr, 2);
+			i->show();
+		}
 	}
 	else
 	{

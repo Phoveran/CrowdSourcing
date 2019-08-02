@@ -241,7 +241,7 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 		strs.push_back("NULL, ");
 		if (!task->getChildren().empty())
 		{
-			strs.push_back(intCombine2String(task->getChildren(), ";") + string(", "));
+			strs.push_back(string("\"") + intCombine2String(task->getChildren(), ";") + string("\"") + string(", "));
 		}
 		else
 		{
@@ -254,7 +254,7 @@ void Data::dbTaskInsert(Task* task, sqlite3* db, char** errMsg)
 		}
 		else
 		{
-			strs.push_back(intCombine2String(task->getTranslators(), ";") + string(", "));
+			strs.push_back(string("\"") + intCombine2String(task->getTranslators(), ";") + string("\"") + string(", "));
 		}
 	}
 	strs.push_back(to_string(task->transSwitch) + string(");"));
@@ -399,7 +399,7 @@ int Data::readTaskCallBack(void* ptr, int argc, char** argvs, char** colNames)
 				translators.push_back(stoi(str[i]));
 			}
 		}
-		ResTask* taskTemp = new ResTask(rank, brief, issAcc, trType, peri, data, cont, pay, child, appPeri, issTime, staTime, translators, reqEng, reqFra);
+		ResTask* taskTemp = new ResTask(rank, brief, issAcc, trType, peri, data, cont, pay, child, appPeri, issTime, reqEng, reqFra, staTime, translators);
 		taskTemp->state = sta;
 		taskTemp->takenAccount = takenAcc;
 		taskTemp->transTemp = trTem;

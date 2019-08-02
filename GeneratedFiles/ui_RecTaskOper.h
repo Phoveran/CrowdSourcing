@@ -15,6 +15,7 @@
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
@@ -47,6 +48,8 @@ public:
     QLabel *label_3;
     QLabel *labelReqCre;
     QFrame *frame;
+    QLabel *label;
+    QListWidget *listWidgetAppliedAcc;
 
     void setupUi(QDialog *DialogRecTaskOper)
     {
@@ -56,7 +59,7 @@ public:
         DialogRecTaskOper->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 190, 190);"));
         textBrowserBrief = new QTextBrowser(DialogRecTaskOper);
         textBrowserBrief->setObjectName(QString::fromUtf8("textBrowserBrief"));
-        textBrowserBrief->setGeometry(QRect(500, 110, 261, 321));
+        textBrowserBrief->setGeometry(QRect(30, 310, 261, 231));
         QFont font;
         font.setFamily(QString::fromUtf8("\345\215\216\346\226\207\347\273\206\351\273\221"));
         font.setPointSize(12);
@@ -64,7 +67,7 @@ public:
         textBrowserBrief->setStyleSheet(QString::fromUtf8("border-image:transparent;"));
         label_8 = new QLabel(DialogRecTaskOper);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(500, 80, 61, 24));
+        label_8->setGeometry(QRect(30, 280, 61, 24));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Century Gothic"));
         font1.setPointSize(12);
@@ -75,19 +78,19 @@ public:
 "border-image:transparent;"));
         applyButton = new QPushButton(DialogRecTaskOper);
         applyButton->setObjectName(QString::fromUtf8("applyButton"));
-        applyButton->setGeometry(QRect(100, 400, 120, 120));
+        applyButton->setGeometry(QRect(340, 300, 120, 120));
         applyButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/link_shoot_clicked.png);};"));
         cancelButton = new QPushButton(DialogRecTaskOper);
         cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
-        cancelButton->setGeometry(QRect(300, 400, 120, 120));
+        cancelButton->setGeometry(QRect(340, 450, 120, 120));
         cancelButton->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman.png);}  \n"
 "QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman_on.png);}\n"
 "QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_woman_clicked.png);};"));
         formLayoutWidget = new QWidget(DialogRecTaskOper);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(30, 80, 441, 251));
+        formLayoutWidget->setGeometry(QRect(30, 20, 441, 251));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -221,6 +224,15 @@ public:
         frame->setStyleSheet(QString::fromUtf8("border-image: url(:/CrowdSourcing/Resources/pictures/zelda_logo2.png);"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
+        label = new QLabel(DialogRecTaskOper);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(490, 10, 191, 31));
+        label->setFont(font1);
+        label->setStyleSheet(QString::fromUtf8("border-image:transparent;color: rgb(85, 85, 0);"));
+        listWidgetAppliedAcc = new QListWidget(DialogRecTaskOper);
+        listWidgetAppliedAcc->setObjectName(QString::fromUtf8("listWidgetAppliedAcc"));
+        listWidgetAppliedAcc->setGeometry(QRect(490, 50, 301, 401));
+        listWidgetAppliedAcc->setStyleSheet(QString::fromUtf8("border-image: transparent;"));
 
         retranslateUi(DialogRecTaskOper);
         QObject::connect(applyButton, SIGNAL(clicked()), DialogRecTaskOper, SLOT(applyButtonClick()));
@@ -262,6 +274,7 @@ public:
         labelRecruitType->setText(QString());
         label_3->setText(QCoreApplication::translate("DialogRecTaskOper", "Required Credits", nullptr));
         labelReqCre->setText(QString());
+        label->setText(QCoreApplication::translate("DialogRecTaskOper", "Applied accounts:", nullptr));
     } // retranslateUi
 
 };

@@ -404,7 +404,7 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_w
       </rect>
      </property>
      <property name="toolTip">
-      <string>Change Infomation</string>
+      <string>Change required credits</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/zelda_hero.png);}  

@@ -39,7 +39,6 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *registerButton;
     QPushButton *cancelButton;
-    QLabel *noticeLabel;
 
     void setupUi(QDialog *DialogRegister)
     {
@@ -50,7 +49,7 @@ public:
 ""));
         inputFrame = new QFrame(DialogRegister);
         inputFrame->setObjectName(QString::fromUtf8("inputFrame"));
-        inputFrame->setGeometry(QRect(60, 80, 691, 241));
+        inputFrame->setGeometry(QRect(30, 110, 711, 251));
         inputFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         formLayout = new QFormLayout(inputFrame);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
@@ -130,7 +129,7 @@ public:
 
         buttonFrame = new QFrame(DialogRegister);
         buttonFrame->setObjectName(QString::fromUtf8("buttonFrame"));
-        buttonFrame->setGeometry(QRect(180, 350, 411, 80));
+        buttonFrame->setGeometry(QRect(180, 430, 411, 80));
         buttonFrame->setStyleSheet(QString::fromUtf8("border-image: \\*url();"));
         horizontalLayout = new QHBoxLayout(buttonFrame);
         horizontalLayout->setSpacing(30);
@@ -227,12 +226,6 @@ public:
 
         horizontalLayout->addWidget(cancelButton);
 
-        noticeLabel = new QLabel(DialogRegister);
-        noticeLabel->setObjectName(QString::fromUtf8("noticeLabel"));
-        noticeLabel->setGeometry(QRect(150, 480, 461, 41));
-        noticeLabel->setFont(font);
-        noticeLabel->setStyleSheet(QString::fromUtf8("border-image: \\*url();\n"
-"color: rgb(255, 0, 0);"));
 
         retranslateUi(DialogRegister);
         QObject::connect(registerButton, SIGNAL(clicked()), DialogRegister, SLOT(RegisterClick()));
@@ -253,7 +246,6 @@ public:
         teleLineEdit->setText(QString());
         registerButton->setText(QCoreApplication::translate("DialogRegister", "Register", nullptr));
         cancelButton->setText(QCoreApplication::translate("DialogRegister", "Cancel", nullptr));
-        noticeLabel->setText(QString());
     } // retranslateUi
 
 };
