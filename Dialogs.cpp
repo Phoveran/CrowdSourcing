@@ -1464,12 +1464,12 @@ void IssRecTaskOper::loadInfo()
 	}break;
 	case 6:
 	{
-		ui.labelState->setText(QString("Waiting Selection"));
+		ui.labelState->setText(QString("Principal Waiting"));
 		ui.labelRemHours->setText("Time Out");
 	}break;
 	case 7:
 	{
-		ui.labelState->setText(QString("Waiting Selection"));
+		ui.labelState->setText(QString("Translator Waiting"));
 		ui.labelRemHours->setText("Time Out");
 	}break;
 	}
