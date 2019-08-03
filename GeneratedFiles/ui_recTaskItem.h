@@ -71,8 +71,9 @@ public:
         labelState->setGeometry(QRect(520, 17, 211, 16));
         QFont font;
         font.setFamily(QString::fromUtf8("Courier"));
-        font.setBold(true);
-        font.setWeight(75);
+        font.setPointSize(9);
+        font.setBold(false);
+        font.setWeight(50);
         labelState->setFont(font);
         labelState->setStyleSheet(QString::fromUtf8("color: rgb(85, 85, 0);\n"
 "border-image:transparent;"));

@@ -123,8 +123,9 @@ border-image:transparent;</string>
     <property name="font">
      <font>
       <family>Courier</family>
-      <weight>75</weight>
-      <bold>true</bold>
+      <pointsize>9</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -147,8 +148,9 @@ border-image:transparent;</string>
     <property name="font">
      <font>
       <family>Courier</family>
-      <weight>75</weight>
-      <bold>true</bold>
+      <pointsize>9</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -171,8 +173,9 @@ border-image:transparent;</string>
     <property name="font">
      <font>
       <family>Courier</family>
-      <weight>75</weight>
-      <bold>true</bold>
+      <pointsize>9</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">

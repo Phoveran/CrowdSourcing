@@ -71,6 +71,7 @@ public:
         labelType->setGeometry(QRect(460, 17, 211, 16));
         QFont font;
         font.setFamily(QString::fromUtf8("Courier"));
+        font.setPointSize(9);
         font.setBold(true);
         font.setWeight(75);
         labelType->setFont(font);

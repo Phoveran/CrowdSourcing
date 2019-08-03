@@ -123,6 +123,7 @@ border-image:transparent;</string>
     <property name="font">
      <font>
       <family>Courier</family>
+      <pointsize>9</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -147,6 +148,7 @@ border-image:transparent;</string>
     <property name="font">
      <font>
       <family>Courier</family>
+      <pointsize>9</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -171,6 +173,7 @@ border-image:transparent;</string>
     <property name="font">
      <font>
       <family>Courier</family>
+      <pointsize>9</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
