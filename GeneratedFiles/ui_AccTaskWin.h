@@ -152,10 +152,25 @@ public:
     void retranslateUi(QMainWindow *MainWindowAccTask)
     {
         MainWindowAccTask->setWindowTitle(QCoreApplication::translate("MainWindowAccTask", "Tasks", nullptr));
+#if QT_CONFIG(tooltip)
+        backButton->setToolTip(QCoreApplication::translate("MainWindowAccTask", "Back", nullptr));
+#endif // QT_CONFIG(tooltip)
         backButton->setText(QString());
+#if QT_CONFIG(tooltip)
+        othViewButton->setToolTip(QCoreApplication::translate("MainWindowAccTask", "View", nullptr));
+#endif // QT_CONFIG(tooltip)
         othViewButton->setText(QString());
+#if QT_CONFIG(tooltip)
+        refreshButton->setToolTip(QCoreApplication::translate("MainWindowAccTask", "Refresh", nullptr));
+#endif // QT_CONFIG(tooltip)
         refreshButton->setText(QString());
+#if QT_CONFIG(tooltip)
+        myViewButton->setToolTip(QCoreApplication::translate("MainWindowAccTask", "View", nullptr));
+#endif // QT_CONFIG(tooltip)
         myViewButton->setText(QString());
+#if QT_CONFIG(tooltip)
+        finiViewButton->setToolTip(QCoreApplication::translate("MainWindowAccTask", "View", nullptr));
+#endif // QT_CONFIG(tooltip)
         finiViewButton->setText(QString());
         label_4->setText(QCoreApplication::translate("MainWindowAccTask", "Other Tasks:", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindowAccTask", "My Tasks:", nullptr));

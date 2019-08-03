@@ -24,7 +24,7 @@ class myTaskItem : public QWidget
 	Q_OBJECT
 
 public:
-	myTaskItem(Task* task, int model, QWidget* parent = Q_NULLPTR);
+	myTaskItem(Data* data, Task* task, int model, QWidget* parent = Q_NULLPTR);
 	void setLan(int type);
 
 private:

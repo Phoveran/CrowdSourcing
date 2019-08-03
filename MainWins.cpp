@@ -200,7 +200,7 @@ void AccTaskWin::loadInfo()
 				QListWidgetItem* li = new QListWidgetItem;
 				li->setWhatsThis(QString::number(dataPtr->taskVec[i]->rank));
 				li->setSizeHint(QSize(600, 59));
-				myTaskItem* mti = new myTaskItem(dataPtr->taskVec[i], 1);
+				myTaskItem* mti = new myTaskItem(dataPtr, dataPtr->taskVec[i], 1);
 				if (dataPtr->taskVec[i]->state == 1 || dataPtr->taskVec[i]->state == 2 || dataPtr->taskVec[i]->state == 3 || dataPtr->taskVec[i]->state == 4 || dataPtr->taskVec[i]->state == 6 || dataPtr->taskVec[i]->state == 7)
 				{
 					ui.listWidgetMyTasks->addItem(li);
@@ -270,11 +270,26 @@ void AccTaskWin::myViewButtonClick()
 			connect(r, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 			r->show();
 		}
-		else if (dataPtr->taskVec[rank]->state == 3 || dataPtr->taskVec[rank]->state == 7)
+		else if (dataPtr->taskVec[rank]->state == 3)
 		{
 			MyResTaskOper* m = new MyResTaskOper(dataPtr->taskVec[rank], dataPtr, this);
 			connect(m, SIGNAL(destroyed()), this, SLOT(loadInfo()));
 			m->show();
+		}
+		else if (dataPtr->taskVec[rank]->state == 7)
+		{
+			if (dataPtr->taskVec[rank]->takenAccount == dataPtr->nowAccountNum)
+			{
+				MyResTaskOper* m = new MyResTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+				connect(m, SIGNAL(destroyed()), this, SLOT(loadInfo()));
+				m->show();
+			}
+			else
+			{
+				RecTaskOper* r = new RecTaskOper(dataPtr->taskVec[rank], dataPtr, this);
+				connect(r, SIGNAL(destroyed()), this, SLOT(loadInfo()));
+				r->show();
+			}
 		}
 	}
 	else
@@ -422,7 +437,7 @@ void IssTaskWin::loadInfo()
 			QListWidgetItem* li = new QListWidgetItem;
 			li->setWhatsThis(QString::number(ra + 1));
 			li->setSizeHint(QSize(600, 59));
-			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra], 2);
+			myTaskItem* mti = new myTaskItem(dataPtr, dataPtr->taskVec[ra], 2);
 			ui.listWidgetConTasks->addItem(li);
 			ui.listWidgetConTasks->setItemWidget(li, mti);
 		}
@@ -431,7 +446,7 @@ void IssTaskWin::loadInfo()
 			QListWidgetItem* li = new QListWidgetItem;
 			li->setWhatsThis(QString::number(ra + 1));
 			li->setSizeHint(QSize(600, 59));
-			myTaskItem* mti = new myTaskItem(dataPtr->taskVec[ra], 2);
+			myTaskItem* mti = new myTaskItem(dataPtr, dataPtr->taskVec[ra], 2);
 			ui.listWidgetFiniTasks->addItem(li);
 			ui.listWidgetFiniTasks->setItemWidget(li, mti);
 		}

@@ -589,6 +589,9 @@ color: rgb(170, 85, 255);</string>
       <bold>true</bold>
      </font>
     </property>
+    <property name="toolTip">
+     <string>Refresh</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_norm.png);}  
 QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_on.png);}
@@ -615,6 +618,9 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh
       <italic>true</italic>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Log out</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/logout_norm.png);}  
@@ -663,6 +669,9 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/logout_
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Message box</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/mess_norm_0.png);}  

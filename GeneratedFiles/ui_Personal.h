@@ -474,8 +474,17 @@ public:
         certificateDisplay->setText(QString());
         telephoneLabel->setText(QCoreApplication::translate("MainWindowPersonal", "<html><head/><body><p><span style=\" color:#aa00ff;\">Telephone:</span></p></body></html>", nullptr));
         telephoneDisplay->setText(QString());
+#if QT_CONFIG(tooltip)
+        refreshButton->setToolTip(QCoreApplication::translate("MainWindowPersonal", "Refresh", nullptr));
+#endif // QT_CONFIG(tooltip)
         refreshButton->setText(QString());
+#if QT_CONFIG(tooltip)
+        logOutButton->setToolTip(QCoreApplication::translate("MainWindowPersonal", "Log out", nullptr));
+#endif // QT_CONFIG(tooltip)
         logOutButton->setText(QString());
+#if QT_CONFIG(tooltip)
+        messageButton->setToolTip(QCoreApplication::translate("MainWindowPersonal", "Message box", nullptr));
+#endif // QT_CONFIG(tooltip)
         messageButton->setText(QString());
         labelMess->setText(QCoreApplication::translate("MainWindowPersonal", "88", nullptr));
     } // retranslateUi

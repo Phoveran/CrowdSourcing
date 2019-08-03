@@ -41,6 +41,9 @@
     <property name="focusPolicy">
      <enum>Qt::StrongFocus</enum>
     </property>
+    <property name="toolTip">
+     <string>Back</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/back_norm.png);}  
 QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/back_on.png);}
@@ -72,6 +75,9 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/back_cl
       <bold>true</bold>
      </font>
     </property>
+    <property name="toolTip">
+     <string>View</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  
 QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}
@@ -98,6 +104,9 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
       <italic>true</italic>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Refresh</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/refresh_clicked.png);}  
@@ -126,6 +135,9 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/refresh
       <bold>true</bold>
      </font>
     </property>
+    <property name="toolTip">
+     <string>View</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  
 QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}
@@ -153,6 +165,9 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
       <bold>true</bold>
      </font>
     </property>
+    <property name="toolTip">
+     <string>View</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/view_norm.png);}  
 QPushButton:hover{border-image: url(:/CrowdSourcing/Resources/pictures/view_on.png);}
@@ -170,6 +185,9 @@ QPushButton:pressed{border-image: url(:/CrowdSourcing/Resources/pictures/view_cl
       <width>80</width>
       <height>80</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>New task</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{border-image: url(:/CrowdSourcing/Resources/pictures/new_clicked.png);}  

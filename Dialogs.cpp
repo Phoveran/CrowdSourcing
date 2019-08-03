@@ -204,7 +204,7 @@ void TopUp::topUpClick()
 {
 	QString str = ui.lineEdit->text();
 	int num = str.toInt();
-	if (num > 0 && num < 1000000 && num % 100 == 0)
+	if (num > 0 && num < 10001)
 	{
 		submitTopUp();
 		QMessageBox* mesBox = new QMessageBox;
@@ -218,7 +218,7 @@ void TopUp::topUpClick()
 		QMessageBox* mesBox = new QMessageBox;
 		mesBox->setWindowTitle("Topup Failed");
 		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("Amount must be in multiples of 100 !\nTop up at most 1000000 Ruby once !"));
+		mesBox->setText(QString("Top up at most 10000 Ruby once !"));
 		mesBox->show();
 	}
 }
@@ -490,14 +490,25 @@ MyTransTaskOper::MyTransTaskOper(Task* tas, Data* data, QWidget* parent)
 
 void MyTransTaskOper::saveButtonClick()
 {
-	task->transTemp = ui.textBrowserTranslation->toPlainText().toStdString();
-	task->transSwitch = 0;
-	QMessageBox* mesBox = new QMessageBox;
-	mesBox->setWindowTitle("Done");
-	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-	mesBox->setText(QString("Translation Saved"));
-	mesBox->show();
-	loadInfo();
+	if (task->state == 1)
+	{
+		task->transTemp = ui.textBrowserTranslation->toPlainText().toStdString();
+		task->transSwitch = 0;
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Translation Saved"));
+		mesBox->show();
+		loadInfo();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("It's not translation time!"));
+		mesBox->show();
+	}
 }
 
 QString MyTransTaskOper::transTypeJudge()
@@ -550,18 +561,28 @@ void MyTransTaskOper::loadInfo()
 
 void MyTransTaskOper::submitButtonClick()
 {
-
-	task->transSubmit = ui.textBrowserTranslation->toPlainText().toStdString();
-	task->state = 4;
-	task->transSwitch = 1;
-	QMessageBox* mesBox = new QMessageBox;
-	mesBox->setWindowTitle("Done");
-	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-	mesBox->setText(QString("Translation Submitted"));
-	mesBox->show();
-	dataPtr->pushNotice("You have submitted task " + to_string(task->rank));
-	dataPtr->pushNotice("Your task " + to_string(task->rank) + " has a new submission", task->issuingAccount);
-	loadInfo();
+	if (task->state == 1)
+	{
+		task->transSubmit = ui.textBrowserTranslation->toPlainText().toStdString();
+		task->state = 4;
+		task->transSwitch = 1;
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Translation Submitted"));
+		mesBox->show();
+		dataPtr->pushNotice("You have submitted task " + to_string(task->rank));
+		dataPtr->pushNotice("Your task " + to_string(task->rank) + " has a new submission", task->issuingAccount);
+		loadInfo();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("It's not translation time!"));
+		mesBox->show();
+	}
 }
 
 
@@ -872,55 +893,77 @@ void MyResTaskOper::endRecruitingButtonClick()
 //Submission Tab
 void MyResTaskOper::saveButtonClick()
 {
-	task->transTemp = ui.textBrowserTotalTranslation->toPlainText().toStdString();
-	task->transSwitch = 0;
-	QMessageBox* mesBox = new QMessageBox;
-	mesBox->setWindowTitle("Done");
-	mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-	mesBox->setText(QString("Translation Saved"));
-	mesBox->show();
-	loadInfo();
+	if (task->state == 1)
+	{
+		task->transTemp = ui.textBrowserTotalTranslation->toPlainText().toStdString();
+		task->transSwitch = 0;
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Done");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("Translation Saved"));
+		mesBox->show();
+		loadInfo();
+	}
+	else
+	{
+		QMessageBox* mesBox = new QMessageBox;
+		mesBox->setWindowTitle("Wrong");
+		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+		mesBox->setText(QString("It's not translation time!"));
+		mesBox->show();
+	}
 }
 
 void MyResTaskOper::submitButtonClick()
 {
-	bool judge = false;
-	for (int i = 0; i < task->getChildren().size(); i++)
+	if (task->state == 1)
 	{
-		if (dataPtr->taskVec[task->getChildren()[i] - 1]->state != 5)
+		bool judge = false;
+		for (int i = 0; i < task->getChildren().size(); i++)
 		{
-			judge = true;
+			if (dataPtr->taskVec[task->getChildren()[i] - 1]->state != 5)
+			{
+				judge = true;
+			}
 		}
-	}
-	if (ui.textBrowserTotalTranslation->toPlainText().isEmpty())
-	{
-		QMessageBox* mesBox = new QMessageBox;
-		mesBox->setWindowTitle("Wrong");
-		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("You haven't input the translation"));
-		mesBox->show();
-	}
-	else if (judge)
-	{
-		QMessageBox* mesBox = new QMessageBox;
-		mesBox->setWindowTitle("Wrong");
-		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("You have unfinished child task"));
-		mesBox->show();
+		if (ui.textBrowserTotalTranslation->toPlainText().isEmpty())
+		{
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Wrong");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("You haven't input the translation"));
+			mesBox->show();
+		}
+		else if (judge)
+		{
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Wrong");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("You have unfinished child task"));
+			mesBox->show();
+		}
+		else
+		{
+			task->transSubmit = ui.textBrowserTotalTranslation->toPlainText().toStdString();
+			task->transSwitch = 1;
+			task->state = 4;
+			dataPtr->pushNotice("You submitted a translation for task " + to_string(task->rank));
+			dataPtr->pushNotice("You received a new translation for task " + to_string(task->rank), task->issuingAccount);
+			QMessageBox* mesBox = new QMessageBox;
+			mesBox->setWindowTitle("Done");
+			mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
+			mesBox->setText(QString("Translation Submitted"));
+			mesBox->show();
+			loadInfo();
+		}
 	}
 	else
 	{
-		task->transSubmit = ui.textBrowserTotalTranslation->toPlainText().toStdString();
-		task->transSwitch = 1;
-		task->state = 4;
-		dataPtr->pushNotice("You submitted a translation for task " + to_string(task->rank));
-		dataPtr->pushNotice("You received a new translation for task " + to_string(task->rank), task->issuingAccount);
 		QMessageBox* mesBox = new QMessageBox;
-		mesBox->setWindowTitle("Done");
+		mesBox->setWindowTitle("Wrong");
 		mesBox->setAttribute(Qt::WA_DeleteOnClose, true);
-		mesBox->setText(QString("Translation Submitted"));
+		mesBox->setText(QString("It's not translation time!"));
 		mesBox->show();
-		loadInfo();
 	}
 }
 
@@ -1389,6 +1432,15 @@ void IssRecTaskOper::loadInfo()
 	ui.labelTransType->setText(transTypeJudge());
 	switch (task->state)
 	{
+	case 1:
+	{
+		ui.labelState->setText(QString("Conducting"));
+		int rest = task->startTime + 86400 * task->period - time(0);
+		rest /= 3600;
+		ui.labelRemHours->setText(QString::number(rest) + QString(" Hours"));
+		ui.label_2->setText(QString("Taken Account"));
+		ui.labelRecPeriod->setText(QString::number(task->takenAccount));
+	}break;
 	case 3:
 	{
 		ui.labelState->setText(QString("Recruiting translators"));

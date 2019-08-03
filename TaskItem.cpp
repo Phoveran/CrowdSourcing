@@ -138,7 +138,7 @@ void recTaskItem::setLan(int type)
 }
 
 
-myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
+myTaskItem::myTaskItem(Data* data, Task* task, int model, QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -163,11 +163,19 @@ myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
 		{
 			ui.labelState->setStyleSheet(QString("color: rgb(0, 170, 255);\n border-image:transparent; "));
 			ui.labelState->setText(QString("Recruiting"));
+			if (task->state == 3 && task->takenAccount != data->nowAccountNum)
+			{
+				ui.labelType->setText(QString("As Translator"));
+			}
 		}
 		else if (task->state == 6 || task->state == 7)
 		{
 			ui.labelState->setStyleSheet(QString("color: rgb(255, 0, 0);\n border-image:transparent; "));
 			ui.labelState->setText(QString("Waiting Select"));
+			if (task->state == 7 && task->takenAccount != data->nowAccountNum)
+			{
+				ui.labelType->setText(QString("As Translator"));
+			}
 		}
 		else if (task->state == 0)
 		{
@@ -184,7 +192,6 @@ myTaskItem::myTaskItem(Task* task, int model, QWidget* parent)
 			ui.labelState->setStyleSheet(QString("border-image:transparent;\n color: rgb(255, 0, 0); "));
 			ui.labelState->setText(QString("Waiting Exam"));
 		}
-
 	}
 	else if (model == 2)
 	{
